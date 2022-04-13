@@ -103,4 +103,4 @@ dist
 # TernJS port file
 .tern-port
 
-__snapshots__
+src/components/__snapshots__
