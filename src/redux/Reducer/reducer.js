@@ -1,4 +1,4 @@
-import * as actions from "./actiontypes.js";
+import * as actions from "../Action/actiontypes";
 
 const INITIAL_STATE = {
   count: 0,

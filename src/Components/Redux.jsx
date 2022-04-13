@@ -4,7 +4,10 @@ import { Outlet, Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 
-import { increaseCounter, decreaseCounter } from "../redux/actioncreator.js";
+import {
+  increaseCounter,
+  decreaseCounter,
+} from "../redux/Action/actioncreator.js";
 
 function Redux(props) {
   return (

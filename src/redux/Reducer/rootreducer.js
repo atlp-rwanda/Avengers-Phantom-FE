@@ -7,3 +7,5 @@ const rootReducer = combineReducers({
 });
 
 export default rootReducer;
+
+// i18n
