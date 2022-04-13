@@ -1,22 +1,13 @@
-import * as actions from './actiontypes.js'
+import * as actions from "./actiontypes.js";
 
+export const increaseCounter = () => {
+  return {
+    type: actions.INCREMENT,
+  };
+};
 
-    export const increaseCounter = () => {
-
-        return {
-
-            type: actions.INCREMENT,
-
-        };
-
-    };
-
-    export const decreaseCounter = () => {
-
-        return {
-
-           type: actions.DECREMENT,
-
-        };
-
-    };
+export const decreaseCounter = () => {
+  return {
+    type: actions.DECREMENT,
+  };
+};

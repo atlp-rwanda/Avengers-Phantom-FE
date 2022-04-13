@@ -1,35 +1,26 @@
+import * as actions from "./actiontypes.js";
 
-import * as actions from './actiontypes.js'
+const INITIAL_STATE = {
+  count: 0,
+};
 
+const reducer = (state = INITIAL_STATE, action) => {
+  switch (action.type) {
+    case actions.INCREMENT:
+      return {
+        ...state,
+        count: state.count + 1,
+      };
 
-    const INITIAL_STATE = {
+    case actions.DECREMENT:
+      return {
+        ...state,
+        count: state.count - 1,
+      };
 
-        count: 0,
-    };
+    default:
+      return state;
+  }
+};
 
-    const reducer = (state = INITIAL_STATE, action) => {
-
-        switch (action.type) {
-
-            case actions.INCREMENT:
-
-               return {
-
-                 ...state, count: state.count + 1,
-
-               };
-
-            case actions.DECREMENT:
-
-               return {
-                  ...state, count: state.count - 1,
-
-               };
-
-             default: return state;
-
-        }
-
-    };
-
-    export default reducer;
+export default reducer;
