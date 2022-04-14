@@ -4,11 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development",
+    "dev": "webpack-dev-server --mode development --open --hot",
+    "start": "node server.js",
     "test": "jest --no-cache --verbose",
-    "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production",
-    "heroku-prebuild": "npm install --dev"
+    "build": "webpack --mode production"
   },
   "author": "armstrong",
   "license": "ISC",
