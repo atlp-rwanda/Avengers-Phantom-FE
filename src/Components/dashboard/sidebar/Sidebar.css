@@ -1,0 +1,60 @@
+.menubar {
+  color: white;
+<<<<<<< HEAD
+  margin: 8rem 0 0 0;
+=======
+  margin: 0;
+>>>>>>> 07ad962e (ft signin rebase)
+}
+.menubar_div {
+  padding-top: 20px;
+}
+.linkstyle {
+  list-style: none;
+  text-decoration: none;
+  padding-top: 10px;
+  cursor: pointer;
+  color: white;
+  border-width: 10rem;
+  margin-block-start: 2px;
+  padding-inline-start: 30px;
+}
+.linkstyle:hover {
+  background-color: white;
+  color: #012241;
+}
+.menubar ul li {
+  text-decoration: none;
+  padding: 4px;
+}
+<<<<<<< HEAD
+/* .menubar ul li:hover {
+  background-color: white;
+} */
+.menubar ul :hover {
+=======
+.menubar ul :hover {
+  /* background-color: white; */
+>>>>>>> 07ad962e (ft signin rebase)
+  color: #012241;
+}
+.menubar ul {
+  border-radius: 10px;
+}
+
+ul {
+  list-style: none;
+  margin-block-start: 0px;
+  padding-inline-start: 0px;
+  border-radius: 5px 0 0 5px;
+}
+@media (max-width: 1000px) {
+  span {
+    display: none;
+  }
+}
+@media (max-width: 1200px) {
+  span {
+    font-size: 4;
+  }
+}

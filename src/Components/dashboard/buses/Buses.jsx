@@ -1,0 +1,27 @@
+import React from "react";
+<<<<<<< HEAD
+import Sidebar from "../sidebar/Sidebar.jsx";
+import DashNavbar from "../dashnavbar/DashNavBar.jsx";
+import "../Dashboard.css";
+=======
+>>>>>>> 07ad962e (ft signin rebase)
+
+const Buses = () => {
+  return (
+    <div>
+<<<<<<< HEAD
+      <DashNavbar />
+      <div className="dashboard">
+        <div className="generalmenubar">{<Sidebar />}</div>
+        <div className="containt">
+          <h1>Buses</h1>
+        </div>
+      </div>
+=======
+      <h1>buses</h1>
+>>>>>>> 07ad962e (ft signin rebase)
+    </div>
+  );
+};
+
+export default Buses;
