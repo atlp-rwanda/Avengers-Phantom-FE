@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev":"start",
     "test": "jest --no-cache --verbose",
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
