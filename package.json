@@ -4,7 +4,7 @@
   "description": "The front end of the Phantom project for team Avengers",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "node App.test.js"
   },
   "repository": {
     "type": "git",
