@@ -28,6 +28,10 @@ module.exports = {
           'css-loader'
         ],
         exclude: /\.module\.css$/
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
       }
     ]
   },
