@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import store from "./redux/store.js";
 import Home from "./Components/Home.jsx";
+import About from "./Components/About.jsx";
 import Redux from "./Components/Redux.jsx";
 
 export default function App() {
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="/" element={<Redux />}>
           <Route index element={<Home />} />
         </Route>
+        <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   );
