@@ -4,7 +4,12 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import store from './redux/store.js'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Home from './Components/Homepage/Home.jsx';
+=======
+import Home from './Components/Home.jsx';
+import About from './Components/About.jsx';
+>>>>>>> Add Navbar with Dummy Link
 =======
 import Home from './Components/Home.jsx';
 import About from './Components/About.jsx';
@@ -17,6 +22,7 @@ import ScrollToTop from './Components/Homepage/ScrollToTop.jsx'
 export default function App() {
   return (
     <BrowserRouter>
+<<<<<<< HEAD
       <ScrollToTop>
         <Routes>
           <Route path="/" element={<Home />}>
@@ -25,6 +31,15 @@ export default function App() {
 
         </Routes>
       </ScrollToTop>
+=======
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />}>
+        </Route>
+        <Route path="/about" element={<About />}>
+        </Route>
+      </Routes>
+>>>>>>> Add Navbar with Dummy Link
     </BrowserRouter>
   );
 }
