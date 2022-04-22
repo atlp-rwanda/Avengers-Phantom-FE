@@ -2,20 +2,20 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import store from "./redux/store.js";
-import Home from "./Components/Home.jsx";
-import About from "./Components/About.jsx";
-import Redux from "./Components/Redux.jsx";
+import store from './redux/store.js'
+import Home from './Components/Home.jsx';
+import Redux from './Components/Redux.jsx';
+import Navbar from './Components/navbar/Navbar.jsx';
+
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Redux />}>
-          <Route index element={<Home />} />
-        </Route>
-        <Route path="/about" element={<About />} />
-      </Routes>
+    <Routes>
+      <Route path="/" element={<Navbar />}>
+       <Route index element={<Home />} />
+      </Route>
+    </Routes>
     </BrowserRouter>
   );
 }
