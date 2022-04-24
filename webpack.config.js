@@ -4,14 +4,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   //This property defines where the application starts
   entry: './src/index.js',
-  // devServer: {
-  //   historyApiFallback: true,
-  // },
+
 
   //This property defines the file path and the file name which will be used for deploying the bundled file
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: "/"
   },
 
   //Setup loaders
@@ -50,6 +49,11 @@ module.exports = {
     static: path.resolve(__dirname, "./dist"),
     hot: true,
     historyApiFallback: true,
+
+    // compress: true,
+    // https: false,
+
+
 
   },
 }
