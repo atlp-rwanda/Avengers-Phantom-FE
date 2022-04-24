@@ -1,6 +1,4 @@
 import * as React from "react";
-import bus from "../../static/images/bus.png";
-
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -12,14 +10,13 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { buildSchema } from "graphql";
-import { Link } from "react-router-dom";
+import MenuItem from "@mui/material/MenuItem";
 
-const pages = ["CONTACT US", "ABOUT", "SERVICES", "HOME"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
-const theme = createTheme({
+const pages = [""];
+const settings = ["View Profile", "My account", "Dashboard", "Logout"];
+
+const colors = createTheme({
   palette: {
     primary: {
       main: "#ffffff",
@@ -30,7 +27,7 @@ const theme = createTheme({
   },
 });
 
-const Navbar = () => {
+const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -50,32 +47,20 @@ const Navbar = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={colors}>
       <AppBar position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Box
-              sx={{
-                flexGrow: 1,
-                color: "secondary",
-                display: { xs: "none", md: " flex" },
-              }}
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
             >
-              <Avatar
-                alt="logo"
-                src={bus}
-                sx={{ width: 80 }}
-                variant="square"
-              />
-            </Box>
+              <MenuIcon />
+            </Typography>
 
-            <Box
-              sx={{
-                flexGrow: 1,
-                color: "secondary",
-                display: { xs: "flex", md: "none" },
-              }}
-            >
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -84,7 +69,7 @@ const Navbar = () => {
                 onClick={handleOpenNavMenu}
                 color="inherit"
               >
-                <MenuIcon />
+                <MenuIcon color="#012241" />
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -116,46 +101,49 @@ const Navbar = () => {
               noWrap
               component="div"
               sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
-            >
-              LOGO
-            </Typography>
-            <Box
-              sx={{
-                flexGrow: 1,
-                flexDirection: "row-reverse",
-                display: { xs: "none", md: "flex" },
-              }}
-            >
+            ></Typography>
+            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
-                  sx={{
-                    my: 2,
-                    color: "secondary.main",
-                    mr: 10,
-                    display: "block",
-                  }}
+                  sx={{ my: 2, color: "white", display: "block" }}
                 >
                   {page}
                 </Button>
               ))}
             </Box>
 
-            <Box>
-              <Button
-                color="secondary"
-                variant="contained"
-                sx={{
-                  height: "30.16px",
-                  width: "150.37px",
-                  borderRadius: "45.125px",
+            <Box sx={{ flexGrow: 0 }} color>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <span>Karera</span>
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                color="black"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
                 }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
               >
-                <Typography sx={{ mx: "auto", width: "100.37px" }}>
-                  sign in
-                </Typography>
-              </Button>
+                {settings.map((setting) => (
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
             </Box>
           </Toolbar>
         </Container>
@@ -163,5 +151,4 @@ const Navbar = () => {
     </ThemeProvider>
   );
 };
-
-export default Navbar;
+export default ResponsiveAppBar;

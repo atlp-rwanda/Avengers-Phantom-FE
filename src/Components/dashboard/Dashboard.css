@@ -1,0 +1,20 @@
+.dashboard {
+  display: flex;
+}
+.generalmenubar {
+  background-color: #012241;
+  height: 37rem;
+  width: 20%;
+}
+.containt {
+  width: 76%;
+  padding: 0 0 0 10px;
+  /* overflow: scroll; */
+}
+@media (max-width: 1000px) {
+  .generalmenubar {
+    background-color: #012241;
+    height: 35rem;
+    width: 4.8rem;
+  }
+}
