@@ -22,10 +22,11 @@ const ResetPassword = () => {
          <Grid container justify="center" alignItems="center">
              <Paper   elevation={4}  style={{margin: "0vh auto" ,width: 780 ,padding: 20 }}
            
+           
              >
                     <Grid>
                     <h3 style={{margin:20}}>Hello User, Welcome to Phantom Reset </h3>
-                    <h3 style={{margin:20}}>Password</h3>
+                    <h3 style={{margin:20}}>Password!</h3>
                     </Grid>
                <Grid >
                 <Typography ml={2} >Create new password</Typography>
