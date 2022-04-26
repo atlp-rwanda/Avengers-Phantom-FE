@@ -11,7 +11,6 @@ module.exports = {
     filename: "bundle.js",
     publicPath: "/",
   },
-
   //Setup loaders
   module: {
     rules: [
