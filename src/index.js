@@ -17,38 +17,25 @@ import About from './Components/About.jsx';
 import Redux from './Components/Redux.jsx';
 import Navbar from './Components/navbar/Navbar.jsx';
 import ScrollToTop from './Components/Homepage/ScrollToTop.jsx'
+import PhantomRoutes from "./Components/Routes/index.js";
 
 
 export default function App() {
   return (
     <BrowserRouter>
-<<<<<<< HEAD
       <ScrollToTop>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-
-        </Routes>
+        <PhantomRoutes />
       </ScrollToTop>
-=======
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />}>
-        </Route>
-        <Route path="/about" element={<About />}>
-        </Route>
-      </Routes>
->>>>>>> Add Navbar with Dummy Link
     </BrowserRouter>
   );
 }
 
-ReactDOM.render(
+// Create root Component
+const root = ReactDOM.createRoot(document.getElementById("app"));
+root.render(
   <Provider store={store}>
     <React.StrictMode>
       <App />
     </React.StrictMode>
-  </Provider>,
-  document.getElementById("app")
-);
+  </Provider>
+)
