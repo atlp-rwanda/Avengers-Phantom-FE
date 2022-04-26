@@ -8,6 +8,7 @@ import Redux from './Components/Redux.jsx';
 import Navbar from './Components/navbar/Navbar.jsx';
 import ScrollToTop from './Components/Homepage/ScrollToTop.jsx'
 import  {Signin} from "./Components/signin/Signin.jsx";
+import  ResetPage from "./Components/reset/ResetPage.jsx";
 
 
 export default function App() {
@@ -25,7 +26,7 @@ export default function App() {
       <Route path="/" element={<Navbar />}>
        <Route index element={<Home/>} />
        <Route path='/phantom/HOME' element={<Home/>}/>
-       <Route path='/phantom/reset' element={<Home/>}/>
+       <Route path='/phantom/reset' element={<ResetPage/>}/>
        <Route path='/phantom/signin' element={<Signin/>}/>
        
       </Route>
