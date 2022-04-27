@@ -10,6 +10,11 @@ module.exports = {
     path: path.join(__dirname, '/dist'),
     filename: 'bundle.js'
   },
+  // devServer: {
+  //   static: path.resolve(__dirname, "./dist"),
+  //   hot: true,
+  //   historyApiFallback: true,
+  // },
     
   //Setup loaders
   module: {

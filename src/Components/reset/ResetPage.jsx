@@ -12,7 +12,7 @@ const ResetPage = () => {
     return (
         <>
         <Box bgcolor="rgba(1, 34, 65, 1)"  height="800px">
-           <Navbar />
+           {/* <Navbar /> */}
          <Grid container justify="center" alignItems="center">
          <Grid  elevation={4}  style={{margin: "1vh auto" ,width: 860 ,padding: 20 }}>
                 <Stack>
