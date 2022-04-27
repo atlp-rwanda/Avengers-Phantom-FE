@@ -1,23 +1,10 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import store from './redux/store.js'
-<<<<<<< HEAD
-<<<<<<< HEAD
-import Home from './Components/Homepage/Home.jsx';
-=======
-import Home from './Components/Home.jsx';
-import About from './Components/About.jsx';
->>>>>>> Add Navbar with Dummy Link
-=======
-import Home from './Components/Home.jsx';
-import About from './Components/About.jsx';
->>>>>>> Add Navbar with Dummy Link
-import Redux from './Components/Redux.jsx';
-import Navbar from './Components/navbar/Navbar.jsx';
 import ScrollToTop from './Components/Homepage/ScrollToTop.jsx'
-import PhantomRoutes from "./Components/Routes/index.js";
+import PhantomRoutes from "./Components/Routes";
 
 
 export default function App() {
