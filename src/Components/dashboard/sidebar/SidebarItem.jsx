@@ -7,7 +7,7 @@ import DirectionsBusFilledIcon from "@mui/icons-material/DirectionsBusFilled";
 
 export const SidebarItem = [
   {
-    path: "/",
+    path: "/dashboard",
     icon: <DashboardIcon fontSize="small" />,
     title: "Dashboard",
   },

@@ -1,6 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./../Components/Home.jsx";
+import { Routes, Route } from "react-router-dom";
 import Dashboard from "../Components/dashboard/dashboard/Dashboard.jsx";
 import Drivers from "../Components/dashboard/operatorsanddriver/Drivers.jsx";
 import AddDrivers from "../Components/dashboard/operatorsanddriver/AddDrivers.jsx";
@@ -12,18 +11,22 @@ import Bus from "../Components/dashboard/buses/Buses.jsx";
 import Routecar from "../Components/dashboard/route/Route.jsx";
 import AppBar from "../Components/dashboard/dashnavbar/DashNavBar.jsx";
 import DashboardSidebar from "../Components/dashboard/sidebar/Sidebar.jsx";
+import Home from "../Components/Homepage/Home.jsx";
 import "../Components/dashboard/Dashboard.css";
 
 const PhantomRoutes = () => {
   return (
     <div>
+      <Routes>
+        <Route path="/" inedx element={<Home />} />
+      </Routes>
       <AppBar />
       <div className="dashboard">
         <div className="generalmenubar">{<DashboardSidebar />}</div>
 
         <div className="containt">
           <Routes>
-            <Route path="/" index element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/routes" element={<Routecar />} />
             <Route path="/driveroperator" element={<DriverAndOperator />} />
             <Route path="/driveroperator/driver" element={<Drivers />} />
