@@ -50,19 +50,19 @@ img {
   margin: 5px;
 }
 .driver_component_content {
-  width: 12.5rem;
+  width: 15rem;
   padding-left: 10px;
 }
 .driver_component_contentid {
-  width: 12.5rem;
+  width: 15rem;
   padding-left: 10px;
 }
 .driver_component_contentbutton {
-  width: 12.5rem;
+  width: 15rem;
   padding-left: 10px;
 }
 .driver_component_photo {
-  width: 12.5rem;
+  width: 15rem;
 }
 .driverdetailpopup {
   display: flex;
@@ -82,18 +82,18 @@ img {
   margin: 5px;
 }
 .operator_component_container {
-  width: 12.5rem;
+  width: 15rem;
   padding-left: 10px;
 }
 .operator_component_photo {
-  width: 12.5rem;
+  width: 15rem;
 }
 .operator_component_container_info {
-  width: 12.5rem;
+  width: 15rem;
   padding-left: 10px;
 }
 .operator_component_container_button {
-  width: 12.5rem;
+  width: 15rem;
   padding-left: 10px;
 }
 
@@ -106,7 +106,7 @@ img {
   width: 7rem;
   border-radius: 5px;
   background-color: rgb(201, 201, 201);
-  /* background-color: rgb(102, 99, 99); */
+  /* background-color: rgb(88, 0, 0); */
 }
 .addimageicon {
   position: absolute;

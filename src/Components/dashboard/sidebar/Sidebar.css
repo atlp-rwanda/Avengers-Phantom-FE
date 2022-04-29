@@ -1,6 +1,6 @@
 .menubar {
   color: white;
-  margin: 0;
+  margin: 8rem 0 0 0;
 }
 .menubar_div {
   padding-top: 20px;
@@ -23,8 +23,10 @@
   text-decoration: none;
   padding: 4px;
 }
+/* .menubar ul li:hover {
+  background-color: white;
+} */
 .menubar ul :hover {
-  /* background-color: white; */
   color: #012241;
 }
 .menubar ul {
