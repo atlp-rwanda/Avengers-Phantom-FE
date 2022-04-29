@@ -10,6 +10,9 @@ import AddOperator from "../Components/dashboard/operatorsanddriver/AddOperator.
 import DriverAndOperator from "../Components/dashboard/operatorsanddriver/DriverAndOperator.jsx";
 import Roles from "../Components/dashboard/roles&permission/Roles.jsx";
 import Bus from "../Components/dashboard/buses/BusesList.jsx";
+import RegisterBus from '../Components/dashboard/buses/RegisterBus.jsx'
+import BusDetails from '../Components/dashboard/buses/BusDetail.jsx'
+import BusUpdate from '../Components/dashboard/buses/updateBus.jsx'
 import Routecar from "../Components/dashboard/route/RoutesReport.jsx";
 import AddRoutes from "../Components/dashboard/route/AddRoutes.jsx";
 import SingleRoute from "../Components/dashboard/route/SingleRoutes.jsx";
@@ -109,8 +112,10 @@ const PhantomRoutes = () => {
           element={<AddOperator />}
         />
         <Route path="/bus" element={<Bus />} />
+        <Route path="/bus/register" element={<RegisterBus />} />
+        <Route path="/bus/1" element={<BusDetails />} />
+        <Route path="/bus/1/update" element={<BusUpdate />} />
         <Route path="/rolepermission" element={<Roles />} />
-        <Route path="/bus" element={<Bus />} />
         <Route path="/logout" element={<Signin />} />
       </Routes>
     </div>
