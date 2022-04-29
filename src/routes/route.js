@@ -10,13 +10,20 @@ import AddOperator from "../Components/dashboard/operatorsanddriver/AddOperator.
 import DriverAndOperator from "../Components/dashboard/operatorsanddriver/DriverAndOperator.jsx";
 import Roles from "../Components/dashboard/roles&permission/Roles.jsx";
 import Bus from "../Components/dashboard/buses/Buses.jsx";
-import Routecar from "../Components/dashboard/route/Route.jsx";
+import Routecar from "../Components/dashboard/route/RoutesReport.jsx";
+import AddRoutes from "../Components/dashboard/route/AddRoutes.jsx";
+import SingleRoute from "../Components/dashboard/route/SingleRoutes.jsx";
 import Home from "../Components/Homepage/Home.jsx";
 import { useLocation } from "react-router-dom";
 import "../Components/dashboard/Dashboard.css";
 import About from "../Components/Homepage/About.jsx";
 import Services from "../Components/Homepage/Services.jsx";
 import Navbar from "../Components/navbar/Navbar.jsx";
+import Testimonials from "../Components/Homepage/Testimonial.jsx";
+import Agency from "../Components/Homepage/Agencies.jsx";
+import Footer from "../Components/Homepage/Footer.jsx";
+import Manuals from "../Components/Homepage/Manuals.jsx";
+import MapSection from "../Components/Homepage/MapSection.jsx";
 import Contact from "../Components/Homepage/Contact.jsx";
 import Signin from "../Components/signin/Signin.jsx";
 
@@ -33,7 +40,10 @@ const PhantomRoutes = () => {
             <>
               <Navbar />
               <About />
+              <Manuals />
+              <MapSection />
               <Contact />
+              <Footer />
             </>
           }
         />
@@ -43,6 +53,8 @@ const PhantomRoutes = () => {
             <>
               <Navbar />
               <Services />
+              <Agency />
+              <Testimonials />
               <Contact />
             </>
           }
@@ -83,6 +95,8 @@ const PhantomRoutes = () => {
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/routes" element={<Routecar />} />
+        <Route path="/addroute" element={<AddRoutes />} />
+        <Route path="/singleroute" element={<SingleRoute />} />
         <Route path="/driveroperator" element={<DriverAndOperator />} />
         <Route path="/driveroperator/driver" element={<Drivers />} />
         <Route

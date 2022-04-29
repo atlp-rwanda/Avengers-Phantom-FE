@@ -72,11 +72,7 @@ const Drivers = () => {
         <div className="containt">
           <h3>Drivers managment</h3>
           <Link to="adddriver">
-            <Button
-              startIcon={<AddIcon />}
-              text="Add driver"
-              bcolor="#012241"
-            />
+            <Button text="Add driver" bcolor="#012241" />
           </Link>
           <hr />
           {drivers.map((driver, index) => (
