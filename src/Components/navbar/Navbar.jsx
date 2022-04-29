@@ -114,7 +114,7 @@ const Navbar = () => {
                         textAlign='center'
                         sx={{ textDecoration: 'none' }}
                         component={Link}
-                        to={`/${page}`}
+                        to={`/phantom/${page}`}
                       >
                         {page}
                       </Typography>
@@ -148,7 +148,7 @@ const Navbar = () => {
                       display: 'block'
                     }}
                     component={Link}
-                    to={`/${page}`}
+                    to={`/phantom/${page}`}
                   >
                     {page}
                   </Button>
@@ -168,7 +168,7 @@ const Navbar = () => {
                 >
                   <Typography
                     component={Link}
-                    to={`/signin`}
+                    to={`/phantom/signin`}
                     sx={{
                       mx: 'auto',
                       width: '100.37px',
