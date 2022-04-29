@@ -1,10 +1,6 @@
 .menubar {
   color: white;
-<<<<<<< HEAD
   margin: 8rem 0 0 0;
-=======
-  margin: 0;
->>>>>>> 07ad962e (ft signin rebase)
 }
 .menubar_div {
   padding-top: 20px;
@@ -27,15 +23,10 @@
   text-decoration: none;
   padding: 4px;
 }
-<<<<<<< HEAD
 /* .menubar ul li:hover {
   background-color: white;
 } */
 .menubar ul :hover {
-=======
-.menubar ul :hover {
-  /* background-color: white; */
->>>>>>> 07ad962e (ft signin rebase)
   color: #012241;
 }
 .menubar ul {

@@ -50,21 +50,6 @@ img {
   margin: 5px;
 }
 .driver_component_content {
-<<<<<<< HEAD
-  width: 15rem;
-  padding-left: 10px;
-}
-.driver_component_contentid {
-  width: 15rem;
-  padding-left: 10px;
-}
-.driver_component_contentbutton {
-  width: 15rem;
-  padding-left: 10px;
-}
-.driver_component_photo {
-  width: 15rem;
-=======
   width: 12.5rem;
   padding-left: 10px;
 }
@@ -78,7 +63,6 @@ img {
 }
 .driver_component_photo {
   width: 12.5rem;
->>>>>>> 07ad962e (ft signin rebase)
 }
 .driverdetailpopup {
   display: flex;
@@ -98,20 +82,6 @@ img {
   margin: 5px;
 }
 .operator_component_container {
-<<<<<<< HEAD
-  width: 15rem;
-  padding-left: 10px;
-}
-.operator_component_photo {
-  width: 15rem;
-}
-.operator_component_container_info {
-  width: 15rem;
-  padding-left: 10px;
-}
-.operator_component_container_button {
-  width: 15rem;
-=======
   width: 12.5rem;
   padding-left: 10px;
 }
@@ -124,11 +94,10 @@ img {
 }
 .operator_component_container_button {
   width: 12.5rem;
->>>>>>> 07ad962e (ft signin rebase)
   padding-left: 10px;
 }
 
-/* 
+/*
 // add drivers */
 
 .imageicon {
@@ -137,11 +106,7 @@ img {
   width: 7rem;
   border-radius: 5px;
   background-color: rgb(201, 201, 201);
-<<<<<<< HEAD
-  /* background-color: rgb(88, 0, 0); */
-=======
   /* background-color: rgb(102, 99, 99); */
->>>>>>> 07ad962e (ft signin rebase)
 }
 .addimageicon {
   position: absolute;

@@ -2,7 +2,6 @@
   display: flex;
 }
 .generalmenubar {
-<<<<<<< HEAD
   position: fixed;
   background-color: #012241;
   height: 100vh;
@@ -12,21 +11,10 @@
   width: 78%;
   padding: 0 0 0 10px;
   margin: 5rem 0 0 17rem;
-=======
-  background-color: #012241;
-  height: 37rem;
-  width: 20%;
-}
-.containt {
-  width: 76%;
-  padding: 0 0 0 10px;
-  /* overflow: scroll; */
->>>>>>> 07ad962e (ft signin rebase)
 }
 @media (max-width: 1000px) {
   .generalmenubar {
     background-color: #012241;
-<<<<<<< HEAD
     height: 100vh;
     width: 4.8rem;
   }
@@ -35,9 +23,4 @@
     padding: 0 0 0 10px;
     margin: 5rem 0 4rem 5rem;
   }
-=======
-    height: 35rem;
-    width: 4.8rem;
-  }
->>>>>>> 07ad962e (ft signin rebase)
 }

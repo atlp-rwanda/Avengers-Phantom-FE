@@ -113,40 +113,7 @@ const PhantomRoutes = () => {
         <Route path='/bus' element={<Bus />} />
         <Route path='/logout' element={<Signin />} />
       </Routes>
-      {location.pathname === '/dashboard' && (
-        <>
-          <AppBar />
-          <div className='dashboard'>
-            <div className='generalmenubar'>{<DashboardSidebar />}</div>
-
-            <div className='containt'>
-              <Routes>
-                <Route path='/dashboard' element={<Dashboard />} />
-                <Route path='/routes' element={<Routecar />} />
-                <Route path='/driveroperator' element={<DriverAndOperator />} />
-                <Route path='/driveroperator/driver' element={<Drivers />} />
-                <Route
-                  path='/driveroperator/driver/adddriver'
-                  element={<AddDrivers />}
-                />
-                <Route
-                  path='/driveroperator/operator'
-                  element={<Operators />}
-                />
-                <Route
-                  path='/driveroperator/operator/addoperator'
-                  element={<AddOperator />}
-                />
-                <Route path='/bus' element={<Bus />} />
-                <Route path='/rolepermission' element={<Roles />} />
-                <Route path='/bus' component={<Bus />} />
-              </Routes>
-            </div>
-          </div>
-        </>
-      )}
     </div>
-    // test
   );
 };
 

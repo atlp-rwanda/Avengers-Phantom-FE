@@ -48,11 +48,7 @@ const ResponsiveAppBar = () => {
 
   return (
     <ThemeProvider theme={colors}>
-<<<<<<< HEAD
-      <AppBar position="fixed">
-=======
       <AppBar position="static">
->>>>>>> 07ad962e (ft signin rebase)
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography
