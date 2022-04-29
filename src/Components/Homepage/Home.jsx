@@ -60,7 +60,7 @@ function Homepage() {
 
   return (
     <>
-      <Navbar />
+
       <Box
         sx={{
           width: '100%',
