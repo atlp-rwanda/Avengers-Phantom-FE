@@ -14,6 +14,11 @@ import Routecar from "../Components/dashboard/route/Route.jsx";
 import Home from "../Components/Homepage/Home.jsx";
 import { useLocation } from "react-router-dom";
 import "../Components/dashboard/Dashboard.css";
+import About from "../Components/Homepage/About.jsx";
+import Services from "../Components/Homepage/Services.jsx";
+import Navbar from "../Components/navbar/Navbar.jsx";
+import Contact from "../Components/Homepage/Contact.jsx";
+import Signin from "../Components/signin/Signin.jsx";
 
 const PhantomRoutes = () => {
   const location = useLocation();
@@ -21,9 +26,58 @@ const PhantomRoutes = () => {
     <div>
       <Routes>
         <Route path="/" index element={<Home />} />
+        <Route path="/home" index element={<Home />} />
+        <Route
+          path="/about"
+          element={
+            <>
+              <Navbar />
+              <About />
+              <Contact />
+            </>
+          }
+        />
+        <Route
+          path="/services"
+          element={
+            <>
+              <Navbar />
+              <Services />
+              <Contact />
+            </>
+          }
+        />
+        <Route
+          path="/contact%20US"
+          element={
+            <>
+              <Navbar />
+              <Contact />
+            </>
+          }
+        />
       </Routes>
       <Routes>
-        <Route path="/resertpassword" element={<ResetPage />} />
+        <Route
+          path="/signin"
+          element={
+            <>
+              <Navbar />
+              <Signin />
+            </>
+          }
+        />
+      </Routes>
+      <Routes>
+        <Route
+          path="/reset"
+          element={
+            <>
+              <Navbar />
+              <ResetPage />
+            </>
+          }
+        />
         <Route path="/resertpasswordpage" element={<ResetPasswordPage />} />
       </Routes>
       <Routes>
@@ -42,7 +96,8 @@ const PhantomRoutes = () => {
         />
         <Route path="/bus" element={<Bus />} />
         <Route path="/rolepermission" element={<Roles />} />
-        <Route path="/bus" component={<Bus />} />
+        <Route path="/bus" element={<Bus />} />
+        <Route path="/logout" element={<Signin />} />
       </Routes>
     </div>
   );
