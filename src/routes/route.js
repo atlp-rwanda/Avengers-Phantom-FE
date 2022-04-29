@@ -9,7 +9,7 @@ import ResetPasswordPage from "../Components/reset/ResetPassword.jsx";
 import AddOperator from "../Components/dashboard/operatorsanddriver/AddOperator.jsx";
 import DriverAndOperator from "../Components/dashboard/operatorsanddriver/DriverAndOperator.jsx";
 import Roles from "../Components/dashboard/roles&permission/Roles.jsx";
-import Bus from "../Components/dashboard/buses/Buses.jsx";
+import Bus from "../Components/dashboard/buses/BusesList.jsx";
 import Routecar from "../Components/dashboard/route/RoutesReport.jsx";
 import AddRoutes from "../Components/dashboard/route/AddRoutes.jsx";
 import SingleRoute from "../Components/dashboard/route/SingleRoutes.jsx";
