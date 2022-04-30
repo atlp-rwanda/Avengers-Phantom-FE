@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 .dashboard {
   display: flex;
 }
@@ -8,8 +9,9 @@
   width: 20%;
 }
 .containt {
+  font-family: 'Poppins', sans-serif;
   width: 78%;
-  padding: 0 0 0 10px;
+  padding-left: 40px;
   margin: 5rem 0 0 17rem;
 }
 @media (max-width: 1000px) {
@@ -19,6 +21,7 @@
     width: 4.8rem;
   }
   .containt {
+    font-family: 'Poppins', sans-serif;
     width: 78%;
     padding: 0 0 0 10px;
     margin: 5rem 0 4rem 5rem;

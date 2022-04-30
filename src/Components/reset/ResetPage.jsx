@@ -7,7 +7,7 @@ import { Stack, Alert} from '@mui/material'
 const ResetPage = () => {
 
     
-    const btnStyle= {margin: 20, width: "25%"}
+    const btnStyle= { margin: 20, width: "25%"}
     
     return (
         <>
@@ -31,7 +31,7 @@ const ResetPage = () => {
                </Grid> 
             <Grid align="center">
                 <Button style={btnStyle} variant="outlined">Cancel</Button>
-                <Button style={btnStyle} variant="contained">Send</Button>
+                <Button style={{ backgroundColor:'#012241',  margin: 20, width: "25%"}} variant="contained">Send</Button>
             </Grid>
              </Paper>
          </Grid>

@@ -26,6 +26,7 @@ import Manuals from '../Components/Homepage/Manuals.jsx';
 import MapSection from '../Components/Homepage/MapSection.jsx';
 import Contact from '../Components/Homepage/Contact.jsx';
 import Signin from '../Components/signin/Signin.jsx';
+import UpdateProfile from '../Components/dashboard/updateProfile/updateProfile.jsx';
 
 const PhantomRoutes = () => {
   const location = useLocation();
@@ -112,6 +113,7 @@ const PhantomRoutes = () => {
         <Route path='/rolepermission' element={<Roles />} />
         <Route path='/bus' element={<Bus />} />
         <Route path='/logout' element={<Signin />} />
+        <Route path='/updateprofile' element={<UpdateProfile />} />
       </Routes>
     </div>
   );

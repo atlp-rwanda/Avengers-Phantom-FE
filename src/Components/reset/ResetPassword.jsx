@@ -40,8 +40,8 @@ const ResetPassword = () => {
                        <li>At least one symbol</li>
                    </ul> 
             <Grid align="center">
-                <Button style={btnStyle} variant="outlined">Cancel</Button>
-                <Button style={btnStyle} variant="contained">Submit</Button>
+                <Button  variant="outlined">Cancel</Button>
+                <Button style={{ backgroundColor:'#012241',  margin: 20, width: "25%"}} variant="contained">Send</Button>
             </Grid>
              </Paper>
          </Grid>

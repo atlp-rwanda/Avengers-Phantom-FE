@@ -31,4 +31,9 @@ export const SidebarItem = [
     icon: <PersonIcon fontSize="small" />,
     title: "Rolepermission",
   },
+  {
+    path: "/updateprofile",
+    icon: <PersonIcon fontSize="small" />,
+    title: "Update profile",
+  }
 ];
