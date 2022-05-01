@@ -109,6 +109,14 @@
       flex: 50%;
 
   }
+  .image-dialoge img{
+      
+      width: 100%;
+      height: 60% ;
+  }
+  .contact-left h5{
+      color: red;
+  }
   .in-left{
     flex:80;
   }
@@ -173,6 +181,30 @@
     margin: 4px 2px;
     cursor: pointer;
 }
+.button-delete{
+    align-items: center;
+    background-color: #440707;
+    color: white ;
+    border-radius: 4px;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    width: 40%;
+    margin: 4px 2px;
+    cursor: pointer;
+
+}
+
+.dialog-btn{
+    margin-top: 15px;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+}
+
   @media (max-width: 800px) {
     .flex-container {
       flex-direction: column;
@@ -204,6 +236,14 @@
     }
     .any-left, h4{
         display: none;
+    }
+    .image-dialoge, img{
+        margin-left: 15px;
+        width: 80%;
+        height: 60%;
+    }
+    .dialog-btn{
+        margin-left: 12px;
     }
    
   }

@@ -4,15 +4,19 @@ import Sidebar from '../sidebar/Sidebar.jsx';
 import DashNavbar from '../dashnavbar/DashNavBar.jsx';
 import '../Dashboard.css';
 import '../updateProfile/style.css';
-import Button from '../operatorsanddriver/Button.jsx';
+import { Button, Dialog, DialogContent, DialogTitle, DialogContentText, DialogActions} from '@mui/material';
+import { useState} from 'react';
 
 const UpdateProfile = () => {
+    const [open, setOpen] = useState(false)
   return (
     <div>
       <DashNavbar />
+      
       <div className='dashboard'>
         <div className='generalmenubar'>{<Sidebar />}</div>
         <div className='containt'>
+        <form action="" method="post">
         <div className="header">
         <h2>Profile and visibility</h2>  
         <p>Manage your personal information, and control which</p> 
@@ -20,6 +24,7 @@ const UpdateProfile = () => {
         </div>
         <h3 className="header">About You</h3>
          <div class="flex-container">
+        
             {/* About you Division */}
             <div class="flex-item-left">
                 <div className="container-about">
@@ -27,10 +32,11 @@ const UpdateProfile = () => {
                        <h4>User Info:</h4>
                        <h4 className="whocanseethis"><b>who can see this ?</b></h4>
                        {/* INPUTS */}
+                       
                         <div className="align-in">
                             <div className="in-left">
                                 <label htmlFor="Full name">Full name</label><br></br>
-                                <input type="text" name="fullname"  />
+                                <input type="text" name="fullname" required  />
                             </div>
                             <div className="in-right">
                             <div className="flex-container">
@@ -46,7 +52,7 @@ const UpdateProfile = () => {
                         <div className="align-in">
                             <div className="in-left">
                                 <label htmlFor="Full name">Public name</label><br></br>
-                                <input type="text" name="fullname"  />
+                                <input type="text" name="fullname" required  />
                             </div>
                             <div className="in-right">
                             <div className="flex-container">
@@ -60,7 +66,7 @@ const UpdateProfile = () => {
                         <div className="align-in">
                             <div className="in-left">
                                 <label htmlFor="Full name">Based in</label><br></br>
-                                <input type="text" name="fullname"  />
+                                <input type="text" name="fullname" required  />
                             </div>
                             <div className="in-right">
                             <div className="flex-container">
@@ -74,7 +80,7 @@ const UpdateProfile = () => {
                         <div className="align-in">
                             <div className="in-left">
                                 <label htmlFor="Full name">Based in</label><br></br>
-                                <input type="text" name="fullname"  />
+                                <input type="text" name="fullname" required  />
                             </div>
                             <div className="in-right">
                             <div className="flex-container">
@@ -88,7 +94,7 @@ const UpdateProfile = () => {
                         <div className="align-in">
                             <div className="in-left">
                                 <label htmlFor="Full name">Based in</label><br></br>
-                                <input type="text" name="fullname"  />
+                                <input type="text" name="fullname" required />
                             </div>
                             <div className="in-right">
                             <div className="flex-container">
@@ -99,7 +105,7 @@ const UpdateProfile = () => {
                             </div>  
                             </div>
                         </div> 
-                        
+                      
                         {/* END OF INPUTS */}
                     </div>
                    
@@ -116,7 +122,7 @@ const UpdateProfile = () => {
                     <h5>beniraa50@gmail.com</h5>
 
                     <div className="buttons">
-                       <button className="button">View</button>
+                       <button className="button" onClick={() => setOpen(true)}>View</button>
                        <input type="file" id="upload" hidden/>
                        <label for="upload">Update</label>
 
@@ -138,7 +144,7 @@ const UpdateProfile = () => {
         <h3 className="header">Security</h3>
         <div className="contact">
             <div className="contact-left">
-                <h5>Change Password</h5>
+                <h5>Change Password*</h5>
                 <div className="contact-left-label"> <label htmlFor="email-address">Current Password</label></div>
                 <div className="contact-left-input"> <input type="email" name="email-address" /></div>
                 <div className="contact-left-label"> <label htmlFor="Phone number">New Password</label></div>
@@ -150,12 +156,36 @@ const UpdateProfile = () => {
         <div className="contact">
         <div className="contact-left-save">
             <div className="buttons">
-                <button className="button">Cancel</button>
-                <button className="button-save">Save</button>
+                <button className="button" >Cancel</button>
+                <button className="button-save" type="submit">Save</button>
              </div>
         </div>
         </div>
-        
+
+        <Dialog className="dialog"
+        open={open}
+        onClose={() => setOpen(false)}
+        aria-labelledby='dialog-title'
+        aria-describedby='dialog-description'
+
+        >
+            <DialogTitle id='dialog-title'></DialogTitle>
+            <DialogContent>
+            <DialogContentText id='dialog-description'>
+                <div className="image-dialoge">
+                <img src="http://products.metalloinvest.com/upload/iblock/b5b/userProfileIcon_gray.png" alt="" />
+                </div>
+            
+            </DialogContentText>
+            </DialogContent>
+            <DialogActions className="dialog-btn">
+                
+                 <button className="button" onClick={() => setOpen(false)}>Cancel</button>
+                 <button className="button-delete" onClick={() => setOpen(false)}>Delete</button>
+                
+            </DialogActions>
+        </Dialog>
+        </form>
         </div>
       </div>
     </div>
