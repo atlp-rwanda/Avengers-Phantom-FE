@@ -101,7 +101,7 @@ const Drivers = () => {
                 <Button
                   handlerFunc={handleClickOpen}
                   text="Delete"
-                  bcolor="rgb(88, 0, 0)"
+                  bcolor="#bd2424"
                 />
               </div>
             </div>
@@ -125,11 +125,7 @@ const Drivers = () => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button
-                onClick={handleClose}
-                text="Delete"
-                bcolor="rgb(88, 0, 0)"
-              />
+              <Button onClick={handleClose} text="Delete" bcolor="#bd2424" />
               <Button onClick={handleClose} text="Return" bcolor="#012241" />
             </DialogActions>
           </Dialog>

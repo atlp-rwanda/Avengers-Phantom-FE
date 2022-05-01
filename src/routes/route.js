@@ -9,7 +9,7 @@ import ResetPasswordPage from "../Components/reset/ResetPassword.jsx";
 import AddOperator from "../Components/dashboard/operatorsanddriver/AddOperator.jsx";
 import DriverAndOperator from "../Components/dashboard/operatorsanddriver/DriverAndOperator.jsx";
 import Roles from "../Components/dashboard/roles&permission/Roles.jsx";
-import Bus from "../Components/dashboard/buses/Buses.jsx";
+import Bus from "../Components/dashboard/buses/BusesList.jsx";
 import Routecar from "../Components/dashboard/route/RoutesReport.jsx";
 import AddRoutes from "../Components/dashboard/route/AddRoutes.jsx";
 import SingleRoute from "../Components/dashboard/route/SingleRoutes.jsx";
@@ -21,10 +21,14 @@ import Services from "../Components/Homepage/Services.jsx";
 import Navbar from "../Components/navbar/Navbar.jsx";
 import Testimonials from "../Components/Homepage/Testimonial.jsx";
 import Agency from "../Components/Homepage/Agencies.jsx";
+import RegisterBus from "../Components/dashboard/buses/RegisterBus.jsx";
+import BusDetails from "../Components/dashboard/buses/BusDetail.jsx";
+import BusUpdate from "../Components/dashboard/buses/updateBus.jsx";
 import Footer from "../Components/Homepage/Footer.jsx";
 import Manuals from "../Components/Homepage/Manuals.jsx";
 import MapSection from "../Components/Homepage/MapSection.jsx";
 import Contact from "../Components/Homepage/Contact.jsx";
+import UpdateProfile from "../Components/dashboard/updateProfile/updateProfile.jsx";
 import Signin from "../Components/signin/Signin.jsx";
 
 const PhantomRoutes = () => {
@@ -111,6 +115,11 @@ const PhantomRoutes = () => {
         <Route path="/bus" element={<Bus />} />
         <Route path="/rolepermission" element={<Roles />} />
         <Route path="/bus" element={<Bus />} />
+        <Route path="/bus/register" element={<RegisterBus />} />
+        <Route path="/bus/1" element={<BusDetails />} />
+        <Route path="/bus/1/update" element={<BusUpdate />} />
+
+        <Route path="/updateprofile" element={<UpdateProfile />} />
         <Route path="/logout" element={<Signin />} />
       </Routes>
     </div>

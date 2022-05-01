@@ -47,22 +47,20 @@ img {
   border-radius: 4px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   margin: 5px;
 }
 .driver_component_content {
-  width: 15rem;
-  padding-left: 10px;
+  min-width: 13rem;
 }
 .driver_component_contentid {
-  width: 15rem;
-  padding-left: 10px;
+  min-width: 13rem;
 }
 .driver_component_contentbutton {
-  width: 15rem;
-  padding-left: 10px;
+  min-width: 13rem;
 }
 .driver_component_photo {
-  width: 15rem;
+  min-width: 13rem;
 }
 .driverdetailpopup {
   display: flex;
@@ -79,22 +77,20 @@ img {
   border-radius: 4px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   margin: 5px;
 }
 .operator_component_container {
-  width: 15rem;
-  padding-left: 10px;
+  min-width: 13rem;
 }
 .operator_component_photo {
-  width: 15rem;
+  min-width: 13rem;
 }
 .operator_component_container_info {
-  width: 15rem;
-  padding-left: 10px;
+  min-width: 13rem;
 }
 .operator_component_container_button {
-  width: 15rem;
-  padding-left: 10px;
+  min-width: 13rem;
 }
 
 /* 

@@ -1,10 +1,10 @@
 .addroute {
-    background-color: #f4f4f4;
-    border: #C4c4c4 solid 2px;
-    min-height: 300px; 
-    min-width: 100px;
-    margin-top: 30px;
-    padding: 20px;
+  background-color: #f4f4f4;
+  border: #c4c4c4 solid 2px;
+  min-height: 30px;
+  min-width: 100px;
+  margin-top: 30px;
+  padding: 20px;
 }
 
 /* .routeDetails{
