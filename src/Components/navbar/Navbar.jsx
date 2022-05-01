@@ -54,7 +54,7 @@ const Navbar = () => {
     <>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <AppBar position="static" height="68.5px">
+        <AppBar position="fixed" height="68.5px">
           <Container maxWidth="xl">
             <Toolbar disableGutters>
               <Box
