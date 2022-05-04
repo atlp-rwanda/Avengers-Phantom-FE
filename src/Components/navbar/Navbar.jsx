@@ -17,8 +17,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { buildSchema } from "graphql";
 
-const pages = ["CONTACT US", "ABOUT", "SERVICES", "HOME"];
-const pages2 = ["CONTACT US", "ABOUT", "SERVICES", "HOME", "signin"];
+const pages = ["CONTACT", "ABOUT", "SERVICES", "HOME"];
+const pages2 = ["CONTACT", "ABOUT", "SERVICES", "HOME", "signin"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 const theme = createTheme({
   palette: {
@@ -122,14 +122,7 @@ const Navbar = () => {
                   ))}
                 </Menu>
               </Box>
-              {/* <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-          >
-            LOGO
-          </Typography> */}
+
               <Box
                 sx={{
                   flexGrow: 1,
