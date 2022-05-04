@@ -48,9 +48,8 @@ const Roles = () => {
             <CssBaseline />
             <Box
               sx={{
-                ml: "80px",
-                p: "0 25px",
-                mt: "7px",
+                p: "0 5px",
+                mt: "2px",
                 display: "flex",
                 flexWrap: "wrap",
                 justifyContent: "space-evenly",
@@ -60,12 +59,12 @@ const Roles = () => {
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                  //flexWrap: 'wrap',
+
                   color: "secondary.main",
                   justifyContent: "center",
                   width: "100%",
                   p: "30px",
-                  ml: "40px",
+
                   boxSizing: "border-box",
                 }}
               >
@@ -245,9 +244,3 @@ const Roles = () => {
 };
 
 export default Roles;
-
-// export const Roles = () => {
-
-//   return (
-//     );
-// };
