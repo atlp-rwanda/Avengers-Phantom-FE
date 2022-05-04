@@ -7,28 +7,39 @@ import DirectionsBusFilledIcon from "@mui/icons-material/DirectionsBusFilled";
 
 export const SidebarItem = [
   {
-    path: "/",
+    path: "/dashboard",
     icon: <DashboardIcon fontSize="small" />,
     title: "Dashboard",
+    cName: "sidetext",
   },
   {
     path: "/routes",
     icon: <LocationOnIcon fontSize="small" />,
     title: "Routes",
+    cName: "sidetext",
   },
   {
     path: "/driveroperator",
     icon: <PersonAddIcon fontSize="small" />,
     title: "Driveroperator",
+    cName: "sidetext",
   },
   {
     path: "/bus",
     icon: <DirectionsBusFilledIcon fontSize="small" />,
     title: "Bus",
+    cName: "sidetext",
   },
   {
     path: "/rolepermission",
     icon: <PersonIcon fontSize="small" />,
     title: "Rolepermission",
+    cName: "sidetext",
+  },
+  {
+    path: "/updateprofile",
+    icon: <PersonIcon fontSize="small" />,
+    title: "Update profile",
+    cName: "sidetext",
   },
 ];

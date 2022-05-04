@@ -1,41 +1,41 @@
-import React from 'react';
-import Photo from '../../../static/dashboard_image/photo.jpeg';
-import Button from './Button.jsx';
-import './DriverAndOperator.css';
-import AddIcon from '@mui/icons-material/Add';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
-import { Link } from 'react-router-dom';
-import Slide from '@mui/material/Slide';
-import Sidebar from '../sidebar/Sidebar.jsx';
-import DashNavbar from '../dashnavbar/DashNavBar.jsx';
-import '../Dashboard.css';
+import React from "react";
+import Photo from "../../../static/dashboard_image/photo.jpeg";
+import Button from "./Button.jsx";
+import "./DriverAndOperator.css";
+import AddIcon from "@mui/icons-material/Add";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
+import { Link } from "react-router-dom";
+import Slide from "@mui/material/Slide";
+import Sidebar from "../sidebar/Sidebar.jsx";
+import DashNavbar from "../dashnavbar/DashNavBar.jsx";
+import "../Dashboard.css";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction='up' ref={ref} {...props} />;
+  return <Slide direction="up" ref={ref} {...props} />;
 });
 
 const operators = [
   {
-    name: 'amustrong',
-    role: 'operators',
-    car: 'RAC 123D',
-    id: 'ID:1234',
-    gender: 'male',
-    tell: 'Tell:17896'
+    name: "amustrong",
+    role: "operators",
+    car: "RAC 123D",
+    id: "ID:1234",
+    gender: "male",
+    tell: "Tell:17896",
   },
   {
-    name: 'un jeado',
-    role: 'operators',
-    car: 'RAC 023f',
-    id: 'ID:1234',
-    gender: 'male',
-    tell: 'Tell:17896'
-  }
+    name: "un jeado",
+    role: "operators",
+    car: "RAC 023f",
+    id: "ID:1234",
+    gender: "male",
+    tell: "Tell:17896",
+  },
 ];
 
 const Operators = () => {
@@ -61,46 +61,46 @@ const Operators = () => {
 
   return (
     <div>
-      <DashNavbar style={{ position: 'fixed' }} />
-      <div className='dashboard'>
-        <div className='generalmenubar'>{<Sidebar />}</div>
-        <div className='containt'>
+      <DashNavbar style={{ position: "fixed" }} />
+      <div className="dashboard">
+        <div className="generalmenubar">{<Sidebar />}</div>
+        <div className="containt">
           <h3>Operators managment</h3>
-          <Link to='addoperator'>
+          <Link to="addoperator">
             <Button
-              text='Add operator'
-              bcolor='#012241'
-              className='operator_button'
+              text="Add operator"
+              bcolor="#012241"
+              className="operator_button"
             />
           </Link>
           <hr />
           {operators.map((operator, index) => (
-            <div key={index} className='operator_component'>
-              <div className='operator_component_photo'>
-                <img src={Photo} alt='karera' />
+            <div key={index} className="operator_component">
+              <div className="operator_component_photo">
+                <img src={Photo} alt="karera" />
               </div>
-              <div className='operator_component_container'>
+              <div className="operator_component_container">
                 <h3>{operator.name}</h3>
                 <p>{operator.role}</p>
                 <h4>{operator.car}</h4>
               </div>
-              <div className='operator_component_container_info'>
+              <div className="operator_component_container_info">
                 <h3>{operator.id}</h3>
                 <p>{operator.role}</p>
                 <h4>{operator.gender}</h4>
               </div>
-              <div className='operator_component_container_button'>
+              <div className="operator_component_container_button">
                 <h3>{operator.tell}</h3>
                 <Button
                   handlerFunc={handleClickOpenDetail}
-                  text='View details'
-                  bcolor='#012241'
+                  text="View details"
+                  bcolor="#012241"
                 />
                 <br />
                 <Button
                   handlerFunc={handleClickOpen}
-                  text='Delete'
-                  bcolor='rgb(88, 0, 0)'
+                  text="Delete"
+                  bcolor="#bd2424"
                 />
               </div>
             </div>
@@ -111,26 +111,22 @@ const Operators = () => {
             TransitionComponent={Transition}
             keepMounted
             onClose={handleClose}
-            aria-describedby='alert-dialog-slide-description'
+            aria-describedby="alert-dialog-slide-description"
           >
-            <DialogTitle>{'Delete'}</DialogTitle>
-            <div className='deletediv'>
-              <DeleteOutlineRoundedIcon className='deleteicon' />
+            <DialogTitle>{"Delete"}</DialogTitle>
+            <div className="deletediv">
+              <DeleteOutlineRoundedIcon className="deleteicon" />
             </div>
             <DialogContent>
-              <DialogContentText id='alert-dialog-slide-description'>
+              <DialogContentText id="alert-dialog-slide-description">
                 Are you sure you want to delete operator
                 <br />
                 with ID nmbr 12345678?.
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button
-                onClick={handleClose}
-                text='Delete'
-                bcolor='rgb(88, 0, 0)'
-              />
-              <Button onClick={handleClose} text='Return' bcolor='#012241' />
+              <Button onClick={handleClose} text="Delete" bcolor="#bd2424" />
+              <Button onClick={handleClose} text="Return" bcolor="#012241" />
             </DialogActions>
           </Dialog>
 
@@ -139,15 +135,15 @@ const Operators = () => {
             TransitionComponent={Transition}
             keepMounted
             onClose={handleCloseDetail}
-            aria-describedby='alert-dialog-slide-description'
+            aria-describedby="alert-dialog-slide-description"
           >
-            <DialogTitle>{'view operator detail'}</DialogTitle>
+            <DialogTitle>{"view operator detail"}</DialogTitle>
 
             <DialogContent>
-              <DialogContentText id='alert-dialog-slide-description'>
-                <div className='driverdetailpopup'>
-                  <div className='driver_component_photo driverpop'>
-                    <img src={Photo} alt='karera' />
+              <DialogContentText id="alert-dialog-slide-description">
+                <div className="driverdetailpopup">
+                  <div className="driver_component_photo driverpop">
+                    <img src={Photo} alt="karera" />
                     <p>
                       <b>Name:</b>
                       <br />
@@ -159,7 +155,7 @@ const Operators = () => {
                       1234567
                     </p>
                   </div>
-                  <div className='driverpop'>
+                  <div className="driverpop">
                     <p>
                       <b>Tell:</b>
                       <br />
@@ -186,7 +182,7 @@ const Operators = () => {
                       Kabuga
                     </p>
                   </div>
-                  <div className='driverpop'>
+                  <div className="driverpop">
                     <p>
                       <b>Plate nbr:</b>
                       <br />
@@ -212,11 +208,11 @@ const Operators = () => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose} text='Edit' bcolor='#012241' />
+              <Button onClick={handleClose} text="Edit" bcolor="#012241" />
               <Button
                 onClick={handleClose}
-                text='Return'
-                bcolor='rgb(102, 99, 99)'
+                text="Return"
+                bcolor="rgb(102, 99, 99)"
               />
             </DialogActions>
           </Dialog>

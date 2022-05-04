@@ -2,15 +2,16 @@
   display: flex;
 }
 .generalmenubar {
-  position: fixed;
   background-color: #012241;
   height: 100vh;
   width: 20%;
 }
 .containt {
+  overflow-y: scroll;
+  height: 87vh;
   width: 78%;
   padding: 0 0 0 10px;
-  margin: 5rem 0 0 17rem;
+  margin: 5rem 0 0 0;
 }
 @media (max-width: 1000px) {
   .generalmenubar {
@@ -20,7 +21,7 @@
   }
   .containt {
     width: 78%;
-    padding: 0 0 0 10px;
-    margin: 5rem 0 4rem 5rem;
+    padding: 0 0 0 2px;
+    margin: 5rem 0 4rem 0;
   }
 }
