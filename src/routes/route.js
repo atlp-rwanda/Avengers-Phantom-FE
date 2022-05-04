@@ -64,7 +64,7 @@ const PhantomRoutes = () => {
           }
         />
         <Route
-          path="/contact%20US"
+          path="/contact"
           element={
             <>
               <Navbar />
