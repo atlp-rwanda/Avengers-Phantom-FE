@@ -1,0 +1,139 @@
+[33mdd91b673[m[33m ([m[1;36mHEAD -> [m[1;32merror-handlering[m[33m)[m HEAD@{0}: commit: well done dashboard
+[33m971c94bb[m[33m ([m[1;31morigin/error-handlering[m[33m)[m HEAD@{1}: checkout: moving from develop to error-handlering
+[33m93fbb208[m[33m ([m[1;32mdevelop[m[33m)[m HEAD@{2}: commit (merge): git
+[33m393ddb5d[m HEAD@{3}: checkout: moving from error-handlering to develop
+[33m971c94bb[m[33m ([m[1;31morigin/error-handlering[m[33m)[m HEAD@{4}: pull: Fast-forward
+[33m3cb19060[m[33m ([m[1;32mft-dashboard[m[33m)[m HEAD@{5}: rebase (abort): updating HEAD
+[33m393ddb5d[m HEAD@{6}: checkout: moving from error-handlering to develop
+[33m971c94bb[m[33m ([m[1;31morigin/error-handlering[m[33m)[m HEAD@{7}: commit: well done dashboard
+[33m0235f5df[m HEAD@{8}: commit: well done dashboard
+[33m6b5bbfee[m HEAD@{9}: commit: well done dashboard
+[33mf61bb953[m HEAD@{10}: commit: well done dashboard
+[33m6088f811[m HEAD@{11}: commit: error handling
+[33me5d10b7f[m HEAD@{12}: commit (merge): error handling
+[33m3cb19060[m[33m ([m[1;32mft-dashboard[m[33m)[m HEAD@{13}: checkout: moving from 9bc5a34aff49116b6fee30a44304b54a0a9ba1a7 to error-handlering
+[33m9bc5a34a[m HEAD@{14}: commit: error
+[33m393ddb5d[m HEAD@{15}: rebase (start): checkout develop
+[33m3cb19060[m[33m ([m[1;32mft-dashboard[m[33m)[m HEAD@{16}: checkout: moving from develop to error-handlering
+[33m393ddb5d[m HEAD@{17}: commit: error
+[33m6ff4714e[m HEAD@{18}: pull: Merge made by the 'recursive' strategy.
+[33m67bf038e[m HEAD@{19}: checkout: moving from error-handlering to develop
+[33m3cb19060[m[33m ([m[1;32mft-dashboard[m[33m)[m HEAD@{20}: checkout: moving from ft-dashboard to error-handlering
+[33m3cb19060[m[33m ([m[1;32mft-dashboard[m[33m)[m HEAD@{21}: commit: dashboard
+[33ma8c5a66b[m HEAD@{22}: rebase (abort): updating HEAD
+[33m8a5a06ab[m HEAD@{23}: rebase (pick): dashboard
+[33mbfb62531[m HEAD@{24}: rebase (start): checkout HEAD~4
+[33ma8c5a66b[m HEAD@{25}: rebase (abort): updating HEAD
+[33m277f9830[m HEAD@{26}: rebase (start): checkout HEAD~2
+[33ma8c5a66b[m HEAD@{27}: rebase (finish): returning to refs/heads/ft-dashboard
+[33ma8c5a66b[m HEAD@{28}: rebase (start): checkout HEAD~
+[33ma8c5a66b[m HEAD@{29}: rebase (finish): returning to refs/heads/ft-dashboard
+[33ma8c5a66b[m HEAD@{30}: rebase (start): checkout HEAD
+[33ma8c5a66b[m HEAD@{31}: rebase (abort): updating HEAD
+[33m1a81921f[m HEAD@{32}: rebase (start): checkout HEAD~3
+[33ma8c5a66b[m HEAD@{33}: rebase (abort): updating HEAD
+[33m217c33d5[m HEAD@{34}: rebase (pick): dashboard
+[33mbfb62531[m HEAD@{35}: rebase (start): checkout HEAD~4
+[33ma8c5a66b[m HEAD@{36}: rebase (abort): updating HEAD
+[33m7f26f102[m HEAD@{37}: rebase (start): checkout HEAD~4
+[33ma8c5a66b[m HEAD@{38}: rebase (abort): updating HEAD
+[33ma8c5a66b[m HEAD@{39}: rebase (abort): updating HEAD
+[33ma8c5a66b[m HEAD@{40}: rebase (abort): updating HEAD
+[33m7f26f102[m HEAD@{41}: rebase (start): checkout HEAD~4
+[33ma8c5a66b[m HEAD@{42}: rebase (abort): updating HEAD
+[33m1a81921f[m HEAD@{43}: rebase (start): checkout HEAD~3
+[33ma8c5a66b[m HEAD@{44}: rebase (abort): updating HEAD
+[33m7f26f102[m HEAD@{45}: rebase (start): checkout HEAD~4
+[33ma8c5a66b[m HEAD@{46}: rebase (abort): updating HEAD
+[33m325f7080[m HEAD@{47}: rebase (pick): dashboard
+[33mbfb62531[m HEAD@{48}: rebase (start): checkout HEAD~4
+[33ma8c5a66b[m HEAD@{49}: commit: merged dashboard
+[33mca0e255d[m HEAD@{50}: commit (merge): merged dashbord
+[33m277f9830[m HEAD@{51}: checkout: moving from develop to ft-dashboard
+[33m67bf038e[m HEAD@{52}: checkout: moving from ft-dashboard to develop
+[33m277f9830[m HEAD@{53}: checkout: moving from dc48c19f87416c9a2c4304cd3aff405b8042e778 to ft-dashboard
+[33mdc48c19f[m HEAD@{54}: commit: merged dashbord
+[33m67bf038e[m HEAD@{55}: rebase (start): checkout develop
+[33m277f9830[m HEAD@{56}: checkout: moving from develop to ft-dashboard
+[33m67bf038e[m HEAD@{57}: checkout: moving from ft-dashboard to develop
+[33m277f9830[m HEAD@{58}: rebase (finish): returning to refs/heads/ft-dashboard
+[33m277f9830[m HEAD@{59}: rebase (squash): dashboard
+[33m7817800a[m HEAD@{60}: rebase (squash): # This is a combination of 5 commits.
+[33m6d933aa7[m HEAD@{61}: rebase (squash): # This is a combination of 4 commits.
+[33mdd7f57c4[m HEAD@{62}: rebase (squash): # This is a combination of 3 commits.
+[33m1f1fc5aa[m HEAD@{63}: rebase (squash): # This is a combination of 2 commits.
+[33m20a3f2ad[m HEAD@{64}: rebase (start): checkout HEAD~6
+[33m24f72141[m HEAD@{65}: checkout: moving from develop to ft-dashboard
+[33m67bf038e[m HEAD@{66}: checkout: moving from ft-dashboard to develop
+[33m24f72141[m HEAD@{67}: commit: update
+[33m0406bd92[m HEAD@{68}: commit: update
+[33m28be4e09[m HEAD@{69}: commit: update
+[33m5f170c6a[m HEAD@{70}: commit: update
+[33m0d7fd63e[m HEAD@{71}: rebase (abort): updating HEAD
+[33m67bf038e[m HEAD@{72}: rebase (start): checkout develop
+[33m0d7fd63e[m HEAD@{73}: checkout: moving from develop to ft-dashboard
+[33m67bf038e[m HEAD@{74}: commit: homepage
+[33m13a1e70b[m HEAD@{75}: pull: Fast-forward
+[33m1a81921f[m HEAD@{76}: checkout: moving from ft-dashboard to develop
+[33m0d7fd63e[m HEAD@{77}: commit: responsivenes
+[33m20a3f2ad[m HEAD@{78}: rebase (finish): returning to refs/heads/ft-dashboard
+[33m20a3f2ad[m HEAD@{79}: rebase (squash): dashboard
+[33mcb11f4af[m HEAD@{80}: rebase (start): checkout HEAD~2
+[33mef25a185[m HEAD@{81}: commit: responsivenes
+[33mcb11f4af[m HEAD@{82}: rebase (finish): returning to refs/heads/ft-dashboard
+[33mcb11f4af[m HEAD@{83}: rebase (squash): dashboard
+[33m84a7987e[m HEAD@{84}: rebase (squash): # This is a combination of 4 commits.
+[33mfe0d2eae[m HEAD@{85}: rebase (squash): # This is a combination of 3 commits.
+[33m2926d1ec[m HEAD@{86}: rebase (squash): # This is a combination of 2 commits.
+[33mcc395c1c[m HEAD@{87}: rebase (start): checkout HEAD~5
+[33m516cdf4f[m HEAD@{88}: commit: responsivenes
+[33m25b38d9b[m HEAD@{89}: checkout: moving from ft-reset-password to ft-dashboard
+[33m067c47a8[m[33m ([m[1;31morigin/ft-reset-password[m[33m, [m[1;32mft-reset-password[m[33m)[m HEAD@{90}: checkout: moving from ft-dashboard to ft-reset-password
+[33m25b38d9b[m HEAD@{91}: commit: driver detail and delete
+[33m881714b4[m HEAD@{92}: checkout: moving from ft-reset-password to ft-dashboard
+[33m067c47a8[m[33m ([m[1;31morigin/ft-reset-password[m[33m, [m[1;32mft-reset-password[m[33m)[m HEAD@{93}: pull: Fast-forward
+[33m8cae2c28[m HEAD@{94}: checkout: moving from ft-dashboard to ft-reset-password
+[33m881714b4[m HEAD@{95}: commit: dashboard
+[33m44def2b4[m HEAD@{96}: checkout: moving from ft-reset-password to ft-dashboard
+[33m8cae2c28[m HEAD@{97}: checkout: moving from ft-dashboard to ft-reset-password
+[33m44def2b4[m HEAD@{98}: checkout: moving from ft-reset-password to ft-dashboard
+[33m8cae2c28[m HEAD@{99}: reset: moving to HEAD
+[33m8cae2c28[m HEAD@{100}: checkout: moving from ft-reset-password to ft-reset-password
+[33m8cae2c28[m HEAD@{101}: checkout: moving from ft-dashboard to ft-reset-password
+[33m44def2b4[m HEAD@{102}: checkout: moving from ft-dashboard to ft-dashboard
+[33m44def2b4[m HEAD@{103}: rebase (continue) (finish): returning to refs/heads/ft-dashboard
+[33m44def2b4[m HEAD@{104}: rebase (continue) (pick): adding dummy route
+[33mcc395c1c[m HEAD@{105}: commit: dashboard
+[33m1a81921f[m HEAD@{106}: rebase (start): checkout develop
+[33m5ac9228c[m[33m ([m[1;32mft-react-redux-setup[m[33m)[m HEAD@{107}: checkout: moving from develop to ft-dashboard
+[33m1a81921f[m HEAD@{108}: checkout: moving from ft-dashboard to develop
+[33m5ac9228c[m[33m ([m[1;32mft-react-redux-setup[m[33m)[m HEAD@{109}: rebase (continue) (finish): returning to refs/heads/ft-dashboard
+[33m5ac9228c[m[33m ([m[1;32mft-react-redux-setup[m[33m)[m HEAD@{110}: rebase (continue) (finish): refs/heads/ft-dashboard onto 1a81921f1bb1b1ff409d4f07a966503c6253bb9d
+[33m5ac9228c[m[33m ([m[1;32mft-react-redux-setup[m[33m)[m HEAD@{111}: checkout: moving from develop to ft-dashboard
+[33m1a81921f[m HEAD@{112}: checkout: moving from ft-dashboard to develop
+[33m5ac9228c[m[33m ([m[1;32mft-react-redux-setup[m[33m)[m HEAD@{113}: checkout: moving from 1a81921f1bb1b1ff409d4f07a966503c6253bb9d to ft-dashboard
+[33m1a81921f[m HEAD@{114}: rebase (start): checkout develop
+[33m5ac9228c[m[33m ([m[1;32mft-react-redux-setup[m[33m)[m HEAD@{115}: checkout: moving from ft-react-redux-setup to ft-dashboard
+[33m5ac9228c[m[33m ([m[1;32mft-react-redux-setup[m[33m)[m HEAD@{116}: checkout: moving from develop to ft-react-redux-setup
+[33m1a81921f[m HEAD@{117}: pull: Fast-forward
+[33mffa6a839[m HEAD@{118}: reset: moving to HEAD
+[33mffa6a839[m HEAD@{119}: reset: moving to develop~2
+[33m7f26f102[m HEAD@{120}: pull: Fast-forward
+[33mffa6a839[m HEAD@{121}: checkout: moving from ft-react-redux-setup to develop
+[33m5ac9228c[m[33m ([m[1;32mft-react-redux-setup[m[33m)[m HEAD@{122}: pull: Merge made by the 'recursive' strategy.
+[33m1d3992f4[m HEAD@{123}: checkout: moving from develop to ft-react-redux-setup
+[33mffa6a839[m HEAD@{124}: pull: Fast-forward
+[33m81c3369b[m[33m ([m[1;31morigin/main[m[33m)[m HEAD@{125}: checkout: moving from CI to develop
+[33m0783e909[m[33m ([m[1;32mCI[m[33m)[m HEAD@{126}: checkout: moving from ft-react-redux-setup to CI
+[33m1d3992f4[m HEAD@{127}: rebase (finish): returning to refs/heads/ft-react-redux-setup
+[33m1d3992f4[m HEAD@{128}: rebase (pick): adding dummy route
+[33m0783e909[m[33m ([m[1;32mCI[m[33m)[m HEAD@{129}: rebase (start): checkout CI
+[33m65798612[m[33m ([m[1;31morigin/ft-react-redux-setup[m[33m)[m HEAD@{130}: reset: moving to HEAD
+[33m65798612[m[33m ([m[1;31morigin/ft-react-redux-setup[m[33m)[m HEAD@{131}: checkout: moving from CI to ft-react-redux-setup
+[33m0783e909[m[33m ([m[1;32mCI[m[33m)[m HEAD@{132}: checkout: moving from ft-react-redux-setup to CI
+[33m65798612[m[33m ([m[1;31morigin/ft-react-redux-setup[m[33m)[m HEAD@{133}: commit: adding dummy route
+[33mbc2024c6[m HEAD@{134}: commit: new changes on code format
+[33m23394560[m HEAD@{135}: commit: new changes
+[33m272171d9[m HEAD@{136}: commit: new changes
+[33mcbcc251a[m HEAD@{137}: checkout: moving from develop to ft-react-redux-setup
+[33m81c3369b[m[33m ([m[1;31morigin/main[m[33m)[m HEAD@{138}: clone: from https://github.com/atlp-rwanda/Avengers-Phantom-FE.git
