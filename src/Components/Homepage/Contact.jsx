@@ -16,6 +16,7 @@ import Background from '../../static/images/Contact.png'
 import { ContactValidator } from "./ContactValidator.jsx";
 
 
+
 function Contact() {
     const {
         handleInputValue,
