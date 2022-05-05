@@ -11,7 +11,7 @@ const Menubar = () => {
           <ul>
             {SidebarItem.map((items, index) => {
               return (
-                <li key={index}>
+                <li key={index} className="sidetext">
                   <Link to={items.path} className="linkstyle">
                     {items.icon}
                     <span>{items.title}</span>

@@ -47,22 +47,20 @@ img {
   border-radius: 4px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   margin: 5px;
 }
 .driver_component_content {
-  width: 12.5rem;
-  padding-left: 10px;
+  min-width: 13rem;
 }
 .driver_component_contentid {
-  width: 12.5rem;
-  padding-left: 10px;
+  min-width: 13rem;
 }
 .driver_component_contentbutton {
-  width: 12.5rem;
-  padding-left: 10px;
+  min-width: 13rem;
 }
 .driver_component_photo {
-  width: 12.5rem;
+  min-width: 13rem;
 }
 .driverdetailpopup {
   display: flex;
@@ -79,25 +77,23 @@ img {
   border-radius: 4px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   margin: 5px;
 }
 .operator_component_container {
-  width: 12.5rem;
-  padding-left: 10px;
+  min-width: 13rem;
 }
 .operator_component_photo {
-  width: 12.5rem;
+  min-width: 13rem;
 }
 .operator_component_container_info {
-  width: 12.5rem;
-  padding-left: 10px;
+  min-width: 13rem;
 }
 .operator_component_container_button {
-  width: 12.5rem;
-  padding-left: 10px;
+  min-width: 13rem;
 }
 
-/*
+/* 
 // add drivers */
 
 .imageicon {
@@ -106,7 +102,7 @@ img {
   width: 7rem;
   border-radius: 5px;
   background-color: rgb(201, 201, 201);
-  /* background-color: rgb(102, 99, 99); */
+  /* background-color: rgb(88, 0, 0); */
 }
 .addimageicon {
   position: absolute;

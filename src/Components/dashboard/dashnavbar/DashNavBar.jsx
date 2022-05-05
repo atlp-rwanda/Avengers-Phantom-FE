@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import MenuItem from "@mui/material/MenuItem";
+import Link from "@mui/material/Link";
 
 const pages = [""];
 const settings = ["View Profile", "My account", "Dashboard", "Logout"];
@@ -48,7 +49,7 @@ const ResponsiveAppBar = () => {
 
   return (
     <ThemeProvider theme={colors}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography
