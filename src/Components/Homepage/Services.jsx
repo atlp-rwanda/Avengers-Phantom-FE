@@ -10,20 +10,20 @@ export default function Services(){
         height:'100%',
         marginTop:2,
         p:2,
-     
+
         }}>
             <Typography sx={{ fontSize:{lg:'20px',xs:'12px'},p:2,fontWeight:700,color:'#012241',textAlign:'center',textTransform:'uppercase' }}>
                 services
             </Typography>
-            <Box sx={{   display:{lg:'grid',xs:'block',md:'grid'},gridTemplateColumns:{lg:'300px 300px 300px 300px',md:'400px 400px'},gridGap:'1.3em',margin:'auto',p:5}}>
-                <Box sx={{display:'block',width:'100%'}}>
+            <Box sx={{   display:{lg:'grid',xs:'block',md:'grid'},gridTemplateColumns:{lg:'250px 250px 250px 250px',xs:'50px',md:'400px 400px'},gridGap:'1.3em',p:5}}>
+                <Box sx={{display:'block',width:{lg:'100%',xs:'200px'},margin:'auto',height:'200px',marginBottom:5}}>
                     <Box 
                         component='img'
                         src={require('../../static/images/ServiceA.PNG')}
                         alt="Services"
                         sx={{
                             width:'100%',
-                            height:'300px',
+                            height:'100%',
                             p:2
                         }}
                     />
@@ -32,14 +32,14 @@ export default function Services(){
                     </Typography>
                     
                 </Box>
-                <Box sx={{display:'block',width:'100%'}}>
+                <Box sx={{display:'block',width:{lg:'100%',xs:'200px'},margin:'auto',height:'200px',marginBottom:5}}>
                     <Box 
                         component='img'
                         src={require('../../static/images/Serviceb.PNG')}
                         alt="Services"
                         sx={{
                             width:'100%',
-                            height:'300px',
+                            height:'100%',
                             p:2
                         }}
                     />
@@ -48,14 +48,14 @@ export default function Services(){
                     </Typography>
                     
                 </Box>
-                <Box sx={{display:'block',width:'100%'}}>
+                <Box sx={{display:'block',width:{lg:'100%',xs:'200px'},margin:'auto',height:'200px',marginBottom:5}}>
                     <Box 
                         component='img'
                         src={require('../../static/images/Servicec.PNG')}
                         alt="Services"
                         sx={{
                             width:'100%',
-                            height:'300px',
+                            height:'100%',
                             p:2
                         }}
                     />
@@ -64,14 +64,14 @@ export default function Services(){
                     </Typography>
                     
                 </Box>
-                <Box sx={{display:'block',width:'100%'}}>
+                <Box sx={{display:'block',width:{lg:'100%',xs:'200px'},margin:'auto',height:'200px'}}>
                     <Box 
                         component='img'
                         src={require('../../static/images/Servicec.PNG')}
                         alt="Services"
                         sx={{
                             width:'100%',
-                            height:'300px',
+                            height:'100%',
                             p:2
                         }}
                     />

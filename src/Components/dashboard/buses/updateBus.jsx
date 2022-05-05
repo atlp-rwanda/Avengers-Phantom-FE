@@ -5,11 +5,17 @@ import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import Photo from "../../../static/images/busbackground.jpg";
 import Sidebar from "../sidebar/Sidebar.jsx";
 import DashNavbar from "../dashnavbar/DashNavBar.jsx";
+import { FormValidation } from "./Validations.jsx";
+
 
 export default function Update() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+  const {
+    handleInputValue,
+    handleFormSubmit,
+    formIsValid,
+    errors
+  } = FormValidation();
+
   return (
     <>
       <DashNavbar />
@@ -31,7 +37,7 @@ export default function Update() {
               Update bus
             </Typography>
           </Box>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleFormSubmit}>
             <Typography
               sx={{
                 pt: 2,
@@ -61,6 +67,9 @@ export default function Update() {
                 type="text"
                 defaultValue="Kigali bus service"
                 sx={{ minWidth: { lg: 250, xs: "100%" } }}
+                onBlur={handleInputValue}
+                onChange={handleInputValue}
+                {...(errors["company"] && { error: true, helperText: errors["company"] })}
               />
               <TextField
                 size="small"
@@ -75,6 +84,9 @@ export default function Update() {
                   marginRight: { lg: 4, xs: 0 },
                   marginTop: { lg: 0, xs: 4 },
                 }}
+                onBlur={handleInputValue}
+                onChange={handleInputValue}
+                {...(errors["type"] && { error: true, helperText: errors["type"] })}
               />
               <TextField
                 size="small"
@@ -87,6 +99,9 @@ export default function Update() {
                   minWidth: { lg: 250, xs: "100%" },
                   marginTop: { lg: 0, xs: 3 },
                 }}
+                onBlur={handleInputValue}
+                onChange={handleInputValue}
+                {...(errors["platenumber"] && { error: true, helperText: errors["platenumber"] })}
               />
             </Grid>
             <Grid marginTop={4}>
@@ -98,6 +113,9 @@ export default function Update() {
                 type="text"
                 defaultValue="Hyundai"
                 sx={{ minWidth: { lg: 250, xs: "100%" } }}
+                onBlur={handleInputValue}
+                onChange={handleInputValue}
+                {...(errors["manufacturer"] && { error: true, helperText: errors["manufacturer"] })}
               />
               <TextField
                 size="small"
@@ -112,6 +130,9 @@ export default function Update() {
                   marginRight: { lg: 4, xs: 0 },
                   marginTop: { lg: 0, xs: 4 },
                 }}
+                onBlur={handleInputValue}
+                onChange={handleInputValue}
+                {...(errors["capacity"] && { error: true, helperText: errors["capacity"] })}
               />
               <TextField
                 size="small"
@@ -125,6 +146,9 @@ export default function Update() {
                   minWidth: { lg: 250, xs: "100%" },
                   marginTop: { lg: 0, xs: 4 },
                 }}
+                onBlur={handleInputValue}
+                onChange={handleInputValue}
+                {...(errors["yom"] && { error: true, helperText: errors["yom"] })}
               />
             </Grid>
             <Typography
@@ -264,6 +288,7 @@ export default function Update() {
             <Grid sx={{ marginTop: 3, width: 110, marginLeft: "auto" }}>
               <Button
                 type="submit"
+                disabled={!formIsValid()}
                 sx={{
                   background: "#012241",
                   color: "white",

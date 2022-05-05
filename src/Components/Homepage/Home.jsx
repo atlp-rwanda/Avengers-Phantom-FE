@@ -59,24 +59,25 @@ function Homepage() {
   };
 
   return (
-    <>
+    <Box sx={{overflow:'hidden'}}>
       <Navbar />
       <Box
         sx={{
           width: '100%',
-          height: { lg: '650px', xs: '400px' },
+          height: { lg: '500px', xs: '400px' },
           backgroundImage: `url(${Background})`,
           backgroundRepeat: 'no-repeat',
           backgroundPosition: { lg: 'bottom left', xs: 'center' },
           position: 'relative',
-          boxShadow: 'inset 0 0 0 2000px rgb(1, 34, 65,0.8)'
+          boxShadow: 'inset 0 0 0 2000px rgb(1, 34, 65,0.8)',
         }}
       >
         <AutoPlaySwipeableViews
-          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={activeStep}
           onChangeIndex={handleStepChange}
           enableMouseEvents
+          interval={10000} 
+          autoplay={true}
         >
           {slides.map((step, index) => (
             <div key={step.label}>
@@ -85,19 +86,17 @@ function Homepage() {
                   sx={{
                     display: 'block',
                     textAlign: 'center',
-                    minHeight: '100vh',
-                    pl: 2,
+                    p: 2,
+                    marginTop:{lg:25,xs:15},
                     position: 'relative',
                     width: '100%'
                   }}
                 >
                   <Typography
                     sx={{
-                      padding: '10px auto',
-                      marginTop: { lg: 30, xs: 20 },
                       marginBottom: 5,
-                      fontSize: { xs: 15, lg: 36 },
-                      color: 'white',
+                      fontSize: { xs: 12, lg: 20 },
+                      color: '#D3D3D3',
                       fontWeight: 700
                     }}
                   >
@@ -105,7 +104,7 @@ function Homepage() {
                   </Typography>
                   <Button
                     sx={{
-                      background: 'white',
+                      background: '#D3D3D3',
                       borderRadius: '5px',
                       color: '#012241',
                       width: { lg: '300px', xs: '100px' },
@@ -116,7 +115,7 @@ function Homepage() {
                     }}
                   >
                     <Typography
-                      sx={{ fontWeight: 700, fontSize: { lg: 16, xs: 12 } }}
+                      sx={{ fontWeight: 700, fontSize: { lg: 12, xs: 10 } }}
                     >
                       {step.BtnTxt}
                     </Typography>
@@ -150,7 +149,7 @@ function Homepage() {
       <Agency />
       <Testimonials />
       <Contact />
-    </>
+    </Box>
   );
 }
 

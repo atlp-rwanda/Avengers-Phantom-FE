@@ -4,7 +4,7 @@ import Sidebar from "../sidebar/Sidebar.jsx";
 import DashNavbar from "../dashnavbar/DashNavBar.jsx";
 import RoutesReport from "./RoutesReport.jsx";
 import "../Dashboard.css";
-
+​
 const Route = () => {
   return (
     <div>
@@ -16,5 +16,5 @@ const Route = () => {
     </div>
   );
 };
-
+​
 export default Route;
