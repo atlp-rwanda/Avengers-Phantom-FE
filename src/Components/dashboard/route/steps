@@ -1,0 +1,3 @@
+fullScreen
+open = { open }
+onClose = { handleClose }

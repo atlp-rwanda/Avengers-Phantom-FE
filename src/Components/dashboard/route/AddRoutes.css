@@ -2,15 +2,15 @@
   background-color: #f4f4f4;
   border: #c4c4c4 solid 2px;
   min-height: 30px;
-  min-width: 100px;
+  min-width: 800px;
   margin-top: 30px;
+  margin-left: 40px;
   padding: 20px;
+  align-self: center;
 }
 
-/* .routeDetails{
-    margin-bottom: 20px;
+.header{
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
 }
-.routeDetails span{
-    min-width: 200px;
-    display:inline-block
-} */
