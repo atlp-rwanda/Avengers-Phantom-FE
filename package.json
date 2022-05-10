@@ -12,7 +12,6 @@
   "author": "armstrong",
   "license": "ISC",
   "dependencies": {
-    "@babel/runtime": "^7.17.9",
     "@craco/craco": "^6.4.3",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -27,14 +26,12 @@
     "css-loader": "^6.7.1",
     "google-maps-react": "^2.0.6",
     "graphql": "^16.3.0",
-    "html-webpack-plugin": "^5.5.0",
     "material-ui": "^1.0.0-beta.47",
     "node-sass": "^7.0.1",
     "ra-data-graphql": "^3.19.11",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-material-ui-carousel": "^3.3.3",
-    "react-material-ui-form-validator": "^3.0.0",
     "react-redux": "^7.2.8",
     "react-swipeable-views": "^0.14.0",
     "react-swipeable-views-utils": "^0.14.0",
@@ -42,11 +39,7 @@
     "sass-loader": "^12.6.0",
     "serve": "^13.0.2",
     "style-loader": "^3.3.1",
-    "styled-components": "^5.3.5",
-    "uuid": "^8.3.2",
-    "webpack": "^5.72.0",
-    "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.8.1"
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
@@ -55,6 +48,7 @@
     "@babel/preset-react": "^7.16.7",
     "autoprefixer": "^9.8.8",
     "babel-loader": "^8.2.4",
+    "html-webpack-plugin": "^5.5.0",
     "jest": "^27.5.1",
     "jest-environment-jsdom": "^27.5.1",
     "postcss": "^7.0.39",
@@ -62,7 +56,10 @@
     "react-router-dom": "^6.3.0",
     "react-test-renderer": "^18.0.0",
     "regenerator-runtime": "^0.13.9",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.8.1"
   },
   "jest": {
     "setupFilesAfterEnv": [
