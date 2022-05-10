@@ -15,8 +15,8 @@ import MenuItem from "@mui/material/MenuItem";
 import Link from "@mui/material/Link";
 
 const pages = [""];
-const settings = ["View Profile", "My account", "Dashboard", "Logout"];
-
+// const settings = ["View Profile", "My account", "Dashboard", "Logout"];
+const settings = ["Logout"];
 const colors = createTheme({
   palette: {
     primary: {
@@ -46,8 +46,19 @@ const ResponsiveAppBar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const handleLogout=()=>{
+   
+    console.log("you are logged out");
+  
+    localStorage.clear();
+    location.replace('../signin');
+  }
 
+
+const cat = localStorage.getItem('token');
   return (
+    <>
+    {cat ? (
     <ThemeProvider theme={colors}>
       <AppBar position="fixed">
         <Container maxWidth="xl">
@@ -144,7 +155,7 @@ const ResponsiveAppBar = () => {
               >
                 {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    <Typography textAlign="center" onClick={handleLogout}>{setting}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
@@ -152,7 +163,11 @@ const ResponsiveAppBar = () => {
           </Toolbar>
         </Container>
       </AppBar>
-    </ThemeProvider>
+    </ThemeProvider>)
+    : (
+      location.replace('../signin')
+    )}
+    </>
   );
 };
 export default ResponsiveAppBar;

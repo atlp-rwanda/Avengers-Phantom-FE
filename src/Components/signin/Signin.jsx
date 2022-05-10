@@ -238,20 +238,14 @@ export const Signin = () => {
             label="Password"
           />
         </FormControl>
-        <Box sx={{ display: "flex", justifyContent: "center", m: 4 }}>
-          <Button
-            color="secondary"
-            variant="contained"
-            sx={{
-              height: "30.16px",
-              width: "150.37px",
-              borderRadius: "45.125px",
-            }}
-          >
-            <Typography sx={{ mx: "auto", width: "100.37px" }}>
-              sign in
-            </Typography>
-          </Button>
+         <Box sx={{ display:'flex', justifyContent: 'center',m:4}} >
+              <Button color="secondary" onClick={submitRecord} variant="contained" sx={{height:'30.16px',width:'150.37px', borderRadius: '45.125px',}}>
+              <Typography sx={{ mx: "auto",width:'100.37px',}}
+               >
+            sign in
+              </Typography>
+              </Button>
+
         </Box>
         <Box
          
