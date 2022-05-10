@@ -255,7 +255,7 @@ export const Signin = () => {
                 
                 
                 sx={{ my: 2, color:'secondary.main', display: 'block',display:'flex', justifyContent: 'center' }}
-                component={Link} to={`/phantom/reset`} 
+                component={Link} to={`/reset`} 
               >
               <Typography sx={{textDecoration: 'underline'}} display="inline">forget password reset</Typography> 
                 
