@@ -238,14 +238,20 @@ export const Signin = () => {
             label="Password"
           />
         </FormControl>
-         <Box sx={{ display:'flex', justifyContent: 'center',m:4}} >
-              <Button color="secondary" onClick={submitRecord} variant="contained" sx={{height:'30.16px',width:'150.37px', borderRadius: '45.125px',}}>
-              <Typography sx={{ mx: "auto",width:'100.37px',}}
-               >
-            sign in
-              </Typography>
-              </Button>
-
+        <Box sx={{ display: "flex", justifyContent: "center", m: 4 }}>
+          <Button
+            color="secondary"
+            variant="contained"
+            sx={{
+              height: "30.16px",
+              width: "150.37px",
+              borderRadius: "45.125px",
+            }}
+          >
+            <Typography sx={{ mx: "auto", width: "100.37px" }}>
+              sign in
+            </Typography>
+          </Button>
         </Box>
         <Box
          
@@ -255,7 +261,7 @@ export const Signin = () => {
                 
                 
                 sx={{ my: 2, color:'secondary.main', display: 'block',display:'flex', justifyContent: 'center' }}
-                component={Link} to={`/phantom/reset`} 
+                component={Link} to={`/reset`} 
               >
               <Typography sx={{textDecoration: 'underline'}} display="inline">forget password reset</Typography> 
                 

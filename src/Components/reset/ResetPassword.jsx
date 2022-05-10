@@ -65,7 +65,7 @@ const ResetPassword = () => {
                 style={btnStyle}
                 variant="outlined"
                 component={Link}
-                to={`/home`}
+                to={`/signin`}
               >
                 Cancel
               </Button>

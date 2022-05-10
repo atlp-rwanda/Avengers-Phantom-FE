@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -13,8 +13,17 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import Footer from "./Footer.jsx";
 import Background from '../../static/images/Contact.png'
+import { ContactValidator } from "./ContactValidator.jsx";
+
 
 function Contact() {
+    const {
+        handleInputValue,
+        handleFormSubmit,
+        formIsValid,
+        errors
+      } = ContactValidator();
+
     const ScrollToContact = (props) => {
         const location = useLocation();
         useEffect(() => {
@@ -23,7 +32,6 @@ function Contact() {
       
         return <>{props.children}</>
       };
-    
     return(
         <Box
         sx={{
@@ -35,7 +43,7 @@ function Contact() {
         boxShadow:'inset 0 0 0 2000px rgb(1, 34, 65,0.8)',
         }}>
             
-            <><Box
+            <Box
                 square
                 elevation={0}
                 sx={{
@@ -65,49 +73,74 @@ function Contact() {
                     pl: {lg:12,xs:6},
                     pr:{lg:12,xs:6}
                     }}>
+                    <form onSubmit={handleFormSubmit}>
                     <Box sx={{ display: {lg:'flex',sx:'block'}}}>
                     <TextField
-                        size='xsall'
+                        size='small'
                         placeholder='Firstname'
-                        sx={{ background: '#CBCBCB', borderRadius: '10px', width: '100%',marginRight:{lg:2,xs:0} }}
+                        sx={{ 
+                            background: '#CBCBCB', 
+                            borderRadius: '10px', 
+                            width: '100%',
+                            marginRight:{lg:2,xs:0},
+                            }}
                         type='text'
+                        name="firstname"
+                        onBlur={handleInputValue}
+                        onChange={handleInputValue}
+                        {...(errors["firstname"] && { error: true, helperText: errors["firstname"] })}
                         />
                     <TextField
                         placeholder='Lastname'
                         sx={{ background: '#CBCBCB', borderRadius: '10px', width: '100%', marginLeft:{lg:2,xs:0},marginTop:{xs:2,lg:0}}}
                         type='text' 
-                        size='xsall'
+                        size='small'
+                        name="lastname"
+                        onBlur={handleInputValue}
+                        onChange={handleInputValue}
+                        {...(errors["lastname"] && { error: true, helperText: errors["lastname"] })}
+                        
                         />
                     </Box>
                     <Box sx={{ display: {lg:'flex',sx:'block'},marginTop:2}}>
                     <TextField
-                        size='xsall'
+                        size='small'
                         placeholder='Email'
                         sx={{ background: '#CBCBCB', borderRadius: '10px', width: '100%',marginRight:{lg:2,xs:0}}}
-                        type='email'
-                        autoComplete="off"
-                        autoFocus={true} 
-                        variant="outlined" />
+                        type='text'
+                        name="email"
+                        onBlur={handleInputValue}
+                        onChange={handleInputValue}
+                        {...(errors["email"] && { error: true, helperText: errors["email"] })}
+
+                        />
                     <TextField
-                        size='xsall'
+                        size='small'
                         placeholder='Subject'
                         sx={{ background: '#CBCBCB', borderRadius: '10px', width: '100%',marginLeft:{lg:2,xs:0},marginTop:{xs:2,lg:0}}}
                         type='text'
-                        autoComplete="off"
-                        autoFocus={true} 
-                        variant="outlined" />
+                        name="subject" 
+                        onBlur={handleInputValue}
+                        onChange={handleInputValue}
+                        {...(errors["subject"] && { error: true, helperText: errors["subject"] })}
+
+                        />
                     </Box>
                     <Box sx={{ display: {lg:'flex',sx:'block'},marginTop:2}}>
-                    <TextareaAutosize
+                    <TextField
                         placeholder='Write your message here....'
+                        name="message"
+                        row={30}
+                        multiline
                         style={{ 
                             background: '#CBCBCB', 
                             width: '100%',
-                            minHeight:'100px',
                             border:'none',
                             outline:'none',
-                            width:'100%',
                             }}
+                        onBlur={handleInputValue}
+                        onChange={handleInputValue}
+                        {...(errors["message"] && { error: true, helperText: errors["message"] })}
                         />
                     </Box>
                     <Box sx={{ width: 100, marginLeft: 'auto' }}>
@@ -117,13 +150,16 @@ function Contact() {
                             background: '#012241',
                             color: 'white',
                         }
-                        }}>
-                        <Typography sx={{ fontWeight: 700 }}>
+                        }}
+                        type="submit"
+                        disabled={!formIsValid()}
+                        >
                         Send
-                        </Typography>
                     </Button>
                     </Box>
+                    </form>
                 </Box>
+                
                 <Box sx={{
                     display:{lg:'flex',xs:'block'},
                     justifyContent:'space-between',
@@ -140,16 +176,16 @@ function Contact() {
                         <Typography sx={{ fontWeight: 700,fontSize:{lg:24,xs:17},marginBottom:2}}>
                             Contacts
                         </Typography>
-                        <Typography sx={{fontSize:{lg:20,sx:14}}}>
+                        <Box sx={{fontSize:{lg:20,sx:14}}}>
                             <Typography>
                                 +250780689938
                             </Typography>
                             <Typography>
                                 avengersphantom@gmail.com
                             </Typography>
-                        </Typography> 
+                        </Box> 
                     </Box>
-                    <Box sx={{display: 'block',p:2,width:"100%", marginLeft:{lg:30,xs:0}}}>
+                    <Box component="div" sx={{display: 'block',p:2,width:"100%", marginLeft:{lg:30,xs:0}}}>
                         <Typography  sx={{ fontWeight: 700,width:"100%",fontSize:{lg:24,xs:17},marginBottom:2}}>
                             Follow us
                         </Typography>
@@ -159,7 +195,7 @@ function Contact() {
                     </Box>
                 </Box>
                 <Footer />
-            </Box></>
+            </Box>
         </Box>
        
       

@@ -12,11 +12,18 @@ import IconButton from "@mui/material/IconButton";
 import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+import { NavigationFormValidator } from "./NavigationFormValidator.jsx";
 
 const drawerWidth = 300;
 const places = ["Remera", "Downtown", "Gisozi", "Kabuga"];
 const MapSection = () => {
+  const {
+    handleInputValue,
+    handleFormSubmit,
+    formIsValid,
+    errors
+  } = NavigationFormValidator();
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -185,7 +192,7 @@ const MapSection = () => {
               sx={{
                 display: "block",
                 textAlign: "center",
-                height: { lg: "200px", xs: "200px", md: "250px" },
+                height: { lg: "200px", xs: "250px", md: "250px" },
                 width: { lg: "600px", xs: "80%" },
                 boxshadow: "0px 2.87788px 28px 3px rgba(0, 0, 0, 0.25)",
                 position: "absolute",
@@ -195,12 +202,14 @@ const MapSection = () => {
                 left: 30,
               }}
             >
+            <form onSubmit={handleFormSubmit}>
               <Box sx={{ display: { lg: "flex", xs: "block" }, p: 1 }}>
                 <Typography
                   sx={{
                     fontSize: { lg: 18, xs: 12 },
                     width: "200px",
                     textAlign: "left",
+                    pb:2,
                   }}
                 >
                   Point A
@@ -212,8 +221,12 @@ const MapSection = () => {
                     borderRadius: "10px",
                     width: "100%",
                   }}
-                  type="search"
-                  size="xsall"
+                  type="text"
+                  size="small"
+                  name="startingpoint"
+                  onBlur={handleInputValue}
+                  onChange={handleInputValue}
+                  {...(errors["startingpoint"] && { error: true, helperText: errors["startingpoint"] })}
                 />
               </Box>
               <Box sx={{ display: { lg: "flex", xs: "block" }, p: 1 }}>
@@ -222,22 +235,24 @@ const MapSection = () => {
                     fontSize: { lg: 18, xs: 12 },
                     width: "200px",
                     textAlign: "left",
+                    pb:2
                   }}
                 >
                   Point B
                 </Typography>
                 <TextField
-                  size="xsall"
+                  size="small"
                   placeholder="Destination"
                   sx={{
                     background: "white",
                     borderRadius: "10px",
                     width: "100%",
                   }}
-                  type="search"
-                  autoComplete="off"
-                  autoFocus={true}
-                  variant="outlined"
+                  type="Text"
+                  name="destination"
+                  onBlur={handleInputValue}
+                  onChange={handleInputValue}
+                  {...(errors["destination"] && { error: true, helperText: errors["destination"] })}
                 />
               </Box>
               <Box
@@ -257,6 +272,8 @@ const MapSection = () => {
                       border: "1px solid #012241",
                     },
                   }}
+                  type="submit"
+                  disabled={!formIsValid()}
                 >
                   <Typography
                     sx={{ fontWeight: 700, fontSize: { lg: 15, xs: 12 } }}
@@ -265,6 +282,7 @@ const MapSection = () => {
                   </Typography>
                 </Button>
               </Box>
+              </form>
             </Card>
           </Box>
         </Box>
