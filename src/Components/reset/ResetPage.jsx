@@ -53,7 +53,7 @@ const ResetPage = () => {
 
   return (
     <>
-      <Box bgcolor="rgba(1, 34, 65, 1)" height="800px">
+      <Box bgcolor="rgba(1, 34, 65, 1)" height="830px">
         <Grid container justify="center" alignItems="center">
           <Grid elevation={4} style={{ margin: "1vh auto", width: 840, padding: 20 }}>
             <div className="message">
