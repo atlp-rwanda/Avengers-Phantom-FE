@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap");
+
+/* ::-webkit-scrollbar {
+  display: none;
+} */
+
 body {
   font-family: "Muli", sans-serif;
   color: rgba(0, 0, 0, 0.8);
@@ -8,4 +13,5 @@ body {
   letter-spacing: -0.003em;
   font-size: 15px;
   padding: 70px;
+  /* overflow: hidden; */
 }

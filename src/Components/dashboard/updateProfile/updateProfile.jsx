@@ -11,6 +11,7 @@ import {
   DialogTitle,
   DialogContentText,
   DialogActions,
+  TextField
 } from "@mui/material";
 import { useState } from "react";
 import SkeletonElement from "./Skeletons/SkeletonElement.jsx";
@@ -46,7 +47,12 @@ const UpdateProfile = () => {
                       <div className="in-left">
                         <label htmlFor="Full name">Full name</label>
                         <br></br>
-                        <input type="text" name="fullname" required />
+                        <TextField
+                          size="small"
+                          name="fullname"
+                          type="text"
+                          fullWidth
+                        />
                       </div>
                       <div className="in-right">
                         <div className="flex-container">
@@ -67,7 +73,12 @@ const UpdateProfile = () => {
                       <div className="in-left">
                         <label htmlFor="Full name">Public name</label>
                         <br></br>
-                        <input type="text" name="fullname" required />
+                        <TextField
+                          size="small"
+                          name="fullname"
+                          type="text"
+                          fullWidth
+                        />
                       </div>
                       <div className="in-right">
                         <div className="flex-container">
@@ -87,7 +98,12 @@ const UpdateProfile = () => {
                       <div className="in-left">
                         <label htmlFor="Full name">Based in</label>
                         <br></br>
-                        <input type="text" name="fullname" required />
+                        <TextField
+                          size="small"
+                          name="fullname"
+                          type="text"
+                          fullWidth
+                        />
                       </div>
                       <div className="in-right">
                         <div className="flex-container">
@@ -107,7 +123,12 @@ const UpdateProfile = () => {
                       <div className="in-left">
                         <label htmlFor="Full name">Based in</label>
                         <br></br>
-                        <input type="text" name="fullname" required />
+                        <TextField
+                          size="small"
+                          name="fullname"
+                          type="text"
+                          fullWidth
+                        />
                       </div>
                       <div className="in-right">
                         <div className="flex-container">
@@ -127,7 +148,12 @@ const UpdateProfile = () => {
                       <div className="in-left">
                         <label htmlFor="Full name">Based in</label>
                         <br></br>
-                        <input type="text" name="fullname" required />
+                        <TextField
+                          size="small"
+                          name="fullname"
+                          type="text"
+                          fullWidth
+                        />
                       </div>
                       <div className="in-right">
                         <div className="flex-container">
@@ -178,7 +204,12 @@ const UpdateProfile = () => {
                 </div>
                 <div className="contact-left-input">
                   {" "}
-                  <input type="email" name="email-address" />
+                  <TextField
+                    size="small"
+                    name="email"
+                    type="email"
+                    fullWidth
+                  />
                 </div>
                 <div className="contact-left-label">
                   {" "}
@@ -186,7 +217,12 @@ const UpdateProfile = () => {
                 </div>
                 <div className="contact-left-input">
                   {" "}
-                  <input type="text" name="phone" />
+                  <TextField
+                    size="small"
+                    name="phone"
+                    type="email"
+                    fullWidth
+                  />
                 </div>
               </div>
             </div>
@@ -200,7 +236,12 @@ const UpdateProfile = () => {
                 </div>
                 <div className="contact-left-input">
                   {" "}
-                  <input type="email" name="email-address" />
+                  <TextField
+                    size="small"
+                    name="password"
+                    type="password"
+                    fullWidth
+                  />
                 </div>
                 <div className="contact-left-label">
                   {" "}
@@ -208,7 +249,12 @@ const UpdateProfile = () => {
                 </div>
                 <div className="contact-left-input">
                   {" "}
-                  <input type="text" name="phone" />
+                  <TextField
+                    size="small"
+                    name="password"
+                    type="password"
+                    fullWidth
+                  />
                 </div>
               </div>
             </div>

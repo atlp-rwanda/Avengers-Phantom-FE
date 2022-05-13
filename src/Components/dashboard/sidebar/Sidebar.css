@@ -1,10 +1,13 @@
 .menubar {
   color: white;
   margin: 8rem 0 0 0;
+
 }
+
 .menubar_div {
   padding-top: 20px;
 }
+
 .linkstyle {
   list-style: none;
   text-decoration: none;
@@ -15,10 +18,12 @@
   margin-block-start: 2px;
   padding-inline-start: 30px;
 }
+
 .linkstyle:hover {
   background-color: white;
   color: #012241;
 }
+
 .menubar ul li {
   text-decoration: none;
   padding: 4px;
@@ -27,6 +32,7 @@
 .menubar ul :hover {
   color: #012241;
 }
+
 .menubar ul {
   border-radius: 10px;
 }
@@ -64,6 +70,7 @@ ul {
     display: none;
   }
 }
+
 @media (max-width: 1200px) {
   span {
     font-size: 4;

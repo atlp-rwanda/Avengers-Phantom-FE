@@ -72,7 +72,7 @@ const AddDrivers = () => {
             </div>
             <div>
               <Grid container columns={15} className="gridcontainer">
-                <Grid item xs={5}>
+                <Grid item xs={3}>
                   <InputLabel id="demo-multiple-name-label">
                     Driver name
                   </InputLabel>
@@ -88,7 +88,7 @@ const AddDrivers = () => {
                   </InputLabel>
                   <TextField id="outlined-basic" variant="outlined" />
                 </Grid>
-                <Grid item xs={5}>
+                <Grid item xs={3}>
                   <InputLabel id="demo-multiple-name-label">
                     ID number
                   </InputLabel>
@@ -104,7 +104,7 @@ const AddDrivers = () => {
                   </InputLabel>
                   <TextField id="outlined-basic" variant="outlined" />
                 </Grid>
-                <Grid item xs={5}>
+                <Grid item xs={3}>
                   <InputLabel id="demo-multiple-name-label">Gender</InputLabel>
                   <Select
                     labelId="demo-multiple-name-label"

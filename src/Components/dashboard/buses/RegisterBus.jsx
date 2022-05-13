@@ -7,12 +7,8 @@ import DashNavbar from "../dashnavbar/DashNavBar.jsx";
 import { FormValidation } from "./Validations.jsx";
 
 export default function Register() {
-  const {
-    handleInputValue,
-    handleFormSubmit,
-    formIsValid,
-    errors
-  } = FormValidation();
+  const { handleInputValue, handleFormSubmit, formIsValid, errors } =
+    FormValidation();
   return (
     <>
       <DashNavbar />
@@ -56,7 +52,10 @@ export default function Register() {
                 sx={{ minWidth: { lg: 250, xs: "100%" } }}
                 onBlur={handleInputValue}
                 onChange={handleInputValue}
-                {...(errors["company"] && { error: true, helperText: errors["company"] })}
+                {...(errors["company"] && {
+                  error: true,
+                  helperText: errors["company"],
+                })}
               />
               <TextField
                 size="small"
@@ -72,7 +71,10 @@ export default function Register() {
                 }}
                 onBlur={handleInputValue}
                 onChange={handleInputValue}
-                {...(errors["type"] && { error: true, helperText: errors["type"] })}
+                {...(errors["type"] && {
+                  error: true,
+                  helperText: errors["type"],
+                })}
               />
               <TextField
                 size="small"
@@ -86,7 +88,10 @@ export default function Register() {
                 }}
                 onBlur={handleInputValue}
                 onChange={handleInputValue}
-                {...(errors["platenumber"] && { error: true, helperText: errors["platenumber"] })}
+                {...(errors["platenumber"] && {
+                  error: true,
+                  helperText: errors["platenumber"],
+                })}
               />
             </Grid>
             <Grid marginTop={4}>
@@ -99,7 +104,10 @@ export default function Register() {
                 sx={{ minWidth: { lg: 250, xs: "100%" } }}
                 onBlur={handleInputValue}
                 onChange={handleInputValue}
-                {...(errors["manufacturer"] && { error: true, helperText: errors["manufacturer"] })}
+                {...(errors["manufacturer"] && {
+                  error: true,
+                  helperText: errors["manufacturer"],
+                })}
               />
               <TextField
                 size="small"
@@ -115,7 +123,10 @@ export default function Register() {
                 }}
                 onBlur={handleInputValue}
                 onChange={handleInputValue}
-                {...(errors["capacity"] && { error: true, helperText: errors["capacity"] })}
+                {...(errors["capacity"] && {
+                  error: true,
+                  helperText: errors["capacity"],
+                })}
               />
               <TextField
                 size="small"
@@ -129,7 +140,10 @@ export default function Register() {
                 }}
                 onBlur={handleInputValue}
                 onChange={handleInputValue}
-                {...(errors["yom"] && { error: true, helperText: errors["yom"] })}
+                {...(errors["yom"] && {
+                  error: true,
+                  helperText: errors["yom"],
+                })}
               />
             </Grid>
             <Typography

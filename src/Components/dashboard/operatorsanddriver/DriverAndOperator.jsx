@@ -7,76 +7,54 @@ import Sidebar from "../sidebar/Sidebar.jsx";
 import DashNavbar from "../dashnavbar/DashNavBar.jsx";
 import "../Dashboard.css";
 import "./DriverAndOperator.css";
+import Drivers from "./Drivers.jsx";
+import Operators from "./Operators.jsx";
+import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
 
-const drivers = [
-  {
-    name: "karera",
-    role: "driver",
-    car: "RAC 123D",
-  },
-  {
-    name: "un francois",
-    role: "driver",
-    car: "RAC 023f",
-  },
-];
-const operators = [
-  {
-    name: "amustrong",
-    role: "operators",
-    car: "RAC 123D",
-  },
-  {
-    name: "un jeado",
-    role: "operators",
-    car: "RAC 023f",
-  },
-];
-const DriverAndOperator = () => {
+const DriverAndOperator = ({ sidestyle }) => {
+  const [value, setValue] = React.useState("1");
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <div>
       <DashNavbar style={{ position: "fixed" }} />
       <div className="dashboard">
-        <div className="generalmenubar">{<Sidebar />}</div>
+        <div className="generalmenubar" id={sidestyle}>
+          {<Sidebar />}
+        </div>
         <div className="containt">
-          <h3>Driver and operators managment</h3>
-          <hr />
-          <div className="driver_operator">
-            <div className="driver">
-              <Link to="driver">
-                <Button text="View driver" bcolor="#012241" />
-              </Link>
-              {drivers.map((driver, index) => (
-                <div key={index} className="component">
-                  <div className="component_photo">
-                    <img src={Photo} alt="karera" />
-                  </div>
-                  <div className="component_contain">
-                    <h3>{driver.name}</h3>
-                    <p>{driver.role}</p>
-                    <h4>{driver.car}</h4>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="operator">
-              <Link to="operator">
-                <Button text="View operator" bcolor="#012241" />
-              </Link>
-              {operators.map((operator, index) => (
-                <div key={index} className="component">
-                  <div className="component_photo">
-                    <img src={Photo} alt="karera" />
-                  </div>
-                  <div className="component_contain">
-                    <h3>{operator.name}</h3>
-                    <p>{operator.role}</p>
-                    <h4>{operator.car}</h4>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <Box>
+            <TabContext value={value}>
+              <Box
+                sx={{
+                  borderBottom: 1,
+                  borderColor: "divider",
+                  padding: "0 0 0 50px",
+                }}
+              >
+                <TabList
+                  onChange={handleChange}
+                  aria-label="lab API tabs example"
+                >
+                  <Tab label="Drivers" value="1" />
+                  <Tab label="Operators" value="2" />
+                </TabList>
+              </Box>
+              <TabPanel value="1" sx={{ width: "100%" }}>
+                <Drivers />
+              </TabPanel>
+              <TabPanel value="2">
+                <Operators />
+              </TabPanel>
+            </TabContext>
+          </Box>
         </div>
       </div>
     </div>

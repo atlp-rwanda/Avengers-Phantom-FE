@@ -31,6 +31,7 @@ import Contact from "../Components/Homepage/Contact.jsx";
 import UpdateProfile from "../Components/dashboard/updateProfile/updateProfile.jsx";
 import {Signin} from "../Components/signin/Signin.jsx";
 import ListBuses from "../Components/buses redux/busess.jsx";
+// import {Signin} from "../Components/signin/Signin.jsx";
 
 const PhantomRoutes = () => {
   const location = useLocation();
@@ -75,7 +76,7 @@ const PhantomRoutes = () => {
         />
       </Routes>
       <Routes>
-        <Route
+        {/* <Route
           path="/signin"
           element={
             <>
@@ -83,7 +84,7 @@ const PhantomRoutes = () => {
               <Signin/>
             </>
           }
-        />
+        /> */}
       </Routes>
       <Routes>
         <Route
@@ -105,12 +106,12 @@ const PhantomRoutes = () => {
         <Route path="/driveroperator" element={<DriverAndOperator />} />
         <Route path="/driveroperator/driver" element={<Drivers />} />
         <Route
-          path="/driveroperator/driver/adddriver"
+          path="/driveroperator/adddriver"
           element={<AddDrivers />}
         />
         <Route path="/driveroperator/operator" element={<Operators />} />
         <Route
-          path="/driveroperator/operator/addoperator"
+          path="/driveroperator/addoperator"
           element={<AddOperator />}
         />
         <Route path="/bus" element={<Bus />} />
@@ -122,7 +123,7 @@ const PhantomRoutes = () => {
         <Route path="/bus/1/update" element={<BusUpdate />} />
 
         <Route path="/updateprofile" element={<UpdateProfile />} />
-        <Route path="/logout" element={<Signin />} />
+        {/* <Route path="/logout" element={<Signin />} /> */}
       </Routes>
     </div>
   );

@@ -7,11 +7,12 @@ const Button = ({ bcolor, text, handlerFunc }) => {
       style={{
         color: "white",
         variant: "contained",
-        height: "30.16px",
+        height: "35px",
         width: "150.37px",
-        borderRadius: "45.125px",
+        borderRadius: "5px",
         backgroundColor: bcolor,
         cursor: "pointer",
+        border: "none",
       }}
       onClick={handlerFunc}
     >

@@ -21,21 +21,21 @@ export const SidebarItem = [
   {
     path: "/driveroperator",
     icon: <PersonAddIcon fontSize="small" />,
-    title: "Driveroperator",
+    title: "Drivers & Operators",
     cName: "sidetext",
   },
   {
     path: "/bus",
     icon: <DirectionsBusFilledIcon fontSize="small" />,
-    title: "Bus",
+    title: "Buses",
     cName: "sidetext",
   },
-  {
-    path: "/rolepermission",
-    icon: <PersonIcon fontSize="small" />,
-    title: "Rolepermission",
-    cName: "sidetext",
-  },
+  // {
+  //   path: "/rolepermission",
+  //   icon: <PersonIcon fontSize="small" />,
+  //   title: "Rolepermission",
+  //   cName: "sidetext",
+  // },
   {
     path: "/updateprofile",
     icon: <PersonIcon fontSize="small" />,

@@ -2,14 +2,30 @@
   display: flex;
   flex-wrap: wrap;
 }
+
 .driver {
   width: 45%;
   padding: 5px 5px 5px 5px;
 }
+
 .operator {
   width: 45%;
   padding: 5px 5px 5px 5px;
 }
+
+.driver-operator-title {
+  width: 50rem;
+  padding-left: 10px;
+
+}
+
+.add-button {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .component {
   width: 100%;
   height: auto;
@@ -20,18 +36,23 @@
   flex-wrap: wrap;
   margin: 5px;
 }
+
 button {
   margin-top: 5px;
 }
+
 .operator_button {
   margin-right: 0;
 }
+
 .component_containt {
   width: 12rem;
 }
+
 .component_photo {
   width: 12rem;
 }
+
 img {
   height: 9rem;
   width: 9rem;
@@ -50,25 +71,38 @@ img {
   justify-content: space-between;
   margin: 5px;
 }
+
 .driver_component_content {
   min-width: 13rem;
 }
+
 .driver_component_contentid {
   min-width: 13rem;
 }
+
 .driver_component_contentbutton {
   min-width: 13rem;
+  height: 10rem;
+
 }
+
+.driver_component_contentbutton button {
+  margin-top: 80px;
+}
+
 .driver_component_photo {
   min-width: 13rem;
 }
+
 .driverdetailpopup {
   display: flex;
   flex-wrap: wrap;
 }
+
 .driverpop {
   width: 10rem;
 }
+
 .operator_component {
   width: 100%;
   height: auto;
@@ -80,18 +114,28 @@ img {
   justify-content: space-between;
   margin: 5px;
 }
+
 .operator_component_container {
   min-width: 13rem;
 }
+
 .operator_component_photo {
   min-width: 13rem;
 }
+
 .operator_component_container_info {
   min-width: 13rem;
 }
+
 .operator_component_container_button {
   min-width: 13rem;
+  height: 10rem;
 }
+
+.operator_component_container_button button {
+  margin-top: 80px;
+}
+
 
 /* 
 // add drivers */
@@ -104,12 +148,14 @@ img {
   background-color: rgb(201, 201, 201);
   /* background-color: rgb(88, 0, 0); */
 }
+
 .addimageicon {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .gridcontainer {
   display: flex;
   flex-wrap: wrap;
@@ -124,27 +170,37 @@ img {
 .deleteicon {
   transform: scale(4);
 }
+
 .deletediv {
   align-self: center;
 }
+
+.button-style {
+  margin-right: 0;
+}
+
 
 @media (max-width: 570px) {
   .operator_component_container {
     width: 12.5rem;
     padding-left: 10px;
   }
+
   .operator_component_photo {
     width: 12.5rem;
   }
+
   .operator_component_container_info {
     width: 12.5rem;
     padding-left: 10px;
   }
+
   .operator_component_container_button {
     width: 12.5rem;
     padding: 10px;
     padding-bottom: 5px;
   }
+
   .driver_component_container_button {
     width: 12.5rem;
     padding: 10px;
