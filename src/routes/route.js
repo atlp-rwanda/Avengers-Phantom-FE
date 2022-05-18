@@ -80,7 +80,7 @@ const PhantomRoutes = () => {
           element={
             <>
               <Navbar />
-              <ListBuses />
+              <Signin/>
             </>
           }
         />
@@ -116,6 +116,7 @@ const PhantomRoutes = () => {
         <Route path="/bus" element={<Bus />} />
         <Route path="/rolepermission" element={<Roles />} />
         <Route path="/bus" element={<Bus />} />
+        <Route path="/assign" element={<ListBuses />} />
         <Route path="/bus/register" element={<RegisterBus />} />
         <Route path="/bus/1" element={<BusDetails />} />
         <Route path="/bus/1/update" element={<BusUpdate />} />
