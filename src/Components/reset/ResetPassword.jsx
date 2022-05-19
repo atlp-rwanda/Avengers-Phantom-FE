@@ -5,14 +5,46 @@ import { Typography } from "@mui/material";
 import { Stack, Alert } from "@mui/material";
 import { Link } from "react-router-dom";
 import './style.css';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import axios from 'axios';
 
 
 
 
 const ResetPassword = () => {
+  const [values, setValues] = React.useState({
+    password: '',
+    showPassword: false,
+  });
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
+
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
+    });
+  };
+
+  const [prod, setprod] = React.useState({
+    paassword:"",
+    
+  });
+  const {paassword} = prod;
+  const onInputChange = e => {
+    const { name, value } = e.target;
+    setprod({ ...prod, [name]: value });
+  };
   const btnStyle = { margin: 20, width: "25%" };
   const label = { color: "red", margin: 20}
+  const label2 = { color: "red", }
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [characters, setCharacters] = useState(false);
@@ -23,16 +55,22 @@ const ResetPassword = () => {
     
     if(password.length== 0 ){
       setError(true);
-      console.log(password)
     }
     else if (password.length < 8) {
       setCharacters(true);
     }
-    else if (/([A-Z]+)/g.test(value.password)) {
+    else if (/([A-Z]+)/g.test(password)) {
       setSymbol(true)
+      
     }
+  
    
   }
+  const body = {
+    password,
+  }
+
+ 
   
 
 
@@ -47,7 +85,7 @@ const ResetPassword = () => {
         <Navbar />
         <Grid
           elevation={4}
-          style={{ margin: "1vh auto", width: 860, padding: 20 }}
+          style={{ margin: "4vh auto", width: 860, padding: 20 }}
         >
           <Stack>
            
@@ -69,26 +107,33 @@ const ResetPassword = () => {
 
               
               <Typography ml={2} mt={2}>Enter new password</Typography>
-                <TextField
-                  type="password"
+                <OutlinedInput
+                  type={values.showPassword ? 'text' : 'password'}
                   value={password}
                   label='Enter new password'
                   style={{ margin: 20, width: '95%' }}
                   fullWidth
                   onChange={(e) => setPassword(e.target.value)}
+                  endAdornment={
+                    <InputAdornment  sx={{ m: 1}}  position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        // onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
                 />
               {error? 
-              <label style={label}>Password can not be Empty</label>: "" }
-            
-              
+              <label style={label}>Password can not be Empty*</label>: "" }
             </Grid>
-            <Grid style={{margin: 21}}>
-            
+            <Grid style={{margin: 21}}>     
             <ul>
-              {characters ? <li style={label}>8 Charcters in length.</li> : "" }
-              {symbol ? <li style={label}>You don't have any capital letters in there your Password</li> : "" }
-              
-              <li>At least one symbol</li>
+              {characters ? <li style={label2}>Password Must be 8 Charcters*</li> : "" }
+              {symbol ? <li style={label2}>Password Must be 8 Charcters*</li> : "" }
             </ul>
             
             </Grid>

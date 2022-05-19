@@ -14,6 +14,8 @@ const ResetPage = () => {
   const [emailError, setEmailError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [error, setError] = useState(false);
+  const label = { color: "red", margin: 20}
   const navigate = useNavigate();
 
   const submitHander = (e) => {
@@ -24,6 +26,9 @@ const ResetPage = () => {
     const body = {
       email,
     };
+    if(email.length== 0 ){
+      setError(true);
+    }
     if (emailError == '') {
       setEmailError(true)
 
@@ -31,7 +36,7 @@ const ResetPage = () => {
       setEmailError(false)
     }
     axios({
-      url: "http://localhost:9000/api/v1/users/forgotpassword",
+      url: "http://localhost:5000/api/v1/users/forgotpassword",
       data: body,
       method: "PUT",
     }).then(res => {
@@ -77,6 +82,8 @@ const ResetPage = () => {
                   fullWidth
                   onChange={(e) => setEmail(e.target.value)}
                 />
+                 {error? 
+                 <label style={label}>Field can not be Empty*</label>: "" }
                 <Grid align="center">
                   <Button
 
