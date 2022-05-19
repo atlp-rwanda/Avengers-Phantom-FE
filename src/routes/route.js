@@ -30,6 +30,7 @@ import MapSection from "../Components/Homepage/MapSection.jsx";
 import Contact from "../Components/Homepage/Contact.jsx";
 import UpdateProfile from "../Components/dashboard/updateProfile/updateProfile.jsx";
 import {Signin} from "../Components/signin/Signin.jsx";
+import ListBuses from "../Components/buses redux/busess.jsx";
 
 const PhantomRoutes = () => {
   const location = useLocation();
@@ -79,7 +80,7 @@ const PhantomRoutes = () => {
           element={
             <>
               <Navbar />
-              <Signin />
+              <Signin/>
             </>
           }
         />
@@ -115,6 +116,7 @@ const PhantomRoutes = () => {
         <Route path="/bus" element={<Bus />} />
         <Route path="/rolepermission" element={<Roles />} />
         <Route path="/bus" element={<Bus />} />
+        <Route path="/assign" element={<ListBuses />} />
         <Route path="/bus/register" element={<RegisterBus />} />
         <Route path="/bus/1" element={<BusDetails />} />
         <Route path="/bus/1/update" element={<BusUpdate />} />

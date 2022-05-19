@@ -42,4 +42,10 @@ export const SidebarItem = [
     title: "Update profile",
     cName: "sidetext",
   },
+  {
+    path: "/assign",
+    icon: <PersonIcon fontSize="small" />,
+    title: "asign buses",
+    cName: "sidetext",
+  },
 ];

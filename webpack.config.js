@@ -3,7 +3,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   //This property defines where the application starts
-  entry: "./src/index.js",
+  // entry: "./src/index.js",
+  entry: ['babel-polyfill', './src/index.js'],
 
   //This property defines the file path and the file name which will be used for deploying the bundled file
   output: {
