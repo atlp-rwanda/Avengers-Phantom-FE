@@ -1,7 +1,17 @@
 import React from "react";
 import Photo from "../../../static/dashboard_image/photo.jpeg";
-import Button from "./Button.jsx";
+import Buttons from "./Button.jsx";
 import "./DriverAndOperator.css";
+import {
+  Box,
+  Typography,
+  Button,
+  Pagination,
+  FormControl,
+  TextField,
+  Card,
+} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -61,19 +71,58 @@ const Operators = () => {
 
   return (
     <div>
-      <DashNavbar style={{ position: "fixed" }} />
       <div className="dashboard">
-        <div className="generalmenubar">{<Sidebar />}</div>
-        <div className="containt">
-          <h3>Operators managment</h3>
-          <Link to="addoperator">
-            <Button
-              text="Add operator"
-              bcolor="#012241"
-              className="operator_button"
-            />
-          </Link>
+        <div className="containt" style={{ margin: "0" }}>
+          <div className="add-button">
+            <h3 className="driver-operator-title">Operators managment</h3>
+            <Link to="addoperator">
+              <Buttons
+                text="Add operator"
+                bcolor="#012241"
+                className="operator_button"
+              />
+            </Link>
+          </div>
+
           <hr />
+
+          <Box sx={{ margin: 3 }}>
+            <FormControl
+              sx={{
+                display: "grid",
+                gridTemplateColumns: {
+                  lg: "700px 70px",
+                  xs: "200px 20px",
+                  md: "500px 50px",
+                },
+                marginLeft: "auto",
+                width: { lg: 800, xs: "100%" },
+              }}
+            >
+              <TextField
+                name="search"
+                size="small"
+                placeholder="search"
+                type="search"
+              />
+              <Button
+                sx={{
+                  background: "#012241",
+                  color: "white",
+                  borderTopLeftRadius: 0,
+                  borderBottomLeftRadius: 0,
+                  "&:hover": {
+                    background: "#012241",
+                    opacity: 0.8,
+                    transition: "0.8s",
+                  },
+                }}
+              >
+                <SearchIcon sx={{ fontSize: { lg: 20, xs: 12, md: 15 } }} />
+              </Button>
+            </FormControl>
+          </Box>
+
           {operators.map((operator, index) => (
             <div key={index} className="operator_component">
               <div className="operator_component_photo">
@@ -91,17 +140,63 @@ const Operators = () => {
               </div>
               <div className="operator_component_container_button">
                 <h3>{operator.tell}</h3>
-                <Button
+                {/* <Buttons
                   handlerFunc={handleClickOpenDetail}
                   text="View details"
                   bcolor="#012241"
                 />
                 <br />
-                <Button
+                <Buttons
                   handlerFunc={handleClickOpen}
                   text="Delete"
                   bcolor="#bd2424"
-                />
+                /> */}
+
+                <Button
+                  onClick={handleClickOpenDetail}
+                  size="small"
+                  sx={{
+                    background: "#012241",
+                    borderTopLeftRadius: 10,
+                    borderBottomLeftRadius: 0,
+                    borderTopRightRadius: 10,
+                    borderBottomRightRadius: 0,
+                    color: "white",
+                    fontSize: { lg: 10, xs: 7 },
+                    p: 1,
+                    height: 20,
+                    marginRight: 3,
+                    "&:hover": {
+                      background: "#012241",
+                      opacity: 0.8,
+                      transition: "0.8s",
+                    },
+                  }}
+                >
+                  view full details
+                </Button>
+                <Button
+                  onClick={handleClickOpen}
+                  sx={{
+                    background: "#bd2424",
+                    color: "white",
+                    fontSize: { lg: 10, xs: 7 },
+                    p: 1,
+                    borderTopLeftRadius: 10,
+                    borderBottomLeftRadius: 0,
+                    borderTopRightRadius: 10,
+                    borderBottomRightRadius: 0,
+                    height: 20,
+                    marginRight: 2,
+                    "&:hover": {
+                      background: "#bd2424",
+                      opacity: 0.8,
+                      transition: "0.8s",
+                    },
+                  }}
+                >
+                  Delete
+                </Button>
               </div>
             </div>
           ))}
@@ -125,8 +220,8 @@ const Operators = () => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose} text="Delete" bcolor="#bd2424" />
-              <Button onClick={handleClose} text="Return" bcolor="#012241" />
+              <Buttons onClick={handleClose} text="Delete" bcolor="#bd2424" />
+              <Buttons onClick={handleClose} text="Return" bcolor="#012241" />
             </DialogActions>
           </Dialog>
 
@@ -208,8 +303,8 @@ const Operators = () => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose} text="Edit" bcolor="#012241" />
-              <Button
+              <Buttons onClick={handleClose} text="Edit" bcolor="#012241" />
+              <Buttons
                 onClick={handleClose}
                 text="Return"
                 bcolor="rgb(102, 99, 99)"

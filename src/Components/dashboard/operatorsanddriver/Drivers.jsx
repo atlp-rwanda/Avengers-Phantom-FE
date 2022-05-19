@@ -1,8 +1,18 @@
 import React from "react";
-import Button from "./Button.jsx";
+import Buttons from "./Button.jsx";
 import Photo from "../../../static/dashboard_image/photo.jpeg";
 import AddIcon from "@mui/icons-material/Add";
 import "./DriverAndOperator.css";
+import {
+  Box,
+  Typography,
+  Button,
+  Pagination,
+  FormControl,
+  TextField,
+  Card,
+} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -41,6 +51,24 @@ const drivers = [
     capacity: "CPT:1000ton",
     tell: "Tell:07896",
   },
+  {
+    name: "un francois",
+    role: "driver",
+    car: "RAC 023f",
+    id: "ID:1265",
+    gender: "male",
+    capacity: "CPT:1000ton",
+    tell: "Tell:07896",
+  },
+  {
+    name: "un francois",
+    role: "driver",
+    car: "RAC 023f",
+    id: "ID:1265",
+    gender: "male",
+    capacity: "CPT:1000ton",
+    tell: "Tell:07896",
+  },
 ];
 
 const Drivers = () => {
@@ -66,15 +94,57 @@ const Drivers = () => {
 
   return (
     <div>
-      <DashNavbar style={{ position: "fixed" }} />
       <div className="dashboard">
-        <div className="generalmenubar">{<Sidebar />}</div>
-        <div className="containt">
-          <h3>Drivers managment</h3>
-          <Link to="adddriver">
-            <Button text="Add driver" bcolor="#012241" />
-          </Link>
+        <div className="containt" style={{ margin: "0" }}>
+          <div className="add-button">
+            <h3 className="driver-operator-title">Drivers managment</h3>
+            <Link to="adddriver">
+              <Buttons
+                text="Add driver"
+                bcolor="#012241"
+                className="button-style"
+              />
+            </Link>
+          </div>
           <hr />
+
+          <Box sx={{ margin: 3 }}>
+            <FormControl
+              sx={{
+                display: "grid",
+                gridTemplateColumns: {
+                  lg: "700px 70px",
+                  xs: "200px 20px",
+                  md: "500px 50px",
+                },
+                marginLeft: "auto",
+                width: { lg: 800, xs: "100%" },
+              }}
+            >
+              <TextField
+                name="search"
+                size="small"
+                placeholder="search"
+                type="search"
+              />
+              <Button
+                sx={{
+                  background: "#012241",
+                  color: "white",
+                  borderTopLeftRadius: 0,
+                  borderBottomLeftRadius: 0,
+                  "&:hover": {
+                    background: "#012241",
+                    opacity: 0.8,
+                    transition: "0.8s",
+                  },
+                }}
+              >
+                <SearchIcon sx={{ fontSize: { lg: 20, xs: 12, md: 15 } }} />
+              </Button>
+            </FormControl>
+          </Box>
+
           {drivers.map((driver, index) => (
             <div key={index} className="driver_component">
               <div className="driver_component_photo">
@@ -92,17 +162,63 @@ const Drivers = () => {
               </div>
               <div className="driver_component_contentbutton">
                 <h3>{driver.capacity}</h3>
+
+                {/* <Buttons
+                handlerFunc={handleClickOpenDetail}
+                text="View details"
+                bcolor="#012241"
+              />
+              
+              <Buttons
+                handlerFunc={handleClickOpen}
+                text="Delete"
+                bcolor="#bd2424"
+              /> */}
                 <Button
-                  handlerFunc={handleClickOpenDetail}
-                  text="View details"
-                  bcolor="#012241"
-                />
-                <br />
+                  onClick={handleClickOpenDetail}
+                  size="small"
+                  sx={{
+                    background: "#012241",
+                    borderTopLeftRadius: 10,
+                    borderBottomLeftRadius: 0,
+                    borderTopRightRadius: 10,
+                    borderBottomRightRadius: 0,
+                    color: "white",
+                    fontSize: { lg: 10, xs: 7 },
+                    p: 1,
+                    height: 20,
+                    marginRight: 3,
+                    "&:hover": {
+                      background: "#012241",
+                      opacity: 0.8,
+                      transition: "0.8s",
+                    },
+                  }}
+                >
+                  view full details
+                </Button>
                 <Button
-                  handlerFunc={handleClickOpen}
-                  text="Delete"
-                  bcolor="#bd2424"
-                />
+                  onClick={handleClickOpen}
+                  sx={{
+                    background: "#bd2424",
+                    color: "white",
+                    fontSize: { lg: 10, xs: 7 },
+                    p: 1,
+                    borderTopLeftRadius: 10,
+                    borderBottomLeftRadius: 0,
+                    borderTopRightRadius: 10,
+                    borderBottomRightRadius: 0,
+                    height: 20,
+                    marginRight: 3,
+                    "&:hover": {
+                      background: "#bd2424",
+                      opacity: 0.8,
+                      transition: "0.8s",
+                    },
+                  }}
+                >
+                  Delete
+                </Button>
               </div>
             </div>
           ))}
@@ -125,8 +241,8 @@ const Drivers = () => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose} text="Delete" bcolor="#bd2424" />
-              <Button onClick={handleClose} text="Return" bcolor="#012241" />
+              <Buttons onClick={handleClose} text="Delete" bcolor="#bd2424" />
+              <Buttons onClick={handleClose} text="Return" bcolor="#012241" />
             </DialogActions>
           </Dialog>
 
@@ -208,8 +324,8 @@ const Drivers = () => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose} text="Edit" bcolor="#012241" />
-              <Button
+              <Buttons onClick={handleClose} text="Edit" bcolor="#012241" />
+              <Buttons
                 onClick={handleClose}
                 text="Return"
                 bcolor="rgb(102, 99, 99)"
