@@ -26,6 +26,8 @@ import { Add } from "@mui/icons-material";
 import AddIcon from "@mui/icons-material/Add";
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
+import AddRouteButton from "./AddRouteButton.jsx";
+
 
 const un = "Bus stop one, You can add others by hitting + button"
 
@@ -116,7 +118,7 @@ const OneRoute = () => {
 
 
   return (
-    <div>
+    <div >
       <div>
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle>Deleting item</DialogTitle>
@@ -124,7 +126,6 @@ const OneRoute = () => {
             <DialogContentText>
               Do you want to delete this route?
             </DialogContentText>
-            {/* <Typography> <WarningIcon color="error" />This action cannot be revoked</Typography> */}
             <Typography> <WarningIcon sx={{ color: "#bd2424" }} />This action cannot be revoked</Typography>
           </DialogContent>
           <DialogActions>
@@ -135,106 +136,61 @@ const OneRoute = () => {
       </div >
       <div>
         <Dialog open={openUpdater} onClose={handleClose}
-          fullScreen
+          // fullScreen
+          fullWidth
+          maxWidth="md"
         >
           <DialogTitle>Route Update</DialogTitle>
           <DialogContent>
             <DialogContentText>
               Do you want to update this route?
             </DialogContentText>
-            {/* <Typography> <WarningIcon sx={{ color: "#bd2424" }} />This action cannot be revoked</Typography> */}
-            <form className="addroute">
-              <div style={{ marginBottom: 20 }} className="routeDetails">
-                <Box sx={{ display: "flex", my: 2 }}>
-                  <Typography sx={{ width: 200 }}>Route ID </Typography>
-                  <TextField
-                    id="outlined-basic"
-                    variant="outlined"
-                    placeholder="Enter Route ID"
-                    size="small"
-                    sx={{ minHeight: 3, minWidth: 300 }}
-                    onChange={(e) => setRouteID(e.target.value)}
-                    required
-                    error={routeIDError}
-                  />
-                </Box>
-                <Box sx={{ display: "flex", my: 2 }}>
-                  <Typography sx={{ width: 200 }}>
-                    Route Starting Point{" "}
-                  </Typography>
-                  <TextField
-                    id="outlined-basic"
-                    variant="outlined"
-                    placeholder="Enter Route Starting Point"
-                    size="small"
-                    sx={{ minHeight: 3, minWidth: 300 }}
-                    onChange={(e) => setStartPoint(e.target.value)}
-                    required
-                    error={startPointError}
-                  />
-                </Box>
-                <Box sx={{ display: "flex", my: 2 }}>
-                  <Typography sx={{ width: 200 }}>
-                    Route Destination{" "}
-                  </Typography>
-                  <TextField
-                    id="outlined-basic"
-                    variant="outlined"
-                    placeholder="Enter Route Destination"
-                    size="small"
-                    sx={{ minHeight: 3, minWidth: 300 }}
-                    onChange={(e) => setEndPoint(e.target.value)}
-                    required
-                    error={endPointError}
-                  />
-                </Box>
-                <Box sx={{ display: "flex" }} className="added-route">
-                  <Typography sx={{ width: 200 }}>Route Stops </Typography>
-                  <TextField
-                    className="textfield-addroute"
-                    id="outlined-basic"
-                    variant="outlined"
-                    placeholder="Enter Route Stop"
-                    label=""
-                    size="small"
-                    sx={{ minHeight: 3, minWidth: 250 }}
-                    onChange={(e) => setStop(e.target.value)}
-                    required
-                    error={stopError}
-                  />
-                  <AddIcon sx={{ py: 1, px: 1 }} onClick={handleAddRoute} />
-                </Box>
-                <Box>
-                  <List className="list-route">
-                    <ListItem sx={{ border: "1px solid #c4c4c4" }}
-                    >
-                      <ListItemText
-                        primary={`${un}`}
-                      // secondary={secondary ? 'Secondary text' : null}
-                      />
-                    </ListItem>
-                  </List>
-                </Box>
-              </div>
-            </form>
-
+            <AddRouteButton />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleCloseUpdater} sx={{ backgroundColor: "#012241", color: "#fff" }} className="buttons">Cancel</Button>
-            <Button onClick={handleUpdate} sx={{ backgroundColor: "#bd2424", color: "#fff" }} className="buttons">Update</Button>
-            <Button onClick={handleClearUpdater} sx={{ backgroundColor: "#ff345d", color: "#fff" }} className="buttons">Reset</Button>
+            <Button onClick={handleCloseUpdater} sx={{
+              backgroundColor: "#012241", color: "#fff", backgroundColor: "#012241", color: "#fff", "&:hover": {
+                background: "#1565c0",
+                opacity: 0.8,
+              },
+            }} className="buttons">Cancel</Button>
+            <Button onClick={handleUpdate} sx={{
+              backgroundColor: "#bd2424", color: "#fff", backgroundColor: "#012241", color: "#fff", "&:hover": {
+                background: "#1565c0",
+                opacity: 0.8,
+              },
+            }} className="buttons">Update</Button>
+            <Button onClick={handleClearUpdater} sx={{
+              backgroundColor: "#ff345d", color: "#fff", backgroundColor: "#012241", color: "#fff", "&:hover": {
+                background: "#1565c0",
+                opacity: 0.8,
+              },
+            }} className="buttons">Reset</Button>
           </DialogActions>
         </Dialog>
       </div >
       <DashNavbar />
       <div className="dashboard">
         <div className="generalmenubar">{<Sidebar />}</div>
-        <div className="content">
+        <div className="containt">
           <div className="header" >
             <h3 sx={{ display: "inline-block" }} >All Routes Report </h3>
             <Button component={Link}
-              to={`/create`}
-              variant="Text" sx={{ backgroundColor: "#012241", minWidth: "100px", textTransform: "capitalize", color: "#fff" }}
+              to={`/addroute`}
+              variant="Text"
+              sx={{
+                backgroundColor: "#012241",
+                minWidth: "100px",
+                textTransform: "capitalize",
+                color: "#fff",
+                marginTop: 1,
+                height: 40,
+
+                "&:hover": {
+                  background: "#012241",
+                  opacity: 0.8,
+                },
+              }}
               endIcon={<Add sx={{ display: "block" }} />}
             >
               New Route
@@ -247,84 +203,87 @@ const OneRoute = () => {
           </Link>
 
           <form className="addroute">
-            {RoutesID.map(route => <Grid container minHeight={30} spacing={1}>
-              <Grid item container minHeight={20}>
-                <Grid item sx={{ margin: { xs: 1, sm: 1 } }} xs={12} md={3.75} border={"1px solid #364878"} justifyContent="flex-end">
-                  <Box sx={{ mb: 1, px: 2 }}>
-                    <Box my={0.5} sx={{ textAlign: 'center' }}>
-                      <Typography sx={{ display: 'inline-block' }}>
-                        Route ID:
-                      </Typography>
-                      <Typography sx={{ display: 'inline-block' }}>
-                        {route.ID}
-                      </Typography>
-                    </Box>
-                    <Box my={2}>
-                      <Typography sx={{ display: 'inline-block' }}>
-                        {' '}
-                        Starting:{' '}
-                      </Typography>
-                      <Typography sx={{ display: 'inline-block' }}>
-                        {route.startingPoint}
-                      </Typography>
-                    </Box>
-                    <Box my={2}>
-                      <Typography sx={{ display: 'inline-block' }}>
-                        {' '}
-                        Destination:{' '}
-                      </Typography>
-                      <Typography sx={{ display: 'inline-block' }}>
-                        {route.endingPoint}
-                      </Typography>
-                    </Box>
-                  </Box>
-                </Grid>
-                <Grid item sx={{ margin: { xs: 1, sm: 1 } }} xs={12} md={3.75} border={"1px solid #364878"}>
-                  <Box my={0.5} px={2}>
-                    <Typography sx={{ minWidth: 60 }}>
-                      Bus Stops:
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <ListItemButton
-                      component='ul'
-                      href='#simple-list'
-                      sx={{
-                        display: 'block',
-                        my: 0.5,
-                        overflow: 'scroll',
-                        maxHeight: 100
-                      }}
-                    >
-                      {route.stops.map(stop => <ListItemText>{stop}</ListItemText>)}
+            {RoutesID.map(route =>
+              <Grid container minHeight={30} spacing={1}   >
+                <Grid item container minHeight={20} sx={{ width: "95%", margin: { xs: "auto", sm: "auto" }, display: "flex" }}>
+                  {/* <Grid item container minHeight={20} sx={{ border: "1px solid #364878", width: "95%", margin: { xs: "auto", sm: "auto" }, display: "flex" }}> */}
 
-                    </ListItemButton>
-                  </Box>
+                  <Grid item sx={{ margin: { xs: 1, sm: 1 } }} xs={12} md={3.75} border={"1px solid #364878"}>
+                    <Box sx={{ mb: 1, px: 2 }}>
+                      <Box my={0.5} sx={{ textAlign: 'center' }}>
+                        <Typography sx={{ display: 'inline-block' }}>
+                          Route ID:
+                        </Typography>
+                        <Typography sx={{ display: 'inline-block' }}>
+                          {route.ID}
+                        </Typography>
+                      </Box>
+                      <Box my={2}>
+                        <Typography sx={{ display: 'inline-block' }}>
+                          {' '}
+                          Starting:{' '}
+                        </Typography>
+                        <Typography sx={{ display: 'inline-block' }}>
+                          {route.startingPoint}
+                        </Typography>
+                      </Box>
+                      <Box my={2}>
+                        <Typography sx={{ display: 'inline-block' }}>
+                          {' '}
+                          Destination:{' '}
+                        </Typography>
+                        <Typography sx={{ display: 'inline-block' }}>
+                          {route.endingPoint}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Grid>
+                  <Grid item sx={{ margin: { xs: 1, sm: 1 } }} xs={12} md={3.75} border={"1px solid #364878"}>
+                    <Box my={0.5} px={2}>
+                      <Typography sx={{ minWidth: 60 }}>
+                        Bus Stops:
+                      </Typography>
+                    </Box>
+                    <Box>
+                      <ListItemButton
+                        component='ul'
+                        href='#simple-list'
+                        sx={{
+                          display: 'block',
+                          my: 0.5,
+                          overflow: 'scroll',
+                          maxHeight: 100
+                        }}
+                      >
+                        {route.stops.map(stop => <ListItemText>{stop}</ListItemText>)}
+
+                      </ListItemButton>
+                    </Box>
+                  </Grid>
+                  <Grid container item sx={{ margin: { xs: 1, sm: 1 } }} xs={12} md={2} >
+                    <Grid item xs={12} sx={{ mt: { xs: 0.5 } }} sm={4} md={12} >
+                      <Button component={Link}
+                        to={`/singleRoute`}
+                        variant='contained' style={{ backgroundColor: "#012241", width: "100px" }}>
+                        About
+                      </Button>
+                    </Grid>
+                    <Grid item xs={12} sx={{ mt: { xs: 0.5 } }} sm={4} md={12} >
+                      <Button variant='contained' style={{ backgroundColor: "#012241", width: "100px" }}
+                        onClick={handleClickOpenUpdater}>
+                        Update
+                      </Button>
+                    </Grid>
+                    <Grid item xs={12} sx={{ mt: { xs: 0.5 } }} sm={4} md={12} >
+                      <Button variant='contained' style={{ backgroundColor: '#bd2424', width: "100px" }}
+                        onClick={handleClickOpen}
+                      >
+                        Delete
+                      </Button>
+                    </Grid>
+                  </Grid>
                 </Grid>
-                <Grid container item sx={{ margin: { xs: 1, sm: 1 } }} xs={12} md={2} >
-                  <Grid item xs={12} sx={{ mt: { xs: 0.5 } }} sm={4} md={12} >
-                    <Button component={Link}
-                      to={`/singleRoute`}
-                      variant='contained' style={{ backgroundColor: "#012241", width: "100px" }}>
-                      About
-                    </Button>
-                  </Grid>
-                  <Grid item xs={12} sx={{ mt: { xs: 0.5 } }} sm={4} md={12} >
-                    <Button variant='contained' style={{ backgroundColor: "#012241", width: "100px" }}
-                      onClick={handleClickOpenUpdater}>
-                      Update
-                    </Button>
-                  </Grid>
-                  <Grid item xs={12} sx={{ mt: { xs: 0.5 } }} sm={4} md={12} >
-                    <Button variant='contained' style={{ backgroundColor: '#bd2424', width: "100px" }}
-                      onClick={handleClickOpen}
-                    >
-                      Delete
-                    </Button>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </Grid>)}
+              </Grid>)}
           </form>
 
         </div>

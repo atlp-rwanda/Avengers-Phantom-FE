@@ -5,6 +5,7 @@
   background-color: #012241;
   height: 100vh;
   width: 20%;
+  /* position: fixed; */
 }
 .containt {
   overflow-y: scroll;

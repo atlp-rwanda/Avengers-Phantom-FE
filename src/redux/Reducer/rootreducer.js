@@ -4,8 +4,7 @@ import reducer from "./reducer";
 
 const rootReducer = combineReducers({
   counter: reducer,
+  // un: un,
 });
 
 export default rootReducer;
-
-// i18n

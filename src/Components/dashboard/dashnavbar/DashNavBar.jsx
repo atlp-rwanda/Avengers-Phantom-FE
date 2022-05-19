@@ -120,7 +120,7 @@ const ResponsiveAppBar = () => {
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <span>Karera </span>
                   <Avatar
-                    alt="Remy Sharp"
+                    alt="UN"
                     src="./static/dashboard_image/photo.jpeg"
                   />
                 </IconButton>
