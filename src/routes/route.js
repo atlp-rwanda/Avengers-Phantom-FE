@@ -29,7 +29,7 @@ import Manuals from "../Components/Homepage/Manuals.jsx";
 import MapSection from "../Components/Homepage/MapSection.jsx";
 import Contact from "../Components/Homepage/Contact.jsx";
 import UpdateProfile from "../Components/dashboard/updateProfile/updateProfile.jsx";
-import {Signin} from "../Components/signin/Signin.jsx";
+import { Signin } from "../Components/signin/Signin.jsx";
 import ListBuses from "../Components/buses redux/busess.jsx";
 // import {Signin} from "../Components/signin/Signin.jsx";
 
@@ -76,15 +76,15 @@ const PhantomRoutes = () => {
         />
       </Routes>
       <Routes>
-        {/* <Route
+        <Route
           path="/signin"
           element={
             <>
               <Navbar />
-              <Signin/>
+              <Signin />
             </>
           }
-        /> */}
+        />
       </Routes>
       <Routes>
         <Route
