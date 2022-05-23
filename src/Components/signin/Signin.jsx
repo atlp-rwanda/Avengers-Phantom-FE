@@ -260,7 +260,7 @@ export const Signin = () => {
                   justifyContent: "center",
                 }}
                 component={Link}
-                to={`/phantom/reset`}
+                to={`/reset`}
               >
                 <Typography
                   sx={{ textDecoration: "underline" }}
