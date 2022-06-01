@@ -11,9 +11,10 @@ import {
   DialogTitle,
   DialogContentText,
   DialogActions,
-  TextField
+  TextField,
 } from "@mui/material";
 import { useState } from "react";
+import Skeleton from "react-loading-skeleton";
 import SkeletonElement from "./Skeletons/SkeletonElement.jsx";
 
 const UpdateProfile = () => {
@@ -204,12 +205,7 @@ const UpdateProfile = () => {
                 </div>
                 <div className="contact-left-input">
                   {" "}
-                  <TextField
-                    size="small"
-                    name="email"
-                    type="email"
-                    fullWidth
-                  />
+                  <TextField size="small" name="email" type="email" fullWidth />
                 </div>
                 <div className="contact-left-label">
                   {" "}
@@ -217,12 +213,7 @@ const UpdateProfile = () => {
                 </div>
                 <div className="contact-left-input">
                   {" "}
-                  <TextField
-                    size="small"
-                    name="phone"
-                    type="email"
-                    fullWidth
-                  />
+                  <TextField size="small" name="phone" type="email" fullWidth />
                 </div>
               </div>
             </div>
