@@ -12,6 +12,8 @@ import {
   TextField,
   Card,
 } from "@mui/material";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import SearchIcon from "@mui/icons-material/Search";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -23,14 +25,13 @@ import Slide from "@mui/material/Slide";
 import { Link } from "react-router-dom";
 import Sidebar from "../sidebar/Sidebar.jsx";
 import DashNavbar from "../dashnavbar/DashNavBar.jsx";
+import { useState } from "react";
 import "../Dashboard.css";
+import CardSkeleton from "./CardSkeleton.jsx";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-// export default function AlertDialogSlide() {
-
-// }
 
 const drivers = [
   {
@@ -73,7 +74,7 @@ const drivers = [
 
 const Drivers = () => {
   const [open, setOpen] = React.useState(false);
-
+  const [isLoading, setisLoading] = React.useState(false);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -144,7 +145,7 @@ const Drivers = () => {
               </Button>
             </FormControl>
           </Box>
-
+          {isLoading && <CardSkeleton skeletoncount={5} />}
           {drivers.map((driver, index) => (
             <div key={index} className="driver_component">
               <div className="driver_component_photo">

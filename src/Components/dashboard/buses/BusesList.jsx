@@ -21,6 +21,7 @@ import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
 import Slide from "@mui/material/Slide";
 import Sidebar from "../sidebar/Sidebar.jsx";
 import DashNavbar from "../dashnavbar/DashNavBar.jsx";
+import Skeleton from "react-loading-skeleton";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -28,6 +29,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const Buses = () => {
   const [open, setOpen] = React.useState(false);
+  const [isLoading, setisLoading] = React.useState(true);
 
   const handleClickOpen = () => {
     setOpen(true);
