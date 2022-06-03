@@ -58,14 +58,12 @@ export const Signin = () => {
   };
   const submitRecord = (e) => {
     e.preventDefault();
-    console.log(values.password);
 
     const send = {
       email: prod.email,
       password: values.password,
     };
-    console.log(JSON.stringify(send));
-    fetch(`http://localhost:5000/api/v1/users/login`, {
+    fetch(`http://localhost:9000/api/v1/users/login`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -74,7 +72,6 @@ export const Signin = () => {
     })
       .then(function (response) {
         if (response.status !== 200) {
-          console.log(response);
 
           response.json().then(function (data) {
             alert(`'Looks like there was a problem   ' ${data.message}`);
@@ -84,16 +81,13 @@ export const Signin = () => {
 
         // Examine the text in the response
         response.json().then(function (data) {
-          console.log(data);
           location.replace("../dashboard");
+          localStorage.setItem("token",data.token);
+          localStorage.setItem("useruuid",data.data.user.uuid);
 
-          localStorage.setItem("token", data.token);
-
-          //console.log(donut + " donuts cost $" + cost + " each");
         });
       })
       .catch(function (err) {
-        console.log("Fetch Error :", err);
       });
   };
   return (
