@@ -8,6 +8,7 @@ import {
   TextField,
   Card,
 } from "@mui/material";
+import {useState, useEffect} from "react"
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
 import Photo from "../../../static/images/busbackground.jpg";
@@ -20,27 +21,49 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
 import Slide from "@mui/material/Slide";
 import DashboardLayout from "./../../../Layouts/Dashboard";
-import Sidebar from "../sidebar/Sidebar.jsx";
-import DashNavbar from "../dashnavbar/DashNavBar.jsx";
-import Skeleton from "react-loading-skeleton";
+import { fetchAllbuses,deletebus,getBusById } from '../../../redux/Action/fetchallbuses';
+import {useDispatch, useSelector} from 'react-redux';
+import Store from '../../../redux/store';
+import { ToastContainer} from "react-toastify";
+import SkeletonElement from "./skeletons/SkeletonElement.jsx";
+
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
 
 const Buses = () => {
+  const dispatch = useDispatch()
   const [open, setOpen] = React.useState(false);
   const [isLoading, setisLoading] = React.useState(true);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
+  const [busId, setBusId]= useState("")
+  const [busPlateNumber, setBusPlateNumber]= useState("")
   const [openDetail, setOpenDetail] = React.useState(false);
+  const [loading,setLoading]= React.useState(true)
+  const Buses = useSelector(state => state.fetchbuses.buses)
+  
+  const handleClickOpen = (id, plateNumber) => {
+    setOpen(true);
+    setBusId(id)
+    setBusPlateNumber(plateNumber)
+  };
+
+  
+  const handleDelete = () => {
+    dispatch(deletebus(busId))
+    setOpen(false)
+  };
+
+  const handleGetOneBus = (id) => {
+    localStorage.setItem("busId", id)
+    // dispatch(getBusById(id))
+  }
+  
+  const handleClose = ()=> {
+    setOpen(false)
+  }
+
 
   const handleClickOpenDetail = () => {
     setOpenDetail(true);
@@ -50,8 +73,19 @@ const Buses = () => {
     setOpenDetail(false);
   };
 
+
+  const handleBusses = async () => {
+    dispatch(fetchAllbuses())
+  }
+  
+  useEffect(() => {
+    handleBusses()
+    setLoading(false)
+  },[])
+
   return (
     <DashboardLayout>
+      <ToastContainer />
       <div className="dashboard">
         <div className="containt">
           <Box
@@ -140,178 +174,11 @@ const Buses = () => {
                 color: "#012241",
               }}
             >
-              10 Buses
+              {`${Buses?.length} buses`}
             </Typography>
-            <Card sx={{ marginBottom: 3 }}>
-              <Box
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: {
-                    lg: "200px 200px 200px 200px",
-                    xs: "100%",
-                    md: "400px 400px",
-                  },
-                }}
-              >
-                <Box
-                  component="img"
-                  src={Photo}
-                  alt="bus image"
-                  sx={{
-                    width: { lg: 200, xs: 1 },
-                    height: { lg: 130, xs: 200 },
-                  }}
-                />
-                <Box
-                  component="div"
-                  sx={{ display: "block", textAlign: "center", p: 2 }}
-                >
-                  <Typography
-                    component="label"
-                    sx={{
-                      color: "#675B5B",
-                      textTransform: "uppercase",
-                      textAlign: "center",
-                      fontWeight: 700,
-                      fontSize: { xs: 12, lg: 15 },
-                    }}
-                  >
-                    Capacity
-                  </Typography>
-                  <Typography
-                    component="p"
-                    sx={{ fontWeight: 700, fontSize: { lg: 13, xs: 10 } }}
-                  >
-                    100
-                  </Typography>
-                  <Typography
-                    component="label"
-                    sx={{
-                      textTransform: "uppercase",
-                      color: "#675B5B",
-                      fontSize: { lg: 12, xs: 9 },
-                    }}
-                  >
-                    Passengers
-                  </Typography>
-                </Box>
-                <Box
-                  component="div"
-                  sx={{ display: "block", textAlign: "center", p: 2 }}
-                >
-                  <Typography
-                    component="label"
-                    sx={{
-                      color: "#675B5B",
-                      textTransform: "uppercase",
-                      textAlign: "center",
-                      fontWeight: 700,
-                      fontSize: { xs: 12, lg: 15 },
-                    }}
-                  >
-                    Vehicle type
-                  </Typography>
-                  <Typography
-                    component="p"
-                    sx={{ fontWeight: 700, fontSize: { lg: 13, xs: 10 } }}
-                  >
-                    3B
-                  </Typography>
-                  <Typography
-                    component="label"
-                    sx={{
-                      textTransform: "uppercase",
-                      color: "#675B5B",
-                      fontSize: { lg: 12, xs: 9 },
-                    }}
-                  >
-                    type
-                  </Typography>
-                </Box>
-                <Box
-                  component="div"
-                  sx={{ display: "block", textAlign: "center", p: 2 }}
-                >
-                  <Typography
-                    component="label"
-                    sx={{
-                      color: "#675B5B",
-                      textTransform: "uppercase",
-                      textAlign: "center",
-                      fontWeight: 700,
-                      fontSize: { xs: 12, lg: 15 },
-                    }}
-                  >
-                    Plate number
-                  </Typography>
-                  <Typography
-                    component="p"
-                    sx={{ fontWeight: 700, fontSize: { lg: 13, xs: 10 } }}
-                  >
-                    RAB 100 C
-                  </Typography>
-                </Box>
-              </Box>
-              <Box
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: {
-                    lg: "150px 100px",
-                    xs: "100px 50px",
-                  },
-                  marginLeft: "auto",
-                  gridGap: "1.3rem",
-                  width: { lg: 280, xs: 200 },
-                }}
-              >
-                <Button
-                  size="small"
-                  component={Link}
-                  to="/bus/1"
-                  sx={{
-                    background: "#012241",
-                    borderTopLeftRadius: 10,
-                    borderBottomLeftRadius: 0,
-                    borderTopRightRadius: 10,
-                    borderBottomRightRadius: 0,
-                    color: "white",
-                    fontSize: { lg: 10, xs: 7 },
-                    p: 1,
-                    height: 20,
-                    "&:hover": {
-                      background: "#012241",
-                      opacity: 0.8,
-                      transition: "0.8s",
-                    },
-                  }}
-                >
-                  view full details
-                </Button>
-                <Button
-                  onClick={handleClickOpen}
-                  sx={{
-                    background: "#bd2424",
-                    color: "white",
-                    fontSize: { lg: 10, xs: 7 },
-                    p: 1,
-                    borderTopLeftRadius: 10,
-                    borderBottomLeftRadius: 0,
-                    borderTopRightRadius: 10,
-                    borderBottomRightRadius: 0,
-                    height: 20,
-                    "&:hover": {
-                      background: "#bd2424",
-                      opacity: 0.8,
-                      transition: "0.8s",
-                    },
-                  }}
-                >
-                  Delete
-                </Button>
-              </Box>
-            </Card>
 
-            <Card sx={{ marginBottom: 3 }}>
+            {loading&&loading ? <SkeletonElement/> : Buses&&Buses?.map(bus => {
+              return <Card sx={{ marginBottom: 3 }} key = {bus.uuid}>
               <Box
                 sx={{
                   display: "grid",
@@ -351,7 +218,7 @@ const Buses = () => {
                     component="p"
                     sx={{ fontWeight: 700, fontSize: { lg: 13, xs: 10 } }}
                   >
-                    100
+                    {bus.capacity}
                   </Typography>
                   <Typography
                     component="label"
@@ -384,7 +251,7 @@ const Buses = () => {
                     component="p"
                     sx={{ fontWeight: 700, fontSize: { lg: 13, xs: 10 } }}
                   >
-                    3B
+                    {bus.type}
                   </Typography>
                   <Typography
                     component="label"
@@ -417,7 +284,7 @@ const Buses = () => {
                     component="p"
                     sx={{ fontWeight: 700, fontSize: { lg: 13, xs: 10 } }}
                   >
-                    RAB 100 C
+                    {bus.plateNumber}
                   </Typography>
                 </Box>
               </Box>
@@ -435,8 +302,9 @@ const Buses = () => {
               >
                 <Button
                   size="small"
+                  onClick={() => handleGetOneBus(bus.uuid)}
                   component={Link}
-                  to="/bus/1"
+                  to={`/dashboard/bus?id=${bus.uuid}`}
                   sx={{
                     background: "#012241",
                     borderTopLeftRadius: 10,
@@ -457,7 +325,7 @@ const Buses = () => {
                   view full details
                 </Button>
                 <Button
-                  onClick={handleClickOpen}
+                  onClick={()=> handleClickOpen(bus.uuid,bus.plateNumber)}
                   sx={{
                     background: "#bd2424",
                     color: "white",
@@ -479,37 +347,44 @@ const Buses = () => {
                 </Button>
               </Box>
             </Card>
+            })}
           </Box>
-          <Pagination
+
+
+
+
+
+          {<Pagination
             size="small"
             count={10}
             variant="outlined"
             siblingCount={1}
             boundaryCount={1}
             sx={{ color: "#bd2424" }}
-          ></Pagination>
+          ></Pagination>}
+
+
           <Dialog
-            open={open}
-            TransitionComponent={Transition}
-            keepMounted
-            onClose={handleClose}
-            aria-describedby="alert-dialog-slide-description"
-          >
+              open={open}
+              TransitionComponent={Transition}
+              keepMounted
+              onClose={handleClose}
+              aria-describedby="alert-dialog-slide-description"
+            >
             <DialogTitle sx={{ textAlign: "center", margin: 3 }}>
               Confirm Delete
             </DialogTitle>
             <DeleteOutlineRoundedIcon
               sx={{ textAlign: "center", margin: "auto", fontSize: 100 }}
             />
-            <DialogContent>
+            <DialogContent >
               <DialogContentText id="alert-dialog-slide-description">
-                Are you sure you want to delete bus with Plate number RAB 100
-                B?.
+                Are you sure you want to delete bus with Plate number {busPlateNumber}.
               </DialogContentText>
             </DialogContent>
             <DialogActions>
               <Button
-                onClick={handleClose}
+                onClick={handleDelete}
                 sx={{
                   p: 1,
                   color: "#fff",

@@ -2,14 +2,33 @@ import React, { useState } from "react";
 import { Box, Grid, TextField, Typography, Button } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
-import { FormValidation } from "./Validations.jsx";
 import DashboardLayout from "./../../../Layouts/Dashboard";
+import Sidebar from "../sidebar/Sidebar.jsx";
+import DashNavbar from "../dashnavbar/DashNavBar.jsx";
+import { FormValidation} from "./Validations.jsx";
+import { useDispatch, useSelector} from "react-redux";
+import {addBus} from "../../../redux/Action/fetchallbuses"
+import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"
+
+
 
 export default function Register() {
-  const { handleInputValue, handleFormSubmit, formIsValid, errors } =
+  const { handleInputValue, handleFormSubmit, formIsValid, errors, values } =
     FormValidation();
+    const formBody = (({ capacity, company, manufacturer, plateNumber, type, yearOfManufacturing }) => ({ capacity, company, manufacturer, plateNumber, type, yearOfManufacturing}))(values)
+
+  const dispatch = useDispatch()
+  
+  const handleCreateBus = () => {
+    dispatch(addBus(formBody))
+  }
+
+
   return (
     <DashboardLayout>
+      <ToastContainer />
       <div className="dashboard">
         <div className="containt">
           <Box
@@ -46,6 +65,7 @@ export default function Register() {
                 name="company"
                 label="Company"
                 type="text"
+
                 sx={{ minWidth: { lg: 250, xs: "100%" } }}
                 onBlur={handleInputValue}
                 onChange={handleInputValue}
@@ -76,7 +96,7 @@ export default function Register() {
               <TextField
                 size="small"
                 id="platenumber"
-                name="platenumber"
+                name="plateNumber"
                 label="Plate Number"
                 type="text"
                 sx={{
@@ -128,7 +148,7 @@ export default function Register() {
               <TextField
                 size="small"
                 id="yom"
-                name="yom"
+                name="yearOfManufacturing"
                 label="Year manufactured"
                 type="text"
                 sx={{
@@ -272,7 +292,8 @@ export default function Register() {
             <Grid sx={{ marginTop: 3, width: 110, marginLeft: "auto" }}>
               <Button
                 type="submit"
-                disabled={!formIsValid()}
+                onClick={handleCreateBus}
+                // disabled={!formIsValid()}
                 sx={{
                   background: "#012241",
                   color: "white",

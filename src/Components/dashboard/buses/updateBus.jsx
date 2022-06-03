@@ -5,13 +5,47 @@ import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import Photo from "../../../static/images/busbackground.jpg";
 import { FormValidation } from "./Validations.jsx";
 import DashboardLayout from "./../../../Layouts/Dashboard";
+import {getBusById} from "../../../redux/Action/fetchallbuses"
+import { useEffect } from "react";
+import { updateBus } from "../../../redux/Action/fetchallbuses";
+import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer} from "react-toastify";
 
-export default function Update() {
-  const { handleInputValue, handleFormSubmit, formIsValid, errors } =
-    FormValidation();
+export default function Update(){
+  const {
+    handleInputValue,
+    handleFormSubmit,
+    formIsValid,
+    errors,
+    values
+  } = FormValidation();
+
+  
+  const busId = localStorage.getItem("busId")
+  const dispatch = useDispatch()
+
+    const getBus =async ()=>{
+      dispatch(getBusById(busId))
+    }
+    
+    useEffect(() => {
+      getBus()
+    },[])
+  
+  
+  const bus = useSelector(state => state?.fetchbuses?.busById)
+  console.log(bus)
+  
+  const formBody = (({capacity, company, manufacturer, plateNumber, type, yearOfManufacturing }) => ({ capacity, company, manufacturer, plateNumber, type, yearOfManufacturing}))(values)
+
+  const handleUpdateBus = () => {
+    dispatch(updateBus(busId,formBody))
+  }
+  
 
   return (
     <DashboardLayout>
+      <ToastContainer />
       <div className="dashboard">
         <div className="containt">
           <Box
@@ -57,7 +91,7 @@ export default function Update() {
                 name="company"
                 label="Company"
                 type="text"
-                defaultValue="Kigali bus service"
+                defaultValue={bus?.data.buses.company}
                 sx={{ minWidth: { lg: 250, xs: "100%" } }}
                 onBlur={handleInputValue}
                 onChange={handleInputValue}
@@ -72,7 +106,7 @@ export default function Update() {
                 name="type"
                 label="Type"
                 type="text"
-                defaultValue="3B"
+                defaultValue={bus?.data.buses.type}
                 sx={{
                   minWidth: { lg: 250, xs: "100%" },
                   marginLeft: { lg: 4, xs: 0 },
@@ -89,10 +123,10 @@ export default function Update() {
               <TextField
                 size="small"
                 id="platenumber"
-                name="platenumber"
+                name="plateNumber"
                 label="Plate Number"
                 type="text"
-                defaultValue="RAB 100 C"
+                value={bus?.data.buses.plateNumber}
                 sx={{
                   minWidth: { lg: 250, xs: "100%" },
                   marginTop: { lg: 0, xs: 3 },
@@ -112,7 +146,7 @@ export default function Update() {
                 name="manufacturer"
                 label="Manufacturer"
                 type="text"
-                defaultValue="Hyundai"
+                defaultValue={bus?.data.buses.manufacturer}
                 sx={{ minWidth: { lg: 250, xs: "100%" } }}
                 onBlur={handleInputValue}
                 onChange={handleInputValue}
@@ -127,7 +161,7 @@ export default function Update() {
                 name="capacity"
                 label="Capacity"
                 type="number"
-                defaultValue="100"
+                defaultValue={bus?.data.buses.capacity}
                 sx={{
                   minWidth: { lg: 250, xs: "100%" },
                   marginLeft: { lg: 4, xs: 0 },
@@ -145,10 +179,10 @@ export default function Update() {
                 size="small"
                 contentEditable="true"
                 id="yom"
-                name="yom"
+                name="yearOfManufacturing"
                 label="Year manufactured"
                 type="text"
-                defaultValue="2000"
+                defaultValue={bus?.data.buses.yearOfManufacturing}
                 sx={{
                   minWidth: { lg: 250, xs: "100%" },
                   marginTop: { lg: 0, xs: 4 },
@@ -298,7 +332,8 @@ export default function Update() {
             <Grid sx={{ marginTop: 3, width: 110, marginLeft: "auto" }}>
               <Button
                 type="submit"
-                disabled={!formIsValid()}
+                onClick={handleUpdateBus}
+                // disabled={!formIsValid()}
                 sx={{
                   background: "#012241",
                   color: "white",
