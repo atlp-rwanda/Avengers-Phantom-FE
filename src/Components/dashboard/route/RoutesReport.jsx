@@ -210,9 +210,7 @@ const OneRoute = () => {
           </DialogActions>
         </Dialog>
       </div>
-      {/* <DashNavbar /> */}
       <div className="dashboard">
-        {/* <div className="generalmenubar">{<Sidebar />}</div> */}
         <div className="containt">
           <div className="header">
             <h3 sx={{ display: "inline-block" }}>All Routes Report </h3>

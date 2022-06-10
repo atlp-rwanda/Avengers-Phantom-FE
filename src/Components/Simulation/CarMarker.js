@@ -9,7 +9,7 @@ const icon = L.icon({
   iconUrl: busIcon,
 });
 
-export const PhantomBusMarker = ({ data }) => {
+export const PhantomBusMarker = ({ data, speed }) => {
   const { lat, lng } = data;
 
   const [prevPos, setPrevPos] = useState([lat, lng]);
@@ -23,7 +23,7 @@ export const PhantomBusMarker = ({ data }) => {
       icon={icon}
       position={[lat, lng]}
       previousPosition={prevPos}
-      duration={1000}
+      duration={speed}
       keepAtCenter={true}
       rotationOrigin="center"
     />

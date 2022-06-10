@@ -40,7 +40,9 @@ const Simulation = () => {
   const [summary, setSummary] = React.useState();
   const [speed, setSpeed] = React.useState(1000);
   const [pause, setPause] = React.useState(false);
+  const [passengers, setPassengers] = React.useState(0);
   const [currentTrack, setCurrentTrack] = React.useState({});
+
   let cursor = 0;
 
   useEffect(() => {
@@ -53,9 +55,6 @@ const Simulation = () => {
           setCurrentTrack(position[cursor]);
           return;
         }
-        if (speed) {
-          setCurrentTrack(position[cursor]);
-        }
       }, speed);
       return () => {
         clearInterval(interval);
@@ -67,7 +66,7 @@ const Simulation = () => {
     <DashboardLayout>
       <Box sx={{ flexGrow: 1, marginTop: "20px" }}>
         <Grid container spacing={2}>
-          <Grid item xs={8}>
+          <Grid item xs={12} md={12} lg={8}>
             <Item elevation={0}>
               <MapContainer
                 center={[-1.939662908, 30.055666444]}
@@ -88,13 +87,14 @@ const Simulation = () => {
                     />
                     <PhantomBusMarker
                       data={currentTrack ?? { lat: -1.978106, lng: 30.044125 }}
+                      speed={speed}
                     />
                   </LayersControl.BaseLayer>
                 </LayersControl>
               </MapContainer>
             </Item>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={12} md={12} lg={4}>
             <div
               style={{
                 background: "#4b4b4b",
@@ -111,6 +111,8 @@ const Simulation = () => {
                 setPause={setPause}
                 start={start}
                 engine={engine}
+                passengers={passengers}
+                setPassengers={setPassengers}
               />
             </div>
           </Grid>
