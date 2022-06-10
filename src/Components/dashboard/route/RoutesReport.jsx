@@ -13,7 +13,7 @@ import DashNavbar from "../dashnavbar/DashNavBar.jsx";
 import "../Dashboard.css";
 import { Link, Routes } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-
+import Skeleton from "react-loading-skeleton";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -21,7 +21,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import WarningIcon from "@mui/icons-material/Warning";
-import RoutesID from "./routesID.js";
+import RoutesID from "./routesID.jsx";
 import { Add } from "@mui/icons-material";
 import AddIcon from "@mui/icons-material/Add";
 import List from "@mui/material/List";
@@ -121,6 +121,7 @@ const OneRoute = () => {
               Do you want to delete this route?
             </DialogContentText>
             <Typography>
+              {" "}
               <WarningIcon sx={{ color: "#bd2424" }} />
               This action cannot be revoked
             </Typography>
@@ -147,7 +148,6 @@ const OneRoute = () => {
         <Dialog
           open={openUpdater}
           onClose={handleClose}
-          // fullScreen
           fullWidth
           maxWidth="md"
         >

@@ -13,11 +13,16 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 
 
 
 const ResetPassword = () => {
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [values, setValues] = React.useState({
     password: '',
     showPassword: false,
@@ -52,6 +57,7 @@ const ResetPassword = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    setLoading(true)
 
     if (password.length == 0) {
       setError(true);
@@ -65,13 +71,37 @@ const ResetPassword = () => {
     }
 
 
-  }
+  
   const body = {
     password,
   }
+  const url = window.location.href;
+  const token = url?.split('/')[4]
 
+  
 
+  axios({
+    url: `http://localhost:5000/api/v1/users/resetpassword/${token}`,
+    data: body,
+    method: "PUT",
 
+  }).then(res => {
+    setTimeout(() => {
+      setLoading(false)
+      setMessage(" password has been Changed successfully 👍🏾")
+
+      // navigate('/signin');
+    }, 2000)
+
+  }).catch((err) => {
+    console.log(err)
+    setLoading(false)
+      setMessage("Failed")
+  })
+
+  console.log("Submited")
+
+}
 
 
 
@@ -85,10 +115,11 @@ const ResetPassword = () => {
         <Navbar />
         <Grid
           elevation={4}
-          style={{ margin: "4vh auto", width: 860, padding: 20 }}
+          style={{ margin: "6vh auto", width: 860, padding: 20 }}
         >
           <Stack>
-
+              <p style={{ backgroundColor: "white", borderRadius: "6px", color: "#012241", textAlign: 'center', fontSize: "16px" }}>{message}</p>
+                
           </Stack>
         </Grid>
         <Grid container justify="center" alignItems="center">
@@ -147,11 +178,9 @@ const ResetPassword = () => {
                 <Button
                   type="submit"
                   style={{ backgroundColor: '#012241', margin: 20, width: "25%" }}
-                  variant="contained"
-                // component={Link}
-                // to={`/signin`}
-                >
-                  Submit
+                  variant="contained">
+                    {loading ? <b >Please Wait...</b> : <b>Submit</b>}
+                 
                 </Button>
               </Grid>
             </form>

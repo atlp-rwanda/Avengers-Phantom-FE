@@ -11,6 +11,9 @@ import {
   TextField,
   Card,
 } from "@mui/material";
+import CardSkeleton from "./CardSkeleton.jsx";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
 import Dialog from "@mui/material/Dialog";
@@ -50,6 +53,7 @@ const operators = [
 
 const Operators = () => {
   const [open, setOpen] = React.useState(false);
+  const [isLoading, setisLoading] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -122,7 +126,7 @@ const Operators = () => {
               </Button>
             </FormControl>
           </Box>
-
+          {isLoading && <CardSkeleton skeletoncount={5} />}
           {operators.map((operator, index) => (
             <div key={index} className="operator_component">
               <div className="operator_component_photo">
