@@ -34,7 +34,7 @@ import ListBuses from "../Components/buses redux/busess.jsx";
 import Simulation from "../Components/Simulation/Simulation.js";
 import Dashboard from "../Layouts/Dashboard";
 
-const PhantomRoutes = () => {
+const PhantomRoutes = (prop) => {
   const location = useLocation();
   return (
     <div>
@@ -97,7 +97,7 @@ const PhantomRoutes = () => {
             </>
           }
         />
-        <Route path="/resertpasswordpage" element={<ResetPasswordPage />} />
+        <Route path={`/resertpasswordpage/:${prop.token}`} element={<ResetPasswordPage />} />
       </Routes>
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />

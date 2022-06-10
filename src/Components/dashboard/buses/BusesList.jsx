@@ -27,6 +27,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const Buses = () => {
   const [open, setOpen] = React.useState(false);
+  const [isLoading, setisLoading] = React.useState(true);
 
   const handleClickOpen = () => {
     setOpen(true);
