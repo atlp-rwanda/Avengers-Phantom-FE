@@ -29,17 +29,10 @@ import WarningIcon from "@mui/icons-material/Warning";
 import RoutesID from "./routesID.jsx";
 import { Add } from "@mui/icons-material";
 import AddIcon from "@mui/icons-material/Add";
-<<<<<<< HEAD
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import AddRouteButton from "./AddRouteButton.jsx";
 import DashboardLayout from "./../../../Layouts/Dashboard";
-=======
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import UpdateRouteButton from "./UpdateRouteButton.jsx";
-import SkeletonElement from "./Skeletons/SkeletonElement.jsx";
->>>>>>> (ft-route-crud)
 
 const un = "Bus stop one, You can add others by hitting + button";
 
@@ -110,11 +103,7 @@ const OneRoute = () => {
   const handleUpdate = (e) => {
     e.preventDefault();
 
-<<<<<<< HEAD
     console.log("Updated handler");
-=======
-    console.log("Updated handler this")
->>>>>>> (ft-route-crud)
     setRouteIDError(false);
     setStartPointError(false);
     setEndPointError(false);
@@ -135,27 +124,7 @@ const OneRoute = () => {
     } else {
       console.log(routeID, startPoint, endPoint, stop);
     }
-<<<<<<< HEAD
   };
-=======
-    else {
-      console.log(routeID, startPoint, endPoint, stop)
-      
-    }
-  }
-
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchAllroutes());
-    return () => {};
-  }, []);
- 
-  // if ( loading === false && routes && routes.data){
-  //   routes.data.routes.routes.rows.map(item => console.log(item))
-  // }
-
->>>>>>> (ft-route-crud)
 
   return (
     <DashboardLayout>
@@ -204,7 +173,6 @@ const OneRoute = () => {
             </DialogContentText>
             <UpdateRouteButton />
           </DialogContent>
-<<<<<<< HEAD
           <DialogActions>
             <Button
               onClick={handleCloseUpdater}
@@ -255,28 +223,6 @@ const OneRoute = () => {
               Reset
             </Button>
           </DialogActions>
-=======
-          {/* <DialogActions>
-            <Button onClick={handleCloseUpdater} sx={{
-              backgroundColor: "#012241", color: "#fff", backgroundColor: "#012241", color: "#fff", "&:hover": {
-                background: "#1565c0",
-                opacity: 0.8,
-              },
-            }} className="buttons">Cancel</Button>
-            <Button onClick={handleUpdate} sx={{
-              backgroundColor: "#bd2424", color: "#fff", backgroundColor: "#012241", color: "#fff", "&:hover": {
-                background: "#1565c0",
-                opacity: 0.8,
-              },
-            }} className="buttons">Update</Button>
-            <Button onClick={handleClearUpdater} sx={{
-              backgroundColor: "#ff345d", color: "#fff", backgroundColor: "#012241", color: "#fff", "&:hover": {
-                background: "#1565c0",
-                opacity: 0.8,
-              },
-            }} className="buttons">Reset</Button>
-          </DialogActions> */}
->>>>>>> (ft-route-crud)
         </Dialog>
       </div>
       <div className="dashboard">
@@ -313,7 +259,6 @@ const OneRoute = () => {
           
 
           <form className="addroute">
-<<<<<<< HEAD
             {RoutesID.map((route) => (
               <Grid container minHeight={30} spacing={1}>
                 <Grid
@@ -360,55 +305,10 @@ const OneRoute = () => {
                         </Typography>
                         <Typography sx={{ display: "inline-block" }}>
                           {route.endingPoint}
-=======
-            { loading ? <SkeletonElement />: loading === false && routes && routes.data ? routes.data.routes.routes.rows.map(route =>
-              <Grid container minHeight={30} spacing={1}   key={route.uuid}>
-                <Grid item container minHeight={20} sx={{ width: "95%", margin: { xs: "auto", sm: "auto" }, display: "flex" }}>
-                  {/* <Grid item container minHeight={20} sx={{ border: "1px solid #364878", width: "95%", margin: { xs: "auto", sm: "auto" }, display: "flex" }}> */}
-
-                  <Grid item sx={{ margin: { xs: 1, sm: 1 } }} xs={12} md={5.75} border={"1px solid #364878"}>
-                    <Box sx={{ mb: 1, px: 2}}>
-                      <Box my={0.5} sx={{ textAlign: 'center' }}>
-                        <Typography sx={{ display: 'inline-block' }}>
-                          Route ID:
-                        </Typography>
-                        <Typography sx={{ display: 'inline-block' }}>
-                          {route.uuid}
-                        </Typography>
-                      </Box>
-
-                    <Box my={2} sx={{ display: 'flex' }}>
-                      <Box my={2} sx={{ display: 'flex' }}>
-                        <Typography sx={{ width: 300,display:"flex", marginRight:"10px", justifyContent:"center", color: "green", borderRadius: "50%", backgroundColor:"white", border: "2px solid green", width:'25px', height:"25px"}}>
-                          {' '}
-                          A {' '}
-                        </Typography>
-                        <Typography sx={{ display: 'inline-block' }}>
-                          {route.startLocation}
-                        </Typography>
-                      </Box>
-
-                      <Box my={2} sx={{ display: 'flex' }}>
-                        <Typography sx={{ width: 50 ,display:"flex", marginLeft:"10px",Right:"10px", justifyContent:"center", color: "green"}}>
-                          {' '}
-                         ...............{' '}
-                        </Typography>
-                        
-                      </Box>
-
-                      <Box my={2} sx={{ display: 'flex' }}>
-                        <Typography sx={{ width: 200,display:"flex", marginRight:"10px", justifyContent:"center", color: "blue", borderRadius: "50%", backgroundColor:"white", border: "2px solid blue", width:'25px', height:"25px" }}>
-                          {' '}
-                          B{' '}
-                        </Typography>
-                        <Typography sx={{ display: 'inline-block' }}>
-                          {route.endLocation}
->>>>>>> (ft-route-crud)
                         </Typography>
                       </Box>
 
                     </Box>
-<<<<<<< HEAD
                   </Grid>
                   <Grid
                     item
@@ -417,11 +317,6 @@ const OneRoute = () => {
                     md={3.75}
                     border={"1px solid #364878"}
                   >
-=======
-                  </Box>
-                </Grid>
-                  {/* <Grid item sx={{ margin: { xs: 1, sm: 1 } }} xs={12} md={3.75} border={"1px solid #364878"}>
->>>>>>> (ft-route-crud)
                     <Box my={0.5} px={2}>
                       <Typography sx={{ minWidth: 60 }}>Bus Stops:</Typography>
                     </Box>
@@ -441,7 +336,6 @@ const OneRoute = () => {
                         ))}
                       </ListItemButton>
                     </Box>
-<<<<<<< HEAD
                   </Grid>
                   <Grid
                     container
@@ -473,38 +367,15 @@ const OneRoute = () => {
                       <Button
                         variant="contained"
                         style={{ backgroundColor: "#bd2424", width: "100px" }}
-=======
-                  </Grid> */}
-                  <Grid container item sx={{ margin: { xs: 1, sm: 1 } }} xs={12} md={2} >
-                    <Grid item xs={12} sx={{ mt: { xs: 1.5 } }} sm={4} md={12} >
-                      <Button component={Link}
-                        to={`/singleRoute?id=${route.uuid}`}
-                        variant='contained' style={{ backgroundColor: "#012241", width: "100px" }}>
-                        View route details
-                      </Button>
-                    </Grid>
-                    {/* <Grid item xs={12} sx={{ mt: { xs: 0.5 } }} sm={4} md={12} >
-                      <Button variant='contained' style={{ backgroundColor: "#012241", width: "100px" }}
-                        onClick={handleClickOpenUpdater}>
-                        Update
-                      </Button>
-                    </Grid> */}
-                    {/* <Grid item xs={12} sx={{ mt: { xs: 0.5 } }} sm={4} md={12} >
-                      <Button variant='contained' style={{ backgroundColor: '#bd2424', width: "100px" }}
->>>>>>> (ft-route-crud)
                         onClick={handleClickOpen}
                       >
                         Delete
                       </Button>
-                    </Grid> */}
+                    </Grid> */
                   </Grid>
                 </Grid>
-<<<<<<< HEAD
               </Grid>
             ))}
-=======
-              </Grid>) : <div>No route found</div>}
->>>>>>> (ft-route-crud)
           </form>
         </div>
       </div>

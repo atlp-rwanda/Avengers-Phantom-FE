@@ -29,6 +29,7 @@ import stops from "./stops.jsx";
 import AddIcon from "@mui/icons-material/Add";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
+import DashboardLayout from "../../../Layouts/Dashboard";
 
 import UpdateRouteButton from "./UpdateRouteButton.jsx";
 
@@ -132,6 +133,7 @@ const SingleRoute = (props) => {
 
 
   return (
+    <DashboardLayout >
     <div>
       <div>
         <Dialog open={open} onClose={handleClose}>
@@ -232,7 +234,7 @@ const SingleRoute = (props) => {
 
       <DashNavbar />
       <div className="dashboard">
-        <div className="generalmenubar">{<Sidebar />}</div>
+       
         <div className="containt">
           <h3 style={{ display: "inline" }}>Single Route Report </h3>
           <hr />
@@ -261,7 +263,12 @@ const SingleRoute = (props) => {
                    sx={{
                      flex: 1,
                      height: 350,
-                     border: "3px solid #c4c4c4",
+                     border: "1px solid #c4c4c4",
+                     backgroundColor:'white',
+                     display: "flex",
+                     flexDirection: "column",
+                     justifyContent:"center",
+                     alignItems:"center",
                      mx: 2,
                    }}
                    className="coordinate"
@@ -290,8 +297,13 @@ const SingleRoute = (props) => {
                  <Box
                    sx={{
                      flex: 1,
-                     border: "3px solid #c4c4c4",
+                     border: "1px solid #c4c4c4",
                      height: 350,
+                     backgroundColor:'white',
+                     display: "flex",
+                     flexDirection: "column",
+                     justifyContent:"center",
+                     alignItems:"center",
                      mx: 2,
                    }}
                    className="routeID"
@@ -330,16 +342,19 @@ const SingleRoute = (props) => {
                  <Box
                    sx={{
                      flex: 1,
-                     border: "3px solid #c4c4c4",
+                     border: "1px solid #c4c4c4",
+                     backgroundColor:'white',
                      height: 350,
                      display: "flex",
-                     flexDirection: "row",
+                     flexDirection: "column",
+                     justifyContent:"center",
+                     alignItems:"center",
                      mx: 2,
                    }}
                    className="busStops"
                  >
                    <Box my={0.5} px={2}>
-                     <Typography sx={{ minWidth: 60 }}> Bus Stops: </Typography>
+                     <Typography sx={{ minWidth: 60, color:"black",fontWeight:700 }}> Bus Stops: </Typography>
                    </Box>
                    <Box>
                      <ListItemButton
@@ -347,15 +362,14 @@ const SingleRoute = (props) => {
                        href="#simple-list"
                        sx={{
                          display: "block",
-                         my: 0.5,
-                         overflow: "scroll",
+                         my: 0.5,                         
                          maxHeight: 320,
                        }}
                      >
                        
                        {stops.map((stop) => (
                          
-                         <ListItemText>{stop.location}</ListItemText>
+                         <ListItemText key={stop.location}>{stop.location}</ListItemText>
                        ))}
                      </ListItemButton>
                    </Box>
@@ -418,11 +432,12 @@ const SingleRoute = (props) => {
             ) : <div>No single route yet</div>}
            
           </form>
-          {isDeleted && <Navigate to="/routes" /> }
+          {isDeleted && <Navigate to="/dashboard/routes" /> }
           {/* {loading ? window.location.reload(false) : ' '} */}
         </div>
       </div>
     </div>
+    </DashboardLayout>
   );
 };
 

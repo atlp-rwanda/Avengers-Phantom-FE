@@ -3,7 +3,7 @@ import * as actions from "../Action/actiontypes.js";
 export function routesListReducer(state = { routes: [] }, action) {
   switch (action.type) {
     case actions.ROUTE_LIST_REQUEST:
-      return { loading: true };
+      return { loading: true, message: action.payload };
     case actions.ROUTE_LIST_SUCCESS:
       return { loading: false, routes: action.payload };
     case actions.ROUTE_LIST_FAIL:
@@ -29,11 +29,11 @@ export function routestDetailsReducer(state = { route: {} }, action) {
 export function routeSaveReducer(state = { route: {} }, action) {
   switch (action.type) {
     case actions.ROUTE_SAVE_REQUEST:
-      return { loading: true };
+      return { ...state, loading: true };
     case actions.ROUTE_SAVE_SUCCESS:
-      return { loading: false, success: true, route: action.payload };
+      return { ...state, loading: false, success: true, route: action.payload };
     case actions.ROUTE_SAVE_FAIL:
-      return { loading: false, error: action.payload };
+      return { ...state, loading: false, error: action.payload };
     default:
       return state;
   }
