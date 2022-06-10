@@ -2,18 +2,15 @@ import React, { useState } from "react";
 import { Box, Grid, TextField, Typography, Button } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
-import Sidebar from "../sidebar/Sidebar.jsx";
-import DashNavbar from "../dashnavbar/DashNavBar.jsx";
 import { FormValidation } from "./Validations.jsx";
+import DashboardLayout from "./../../../Layouts/Dashboard";
 
 export default function Register() {
   const { handleInputValue, handleFormSubmit, formIsValid, errors } =
     FormValidation();
   return (
-    <>
-      <DashNavbar />
+    <DashboardLayout>
       <div className="dashboard">
-        <div className="generalmenubar">{<Sidebar />}</div>
         <div className="containt">
           <Box
             sx={{
@@ -298,6 +295,6 @@ export default function Register() {
           </form>
         </div>
       </div>
-    </>
+    </DashboardLayout>
   );
 }

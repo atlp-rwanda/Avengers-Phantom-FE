@@ -1,7 +1,5 @@
 import React from "react";
 import Drivers from "../operatorsanddriver/Drivers.jsx";
-import Sidebar from "../sidebar/Sidebar.jsx";
-import DashNavbar from "../dashnavbar/DashNavBar.jsx";
 import "../Dashboard.css";
 import "../updateProfile/style.css";
 import {
@@ -11,19 +9,17 @@ import {
   DialogTitle,
   DialogContentText,
   DialogActions,
-  TextField
+  TextField,
 } from "@mui/material";
 import { useState } from "react";
 import SkeletonElement from "./Skeletons/SkeletonElement.jsx";
+import DashboarLayout from "./../../../Layouts/Dashboard";
 
 const UpdateProfile = () => {
   const [open, setOpen] = useState(false);
   return (
-    <div>
-      <DashNavbar />
-
+    <DashboarLayout>
       <div className="dashboard">
-        <div className="generalmenubar">{<Sidebar />}</div>
         <div className="containt">
           <form action="" method="post">
             <div className="header">
@@ -204,12 +200,7 @@ const UpdateProfile = () => {
                 </div>
                 <div className="contact-left-input">
                   {" "}
-                  <TextField
-                    size="small"
-                    name="email"
-                    type="email"
-                    fullWidth
-                  />
+                  <TextField size="small" name="email" type="email" fullWidth />
                 </div>
                 <div className="contact-left-label">
                   {" "}
@@ -217,12 +208,7 @@ const UpdateProfile = () => {
                 </div>
                 <div className="contact-left-input">
                   {" "}
-                  <TextField
-                    size="small"
-                    name="phone"
-                    type="email"
-                    fullWidth
-                  />
+                  <TextField size="small" name="phone" type="email" fullWidth />
                 </div>
               </div>
             </div>
@@ -300,7 +286,7 @@ const UpdateProfile = () => {
           </form>
         </div>
       </div>
-    </div>
+    </DashboarLayout>
   );
 };
 

@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   //This property defines where the application starts
   // entry: "./src/index.js",
-  entry: ['babel-polyfill', './src/index.js'],
+  entry: ["babel-polyfill", "./src/index.js"],
 
   //This property defines the file path and the file name which will be used for deploying the bundled file
   output: {
@@ -27,17 +27,24 @@ module.exports = {
       {
         test: /\.(css|scss)$/,
         use: [
-          'style-loader',
-          'css-loader',
+          "style-loader",
+          "css-loader",
           {
-            loader: "sass-loader"
-          }
+            loader: "sass-loader",
+          },
         ],
         exclude: /\.module\.css$/,
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: "asset/resource",
+      },
+      {
+        test: /\.mp3$/,
+        loader: "file-loader",
+        // query: {
+        //   name: "static/media/[name].[hash:8].[ext]",
+        // },
       },
     ],
   },

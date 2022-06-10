@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import Button from "./Button.jsx";
 import Photo from "../../../static/dashboard_image/photo.jpeg";
 import { Link } from "react-router-dom";
-import Sidebar from "../sidebar/Sidebar.jsx";
-import DashNavbar from "../dashnavbar/DashNavBar.jsx";
 import "../Dashboard.css";
 import "./DriverAndOperator.css";
 import Drivers from "./Drivers.jsx";
@@ -14,6 +12,7 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
+import DashboardLayout from "../../../Layouts/Dashboard.js";
 
 const DriverAndOperator = ({ sidestyle }) => {
   const [value, setValue] = React.useState("1");
@@ -23,12 +22,8 @@ const DriverAndOperator = ({ sidestyle }) => {
   };
 
   return (
-    <div>
-      <DashNavbar style={{ position: "fixed" }} />
+    <DashboardLayout>
       <div className="dashboard">
-        <div className="generalmenubar" id={sidestyle}>
-          {<Sidebar />}
-        </div>
         <div className="containt">
           <Box>
             <TabContext value={value}>
@@ -57,7 +52,7 @@ const DriverAndOperator = ({ sidestyle }) => {
           </Box>
         </div>
       </div>
-    </div>
+    </DashboardLayout>
   );
 };
 

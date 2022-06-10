@@ -3,13 +3,14 @@ import { BrowserRouter } from "react-router-dom";
 import PhantomRoutes from "./routes/route";
 import "./App.css";
 import ScrollToTop from "./Components/Homepage/ScrollToTop.jsx";
+
 // require('dotenv').config()
 const App = () => {
   return (
     <BrowserRouter>
-      <ScrollToTop>
-        <PhantomRoutes />
-      </ScrollToTop>
+      {/* <ScrollToTop> */}
+      <PhantomRoutes />
+      {/* </ScrollToTop> */}
     </BrowserRouter>
   );
 };

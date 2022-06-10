@@ -19,8 +19,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
 import Slide from "@mui/material/Slide";
-import Sidebar from "../sidebar/Sidebar.jsx";
-import DashNavbar from "../dashnavbar/DashNavBar.jsx";
+import DashboardLayout from "./../../../Layouts/Dashboard";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -48,10 +47,8 @@ const Buses = () => {
   };
 
   return (
-    <>
-      <DashNavbar />
+    <DashboardLayout>
       <div className="dashboard">
-        <div className="generalmenubar">{<Sidebar />}</div>
         <div className="containt">
           <Box
             sx={{
@@ -73,7 +70,7 @@ const Buses = () => {
             </Typography>
             <Button
               component={Link}
-              to="/bus/register"
+              to="/dashboard/bus/register"
               sx={{
                 background: "#012241",
                 width: { lg: 100, xs: 50, md: 90 },
@@ -536,7 +533,7 @@ const Buses = () => {
           </Dialog>
         </div>
       </div>
-    </>
+    </DashboardLayout>
   );
 };
 

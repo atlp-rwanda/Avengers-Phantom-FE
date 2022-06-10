@@ -123,7 +123,6 @@ const SingleRoute = () => {
             </DialogContentText>
             {/* <Typography> <WarningIcon color="error" />This action cannot be revoked</Typography> */}
             <Typography>
-              {" "}
               <WarningIcon sx={{ color: "#bd2424" }} />
               This action cannot be revoked
             </Typography>
@@ -215,7 +214,7 @@ const SingleRoute = () => {
         <div className="containt">
           <h3 style={{ display: "inline" }}>Single Route Report </h3>
           <hr />
-          <Link to="/routes">
+          <Link to="/dashboard/routes">
             <ArrowBackIcon />
           </Link>
 

@@ -13,16 +13,18 @@ import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import { NavigationFormValidator } from "./NavigationFormValidator.jsx";
+import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
+
+// console.log(TeslaData);
 
 const drawerWidth = 300;
 const places = ["Remera", "Downtown", "Gisozi", "Kabuga"];
+
+const position = [51.505, -0.09];
+
 const MapSection = () => {
-  const {
-    handleInputValue,
-    handleFormSubmit,
-    formIsValid,
-    errors
-  } = NavigationFormValidator();
+  const { handleInputValue, handleFormSubmit, formIsValid, errors } =
+    NavigationFormValidator();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -42,6 +44,17 @@ const MapSection = () => {
     setAnchorElUser(null);
   };
   return (
+    // <React.Fragment>
+    //   <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+    //     <TileLayer
+    //       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    //       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    //     />
+    //     <Marker position={position}>
+    //       <Popup>Phantom best project ever</Popup>
+    //     </Marker>
+    //   </MapContainer>
+    // </React.Fragment>
     <>
       <Box sx={{ marginTop: 5 }}>
         <Typography
@@ -124,6 +137,7 @@ const MapSection = () => {
               src='https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15948.800506704742!2d29.777345550000003!3d-2.07580095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2srw!4v1650796027504!5m2!1sen!2srw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade'
               alt="map"
             />
+            ,
             <Box
               sx={{
                 flexGrow: 1,
@@ -202,86 +216,92 @@ const MapSection = () => {
                 left: 30,
               }}
             >
-            <form onSubmit={handleFormSubmit}>
-              <Box sx={{ display: { lg: "flex", xs: "block" }, p: 1 }}>
-                <Typography
-                  sx={{
-                    fontSize: { lg: 18, xs: 12 },
-                    width: "200px",
-                    textAlign: "left",
-                    pb:2,
-                  }}
-                >
-                  Point A
-                </Typography>
-                <TextField
-                  placeholder="Starting point"
-                  sx={{
-                    background: "white",
-                    borderRadius: "10px",
-                    width: "100%",
-                  }}
-                  type="text"
-                  size="small"
-                  name="startingpoint"
-                  onBlur={handleInputValue}
-                  onChange={handleInputValue}
-                  {...(errors["startingpoint"] && { error: true, helperText: errors["startingpoint"] })}
-                />
-              </Box>
-              <Box sx={{ display: { lg: "flex", xs: "block" }, p: 1 }}>
-                <Typography
-                  sx={{
-                    fontSize: { lg: 18, xs: 12 },
-                    width: "200px",
-                    textAlign: "left",
-                    pb:2
-                  }}
-                >
-                  Point B
-                </Typography>
-                <TextField
-                  size="small"
-                  placeholder="Destination"
-                  sx={{
-                    background: "white",
-                    borderRadius: "10px",
-                    width: "100%",
-                  }}
-                  type="Text"
-                  name="destination"
-                  onBlur={handleInputValue}
-                  onChange={handleInputValue}
-                  {...(errors["destination"] && { error: true, helperText: errors["destination"] })}
-                />
-              </Box>
-              <Box
-                sx={{
-                  width: { lg: 100, xs: 50 },
-                  marginLeft: { lg: "auto", xs: 0 },
-                }}
-              >
-                <Button
-                  sx={{
-                    background: "#012241",
-                    color: "white",
-                    borderRadius: "5px",
-                    "&:hover": {
-                      background: "white",
-                      color: "#012241",
-                      border: "1px solid #012241",
-                    },
-                  }}
-                  type="submit"
-                  disabled={!formIsValid()}
-                >
+              <form onSubmit={handleFormSubmit}>
+                <Box sx={{ display: { lg: "flex", xs: "block" }, p: 1 }}>
                   <Typography
-                    sx={{ fontWeight: 700, fontSize: { lg: 15, xs: 12 } }}
+                    sx={{
+                      fontSize: { lg: 18, xs: 12 },
+                      width: "200px",
+                      textAlign: "left",
+                      pb: 2,
+                    }}
                   >
-                    Go
+                    Point A
                   </Typography>
-                </Button>
-              </Box>
+                  <TextField
+                    placeholder="Starting point"
+                    sx={{
+                      background: "white",
+                      borderRadius: "10px",
+                      width: "100%",
+                    }}
+                    type="text"
+                    size="small"
+                    name="startingpoint"
+                    onBlur={handleInputValue}
+                    onChange={handleInputValue}
+                    {...(errors["startingpoint"] && {
+                      error: true,
+                      helperText: errors["startingpoint"],
+                    })}
+                  />
+                </Box>
+                <Box sx={{ display: { lg: "flex", xs: "block" }, p: 1 }}>
+                  <Typography
+                    sx={{
+                      fontSize: { lg: 18, xs: 12 },
+                      width: "200px",
+                      textAlign: "left",
+                      pb: 2,
+                    }}
+                  >
+                    Point B
+                  </Typography>
+                  <TextField
+                    size="small"
+                    placeholder="Destination"
+                    sx={{
+                      background: "white",
+                      borderRadius: "10px",
+                      width: "100%",
+                    }}
+                    type="Text"
+                    name="destination"
+                    onBlur={handleInputValue}
+                    onChange={handleInputValue}
+                    {...(errors["destination"] && {
+                      error: true,
+                      helperText: errors["destination"],
+                    })}
+                  />
+                </Box>
+                <Box
+                  sx={{
+                    width: { lg: 100, xs: 50 },
+                    marginLeft: { lg: "auto", xs: 0 },
+                  }}
+                >
+                  <Button
+                    sx={{
+                      background: "#012241",
+                      color: "white",
+                      borderRadius: "5px",
+                      "&:hover": {
+                        background: "white",
+                        color: "#012241",
+                        border: "1px solid #012241",
+                      },
+                    }}
+                    type="submit"
+                    disabled={!formIsValid()}
+                  >
+                    <Typography
+                      sx={{ fontWeight: 700, fontSize: { lg: 15, xs: 12 } }}
+                    >
+                      Go
+                    </Typography>
+                  </Button>
+                </Box>
               </form>
             </Card>
           </Box>
