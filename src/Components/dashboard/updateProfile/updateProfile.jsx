@@ -1,7 +1,5 @@
 import React from "react";
 import Drivers from "../operatorsanddriver/Drivers.jsx";
-import Sidebar from "../sidebar/Sidebar.jsx";
-import DashNavbar from "../dashnavbar/DashNavBar.jsx";
 import "../Dashboard.css";
 import "../updateProfile/style.css";
 import {
@@ -16,15 +14,13 @@ import {
 import { useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import SkeletonElement from "./Skeletons/SkeletonElement.jsx";
+import DashboarLayout from "./../../../Layouts/Dashboard";
 
 const UpdateProfile = () => {
   const [open, setOpen] = useState(false);
   return (
-    <div>
-      <DashNavbar />
-
+    <DashboarLayout>
       <div className="dashboard">
-        <div className="generalmenubar">{<Sidebar />}</div>
         <div className="containt">
           <form action="" method="post">
             <div className="header">
@@ -291,7 +287,7 @@ const UpdateProfile = () => {
           </form>
         </div>
       </div>
-    </div>
+    </DashboarLayout>
   );
 };
 

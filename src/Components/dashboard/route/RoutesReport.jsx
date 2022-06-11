@@ -27,6 +27,7 @@ import AddIcon from "@mui/icons-material/Add";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import AddRouteButton from "./AddRouteButton.jsx";
+import DashboardLayout from "./../../../Layouts/Dashboard";
 
 const un = "Bus stop one, You can add others by hitting + button";
 
@@ -111,7 +112,7 @@ const OneRoute = () => {
   };
 
   return (
-    <div>
+    <DashboardLayout>
       <div>
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle>Deleting item</DialogTitle>
@@ -209,15 +210,13 @@ const OneRoute = () => {
           </DialogActions>
         </Dialog>
       </div>
-      <DashNavbar />
       <div className="dashboard">
-        <div className="generalmenubar">{<Sidebar />}</div>
         <div className="containt">
           <div className="header">
             <h3 sx={{ display: "inline-block" }}>All Routes Report </h3>
             <Button
               component={Link}
-              to={`/addroute`}
+              to={`/dashboard/addroute`}
               variant="Text"
               sx={{
                 backgroundColor: "#012241",
@@ -331,7 +330,7 @@ const OneRoute = () => {
                     <Grid item xs={12} sx={{ mt: { xs: 0.5 } }} sm={4} md={12}>
                       <Button
                         component={Link}
-                        to={`/singleRoute`}
+                        to={`/dashboard/singleroute`}
                         variant="contained"
                         style={{ backgroundColor: "#012241", width: "100px" }}
                       >
@@ -363,7 +362,7 @@ const OneRoute = () => {
           </form>
         </div>
       </div>
-    </div>
+    </DashboardLayout>
   );
 };
 

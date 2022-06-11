@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Dashboard from "../Components/dashboard/dashboard/Dashboard.jsx";
+// import Dashboard from "../Components/dashboard/dashboard/Dashboard.jsx";
 import Drivers from "../Components/dashboard/operatorsanddriver/Drivers.jsx";
 import AddDrivers from "../Components/dashboard/operatorsanddriver/AddDrivers.jsx";
 import Operators from "../Components/dashboard/operatorsanddriver/Operators.jsx";
@@ -31,7 +31,8 @@ import Contact from "../Components/Homepage/Contact.jsx";
 import UpdateProfile from "../Components/dashboard/updateProfile/updateProfile.jsx";
 import { Signin } from "../Components/signin/Signin.jsx";
 import ListBuses from "../Components/buses redux/busess.jsx";
-// import {Signin} from "../Components/signin/Signin.jsx";
+import Simulation from "../Components/Simulation/Simulation.js";
+import Dashboard from "../Layouts/Dashboard";
 
 const PhantomRoutes = (prop) => {
   const location = useLocation();
@@ -100,30 +101,32 @@ const PhantomRoutes = (prop) => {
       </Routes>
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/routes" element={<Routecar />} />
-        <Route path="/addroute" element={<AddRoutes />} />
-        <Route path="/singleroute" element={<SingleRoute />} />
-        <Route path="/driveroperator" element={<DriverAndOperator />} />
+        <Route path="/dashboard/routes" element={<Routecar />} />
+        <Route path="/dashboard/addroute" element={<AddRoutes />} />
+        <Route path="/dashboard/singleroute" element={<SingleRoute />} />
+        <Route
+          path="/dashboard/driveroperator"
+          element={<DriverAndOperator />}
+        />
         <Route path="/driveroperator/driver" element={<Drivers />} />
         <Route
-          path="/driveroperator/adddriver"
+          path="/dashboard/driveroperator/adddriver"
           element={<AddDrivers />}
         />
         <Route path="/driveroperator/operator" element={<Operators />} />
         <Route
-          path="/driveroperator/addoperator"
+          path="/dashboard/driveroperator/addoperator"
           element={<AddOperator />}
         />
-        <Route path="/bus" element={<Bus />} />
+        <Route path="/dashboard/bus" element={<Bus />} />
         <Route path="/rolepermission" element={<Roles />} />
-        <Route path="/bus" element={<Bus />} />
         <Route path="/assign" element={<ListBuses />} />
-        <Route path="/bus/register" element={<RegisterBus />} />
-        <Route path="/bus/1" element={<BusDetails />} />
-        <Route path="/bus/1/update" element={<BusUpdate />} />
-
-        <Route path="/updateprofile" element={<UpdateProfile />} />
-        {/* <Route path="/logout" element={<Signin />} /> */}
+        <Route path="/dashboard/bus/register" element={<RegisterBus />} />
+        <Route path="/dashboard/bus/1" element={<BusDetails />} />
+        <Route path="/dashboard/bus/1/update" element={<BusUpdate />} />
+        <Route path="/dashboard/updateprofile" element={<UpdateProfile />} />
+        <Route path="/dashboard/simulation" element={<Simulation />} />
+        {/* <Route path="/admin/dashboard" element={<AdminDashboard />} /> */}
       </Routes>
     </div>
   );

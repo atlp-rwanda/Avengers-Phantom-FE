@@ -4,15 +4,12 @@ import EditIcon from "@mui/icons-material/Edit";
 import Photo from "../../../static/images/busbackground.jpg";
 import { Link } from "react-router-dom";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
-import Sidebar from "../sidebar/Sidebar.jsx";
-import DashNavbar from "../dashnavbar/DashNavBar.jsx";
+import DashboardLayout from "../../../Layouts/Dashboard";
 
 const BusDetail = () => {
   return (
-    <>
-      <DashNavbar />
+    <DashboardLayout>
       <div className="dashboard">
-        <div className="generalmenubar">{<Sidebar />}</div>
         <div className="containt">
           <Box
             sx={{
@@ -350,7 +347,7 @@ const BusDetail = () => {
           </Grid>
         </div>
       </div>
-    </>
+    </DashboardLayout>
   );
 };
 

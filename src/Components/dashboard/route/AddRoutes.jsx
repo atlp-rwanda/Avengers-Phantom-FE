@@ -20,6 +20,8 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import { ListItemText, ListItemAvatar } from "@mui/material";
 import FolderIcon from "@mui/icons-material/Folder";
 import AddRouteInit from "./AddRouteInit.jsx";
+import DashboardLayout from "./../../../Layouts/Dashboard";
+
 const un = "Bus stop one, You can add others by hitting + button";
 
 const AddRoutes = () => {
@@ -82,13 +84,13 @@ const AddRoutes = () => {
     }
   };
   return (
-    <div>
-      <DashNavbar />
+    <DashboardLayout>
+      {/* <DashNavbar /> */}
       <div className="dashboard">
-        <div className="generalmenubar">{<Sidebar />}</div>
+        {/* <div className="generalmenubar">{<Sidebar />}</div> */}
         <AddRouteInit />
       </div>
-    </div>
+    </DashboardLayout>
   );
 };
 

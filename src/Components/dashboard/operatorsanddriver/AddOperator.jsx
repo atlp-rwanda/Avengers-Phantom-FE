@@ -9,10 +9,9 @@ import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
 import Button from "./Button.jsx";
-import Sidebar from "../sidebar/Sidebar.jsx";
-import DashNavbar from "../dashnavbar/DashNavBar.jsx";
 import "../Dashboard.css";
 import "./DriverAndOperator.css";
+import DashboardLayout from "./../../../Layouts/Dashboard";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -25,15 +24,7 @@ const MenuProps = {
   },
 };
 
-const genders = [
-  "Male",
-  "Female",
-  "Bisexual",
-  "Gay",
-  "Homosexual",
-  "Resbian",
-  "other",
-];
+const genders = ["Male", "Female"];
 function getStyles(gender, genderName, theme) {
   return {
     fontWeight:
@@ -58,10 +49,8 @@ const AddOperator = () => {
   };
 
   return (
-    <div>
-      <DashNavbar style={{ position: "fixed" }} />
+    <DashboardLayout>
       <div className="dashboard">
-        <div className="generalmenubar">{<Sidebar />}</div>
         <div className="containt">
           <h3>Register new Operator</h3>
           <hr />
@@ -145,7 +134,7 @@ const AddOperator = () => {
           </div>
         </div>
       </div>
-    </div>
+    </DashboardLayout>
   );
 };
 
