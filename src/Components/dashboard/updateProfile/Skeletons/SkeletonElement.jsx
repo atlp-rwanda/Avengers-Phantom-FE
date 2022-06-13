@@ -4,16 +4,6 @@ import Skeleton from "react-loading-skeleton";
 import { Button, Dialog, DialogContent, DialogTitle, DialogContentText, DialogActions, TextField, Select, MenuItem, InputLabel, } from "@mui/material";
 
  
-<<<<<<< HEAD
-const SkeletonElement = ({type})  => {
-    const classes = `skeleton ${type}` ;
-    return (
-        <div className={classes}></div>
-    )
-}
-
-export default SkeletonElement;
-=======
 const UpdateProfileSkeleton = ()  => {
     return (
         <div className="dashboard">
@@ -239,4 +229,3 @@ const UpdateProfileSkeleton = ()  => {
     )}
 
 export default UpdateProfileSkeleton;
->>>>>>> 682d4e01... ft(update-profile): Redux setup and integration

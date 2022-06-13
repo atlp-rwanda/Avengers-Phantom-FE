@@ -1,4 +1,4 @@
-.addroute {
+.update_route {
   min-height: 30px;
   min-width: 95%;
   margin: auto;
@@ -6,27 +6,8 @@
   padding: 20px;
   align-self: center;
   justify-self: center;
-  display: flex;
-  justify-content:center;
-  flex-direction: column;
-  align-items:center;
-}
-
-.routeDetails {
-  display: flex;
-  justify-content:center;
-  flex-direction: column;
-  align-items: center;
-}
-
-.buttonAction {
-  display: flex;
-  justify-content:center;
-  flex-direction: row;
-  align-items: center;
 }
 .singleroute {
-  display: flex;
   min-height: 30px;
   min-width: 90%;
   margin: auto;
@@ -43,9 +24,28 @@
   flex-direction: row;
 }
 
-.success_message{
+.updated_message{
+ 
   color: green;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+}
+
+
+.contain_update { 
+  height: 87vh;
+  width: 95%;
+  padding: 0 20px 0 10px;
+  margin: 5rem 0 0 0;
+
+}
+
+
+
+
+@media (max-width: 1000px) {
+  
+  .contain_update{
+    width: 78%;
+    padding: 0 0 0 2px;
+    margin: 5rem 0 4rem 0;
+  }
 }
