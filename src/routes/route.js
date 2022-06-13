@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { fetchAllroutes } from "../redux/Action/routes";
+
 import { Routes, Route } from "react-router-dom";
 // import Dashboard from "../Components/dashboard/dashboard/Dashboard.jsx";
 import Drivers from "../Components/dashboard/operatorsanddriver/Drivers.jsx";
@@ -36,6 +40,7 @@ import Dashboard from "../Layouts/Dashboard";
 
 const PhantomRoutes = (prop) => {
   const location = useLocation();
+
   return (
     <div>
       <Routes>

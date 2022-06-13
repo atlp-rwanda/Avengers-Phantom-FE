@@ -17,7 +17,7 @@ import ListItem from "@mui/material/ListItem";
 
 const un = "Bus stop one, You can add others by hitting + button"
 
-const AddRouteButton = () => {
+const AddRouteButton = (props) => {
 
     const [routeID, setRouteID] = useState("");
     const [startPoint, setStartPoint] = useState("");
@@ -29,9 +29,16 @@ const AddRouteButton = () => {
     const [endPointError, setEndPointError] = useState(false);
     const [stopError, setStopError] = useState(false);
 
+    const [openUpdater, setOpenUpdater] = useState(false);
+
     const handleClear = () => {
         console.log("Content cleared");
     };
+
+    const handleCloseUpdater = () => {
+        setOpenUpdater(false);
+        console.log("Content closer");
+      };
 
     const handleAddRoute = () => {
         console.log("route added");
@@ -157,6 +164,32 @@ const AddRouteButton = () => {
                                 </ListItem>
                             </List>
                         </Box>
+                    </div>
+
+                    <div style={{ margin: "" }} className="submit">
+                    <Button
+                            bcolor="#012241)"
+                            onClick={handleCloseUpdater}
+                            variant="contained"
+                            sx={{ marginRight: 4, bgcolor: "#012241" }}
+                        >
+                            cancel
+                        </Button>
+                        <Button
+                            onClick={handleSubmit}
+                            variant="contained"
+                            sx={{ marginRight: 4, bgcolor: "#012241" }}
+                        >
+                            Create
+                        </Button>
+                        <Button
+                            bcolor="#012241)"
+                            onClick={handleClear}
+                            variant="contained"
+                            sx={{ marginRight: 4, bgcolor: "#012241" }}
+                        >
+                            Reset
+                        </Button>
                     </div>
 
                 </form>

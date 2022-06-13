@@ -80,7 +80,9 @@ const AddRoutes = () => {
     if (stop === "") {
       setStopError(true);
     } else {
+
       console.log(routeID, startPoint, endPoint, stop);
+      dispatch(saveProduct( { routeID, startPoint, endPoint}))
     }
   };
   return (

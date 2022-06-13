@@ -1,4 +1,4 @@
-.addroute {
+.update_route {
   min-height: 30px;
   min-width: 95%;
   margin: auto;
@@ -24,6 +24,28 @@
   flex-direction: row;
 }
 
-.success_message{
+.updated_message{
+ 
   color: green;
+}
+
+
+.contain_update { 
+  height: 87vh;
+  width: 95%;
+  padding: 0 20px 0 10px;
+  margin: 5rem 0 0 0;
+
+}
+
+
+
+
+@media (max-width: 1000px) {
+  
+  .contain_update{
+    width: 78%;
+    padding: 0 0 0 2px;
+    margin: 5rem 0 4rem 0;
+  }
 }
