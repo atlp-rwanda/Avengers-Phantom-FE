@@ -15,7 +15,7 @@ import Menu from "@mui/material/Menu";
 import { NavigationFormValidator } from "./NavigationFormValidator.jsx";
 import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
 
-// console.log(TeslaData);
+
 
 const drawerWidth = 300;
 const places = ["Remera", "Downtown", "Gisozi", "Kabuga"];
@@ -67,7 +67,7 @@ const MapSection = () => {
             textTransform: "uppercase",
           }}
         >
-          find nearby bus
+          find nearby buses
         </Typography>
         <Box sx={{ display: { lg: "flex", xs: "block" } }}>
           <CssBaseline />

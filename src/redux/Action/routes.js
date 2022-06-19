@@ -4,7 +4,7 @@ import axios from "axios";
 
 const URL = "https://new-avengers-be-deploy.herokuapp.com/api/v1/routes/";
 
-const token = localStorage.getItem("token").data;
+const token = localStorage.getItem("token");
 
 export const fetchAllroutes = () => async (dispatch) => {
   try {

@@ -31,6 +31,10 @@ const theme = createTheme({
   },
 });
 
+// const URL = 'http://localhost:8081'
+const URL = 'https://new-avengers-be-deploy.herokuapp.com'
+
+
 export const Signin = () => {
   const [values, setValues] = React.useState({
     password: "",
@@ -65,7 +69,7 @@ export const Signin = () => {
       password: values.password,
     };
     console.log(JSON.stringify(send));
-    fetch(`http://localhost:8081/api/v1/users/login`, {
+    fetch(`${URL}/api/v1/users/login`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -212,13 +216,11 @@ export const Signin = () => {
               <OutlinedInput
                 label="password"
                 name="password"
-                value={password}
                 onChange={(e) => onInputChange(e)}
                 sx={{ mt: 2 }}
                 id="outlined-adornment-password"
                 type={values.showPassword ? "text" : "password"}
                 value={values.password}
-                onChange={handleChange("password")}
                 endAdornment={
                   <InputAdornment sx={{ m: 1 }} position="end">
                     <IconButton
@@ -231,7 +233,6 @@ export const Signin = () => {
                     </IconButton>
                   </InputAdornment>
                 }
-                label="Password"
               />
             </FormControl>
             <Box sx={{ display: "flex", justifyContent: "center", m: 4 }}>

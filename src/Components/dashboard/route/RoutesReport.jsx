@@ -127,7 +127,7 @@ const OneRoute = () => {
   };
 
   return (
-    <DashboardLayout>
+    <DashboardLayout data-testid="route-1">
       <div>
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle>Deleting item</DialogTitle>
