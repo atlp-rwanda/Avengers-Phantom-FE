@@ -45,7 +45,7 @@
   margin-top: 10px;
 }
 .Car__controllers_actions button:not(:last-child) {
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .Car__controllers_accelerator {
@@ -122,7 +122,7 @@
   border-radius: 5px;
   font-family: Arial, Black;
   color: #fff;
-  font-size: 30px;
+  font-size: 16px;
   z-index: 1;
   animation: 0s vibrate linear infinite;
 }

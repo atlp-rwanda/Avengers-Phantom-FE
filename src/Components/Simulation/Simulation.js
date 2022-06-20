@@ -20,6 +20,7 @@ import "./simulation.css";
 import { PhantomBusMarker } from "./CarMarker";
 import SpeedMeter from "./SpeedMeter";
 import LocationMaker from "./LocationMaker";
+import socket from "./../../utils/sokect";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -38,29 +39,109 @@ const Simulation = () => {
   const [start, seStart] = React.useState(false);
   const [engine, setEngine] = React.useState(false);
   const [summary, setSummary] = React.useState();
-  const [speed, setSpeed] = React.useState(1000);
+  const [isSpeed, setIsSpeed] = React.useState(false);
+  const [isSlowing, setIsSlowing] = React.useState(false);
+  const [speed, setSpeed] = React.useState(
+    Number(localStorage.getItem("speed", speed)) === 100
+      ? 100
+      : Number(localStorage.getItem("speed", speed))
+  );
   const [pause, setPause] = React.useState(false);
+  const [resume, setResume] = React.useState(false);
   const [passengers, setPassengers] = React.useState(0);
   const [currentTrack, setCurrentTrack] = React.useState({});
 
   let cursor = 0;
+  let newCursor = Number(localStorage.getItem("currentPosition", cursor));
 
   useEffect(() => {
     setCurrentTrack(position[cursor]);
-
+    let interval;
     if (start && engine) {
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
         if (cursor !== position.length - 1) {
           cursor += 1;
+          localStorage.setItem("currentPosition", cursor);
           setCurrentTrack(position[cursor]);
+
           return;
         }
-      }, speed);
+      }, Number(localStorage.getItem("speed")));
+
       return () => {
         clearInterval(interval);
       };
+    } else if (pause) {
+      setCurrentTrack(currentTrack);
+      clearInterval(interval);
     }
-  }, [position, start, engine, speed]);
+  }, [position, start, engine, pause, resume]);
+
+  useEffect(() => {
+    setCurrentTrack(position[newCursor]);
+    let interval;
+    if (resume && engine) {
+      interval = setInterval(() => {
+        if (newCursor !== position.length - 1) {
+          newCursor += 1;
+          localStorage.setItem("currentPosition", newCursor);
+          setCurrentTrack(position[newCursor]);
+          return;
+        }
+      }, Number(localStorage.getItem("speed")));
+
+      return () => {
+        clearInterval(interval);
+      };
+    } else if (pause) {
+      setCurrentTrack(currentTrack);
+      clearInterval(interval);
+    }
+  }, [resume]);
+
+  useEffect(() => {
+    setCurrentTrack(position[newCursor]);
+    let interval;
+    if (isSpeed && engine) {
+      interval = setInterval(() => {
+        if (newCursor !== position.length - 1) {
+          newCursor += 1;
+          localStorage.setItem("currentPosition", newCursor);
+          setCurrentTrack(position[newCursor]);
+          return;
+        }
+      }, Number(localStorage.getItem("speed")));
+
+      return () => {
+        clearInterval(interval);
+      };
+    } else if (pause) {
+      setCurrentTrack(currentTrack);
+      clearInterval(interval);
+    }
+  }, [isSpeed]);
+
+  useEffect(() => {
+    setCurrentTrack(position[newCursor]);
+    let interval;
+    if (isSlowing && engine) {
+      interval = setInterval(() => {
+        if (newCursor !== position.length - 1) {
+          newCursor += 1;
+          localStorage.setItem("currentPosition", newCursor);
+          setCurrentTrack(position[newCursor]);
+          return;
+        }
+      }, Number(localStorage.getItem("speed")));
+
+      return () => {
+        clearInterval(interval);
+      };
+    } else if (pause) {
+      setCurrentTrack(currentTrack);
+      clearInterval(interval);
+    }
+  }, [isSlowing]);
 
   return (
     <DashboardLayout>
@@ -72,22 +153,23 @@ const Simulation = () => {
                 center={[-1.939662908, 30.055666444]}
                 zoom={10}
                 zoomControl={true}
+                style={{ width: "100%", height: "85vh" }}
               >
                 <RoutingControl
                   setPosition={setPosition}
                   setSummary={setSummary}
                 />
-                <LocationMaker />
+                {/* <LocationMaker /> */}
+                {/* <RouteBusMotion /> */}
                 <LayersControl position="topright">
                   <LayersControl.BaseLayer checked name="Map">
-                    <TileLayer
-                      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                      url={maps.base}
-                      styles={{ width: "50vw", height: "20vh" }}
-                    />
+                    <TileLayer url={maps.base} />
                     <PhantomBusMarker
                       data={currentTrack ?? { lat: -1.978106, lng: 30.044125 }}
-                      speed={speed}
+                      speed={isSpeed}
+                      resume={resume}
+                      isSlowing={isSlowing}
+                      pause={pause}
                     />
                   </LayersControl.BaseLayer>
                 </LayersControl>
@@ -107,12 +189,17 @@ const Simulation = () => {
                 seStart={seStart}
                 setEngine={setEngine}
                 setSpeed={setSpeed}
+                speed={speed}
                 pause={pause}
                 setPause={setPause}
                 start={start}
                 engine={engine}
                 passengers={passengers}
                 setPassengers={setPassengers}
+                summary={summary}
+                setResume={setResume}
+                setIsSpeed={setIsSpeed}
+                setIsSlowing={setIsSlowing}
               />
             </div>
           </Grid>

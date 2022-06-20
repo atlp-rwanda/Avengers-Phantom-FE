@@ -51,7 +51,6 @@ const DashboardLayout = ({ children }) => {
           </Avatar>
         </Toolbar>
       </AppBar>
-      <Toolbar />
       <div className={classes.container}>
         <Drawer
           variant="permanent"

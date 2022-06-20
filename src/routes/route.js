@@ -26,7 +26,7 @@ import BusDetails from "../Components/dashboard/buses/BusDetail.jsx";
 import BusUpdate from "../Components/dashboard/buses/updateBus.jsx";
 import Footer from "../Components/Homepage/Footer.jsx";
 import Manuals from "../Components/Homepage/Manuals.jsx";
-import MapSection from "../Components/Homepage/MapSection.jsx";
+import MapSection from "../Components/Homepage/ClientMap";
 import Contact from "../Components/Homepage/Contact.jsx";
 import UpdateProfile from "../Components/dashboard/updateProfile/updateProfile.jsx";
 import { Signin } from "../Components/signin/Signin.jsx";
@@ -97,7 +97,10 @@ const PhantomRoutes = (prop) => {
             </>
           }
         />
-        <Route path={`/resertpasswordpage/:${prop.token}`} element={<ResetPasswordPage />} />
+        <Route
+          path={`/resertpasswordpage/:${prop.token}`}
+          element={<ResetPasswordPage />}
+        />
       </Routes>
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
