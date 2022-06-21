@@ -1,6 +1,4 @@
-[![Maintainability](https://api.codeclimate.com/v1/badges/f8910ac7a64bcd78c3a6/maintainability)](https://codeclimate.com/github/atlp-rwanda/Avengers-Phantom-FE/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/f8910ac7a64bcd78c3a6/test_coverage)](https://codeclimate.com/github/atlp-rwanda/Avengers-Phantom-FE/test_coverage)
-
-[![Coverage Status](https://coveralls.io/repos/github/atlp-rwanda/Avengers-Phantom-FE/badge.svg?branch=develop)](https://coveralls.io/github/atlp-rwanda/Avengers-Phantom-FE?branch=develop)
+[![Maintainability](https://api.codeclimate.com/v1/badges/c8ea9224f9ef017a429e/maintainability)](https://codeclimate.com/github/atlp-rwanda/Avengers-Phantom-FE/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/c8ea9224f9ef017a429e/test_coverage)](https://codeclimate.com/github/atlp-rwanda/Avengers-Phantom-FE/test_coverage) [![Coverage Status](https://coveralls.io/repos/github/atlp-rwanda/Avengers-Phantom-FE/badge.svg?branch=develop)](https://coveralls.io/github/atlp-rwanda/Avengers-Phantom-FE?branch=develop)
 
 # TABLE OF CONTENTS
 
