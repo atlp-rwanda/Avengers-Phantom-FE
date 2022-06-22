@@ -24,7 +24,6 @@
 .skeleton.thumbnail{
     width: 100px;
     height: 100px;
-<<<<<<< HEAD
 }
 
 
@@ -76,6 +75,4 @@
     padding:.5rem;
     margin: 1rem;
     border:1px solid grey;
-=======
->>>>>>> 94f3e784 (    pick b187b156 (ch-bagdes-integrations-vs-test))
 }

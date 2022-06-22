@@ -41,7 +41,6 @@ import { ToastContainer, toast } from "react-toastify";
 
 const un = "Bus stop one, You can add others by hitting + button";
 
-
 const SingleRoute = (props) => {
   const [open, setOpen] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);

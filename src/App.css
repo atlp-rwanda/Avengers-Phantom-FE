@@ -21,6 +21,10 @@ html {
   scroll-behavior: smooth;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .leaflet-container {
   width: 100vw;
   height: 100vh;
