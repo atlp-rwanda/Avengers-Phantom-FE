@@ -9,21 +9,22 @@ const icon = L.icon({
   iconUrl: busIcon,
 });
 
-export const PhantomBusMarker = ({ data, speed, pause, resume, isSlowing }) => {
-  const { lat, lng } = data;
+export const PhantomBusMarker = ({ data, speed, pause }) => {
+  console.log("data", data);
 
+  const { lat, lng } = data;
   const [prevPos, setPrevPos] = useState([lat, lng]);
 
   useEffect(() => {
     if (prevPos[1] !== lng && prevPos[0] !== lat) setPrevPos([lat, lng]);
-  }, [lat, lng, prevPos, pause, speed, resume, isSlowing]);
+  }, [lat, lng, prevPos, pause]);
 
   return (
     <LeafletTrackingMarker
       icon={icon}
       position={[lat, lng]}
       previousPosition={prevPos}
-      duration={Number(localStorage.getItem("speed"))}
+      duration={speed}
       keepAtCenter={true}
       rotationOrigin="center"
     />

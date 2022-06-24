@@ -36,9 +36,10 @@ const createRoutineMachineLayer = ({ setPosition, setSummary }) => {
     const summary = e.routes[0].summary;
 
     let coordinates = [];
+
     for (let i = 0; i < coordinatesValues.length; i++) {
       coordinates.push({
-        lat: coordinatesValues[i].lat,
+        lat: coordinatesValues[i]?.lat,
         lng: coordinatesValues[i]?.lng,
       });
     }

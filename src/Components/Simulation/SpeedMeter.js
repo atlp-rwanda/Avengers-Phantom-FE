@@ -4,12 +4,11 @@ import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 import PauseIcon from "@mui/icons-material/Pause";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import carSound from "./../../Assets/carsound.mp3";
-import MovingCar from "./../../Assets/movingcar.mp3";
-import CarBreak from "./../../Assets/carBreak.mp3";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Tooltip from "@mui/material/Tooltip";
+import socket from "./../../utils/sokect";
+import { calculateTime } from "./CalculateTime";
 
 const SpeedMeter = ({
   seStart,
@@ -21,7 +20,13 @@ const SpeedMeter = ({
   engine,
   passengers,
   setPassengers,
+  summary,
+  setResume,
+  speed,
+  setIsSpeed,
+  setIsSlowing,
 }) => {
+  const [socketMessage, setSocketMessage] = React.useState("");
   const goRef = useRef();
   const startRef = useRef();
   const logoRef = useRef();
@@ -32,43 +37,71 @@ const SpeedMeter = ({
   const handlePower = () => {
     startRef.current.style.cssText = "color:red;background-color:red";
     setEngine(true);
-    audioRef.current.volume = 0.02;
-    audioRef.current.play();
     notify("Engine Started");
+    socket.emit("Engine", "Started Engine now");
+    socket.on("Engine", (data) => {
+      setSocketMessage(data);
+    });
+    localStorage.setItem("state", "Engine");
   };
 
   const handleAccelate = () => {
     notify("Speeding up the Bus.");
-    setSpeed((prev) => prev - 100);
+    setSpeed(Number(localStorage.getItem("speed", speed)) - 100);
+    setIsSpeed(true);
     logoRef.current.style.cssText =
       "animation: 0.1s vibrate linear infinite;color:red;";
-    movingCarRef.current.volume = 0.1;
-    movingCarRef.current.play();
-    audioRef.current.stop();
+    socket.emit("Acceleration", "Speeding up");
+    socket.on("Acceleration", (data) => {
+      setSocketMessage(data);
+    });
+    localStorage.setItem("state", "speedingup");
+    localStorage.setItem("speed", speed);
   };
 
   const handleBreak = () => {
-    setSpeed((prev) => prev + 100);
-    breakRef.current.volume = 0.02;
-    breakRef.current.play();
+    setIsSlowing(true);
+    setSpeed(Number(localStorage.getItem("speed", speed)) + 100);
     notify("Slowing down the Bus.");
+    socket.emit("slowing", "slowing down bus");
+    socket.on("slowing", (data) => {
+      setSocketMessage(data);
+    });
+    localStorage.setItem("state", "slowingDown");
+    localStorage.setItem("speed", speed);
   };
 
   const handleStart = () => {
     goRef.current.style.cssText = "color:red;background-color:red";
     seStart(true);
     notify("Started moving the Bus");
+    socket.emit("move", "Started");
+    socket.on("move", (data) => {
+      setSocketMessage(data);
+    });
+    localStorage.setItem("state", "move");
   };
 
   const handlePause = () => {
-    setPause((prev) => !prev);
+    setPause(true);
     seStart(false);
+    setResume(false);
     notify("Bus is on Pause Mode or Moving Mode");
+    socket.emit("pause", "pausing");
+    socket.on("pause", (data) => {
+      setSocketMessage(data);
+    });
+    localStorage.setItem("state", "onPause");
   };
 
   const addPassenger = () => {
     setPassengers((prev) => prev + 1);
     notify("Adding Passengers");
+    socket.emit("addpassenger", "one more added");
+    socket.on("addpassenger", (data) => {
+      setSocketMessage(data);
+    });
+    localStorage.setItem("state", "addPassenger");
   };
 
   const removePassenger = () => {
@@ -78,8 +111,16 @@ const SpeedMeter = ({
     } else {
       notify("No Passenger To Remove");
     }
+    socket.emit("Removedpassenger", "Passenger removed");
+    socket.on("Removedpassenger", (data) => {
+      setSocketMessage(data);
+    });
+    localStorage.setItem("state", "removePassenger");
   };
 
+  const handleResume = () => {
+    setResume(true);
+  };
   const notify = (toastMsg) => toast(toastMsg);
 
   return (
@@ -88,7 +129,7 @@ const SpeedMeter = ({
       <div className="Car__controllers">
         <div className="Car__controllers_speedMetter">
           <div className="Car__controllers_speedMetter__logo" ref={logoRef}>
-            50 KM/H
+            {calculateTime(summary)}
           </div>
         </div>
         <div className="Car__controllers_actions">
@@ -123,12 +164,20 @@ const SpeedMeter = ({
               Go
             </button>
           </Tooltip>
-          <Tooltip title="Pause or Resume" arrow>
+          <Tooltip title="Pause" arrow>
             <button
               className="Car__controllers_accelerator"
               onClick={handlePause}
             >
-              {start ? <PauseIcon /> : <ArrowRightIcon />}
+              <PauseIcon />
+            </button>
+          </Tooltip>
+          <Tooltip title="Resume" arrow>
+            <button
+              className="Car__controllers_accelerator"
+              onClick={handleResume}
+            >
+              <ArrowRightIcon />
             </button>
           </Tooltip>
           <Tooltip title="Add Perssengers" arrow>
@@ -160,10 +209,10 @@ const SpeedMeter = ({
           <div className="Car__controllers__route">
             <div className="Car__controllers__route-values">
               <div>
-                <span>DownTown </span>
+                <span>Nyamirambo</span>
               </div>
               <div>
-                <span>Remera </span>
+                <span>DownTown</span>
               </div>
             </div>
           </div>
@@ -175,18 +224,8 @@ const SpeedMeter = ({
               <span>{passengers}</span>
             </div>
           </div>
+          {socketMessage}
         </div>
-      </div>
-      <div>
-        <audio ref={audioRef}>
-          <source src={carSound} type="audio/mp3" />
-        </audio>
-        <audio ref={movingCarRef} loop>
-          <source src={MovingCar} type="audio/mp3" />
-        </audio>
-        <audio ref={breakRef}>
-          <source src={CarBreak} type="audio/mp3" />
-        </audio>
       </div>
     </React.Fragment>
   );
