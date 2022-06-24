@@ -1,37 +1,102 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchUserData, updateUserData } from "../../../redux/Action/fetchUserData.js"; 
+import { useRadioGroup } from "@mui/material/RadioGroup";
 import Drivers from "../operatorsanddriver/Drivers.jsx";
 import "../Dashboard.css";
 import "../updateProfile/style.css";
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  DialogContentText,
-  DialogActions,
-  TextField,
-} from "@mui/material";
-import { useState } from "react";
+import UpdateProfileSkeleton from "./Skeletons/SkeletonElement.jsx";
+import axios from "axios";
+import { Button, Dialog, DialogContent, DialogTitle, DialogContentText, DialogActions, TextField, Select, MenuItem, InputLabel, } from "@mui/material";
 import Skeleton from "react-loading-skeleton";
 import SkeletonElement from "./Skeletons/SkeletonElement.jsx";
-import DashboarLayout from "./../../../Layouts/Dashboard";
+import DashboardLayout from "./../../../Layouts/Dashboard"; 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const UpdateProfile = () => {
+const UpdateProfile = ({setEditMode}) => {
+  const dispatch = useDispatch(); 
+  const userData = useSelector(state => state.fetchUserData?.user?.data?.user) 
   const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [fileInputState, setFileInputState] = useState("");
+  const [selectedFile, setSelectedFile] = useState("");
+  const [previewSource, setPreviewSource] = useState("") 
+  const [formData, setFormData] = useState({
+    uuid: userData&&userData?.uuid,
+    name: userData&&userData?.name,
+    profilePicture: userData&&userData?.profilePicture,
+    gender: userData&&userData?.gender,
+    idNumber: userData&&userData?.idNumber,
+    district: userData&&userData?.district,
+    sector: userData&&userData?.sector,
+    cell: userData&&userData?.cell,
+    email: userData&&userData?.email,
+    permitId: userData&&userData?.permitId,
+    telNumber: userData&&userData?.telNumber,
+    carplate: userData&&userData?.carplate,
+    capacity: userData&&userData?.capacity,
+    vehicletype: userData&&userData?.vehicletype,
+  });
+
+  // Preview Image 
+  const previewFile = (file) => {
+    const reader =new FileReader();
+    reader.readAsDataURL(file); 
+    reader.onload = () =>{
+      setPreviewSource(reader.result);
+    }
+  }
+  // upload Image
+  const uploadImage = (base64EncodedImage) => {
+  }  
+  // if(!previewSource) return;
+  const encodedImage = uploadImage(previewSource);
+    // handle upload button
+    const handleFileInputChange = (e) => {
+      const file = e.target.files[0];
+      previewFile(file);
+      setFileInputState(previewSource);
+      setFormData({
+        ...formData,
+        profilePicture: encodedImage,
+      })
+    }
+  const handleUpdate = async (event) => {
+    event.preventDefault(); 
+    dispatch(updateUserData(formData.uuid, formData));
+    setEditMode(false); 
+  };
+  
+  const handleFetchData = async () => {
+    dispatch(fetchUserData()) 
+  };
+
+  useEffect(() => {
+  setLoading(true)
+  handleFetchData();
+    setLoading(false);
+  },[]); 
+
   return (
-    <DashboarLayout>
+    <DashboardLayout>
+      <ToastContainer />
+      { loading ? <UpdateProfileSkeleton /> : (
       <div className="dashboard">
         <div className="containt">
           <form action="" method="post">
-            <div className="header">
+            <div className="header block">
               <h2>Profile and visibility</h2>
-              <p>Manage your personal information, and control which</p>
-              <p>information other people see and apps may access.</p>
+              <em>
+                Manage your personal information, and control which information
+                other people see and apps may access.
+              </em>
             </div>
             <h3 className="header">About You</h3>
-            <div class="flex-container">
+            <div className="flex-container">
               {/* About you Division */}
-              <div class="flex-item-left">
+              <div className="flex-item-left">
                 <div className="container-about">
                   <div className="left-about">
                     <h4>User Info:</h4>
@@ -42,13 +107,179 @@ const UpdateProfile = () => {
 
                     <div className="align-in">
                       <div className="in-left">
-                        <label htmlFor="Full name">Full name</label>
-                        <br></br>
+                        <InputLabel id="name">Full name</InputLabel>
                         <TextField
                           size="small"
-                          name="fullname"
+                          name="name"
+                          defaultValue={formData?.name}
+                          onChange={(event) =>
+                            setFormData({
+                              ...formData,
+                              name: event.target.value,
+                            })
+                          }
                           type="text"
-                          fullWidth
+                          fullWidth="true"
+                        />
+                      </div>
+                      <div className="in-right">
+                        <div className="flex-container">
+                          <div className="any-right">
+                            
+                              <img
+                                src="https://thumbs.dreamstime.com/z/earth-icon-globe-symbol-isolated-transparent-background-planet-112427230.jpg"
+                                alt=""
+                              />
+                            
+                          </div>
+                          <div className="any-left">
+                            <h4>Anyone</h4>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="align-in">
+                      <div className="in-left">
+                        <InputLabel id="gender">Gender</InputLabel>
+                        <Select
+                          id="select-gender"
+                          value={formData?.gender}
+                          onChange={(event) =>
+                            setFormData({
+                              ...formData,
+                              gender: event.target.value,
+                            })
+                          }
+                          size="small"
+                          fillWidth
+                        >
+                          <MenuItem value={"male"}>Male</MenuItem>
+                          <MenuItem value={"female"}>Female</MenuItem>
+                        </Select>
+                      </div>
+                      <div className="in-right">
+                        <div className="flex-container">
+                          <div className="any-right">
+                            <img
+                              src="https://thumbs.dreamstime.com/z/earth-icon-globe-symbol-isolated-transparent-background-planet-112427230.jpg"
+                              alt=""
+                            />
+                          </div>
+                          <div className="any-left">
+                            <h4>Anyone</h4>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="align-in">
+                      <div className="in-left">
+                        <InputLabel id="idNumber">ID Number</InputLabel>
+                        <TextField
+                          size="small"
+                          name="idNumber"
+                          type="text"
+                          value={formData?.idNumber}
+                          onChange={(event) =>
+                            setFormData({
+                              ...formData,
+                              idNumber: event.target.value,
+                            })
+                          }
+                          fullWidth="true"
+                        />
+                      </div>
+                      <div className="in-right">
+                        <div className="flex-container">
+                          <div className="any-right">
+                            <img
+                              src="https://thumbs.dreamstime.com/z/earth-icon-globe-symbol-isolated-transparent-background-planet-112427230.jpg"
+                              alt=""
+                            />
+                          </div>
+                          <div className="any-left">
+                            <h4>Anyone</h4>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="align-in">
+                      <div className="in-left">
+                        <InputLabel id="district">District</InputLabel>
+                        <TextField
+                          size="small"
+                          name="district"
+                          type="text"
+                          value={formData?.district}
+                          onChange={(event) =>
+                            setFormData({
+                              ...formData,
+                              district: event.target.value,
+                            })
+                          }
+                          fullWidth="true"
+                        />
+                      </div>
+                      <div className="in-right">
+                        <div className="flex-container">
+                          <div className="any-right">
+                            <img
+                              src="https://thumbs.dreamstime.com/z/earth-icon-globe-symbol-isolated-transparent-background-planet-112427230.jpg"
+                              alt=""
+                            />
+                          </div>
+                          <div className="any-left">
+                            <h4>Anyone</h4>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="align-in">
+                      <div className="in-left">
+                        <InputLabel id="sector">Sector</InputLabel>
+                        <TextField
+                          size="small"
+                          name="sector"
+                          type="text"
+                          value={formData?.sector}
+                          onChange={(event) =>
+                            setFormData({
+                              ...formData,
+                              sector: event.target.value,
+                            })
+                          }
+                          fullWidth="true"
+                        />
+                      </div>
+                      <div className="in-right">
+                        <div className="flex-container">
+                          <div className="any-right">
+                            <img
+                              src="https://thumbs.dreamstime.com/z/earth-icon-globe-symbol-isolated-transparent-background-planet-112427230.jpg"
+                              alt=""
+                            />
+                          </div>
+                          <div className="any-left">
+                            <h4>Anyone</h4>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="align-in">
+                      <div className="in-left">
+                        <InputLabel id="cell">Cell</InputLabel>
+                        <TextField
+                          size="small"
+                          name="cell"
+                          type="text"
+                          value={formData?.cell}
+                          onChange={(event) =>
+                            setFormData({
+                              ...formData,
+                              cell: event.target.value,
+                            })
+                          }
+                          fullWidth="true"
                         />
                       </div>
                       <div className="in-right">
@@ -68,88 +299,19 @@ const UpdateProfile = () => {
 
                     <div className="align-in">
                       <div className="in-left">
-                        <label htmlFor="Full name">Public name</label>
-                        <br></br>
+                        <InputLabel id="permitId">Permit ID</InputLabel>
                         <TextField
                           size="small"
-                          name="fullname"
+                          name="permitId"
                           type="text"
-                          fullWidth
-                        />
-                      </div>
-                      <div className="in-right">
-                        <div className="flex-container">
-                          <div className="any-right">
-                            <img
-                              src="https://thumbs.dreamstime.com/z/earth-icon-globe-symbol-isolated-transparent-background-planet-112427230.jpg"
-                              alt=""
-                            />
-                          </div>
-                          <div className="any-left">
-                            <h4>Anyone</h4>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="align-in">
-                      <div className="in-left">
-                        <label htmlFor="Full name">Based in</label>
-                        <br></br>
-                        <TextField
-                          size="small"
-                          name="fullname"
-                          type="text"
-                          fullWidth
-                        />
-                      </div>
-                      <div className="in-right">
-                        <div className="flex-container">
-                          <div className="any-right">
-                            <img
-                              src="https://thumbs.dreamstime.com/z/earth-icon-globe-symbol-isolated-transparent-background-planet-112427230.jpg"
-                              alt=""
-                            />
-                          </div>
-                          <div className="any-left">
-                            <h4>Anyone</h4>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="align-in">
-                      <div className="in-left">
-                        <label htmlFor="Full name">Based in</label>
-                        <br></br>
-                        <TextField
-                          size="small"
-                          name="fullname"
-                          type="text"
-                          fullWidth
-                        />
-                      </div>
-                      <div className="in-right">
-                        <div className="flex-container">
-                          <div className="any-right">
-                            <img
-                              src="https://thumbs.dreamstime.com/z/earth-icon-globe-symbol-isolated-transparent-background-planet-112427230.jpg"
-                              alt=""
-                            />
-                          </div>
-                          <div className="any-left">
-                            <h4>Anyone</h4>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="align-in">
-                      <div className="in-left">
-                        <label htmlFor="Full name">Based in</label>
-                        <br></br>
-                        <TextField
-                          size="small"
-                          name="fullname"
-                          type="text"
-                          fullWidth
+                          value={formData?.permitId}
+                          onChange={(event) =>
+                            setFormData({
+                              ...formData,
+                              permitId: event.target.value,
+                            })
+                          }
+                          fullWidth="true"
                         />
                       </div>
                       <div className="in-right">
@@ -173,83 +335,159 @@ const UpdateProfile = () => {
               </div>
               {/* end off about  */}
               <div class="flex-item-center"></div>
+              {/* Upload image */}
               <div class="flex-item-right">
                 <div className="image">
-                  <img
-                    src="http://products.metalloinvest.com/upload/iblock/b5b/userProfileIcon_gray.png"
-                    alt=""
-                  />
-                  <p>Ben Iraa</p>
-                  <h5>beniraa50@gmail.com</h5>
+                  {previewSource && (<img
+                    src={previewSource}
+                    alt="Chosen Profile" 
+                  />) || (<img src= {formData?.profilePicture} alt="Ancient Profile Picture" />) || <Skeleton height={100} width={100} /> }
+                  {<p>{formData?.name}</p> || <Skeleton /> }
+                  {<h5>{formData?.email}</h5> || <Skeleton /> }
 
                   <div className="buttons">
-                    <button className="button" onClick={() => setOpen(true)}>
+                    {/* <button className="button" 
+                    onClick={() => setOpen(true)}>
                       View
-                    </button>
-                    <input type="file" id="upload" hidden />
-                    <label for="upload">Update</label>
+                    </button> */}
+                    <input type="file" 
+                    id="upload" 
+                    onChange= {handleFileInputChange}
+                    value={setFileInputState}
+                     hidden/> 
+                    <label for="upload">Upload</label>
                   </div>
                 </div>
               </div>
+               {/* End of Upload image */}
             </div>
             <h3 className="header">Contact Info:</h3>
             <div className="contact">
               <div className="contact-left">
                 <div className="contact-left-label">
                   {" "}
-                  <label htmlFor="email-address">Email address</label>
+                  <InputLabel id="telNumber">TelePhone Number</InputLabel> 
                 </div>
                 <div className="contact-left-input">
                   {" "}
-                  <TextField size="small" name="email" type="email" fullWidth />
+                  {<TextField
+                    size="small"
+                    name="telNumber"
+                    type="text"
+                    value={formData?.telNumber}
+                    onChange={(event) =>
+                      setFormData({
+                        ...formData,
+                        telNumber: event.target.value,
+                      })
+                    }
+                    fullWidth="true"
+                  /> || <Skeleton height={35}/> }
                 </div>
+                {/* email */}
                 <div className="contact-left-label">
                   {" "}
-                  <label htmlFor="Phone number">Phone Number</label>
+                  <InputLabel id="email">Email</InputLabel> 
                 </div>
                 <div className="contact-left-input">
                   {" "}
-                  <TextField size="small" name="phone" type="email" fullWidth />
+                  {<TextField
+                    size="small"
+                    name="email"
+                    type="email"
+                    value={formData?.email}
+                    onChange={(event) =>
+                      setFormData({
+                        ...formData,
+                        email: event.target.value,
+                      })
+                    }
+                    fullWidth="true"
+                    disabled={true}
+                  /> || <Skeleton height={35}/> }
                 </div>
               </div>
-            </div>
-            <h3 className="header">Security</h3>
+            </div> 
+
+            {/* carplate */} 
+            <h3 className="header">Asigned Car Info:</h3>
             <div className="contact">
               <div className="contact-left">
-                <h5>Change Password*</h5>
+                <div className="contact-left-label">
+                  <InputLabel id="carplate">Carplate</InputLabel> 
+                </div>
+                <div className="contact-left-input">
+                  {<TextField
+                    size="small"
+                    name="carplate"
+                    type="text"
+                    value={formData?.carplate}
+                    onChange={(event) =>
+                      setFormData({
+                        ...formData,
+                        carplate: event.target.value,
+                      })
+                    }
+                    fullWidth="true"
+                    disabled={true}
+                  /> || <Skeleton height={35}/> }
+                </div>
+                {/* capacity */}
                 <div className="contact-left-label">
                   {" "}
-                  <label htmlFor="email-address">Current Password</label>
+                  <InputLabel id="capacity">Capacity</InputLabel> 
                 </div>
                 <div className="contact-left-input">
                   {" "}
-                  <TextField
+                  {<TextField
                     size="small"
-                    name="password"
-                    type="password"
-                    fullWidth
-                  />
+                    name="capacity"
+                    type="text"
+                    value={formData?.capacity}
+                    onChange={(event) =>
+                      setFormData({
+                        ...formData,
+                        capacity: event.target.value,
+                      })
+                    }
+                    fullWidth="true"
+                    disabled={true}
+                  /> || <Skeleton height={35}/> }
                 </div>
+                {/* vehicletype */}
                 <div className="contact-left-label">
-                  {" "}
-                  <label htmlFor="Phone number">New Password</label>
+                  <InputLabel id="vehicletype">Vehicletype</InputLabel> 
                 </div>
                 <div className="contact-left-input">
-                  {" "}
-                  <TextField
+                  {<TextField
                     size="small"
-                    name="password"
-                    type="password"
-                    fullWidth
-                  />
+                    name="vehicletype"
+                    type="text"
+                    value={formData?.vehicletype}
+                    onChange={(event) =>
+                      setFormData({
+                        ...formData,
+                        vehicletype: event.target.value,
+                      })
+                    }
+                    fullWidth="true"
+                    disabled={true}
+                  /> || <Skeleton height={35}/> }
                 </div>
               </div>
             </div>
+
+          {/* ALert message */}
+           {/* <div class="alert">User Updated</div>
+           <div class="alertError">There was an error while updating</div> */}
+
             <div className="contact">
               <div className="contact-left-save">
                 <div className="buttons">
-                  <button className="button">Cancel</button>
-                  <button className="button-save">Save</button>
+                  <button className="button" onClick={() => setEditMode(false)}>Cancel</button>
+                  <button className="button-save" type="submit">
+                    Save
+                  </button>
                 </div>
               </div>
             </div>
@@ -266,7 +504,7 @@ const UpdateProfile = () => {
                 <DialogContentText id="dialog-description">
                   <div className="image-dialoge">
                     <img
-                      src="http://products.metalloinvest.com/upload/iblock/b5b/userProfileIcon_gray.png"
+                      src={previewSource}
                       alt=""
                     />
                   </div>
@@ -287,7 +525,8 @@ const UpdateProfile = () => {
           </form>
         </div>
       </div>
-    </DashboarLayout>
+ )} 
+    </DashboardLayout>
   );
 };
 

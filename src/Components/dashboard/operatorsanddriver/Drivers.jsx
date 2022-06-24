@@ -74,7 +74,7 @@ const drivers = [
 
 const Drivers = () => {
   const [open, setOpen] = React.useState(false);
-  const [isLoading, setisLoading] = React.useState(false);
+  const [isLoading, setisLoading] = React.useState(true);
   const handleClickOpen = () => {
     setOpen(true);
   };
