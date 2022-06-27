@@ -130,10 +130,11 @@ const PhantomRoutes = (prop) => {
         />
         <Route path="/dashboard/bus" element={<Bus />} />
         <Route path="/dashboard/rolepermission" element={<Roles />} />
+        <Route path="/dashboard/buses" element={<Bus />} />
         <Route path="/assign" element={<ListBuses />} />
         <Route path="/dashboard/bus/register" element={<RegisterBus />} />
-        <Route path="/dashboard/bus/1" element={<BusDetails />} />
-        <Route path="/dashboard/bus/1/update" element={<BusUpdate />} />
+        <Route path="/dashboard/bus" element={<BusDetails />} />
+        <Route path="/dashboard/bus/update" element={<BusUpdate />} />
         <Route path="/dashboard/updateprofile" element={<UpdateProfile />} />
         <Route path="/dashboard/simulation" element={<Simulation />} />
         {/* <Route path="/admin/dashboard" element={<AdminDashboard />} /> */}
