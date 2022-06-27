@@ -184,7 +184,7 @@ export const Signin = () => {
               <OutlinedInput
                 label="password"
                 name="password"
-                value={password}
+                value={values.password}
                 sx={{ mt: 2 }}
                 id="outlined-adornment-password"
                 type={values.showPassword ? "text" : "password"}
