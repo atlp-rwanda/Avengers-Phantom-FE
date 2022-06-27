@@ -57,7 +57,6 @@ const Buses = () => {
 
   const handleGetOneBus = (id) => {
     localStorage.setItem("busId", id)
-    // dispatch(getBusById(id))
   }
   
   const handleClose = ()=> {
@@ -80,7 +79,7 @@ const Buses = () => {
   
   useEffect(() => {
     handleBusses()
-    setLoading(false)
+      setLoading(false)
   },[])
 
   return (
@@ -177,7 +176,7 @@ const Buses = () => {
               {`${Buses?.length} buses`}
             </Typography>
 
-            {loading&&loading ? <SkeletonElement/> : Buses&&Buses?.map(bus => {
+            {loading ? <SkeletonElement/> : Buses?.map(bus => {
               return <Card sx={{ marginBottom: 3 }} key = {bus.uuid}>
               <Box
                 sx={{

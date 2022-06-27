@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import DashboardLayout from "../../../Layouts/Dashboard";
 import Sidebar from "../sidebar/Sidebar.jsx";
-import DashNavbar from "../dashnavbar/DashNavBar.jsx";
 import { useEffect } from "react";
 import {useDispatch, useSelector } from "react-redux";
 import {getBusById} from "../../../redux/Action/fetchallbuses"
@@ -24,7 +23,6 @@ const BusDetail = () => {
     },[])
     
     const bus = useSelector(state => state.fetchbuses?.busById)
-    console.log(bus)
   return (
     <DashboardLayout>
       <div className="dashboard">

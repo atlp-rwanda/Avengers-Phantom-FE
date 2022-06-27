@@ -34,7 +34,6 @@ export default function Update(){
   
   
   const bus = useSelector(state => state?.fetchbuses?.busById)
-  console.log(bus)
   
   const formBody = (({capacity, company, manufacturer, plateNumber, type, yearOfManufacturing }) => ({ capacity, company, manufacturer, plateNumber, type, yearOfManufacturing}))(values)
 
