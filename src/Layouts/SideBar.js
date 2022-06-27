@@ -10,6 +10,7 @@ import DirectionsBusIcon from "@material-ui/icons/DirectionsBus";
 import RouteIcon from "@mui/icons-material/Route";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import MapIcon from "@mui/icons-material/Map";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { styles } from "./styles";
 
 const useStyles = makeStyles(styles);
@@ -57,6 +58,14 @@ export const MainListItems = () => {
             <AccountCircleIcon />
           </ListItemIcon>
           <ListItemText primary="Profile" />
+        </ListItem>
+      </NavLink>
+      <NavLink to="/dashboard/rolepermission" className={classes.sideBarLink}>
+        <ListItem button>
+          <ListItemIcon className={classes.sideBarIcon}>
+            <CheckCircleOutlineIcon />
+          </ListItemIcon>
+          <ListItemText primary="Roles" />
         </ListItem>
       </NavLink>
       <NavLink to="/dashboard/simulation" className={classes.sideBarLink}>

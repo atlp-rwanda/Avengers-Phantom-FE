@@ -129,7 +129,7 @@ const PhantomRoutes = (prop) => {
           element={<AddOperator />}
         />
         <Route path="/dashboard/bus" element={<Bus />} />
-        <Route path="/rolepermission" element={<Roles />} />
+        <Route path="/dashboard/rolepermission" element={<Roles />} />
         <Route path="/assign" element={<ListBuses />} />
         <Route path="/dashboard/bus/register" element={<RegisterBus />} />
         <Route path="/dashboard/bus/1" element={<BusDetails />} />

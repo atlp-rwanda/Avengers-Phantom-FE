@@ -12,6 +12,11 @@ import {
   routestDetailsReducer,
   routeUpdateReducer,
 } from "./routes";
+import { createRoleReducer } from "./createRoleReducer";
+import { fetchAllRolesReducer } from "./getAllRolesReducer";
+import { getRoleReducer } from "./GetRoleReducer";
+import { updateRoleReducer } from "./updateRoleReducer";
+import { deleteRoleReducer } from "./deleteRoleReducer";
 
 const rootReducer = combineReducers({
   counter: reducer,
@@ -25,8 +30,13 @@ const rootReducer = combineReducers({
   updateRoute: routeUpdateReducer,
   deletedRoute: routeDeleteReducer,
   assign: assignbusesReducer,
+  fetchusers: fetchallusersReducer,
+  assign: assignbusesReducer,
+  createRoleReducer,
+  fetchAllRolesReducer,
+  getRoleReducer,
+  updateRoleReducer,
+  deleteRoleReducer,
 });
 
 export default rootReducer;
-
-// i18n
