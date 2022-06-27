@@ -64,8 +64,10 @@ export const Signin = () => {
       password: values.password,
     };
     console.log(JSON.stringify(send));
+
     fetch(`${baseUrl}/users/login`, {
       method: "POST",
+
       headers: {
         "Content-Type": "application/json",
       },
@@ -73,7 +75,6 @@ export const Signin = () => {
     })
       .then(function (response) {
         if (response.status !== 200) {
-
           response.json().then(function (data) {
             alert(`'Looks like there was a problem   ' ${data.message}`);
           });
@@ -83,13 +84,11 @@ export const Signin = () => {
         // Examine the text in the response
         response.json().then(function (data) {
           location.replace("../dashboard");
-          localStorage.setItem("token",data.token);
-          localStorage.setItem("useruuid",data.data.user.uuid);
-
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("useruuid", data.data.user.uuid);
         });
       })
-      .catch(function (err) {
-      });
+      .catch(function (err) {});
   };
   return (
     <ThemeProvider theme={theme}>
@@ -112,9 +111,8 @@ export const Signin = () => {
       >
         <Box
           sx={{
-            
             pt: 8,
-           
+
             display: "flex",
             justifyContent: "space-around",
 
@@ -129,8 +127,6 @@ export const Signin = () => {
             display: { xs: "flex  ", md: " flex " },
           }}
         >
-         
-
           <Box
             sx={{
               height: "fit-content",
@@ -205,7 +201,6 @@ export const Signin = () => {
                     </IconButton>
                   </InputAdornment>
                 }
-                
               />
             </FormControl>
             <Box sx={{ display: "flex", justifyContent: "center", m: 4 }}>

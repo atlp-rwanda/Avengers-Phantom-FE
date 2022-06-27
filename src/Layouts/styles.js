@@ -18,7 +18,8 @@ export const styles = () => ({
     margin: "auto",
   },
   userName: {
-    marginRight: "50px",
+    marginRight: "100px",
+    marginLeft: "300px",
   },
   profilePic: {
     marginRight: "90px",
@@ -86,7 +87,8 @@ export const styles = () => ({
     padding: "0 0 0 20px",
   },
   title: {
-    color: "#FFF",
+    color: "#000",
+    marginLeft: "500px",
   },
   routeInput: {
     border: "none",
