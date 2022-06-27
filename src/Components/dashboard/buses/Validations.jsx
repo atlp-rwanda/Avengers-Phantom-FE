@@ -12,10 +12,10 @@ const RegisterForm = async (
 const initialValues = {
     company: "",
     type:"",
-    platenumber: "",
+    plateNumber: "",
     manufacturer:"",
     capacity:"",
-    yom:"",
+    yearOfManufacturing:"",
     formSubmitted: false,
     success: false
 }
@@ -34,13 +34,13 @@ export const FormValidation = ()=>{
         if("type" in fieldValues){
             tmp.type = fieldValues.type?"":"Required field."
         }
-        if("platenumber" in fieldValues){
-            tmp.platenumber = fieldValues.type? "":"Required field."
-            // if (fieldValues.platenumber){
-            //     tmp.platenumber = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(fieldValues.platenumber)
-            //     ? ""
-            //     : "platenumber is not valid."
-            // }
+        if("plateNumber" in fieldValues){
+            tmp.plateNumber = fieldValues.type? "":"Required field."
+            if (fieldValues.platenumber){
+                tmp.platenumber = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(fieldValues.platenumber)
+                ? ""
+                : "platenumber is not valid."
+            }
         }
         if("manufacturer" in fieldValues){
             tmp.manufacturer = fieldValues.manufacturer?"":"Required field."
@@ -48,8 +48,8 @@ export const FormValidation = ()=>{
         if("capacity" in fieldValues){
             tmp.capacity = fieldValues.capacity?"":"Required field."
         }
-        if("yom" in fieldValues){
-            tmp.yom = fieldValues.yom?"":"Required field."
+        if("yearOfManufacturing" in fieldValues){
+            tmp.yearOfManufacturing = fieldValues.yom?"":"Required field."
         }
         setErrors({
             ...tmp

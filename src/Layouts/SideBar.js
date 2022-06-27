@@ -43,7 +43,7 @@ export const MainListItems = () => {
           <ListItemText primary="Drivers&Operators" />
         </ListItem>
       </NavLink>
-      <NavLink to="/dashboard/bus" className={classes.sideBarLink}>
+      <NavLink to="/dashboard/buses" className={classes.sideBarLink}>
         <ListItem button>
           <ListItemIcon className={classes.sideBarIcon}>
             <DirectionsBusIcon />

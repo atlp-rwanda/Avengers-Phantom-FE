@@ -5,8 +5,24 @@ import Photo from "../../../static/images/busbackground.jpg";
 import { Link } from "react-router-dom";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import DashboardLayout from "../../../Layouts/Dashboard";
+import Sidebar from "../sidebar/Sidebar.jsx";
+import { useEffect } from "react";
+import {useDispatch, useSelector } from "react-redux";
+import {getBusById} from "../../../redux/Action/fetchallbuses"
 
 const BusDetail = () => {
+    const busId = localStorage.getItem("busId")
+    const dispatch = useDispatch()
+
+    const getBus =()=>{
+      dispatch(getBusById(busId))
+    }
+    
+    useEffect(() => {
+      getBus()
+    },[])
+    
+    const bus = useSelector(state => state.fetchbuses?.busById)
   return (
     <DashboardLayout>
       <div className="dashboard">
@@ -31,7 +47,7 @@ const BusDetail = () => {
             </Typography>
             <Button
               component={Link}
-              to="/bus/1/update"
+              to={`/dashboard/bus/update?id=${busId}`}
               sx={{
                 background: "#012241",
                 width: { lg: 100, xs: 50, md: 90 },
@@ -91,18 +107,9 @@ const BusDetail = () => {
                   component="p"
                   sx={{ color: "#675B5B", fontWeight: 700, fontSize: 11 }}
                 >
-                  Kigali bus service
+                  {bus?.data.buses.company}
                 </Typography>
-                <Typography
-                  component="label"
-                  sx={{
-                    textTransform: "uppercase",
-                    color: "#675B5B",
-                    fontSize: 9,
-                  }}
-                >
-                  KBS
-                </Typography>
+  
               </Box>
               <Box component="div" sx={{ display: "block", p: 2 }}>
                 <Typography
@@ -120,7 +127,7 @@ const BusDetail = () => {
                   component="p"
                   sx={{ fontWeight: 700, fontSize: 11, color: "#675B5B" }}
                 >
-                  3B
+                  {bus?.data.buses.type}
                 </Typography>
                 <Typography
                   component="label"
@@ -149,7 +156,7 @@ const BusDetail = () => {
                   component="p"
                   sx={{ color: "#675B5B", fontWeight: 700, fontSize: 11 }}
                 >
-                  RAB 100 C
+                  {bus?.data.buses.plateNumber}
                 </Typography>
               </Box>
             </Box>
@@ -175,7 +182,7 @@ const BusDetail = () => {
                   component="p"
                   sx={{ color: "#675B5B", fontWeight: 700, fontSize: 11 }}
                 >
-                  Hundayi
+                  {bus?.data.buses.manufacturer}
                 </Typography>
               </Box>
               <Box component="div" sx={{ display: "block", p: 2 }}>
@@ -194,7 +201,7 @@ const BusDetail = () => {
                   component="p"
                   sx={{ fontWeight: 700, fontSize: 11, color: "#675B5B" }}
                 >
-                  100
+                  {bus?.data.buses.capacity}
                 </Typography>
                 <Typography
                   component="label"
@@ -223,7 +230,7 @@ const BusDetail = () => {
                   component="p"
                   sx={{ color: "#675B5B", fontWeight: 700, fontSize: 11 }}
                 >
-                  2000
+                  {bus?.data.buses.yearOfManufacturing}
                 </Typography>
               </Box>
             </Box>
