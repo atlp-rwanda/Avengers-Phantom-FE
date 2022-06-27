@@ -111,10 +111,9 @@ export const Signin = () => {
       >
         <Box
           sx={{
-            //padding: 8,
+            
             pt: 8,
-            //  pr:8,
-
+           
             display: "flex",
             justifyContent: "space-around",
 
@@ -129,25 +128,7 @@ export const Signin = () => {
             display: { xs: "flex  ", md: " flex " },
           }}
         >
-          {/* <Box 
-        sx={{ //padding: 8,
-          // mt:0.5,
-
-          //display:'flex',
-          display: { xs: 'flex ', md: 'none ' },
-          justifyContent: 'space-between',
-                     
-          height: '100%',
-          // boxSizing:'border-box' 
-          flexWrap: 'wrap',
-          color:'primary.main',
-          background:`linear-gradient(rgba(1, 34, 65, 0.5),rgba(1, 34, 65, 0.9)), url(${SVG})`,
-          // backgroundColor: 'secondary.main',
-          backgroundSize: "cover",
-          border: "1px solid black",
-          
-          }}>
-         */}
+         
 
           <Box
             sx={{
@@ -207,11 +188,9 @@ export const Signin = () => {
                 label="password"
                 name="password"
                 value={password}
-                onChange={(e) => onInputChange(e)}
                 sx={{ mt: 2 }}
                 id="outlined-adornment-password"
                 type={values.showPassword ? "text" : "password"}
-                value={values.password}
                 onChange={handleChange("password")}
                 endAdornment={
                   <InputAdornment sx={{ m: 1 }} position="end">
@@ -225,7 +204,7 @@ export const Signin = () => {
                     </IconButton>
                   </InputAdornment>
                 }
-                label="Password"
+                
               />
             </FormControl>
             <Box sx={{ display: "flex", justifyContent: "center", m: 4 }}>
