@@ -36,7 +36,7 @@ export default function Agency(){
         width: '100%',
         height:'450px',
         marginTop:2,
-        backgroundImage: `url(${Background})`,
+        backgroundImage: `url(https://res.cloudinary.com/avengersphantom/image/upload/v1656445469/Images/images/Agencies_ihifw5.png)`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition:'center',
         position:'relative',
@@ -50,19 +50,19 @@ export default function Agency(){
                     <Box sx={{display:'flex',justifyContent:'space-between'}}>
                         <Box 
                         component="img"
-                        src={require('../../static/images/Agency2.png')}
+                        src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445464/Images/images/Agency2_plet0k.png'}
                         alt="profile image"
                         sx={{margin:1,width:{lg:150,xs:100,md:200},height:{lg:100,xs:50,md:100},borderRadius:'10px'}}
                         />
                         <Box 
                         component="img"
-                        src={require('../../static/images/Agency.png')}
+                        src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445462/Images/images/Agency_iqrxgf.png'}
                         alt="profile image"
                         sx={{margin:1,width:{lg:150,xs:100,md:200},height:{lg:100,xs:50,md:100},borderRadius:'10px'}}
                         />
                         <Box 
                         component="img"
-                        src={require('../../static/images/agency3.png')}
+                        src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445466/Images/images/agency3_wb0fvi.png'}
                         alt="profile image"
                         sx={{margin:1,width:{lg:150,xs:100,md:200},height:{lg:100,xs:50,md:100},borderRadius:'10px'}}
                         />

@@ -6,13 +6,16 @@ import "react-toastify/dist/ReactToastify.css"
 
 const token = localStorage.getItem('token');
 const useruuid = localStorage.getItem('useruuid'); 
+const currrentUrl = window.location.href
+const backendUrl = process.env.BACKEND_URL
+
 
 const notify = (toastMsg) => toast(toastMsg); 
 
 export const fetchUserData = () => async (dispatch) => { 
    try{
     const res = await axios({
-        url: `http://127.0.0.1:9000/api/v1/users/${useruuid}`, 
+        url: `${backendUrl}/users/${useruuid}`, 
         method: 'GET',
         headers: {
             "Content-type": "application/json;charset=UTF-8",
@@ -35,12 +38,12 @@ export const fetchUserData = () => async (dispatch) => {
 export const updateUserData = (useruuid, formData) => async (dispatch) => {
     try{
     const res = await axios({
-      url:`http://localhost:9000/api/v1/users/updateProfile/${useruuid}`,
+      url:`${backendUrl}/users/updateProfile/${useruuid}`,
       method:"PATCH",
       data:formData,
       headers: {
         "Content-type": "application/json;charset=UTF-8",
-        'Access-Control-Allow-Origin': 'http://localhost:8080',
+        'Access-Control-Allow-Origin': `${currrentUrl}`,
         "Authorization": `Bearer ${token}`,
     }
     })

@@ -6,6 +6,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Outlet, Link } from "react-router-dom";
 import './style.css';
+
+const backendUrl = process.env.BACKEND_URL
+
 const ResetPage = () => {
   const btnStyle = { margin: 20, width: "25%" }
 
@@ -36,7 +39,7 @@ const ResetPage = () => {
       setEmailError(false)
     }
     axios({
-      url: "http://localhost:5000/api/v1/users/forgotpassword",
+      url: `${backendUrl}/users/forgotpassword`,
       data: body,
       method: "PUT",
     }).then(res => {
@@ -49,7 +52,6 @@ const ResetPage = () => {
       }, 2000)
 
     }).catch((err) => {
-      console.log(err)
       setLoading(false)
       setMessage("The User belongs to this Email does'nt exist")
     })

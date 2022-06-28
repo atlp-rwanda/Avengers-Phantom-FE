@@ -37,7 +37,7 @@ function Contact() {
         <Box
         sx={{
         marginTop:2,
-        backgroundImage: `url(${Background})`,
+        backgroundImage: `url(https://res.cloudinary.com/avengersphantom/image/upload/v1656445470/Images/images/Contact_oqjusv.png)`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition:'center',
         position:'relative',

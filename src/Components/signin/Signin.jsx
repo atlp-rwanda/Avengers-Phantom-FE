@@ -63,7 +63,6 @@ export const Signin = () => {
       email: prod.email,
       password: values.password,
     };
-    console.log(JSON.stringify(send));
 
     fetch(`${baseUrl}/users/login`, {
       method: "POST",
@@ -120,7 +119,7 @@ export const Signin = () => {
             // boxSizing:'border-box'
             flexWrap: "wrap",
             color: "primary.main",
-            background: `linear-gradient(rgba(1, 34, 65, 0.5),rgba(1, 34, 65, 0.9)), url(${SVG})`,
+            background: `linear-gradient(rgba(1, 34, 65, 0.5),rgba(1, 34, 65, 0.9)), url(https://res.cloudinary.com/avengersphantom/image/upload/v1656445464/Images/images/b2_u3evhb.svg)`,
             // backgroundColor: 'secondary.main',
             backgroundSize: "cover",
             border: "1px solid black",

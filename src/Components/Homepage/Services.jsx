@@ -19,7 +19,7 @@ export default function Services(){
                 <Box sx={{display:'block',width:{lg:'100%',xs:'200px'},margin:'auto',height:'200px',marginBottom:5}}>
                     <Box 
                         component='img'
-                        src={require('../../static/images/ServiceA.PNG')}
+                        src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445463/Images/images/ServiceA_uh8xyy.png'}
                         alt="Services"
                         sx={{
                             width:'100%',
@@ -35,7 +35,7 @@ export default function Services(){
                 <Box sx={{display:'block',width:{lg:'100%',xs:'200px'},margin:'auto',height:'200px',marginBottom:5}}>
                     <Box 
                         component='img'
-                        src={require('../../static/images/Serviceb.PNG')}
+                        src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445463/Images/images/Serviceb_jr7zbk.png'}
                         alt="Services"
                         sx={{
                             width:'100%',
@@ -51,7 +51,7 @@ export default function Services(){
                 <Box sx={{display:'block',width:{lg:'100%',xs:'200px'},margin:'auto',height:'200px',marginBottom:5}}>
                     <Box 
                         component='img'
-                        src={require('../../static/images/Servicec.PNG')}
+                        src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445462/Images/images/Servicec_wbzixj.png'}
                         alt="Services"
                         sx={{
                             width:'100%',
@@ -67,7 +67,7 @@ export default function Services(){
                 <Box sx={{display:'block',width:{lg:'100%',xs:'200px'},margin:'auto',height:'200px'}}>
                     <Box 
                         component='img'
-                        src={require('../../static/images/Servicec.PNG')}
+                        src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445462/Images/images/Servicec_wbzixj.png'}
                         alt="Services"
                         sx={{
                             width:'100%',

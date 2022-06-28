@@ -66,7 +66,7 @@ const Navbar = () => {
               >
                 <Avatar
                   alt="logo"
-                  src={bus}
+                  src={`https://res.cloudinary.com/avengersphantom/image/upload/v1656445466/Images/images/bus_azhxmp.png`}
                   sx={{ width: 80 }}
                   variant="square"
                 />

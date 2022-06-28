@@ -35,10 +35,6 @@ const AddRoutes = () => {
   const [endPointError, setEndPointError] = useState(false);
   const [stopError, setStopError] = useState(false);
 
-  const handleClear = () => {
-    console.log("Content cleared");
-  };
-
   const handleAddRoute = () => {
    
     const List = document.querySelector(".list-route");
@@ -73,7 +69,6 @@ const AddRoutes = () => {
       setStopError(true);
     } else {
 
-      console.log(routeID, startPoint, endPoint, stop);
       dispatch(saveProduct( { routeID, startPoint, endPoint}))
     }
   };

@@ -12,7 +12,7 @@ export default function About(){
                 <Box 
                 component="img"
                 sx={{width:'100%',height:'400px'}}
-                src={require('../../static/images/About.png')}
+                src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445466/Images/images/About_vqod2c.png'}
                 alt="About"
                 />
                 <Box sx={{width:'100%',marginLeft:{lg:5,xs:0}}}>

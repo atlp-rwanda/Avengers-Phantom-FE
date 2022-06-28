@@ -49,8 +49,6 @@ const ResponsiveAppBar = () => {
     setAnchorElUser(null);
   };
   const handleLogout = () => {
-    console.log("you are logged out");
-
     localStorage.clear();
     location.replace("../signin");
   };

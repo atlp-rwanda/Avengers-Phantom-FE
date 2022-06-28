@@ -65,7 +65,7 @@ function Homepage() {
         sx={{
           width: "100%",
           height: { lg: "500px", xs: "400px" },
-          backgroundImage: `url(${Background})`,
+          backgroundImage: `url(https://res.cloudinary.com/avengersphantom/image/upload/v1656445466/Images/images/agency3_wb0fvi.png)`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: { lg: "bottom left", xs: "center" },
           position: "relative",

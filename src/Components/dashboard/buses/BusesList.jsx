@@ -196,7 +196,7 @@ const Buses = () => {
               >
                 <Box
                   component="img"
-                  src={Photo}
+                  src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445463/Images/images/busbackground_lo7ra7.jpg'}
                   alt="bus image"
                   sx={{
                     width: { lg: 200, xs: 1 },

@@ -78,7 +78,6 @@ const Drivers = () => {
   const driversList = useSelector((state) => state.driversList);
   // const { loading, drivers, error } = driversList;
 
-// console.log(drivers)
 
 
 
@@ -166,7 +165,7 @@ const Drivers = () => {
           {drivers.map((driver, index) => (
             <div key={index} className="driver_component">
               <div className="driver_component_photo">
-                <img src={Photo} alt="karera" />
+                <img src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445446/Images/dashboard_image/photo_svd054.jpg'} alt="karera" />
               </div>
               <div className="driver_component_content">
                 <h3>{driver.name}</h3>

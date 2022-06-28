@@ -10,7 +10,6 @@ const icon = L.icon({
 });
 
 export const PhantomBusMarker = ({ data, speed, pause }) => {
-  console.log("data", data);
 
   const { lat, lng } = data;
   const [prevPos, setPrevPos] = useState([lat, lng]);
