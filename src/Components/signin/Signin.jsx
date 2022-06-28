@@ -30,6 +30,7 @@ const theme = createTheme({
     },
   },
 });
+const baseUrl = process.env.BACKEND_URL
 
 export const Signin = () => {
   const [values, setValues] = React.useState({
@@ -46,7 +47,6 @@ export const Signin = () => {
       showPassword: !values.showPassword,
     });
   };
-
   const [prod, setprod] = React.useState({
     email: "",
     password: "",
@@ -58,15 +58,16 @@ export const Signin = () => {
   };
   const submitRecord = (e) => {
     e.preventDefault();
-    console.log(values.password);
 
     const send = {
       email: prod.email,
       password: values.password,
     };
     console.log(JSON.stringify(send));
-    fetch(`http://localhost:5000/api/v1/users/login`, {
-      method: "post",
+
+    fetch(`${baseUrl}/users/login`, {
+      method: "POST",
+
       headers: {
         "Content-Type": "application/json",
       },
@@ -74,8 +75,6 @@ export const Signin = () => {
     })
       .then(function (response) {
         if (response.status !== 200) {
-          console.log(response);
-
           response.json().then(function (data) {
             alert(`'Looks like there was a problem   ' ${data.message}`);
           });
@@ -84,17 +83,12 @@ export const Signin = () => {
 
         // Examine the text in the response
         response.json().then(function (data) {
-          console.log(data);
           location.replace("../dashboard");
-
           localStorage.setItem("token", data.token);
-
-          //console.log(donut + " donuts cost $" + cost + " each");
+          localStorage.setItem("useruuid", data.data.user.uuid);
         });
       })
-      .catch(function (err) {
-        console.log("Fetch Error :", err);
-      });
+      .catch(function (err) {});
   };
   return (
     <ThemeProvider theme={theme}>
@@ -117,9 +111,7 @@ export const Signin = () => {
       >
         <Box
           sx={{
-            //padding: 8,
             pt: 8,
-            //  pr:8,
 
             display: "flex",
             justifyContent: "space-around",
@@ -135,26 +127,6 @@ export const Signin = () => {
             display: { xs: "flex  ", md: " flex " },
           }}
         >
-          {/* <Box 
-        sx={{ //padding: 8,
-          // mt:0.5,
-
-          //display:'flex',
-          display: { xs: 'flex ', md: 'none ' },
-          justifyContent: 'space-between',
-                     
-          height: '100%',
-          // boxSizing:'border-box' 
-          flexWrap: 'wrap',
-          color:'primary.main',
-          background:`linear-gradient(rgba(1, 34, 65, 0.5),rgba(1, 34, 65, 0.9)), url(${SVG})`,
-          // backgroundColor: 'secondary.main',
-          backgroundSize: "cover",
-          border: "1px solid black",
-          
-          }}>
-         */}
-
           <Box
             sx={{
               height: "fit-content",
@@ -212,12 +184,10 @@ export const Signin = () => {
               <OutlinedInput
                 label="password"
                 name="password"
-                value={password}
-                onChange={(e) => onInputChange(e)}
+                value={values.password}
                 sx={{ mt: 2 }}
                 id="outlined-adornment-password"
                 type={values.showPassword ? "text" : "password"}
-                value={values.password}
                 onChange={handleChange("password")}
                 endAdornment={
                   <InputAdornment sx={{ m: 1 }} position="end">
@@ -231,7 +201,6 @@ export const Signin = () => {
                     </IconButton>
                   </InputAdornment>
                 }
-                label="Password"
               />
             </FormControl>
             <Box sx={{ display: "flex", justifyContent: "center", m: 4 }}>

@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { fetchAllroutes } from "../redux/Action/routes";
+
 import { Routes, Route } from "react-router-dom";
 // import Dashboard from "../Components/dashboard/dashboard/Dashboard.jsx";
 import Drivers from "../Components/dashboard/operatorsanddriver/Drivers.jsx";
@@ -26,9 +30,11 @@ import BusDetails from "../Components/dashboard/buses/BusDetail.jsx";
 import BusUpdate from "../Components/dashboard/buses/updateBus.jsx";
 import Footer from "../Components/Homepage/Footer.jsx";
 import Manuals from "../Components/Homepage/Manuals.jsx";
-import MapSection from "../Components/Homepage/MapSection.jsx";
+import MapSection from "../Components/Homepage/ClientMap";
 import Contact from "../Components/Homepage/Contact.jsx";
-import UpdateProfile from "../Components/dashboard/updateProfile/updateProfile.jsx";
+import UpdateProfile from "../Components/dashboard/updateProfile"; 
+
+import ChangePassword from "../Components/dashboard/updateProfile/changePassword.jsx";
 import { Signin } from "../Components/signin/Signin.jsx";
 import ListBuses from "../Components/buses redux/busess.jsx";
 import Simulation from "../Components/Simulation/Simulation.js";
@@ -36,6 +42,7 @@ import Dashboard from "../Layouts/Dashboard";
 
 const PhantomRoutes = (prop) => {
   const location = useLocation();
+
   return (
     <div>
       <Routes>
@@ -97,7 +104,10 @@ const PhantomRoutes = (prop) => {
             </>
           }
         />
-        <Route path={`/resertpasswordpage/:${prop.token}`} element={<ResetPasswordPage />} />
+        <Route
+          path={`/resertpasswordpage/:${prop.token}`}
+          element={<ResetPasswordPage />}
+        />
       </Routes>
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
@@ -119,11 +129,12 @@ const PhantomRoutes = (prop) => {
           element={<AddOperator />}
         />
         <Route path="/dashboard/bus" element={<Bus />} />
-        <Route path="/rolepermission" element={<Roles />} />
+        <Route path="/dashboard/rolepermission" element={<Roles />} />
+        <Route path="/dashboard/buses" element={<Bus />} />
         <Route path="/assign" element={<ListBuses />} />
         <Route path="/dashboard/bus/register" element={<RegisterBus />} />
-        <Route path="/dashboard/bus/1" element={<BusDetails />} />
-        <Route path="/dashboard/bus/1/update" element={<BusUpdate />} />
+        <Route path="/dashboard/bus" element={<BusDetails />} />
+        <Route path="/dashboard/bus/update" element={<BusUpdate />} />
         <Route path="/dashboard/updateprofile" element={<UpdateProfile />} />
         <Route path="/dashboard/simulation" element={<Simulation />} />
         {/* <Route path="/admin/dashboard" element={<AdminDashboard />} /> */}

@@ -20,8 +20,8 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import { ListItemText, ListItemAvatar } from "@mui/material";
 import FolderIcon from "@mui/icons-material/Folder";
 import AddRouteInit from "./AddRouteInit.jsx";
-import DashboardLayout from "./../../../Layouts/Dashboard";
-
+import DashboardLayout from "../../../Layouts/Dashboard.js";
+import { ToastContainer } from "react-toastify";
 const un = "Bus stop one, You can add others by hitting + button";
 
 const AddRoutes = () => {
@@ -40,15 +40,7 @@ const AddRoutes = () => {
   };
 
   const handleAddRoute = () => {
-    console.log("route added");
-    // const ul = document.createElement("ul");
-    // const li = document.createElement("li");
-    // li.innerHTML = stop;
-    // busstop.reset();
-    // busstop.focus();
-    // ul.appendChild(li)
-
-    // document.querySelector(".added-route").appendChild(ul)
+   
     const List = document.querySelector(".list-route");
     const ListItem = document.createElement("li");
     ListItem.style.border = "1px solid #c4c4c4";
@@ -80,17 +72,22 @@ const AddRoutes = () => {
     if (stop === "") {
       setStopError(true);
     } else {
+
       console.log(routeID, startPoint, endPoint, stop);
+      dispatch(saveProduct( { routeID, startPoint, endPoint}))
     }
   };
+  
   return (
-    <DashboardLayout>
-      {/* <DashNavbar /> */}
-      <div className="dashboard">
-        {/* <div className="generalmenubar">{<Sidebar />}</div> */}
-        <AddRouteInit />
-      </div>
-    </DashboardLayout>
+    
+      <DashboardLayout >
+         <ToastContainer />      
+          <div className="dashboard">            
+            <AddRouteInit />
+          </div>
+      </DashboardLayout>
+      
+    
   );
 };
 

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Buttons from "./Button.jsx";
 import Photo from "../../../static/dashboard_image/photo.jpeg";
 import AddIcon from "@mui/icons-material/Add";
@@ -12,7 +13,6 @@ import {
   TextField,
   Card,
 } from "@mui/material";
-import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import SearchIcon from "@mui/icons-material/Search";
 import Dialog from "@mui/material/Dialog";
@@ -25,9 +25,9 @@ import Slide from "@mui/material/Slide";
 import { Link } from "react-router-dom";
 import Sidebar from "../sidebar/Sidebar.jsx";
 import DashNavbar from "../dashnavbar/DashNavBar.jsx";
-import { useState } from "react";
 import "../Dashboard.css";
 import CardSkeleton from "./CardSkeleton.jsx";
+// import { fetchAllDrivers } from "../../../redux/Action/DriversAndOperators/driversAndOperators.js";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -73,8 +73,16 @@ const drivers = [
 ];
 
 const Drivers = () => {
-  const [open, setOpen] = React.useState(false);
-  const [isLoading, setisLoading] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
+  const driversList = useSelector((state) => state.driversList);
+  // const { loading, drivers, error } = driversList;
+
+// console.log(drivers)
+
+
+
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -83,7 +91,7 @@ const Drivers = () => {
     setOpen(false);
   };
 
-  const [openDetail, setOpenDetail] = React.useState(false);
+  const [openDetail, setOpenDetail] = useState(false);
 
   const handleClickOpenDetail = () => {
     setOpenDetail(true);
@@ -92,6 +100,14 @@ const Drivers = () => {
   const handleCloseDetail = () => {
     setOpenDetail(false);
   };
+
+
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(fetchAllDrivers());
+  //   return () => {};
+  // }, []);
 
   return (
     <div>
@@ -145,7 +161,8 @@ const Drivers = () => {
               </Button>
             </FormControl>
           </Box>
-          {isLoading && <CardSkeleton skeletoncount={5} />}
+          {/* {isLoading && <CardSkeleton skeletoncount={5} />} */}
+          
           {drivers.map((driver, index) => (
             <div key={index} className="driver_component">
               <div className="driver_component_photo">
@@ -164,17 +181,7 @@ const Drivers = () => {
               <div className="driver_component_contentbutton">
                 <h3>{driver.capacity}</h3>
 
-                {/* <Buttons
-                handlerFunc={handleClickOpenDetail}
-                text="View details"
-                bcolor="#012241"
-              />
-              
-              <Buttons
-                handlerFunc={handleClickOpen}
-                text="Delete"
-                bcolor="#bd2424"
-              /> */}
+               
                 <Button
                   onClick={handleClickOpenDetail}
                   size="small"

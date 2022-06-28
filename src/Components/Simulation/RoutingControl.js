@@ -3,7 +3,6 @@ import L from "leaflet";
 import { createControlComponent } from "@react-leaflet/core";
 import "leaflet-routing-machine";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
-import { useMapEvents, Marker, Popup, useMap } from "react-leaflet";
 
 const createRoutineMachineLayer = ({ setPosition, setSummary }) => {
   const instance = L.Routing.control({
@@ -16,24 +15,25 @@ const createRoutineMachineLayer = ({ setPosition, setSummary }) => {
       styles: [
         {
           color: "#fff",
-          weight: 20,
+          weight: 10,
           border: "1px solid #000",
         },
       ],
     },
-    show: true,
-    addWaypoints: false,
-    routeWhileDragging: true,
-    draggableWaypoints: true,
-    fitSelectedRoutes: true,
-    showAlternatives: false,
+    show: false,
+    // addWaypoints: false,
+    // routeWhileDragging: true,
+    // draggableWaypoints: true,
+    // fitSelectedRoutes: true,
+    // showAlternatives: false,
+    // zoom: true,
   });
 
   instance.on("routesfound", function (e) {
     const routes = e.routes[0].coordinates;
     const coordinatesValues = Object.values(routes);
 
-    var summary = e.routes[0].summary;
+    const summary = e.routes[0].summary;
 
     let coordinates = [];
     for (let i = 0; i < coordinatesValues.length; i++) {
@@ -42,7 +42,7 @@ const createRoutineMachineLayer = ({ setPosition, setSummary }) => {
         lng: coordinatesValues[i]?.lng,
       });
     }
-    // console.log("machine,cords", coordinates);
+
     setPosition([...coordinates]);
     setSummary(summary);
   });

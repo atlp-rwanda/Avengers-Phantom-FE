@@ -13,7 +13,6 @@ import Divider from "@material-ui/core/Divider";
 import { MainListItems } from "./SideBar";
 import List from "@material-ui/core/List";
 import Avatar from "@mui/material/Avatar";
-import SettingsIcon from "@mui/icons-material/Settings";
 
 const useStyles = makeStyles(styles);
 
@@ -44,14 +43,8 @@ const DashboardLayout = ({ children }) => {
             src="https://cdn.pixabay.com/photo/2012/04/26/12/51/man-42392__480.png"
             sx={{ width: 40, height: 40, bgcolor: "#012241" }}
           />
-          <Avatar
-            sx={{ width: 20, height: 20, bgcolor: "#fff", color: "#012241" }}
-          >
-            <SettingsIcon />
-          </Avatar>
         </Toolbar>
       </AppBar>
-      <Toolbar />
       <div className={classes.container}>
         <Drawer
           variant="permanent"

@@ -10,6 +10,7 @@ import DirectionsBusIcon from "@material-ui/icons/DirectionsBus";
 import RouteIcon from "@mui/icons-material/Route";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import MapIcon from "@mui/icons-material/Map";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { styles } from "./styles";
 
 const useStyles = makeStyles(styles);
@@ -43,7 +44,7 @@ export const MainListItems = () => {
           <ListItemText primary="Drivers&Operators" />
         </ListItem>
       </NavLink>
-      <NavLink to="/dashboard/bus" className={classes.sideBarLink}>
+      <NavLink to="/dashboard/buses" className={classes.sideBarLink}>
         <ListItem button>
           <ListItemIcon className={classes.sideBarIcon}>
             <DirectionsBusIcon />
@@ -59,6 +60,14 @@ export const MainListItems = () => {
           <ListItemText primary="Profile" />
         </ListItem>
       </NavLink>
+      <NavLink to="/dashboard/rolepermission" className={classes.sideBarLink}>
+        <ListItem button>
+          <ListItemIcon className={classes.sideBarIcon}>
+            <CheckCircleOutlineIcon />
+          </ListItemIcon>
+          <ListItemText primary="Roles" />
+        </ListItem>
+      </NavLink>
       <NavLink to="/dashboard/simulation" className={classes.sideBarLink}>
         <ListItem button>
           <ListItemIcon className={classes.sideBarIcon}>
@@ -67,6 +76,54 @@ export const MainListItems = () => {
           <ListItemText primary="Simulation" />
         </ListItem>
       </NavLink>
+    </div>
+  );
+};
+
+const Routes = [
+  {
+    id: 0,
+    label: "Select your Road",
+  },
+  {
+    id: 1,
+    label: " Down Town Remera ",
+    latlng: [12, 12],
+  },
+  { id: 2, label: "Nyamirambo Down Town", latlng: [12, 12] },
+  {
+    id: 3,
+    label: "Down Town Kimironko",
+    latlng: [12, 12],
+  },
+];
+
+export const ClientSideBar = () => {
+  const classes = useStyles();
+  return (
+    <div className={classes.clientSideBar}>
+      <form>
+        <div className={classes.formFields}>
+          <div>
+            <select className={classes.routeInput}>
+              {Routes.map((item) => (
+                <option value={item.latlng} key={item.id}>
+                  {item.label}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <button
+              className={classes.startButton}
+              style={{ marginTop: "20px" }}
+            >
+              Go
+            </button>
+          </div>
+        </div>
+      </form>
+      <div className={classes.realTimeResults}>RealtTime Results</div>
     </div>
   );
 };

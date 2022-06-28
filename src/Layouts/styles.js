@@ -18,7 +18,8 @@ export const styles = () => ({
     margin: "auto",
   },
   userName: {
-    marginRight: "50px",
+    marginRight: "100px",
+    marginLeft: "300px",
   },
   profilePic: {
     marginRight: "90px",
@@ -26,14 +27,24 @@ export const styles = () => ({
   container: {
     display: "flex",
     flex: 1,
+    background: "red",
+    marginTop: "50px",
   },
   drawer: {
     background: "#012241",
     position: "static",
     transition: "width .5s",
   },
+  ClientDrawer: {
+    background: "#012241",
+    position: "static",
+    transition: "width .5s",
+  },
   closed: {
     width: "60px",
+  },
+  clientOpened: {
+    width: "350px",
   },
   opened: {
     width: "240px",
@@ -60,5 +71,53 @@ export const styles = () => ({
   sideBarLink: {
     textDecoration: "none",
     color: "#FFF",
+  },
+  clientSideBar: {
+    padding: "0px 0px 0px 60px",
+  },
+  // clientSideBarNormal: {
+  //   padding: "0px 60px 0px 0px",
+  // },
+  toggleButton: {
+    color: "#FFF",
+    padding: "10px",
+  },
+  formFields: {
+    display: "flex",
+    padding: "0 0 0 20px",
+  },
+  title: {
+    color: "#000",
+    marginLeft: "500px",
+  },
+  routeInput: {
+    border: "none",
+    padding: "5px",
+    marginTop: "20px",
+    height: "30px",
+    borderTopLeftRadius: "3px",
+    borderBottomLeftRadius: "3px",
+    boxShadow: "0px 7px 29px 0px #000",
+  },
+  startButton: {
+    border: "none",
+    display: "block",
+    width: "80px",
+    background: "#fff",
+    color: "#000",
+    cursor: "pointer",
+    height: "30px",
+    borderTopRightRadius: "3px",
+    borderBottomRightRadius: "3px",
+    boxShadow: "0px 7px 29px 0px #000",
+  },
+  realTimeResults: {
+    background: "#fff",
+    width: "260px",
+    height: "30vh",
+    marginTop: "30px",
+    marginLeft: "20px",
+    borderRadius: "5px",
+    boxShadow: "0px 7px 29px 0px #000",
   },
 });

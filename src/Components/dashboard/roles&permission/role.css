@@ -1,0 +1,28 @@
+.role__form__container {
+  width: 100%;
+}
+
+.role__form__container form input {
+  border: 1px solid #012241;
+  outline-style: none;
+  height: 35px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  width: 50%;
+  text-indent: 10px;
+  /* margin-right: 20px; */
+}
+.role__form__container form button {
+  border: 1px solid #012241;
+  background: #012241;
+  color: #fff;
+  outline-style: none;
+  height: 39px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  width: 10%;
+  cursor: pointer;
+}
+.ck {
+  color: rgba(255, 255, 255, 0.161);
+}
