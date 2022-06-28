@@ -35,18 +35,24 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const Buses = () => {
   const dispatch = useDispatch()
+  const Buses = useSelector(state => state.fetchbuses?.buses)
   const [open, setOpen] = React.useState(false);
   const [isLoading, setisLoading] = React.useState(true);
   const [busId, setBusId]= useState("")
   const [busPlateNumber, setBusPlateNumber]= useState("")
   const [openDetail, setOpenDetail] = React.useState(false);
   const [loading,setLoading]= React.useState(true)
-  const Buses = useSelector(state => state.fetchbuses.buses)
-  
+  const itemsPerPage=2;
+  const [page, setPage]= React.useState(1)
+
   const handleClickOpen = (id, plateNumber) => {
     setOpen(true);
     setBusId(id)
     setBusPlateNumber(plateNumber)
+  };
+
+  const handleChange = (event, value) => {
+    setPage(value);
   };
 
   
@@ -85,7 +91,7 @@ const Buses = () => {
   return (
     <DashboardLayout>
       <ToastContainer />
-      <div className="dashboard">
+      <>
         <div className="containt">
           <Box
             sx={{
@@ -176,7 +182,7 @@ const Buses = () => {
               {`${Buses?.length} buses`}
             </Typography>
 
-            {loading ? <SkeletonElement/> : Buses?.map(bus => {
+            {loading ? <SkeletonElement/> : Buses?.slice(((page - 1)*(itemsPerPage)), ((page)*(itemsPerPage))).map(bus => {
               return <Card sx={{ marginBottom: 3 }} key = {bus.uuid}>
               <Box
                 sx={{
@@ -355,10 +361,14 @@ const Buses = () => {
 
           {<Pagination
             size="small"
-            count={10}
+            count={Math.ceil(Buses?.length / itemsPerPage)}
+            page={page}
+            onChange={handleChange}
             variant="outlined"
-            siblingCount={1}
+            siblingCount={1} 
             boundaryCount={1}
+            showFirstButton
+            showLastButton
             sx={{ color: "#bd2424" }}
           ></Pagination>}
 
@@ -410,7 +420,7 @@ const Buses = () => {
             </DialogActions>
           </Dialog>
         </div>
-      </div>
+      </>
     </DashboardLayout>
   );
 };
