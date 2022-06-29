@@ -1,5 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
 import Skeleton from'react-loading-skeleton';
 import {
     Box,
@@ -32,14 +31,5 @@ const SkeletonElement = ({cards})  => {
 
         </div>
     ))
-=======
-import './Skeleton.css';
- 
-const SkeletonElement = ({type})  => {
-    const classes = `skeleton ${type}` ;
-    return (
-        <div className={classes}></div>
-    )
->>>>>>> 94f3e784 (    pick b187b156 (ch-bagdes-integrations-vs-test))
 }
 export default SkeletonElement;

@@ -12,7 +12,7 @@
 
 **Avengers-Phantom-FE**.
 
-- Live app is hosted on heroku : https://avengers-phantom-test.herokuapp.com/
+- Live app is hosted on heroku : https://avengersphantom-fe.herokuapp.com/
 
 # FEATURES
 
