@@ -5,14 +5,14 @@ import "react-toastify/dist/ReactToastify.css";
 
 const notify = (toastMsg) => toast(toastMsg);
 
-const URL = "https://new-avengers-be-deploy.herokuapp.com/";
+const backendUrl = "https://new-avengers-be-deploy.herokuapp.com/api/v1"|| process.env.BACKEND_URL
 
 const token = localStorage.getItem("token");
 
 export const fetchAllroutes = () => async (dispatch) => {
   try {
     dispatch({ type: actions.ROUTE_LIST_REQUEST });
-    const data = await axios.get(`${URL}/api/v1/routes`);
+    const data = await axios.get(`${backendUrl}/routes`);
     dispatch({ type: actions.ROUTE_LIST_SUCCESS, payload: data });
   } catch (error) {
     localStorage.setItem("error", error.message);
@@ -24,7 +24,7 @@ export const fetchAllroutes = () => async (dispatch) => {
 export const fetchSingleRoute = (routeID) => async (dispatch) => {
   try {
     dispatch({ type: actions.ROUTE_DETAILS_REQUEST });
-    const data = await axios.get(`${URL}/api/v1/routes/${routeID}`);
+    const data = await axios.get(`${backendUrl}/routes/${routeID}`);
 
     dispatch({ type: actions.ROUTE_DETAILS_SUCCESS, payload: data });
   } catch (error) {
@@ -37,7 +37,7 @@ export const fetchSingleRoute = (routeID) => async (dispatch) => {
 export const saveRoute = (route) => async (dispatch, getState) => {
   try {
     dispatch({ type: actions.ROUTE_SAVE_REQUEST, payload: route });
-    const data = await axios.post(`${URL}/api/v1/routes`, route, {
+    const data = await axios.post(`${backendUrl}/routes`, route, {
       headers: {
         Authorization: "Bearer" + `${token}}`,
       },
@@ -54,7 +54,7 @@ export const updateRoute = (route, routeID) => async (dispatch, getState) => {
   try {
     dispatch({ type: actions.ROUTE_UPDATE_REQUEST, payload: route });
 
-    const data = await axios.patch(`${URL}/api/v1/routes/${routeID}`, route, {
+    const data = await axios.patch(`${backendUrl}/routes/${routeID}`, route, {
       headers: {
         Authorization: "Bearer" + `${token}}`,
       },
@@ -71,7 +71,7 @@ export const deleteRoute = (routeID) => async (dispatch, getState) => {
   try {
     dispatch({ type: actions.ROUTE_DELETE_REQUEST });
 
-    const data = await axios.delete(`${URL}/api/v1/routes/${routeID}`, {
+    const data = await axios.delete(`${backendUrl}/routes/${routeID}`, {
       headers: {
         Authorization: "Bearer" + `${token}}`,
       },
