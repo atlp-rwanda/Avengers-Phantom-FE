@@ -1,18 +1,13 @@
 import React, { useState } from "react";
-import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import TextareaAutosize from '@mui/base/TextareaAutosize';
-import Skeleton from '@mui/material/Skeleton';
-import { Divider} from '@mui/material';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import Footer from "./Footer.jsx";
-import Background from '../../static/images/Contact.png'
 import { ContactValidator } from "./ContactValidator.jsx";
 
 

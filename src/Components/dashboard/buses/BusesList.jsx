@@ -11,7 +11,6 @@ import {
 import {useState, useEffect} from "react"
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
-import Photo from "../../../static/images/busbackground.jpg";
 import { Link } from "react-router-dom";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";

@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Grid, Card, Typography, Button } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
-import Photo from "../../../static/images/busbackground.jpg";
 import { Link } from "react-router-dom";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import DashboardLayout from "../../../Layouts/Dashboard";
@@ -270,7 +269,7 @@ const BusDetail = () => {
               <Box
                 component="div"
                 sx={{
-                  backgroundImage: `url(${Photo})`,
+                  backgroundImage: `url('https://res.cloudinary.com/avengersphantom/image/upload/v1656445463/Images/images/busbackground_lo7ra7.jpg')`,
                   backgroundPosition: "center",
                   backgroundSize: "cover",
                   width: { lg: 150, xs: "100%" },
@@ -294,7 +293,7 @@ const BusDetail = () => {
               <Box
                 component="div"
                 sx={{
-                  backgroundImage: `url(${Photo})`,
+                  backgroundImage: `url('https://res.cloudinary.com/avengersphantom/image/upload/v1656445463/Images/images/busbackground_lo7ra7.jpg')`,
                   backgroundPosition: "center",
                   backgroundSize: "cover",
                   width: { lg: 150, xs: "100%" },
@@ -318,7 +317,7 @@ const BusDetail = () => {
               <Box
                 component="div"
                 sx={{
-                  backgroundImage: `url(${Photo})`,
+                  backgroundImage: `url('https://res.cloudinary.com/avengersphantom/image/upload/v1656445463/Images/images/busbackground_lo7ra7.jpg')`,
                   backgroundPosition: "center",
                   backgroundSize: "cover",
                   width: { lg: 150, xs: "100%" },
@@ -342,7 +341,7 @@ const BusDetail = () => {
               <Box
                 component="div"
                 sx={{
-                  backgroundImage: `url(${Photo})`,
+                  backgroundImage: `url('https://res.cloudinary.com/avengersphantom/image/upload/v1656445463/Images/images/busbackground_lo7ra7.jpg')`,
                   backgroundPosition: "center",
                   backgroundSize: "cover",
                   width: { lg: 150, xs: "100%" },

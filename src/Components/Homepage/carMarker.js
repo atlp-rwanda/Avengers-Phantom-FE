@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { LeafletTrackingMarker } from "react-leaflet-tracking-marker";
 import L from "leaflet";
-import busIcon from "./../../Assets/phantomIconCar.png";
 
 const icon = L.icon({
   iconSize: [20, 25],
   popupAnchor: [2, -20],
-  iconUrl: busIcon,
+  iconUrl: 'https://res.cloudinary.com/avengersphantom/image/upload/v1656445298/Images/phantomIconCar_flohca.png',
 });
 
 export const PhantomBusMarker = ({ data, speed, pause }) => {

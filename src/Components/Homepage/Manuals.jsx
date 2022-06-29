@@ -1,7 +1,6 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import {Typography } from '@mui/material';
-import Background from '../../static/images/ManualOverlay.png';
 
 export default function Manuals(){
     return(

@@ -1,9 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import Background from '../../static/images/Agencies.png';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import { useTheme } from '@mui/material/styles';
 import MobileStepper from '@mui/material/MobileStepper';
 import Button from '@mui/material/Button';
