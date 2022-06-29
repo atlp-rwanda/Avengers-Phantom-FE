@@ -1,18 +1,13 @@
 import React, { useState } from "react";
-import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import TextareaAutosize from '@mui/base/TextareaAutosize';
-import Skeleton from '@mui/material/Skeleton';
-import { Divider} from '@mui/material';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import Footer from "./Footer.jsx";
-import Background from '../../static/images/Contact.png'
 import { ContactValidator } from "./ContactValidator.jsx";
 
 
@@ -37,7 +32,7 @@ function Contact() {
         <Box
         sx={{
         marginTop:2,
-        backgroundImage: `url(${Background})`,
+        backgroundImage: `url(https://res.cloudinary.com/avengersphantom/image/upload/v1656445470/Images/images/Contact_oqjusv.png)`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition:'center',
         position:'relative',

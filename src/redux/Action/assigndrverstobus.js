@@ -1,11 +1,12 @@
 import * as actions from './actiontypes.js'
 import axios from 'axios'
 
+const backendUrl = process.env.BACKEND_URL
 
 export const assigndrivers= () => dispatch => {
     const useruid = localStorage.getItem('useruuid'); 
     const busuid = localStorage.getItem('busuuid'); 
-    return axios.put(`http://localhost:5000/api/v1/assignment/assign/${useruid}/${busuid}`)
+    return axios.put(`${backendUrl}/assignment/assign/${useruid}/${busuid}`)
     .then(res =>{
         dispatch({type:actions.ASSIGN_DRIVER_BUSES,payload:res.data})
     }

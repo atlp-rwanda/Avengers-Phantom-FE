@@ -1,4 +1,7 @@
 import { io } from "socket.io-client";
-const socket = io.connect("http://localhost:3000");
+
+const backendUrl = process.env.BACKEND_URL
+
+const socket = io.connect(backendUrl);
 
 export default socket;

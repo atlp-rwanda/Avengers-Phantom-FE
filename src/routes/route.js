@@ -110,7 +110,7 @@ const PhantomRoutes = (prop) => {
         />
       </Routes>
       <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route exact path="/dashboard" element={<Dashboard />} />
         <Route path="/dashboard/routes" element={<Routecar />} />
         <Route path="/dashboard/addroute" element={<AddRoutes />} />
         <Route path="/dashboard/singleroute" element={<SingleRoute />} />

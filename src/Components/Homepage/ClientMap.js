@@ -62,8 +62,6 @@ const ClientMap = () => {
     }
   }, [position, start, engine, speed, pause]);
 
-  console.log(position);
-
   return (
     <Layout>
       <MapContainer

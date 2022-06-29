@@ -3,15 +3,22 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "npm": "7.x"
+  },
   "scripts": {
     "dev": "webpack-dev-server --mode development --open --hot",
     "start": "node server.js",
     "test": "jest --no-cache --verbose --coverage",
-    "build": "webpack --mode production && npm install --legacy-peer-deps"
+    "build": "webpack --mode production && npm install"
   },
   "author": "armstrong",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/plugin-transform-runtime": "^7.17.10",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
     "@craco/craco": "^6.4.3",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -26,10 +33,14 @@
     "@mui/x-data-grid": "^5.10.0",
     "@react-leaflet/core": "^2.0.0",
     "@testing-library/react": "^13.1.1",
+    "autoprefixer": "^9.8.8",
     "axios": "^0.27.2",
+    "babel-loader": "^8.2.4",
+    "babel-polyfill": "^6.26.0",
     "clsx": "^1.1.1",
     "css-loader": "^6.7.1",
     "dotenv": "^16.0.1",
+    "file-loader": "^6.2.0",
     "google-maps-react": "^2.0.6",
     "graphql": "^16.3.0",
     "html-webpack-plugin": "^5.5.0",
@@ -66,15 +77,6 @@
     "webpack-dev-server": "^4.8.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.9",
-    "@babel/plugin-transform-runtime": "^7.17.10",
-    "@babel/preset-env": "^7.16.11",
-    "@babel/preset-react": "^7.16.7",
-    "autoprefixer": "^9.8.8",
-    "babel-loader": "^8.2.4",
-    "babel-polyfill": "^6.26.0",
-    "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.5.0",
     "jest": "^27.5.1",
     "jest-environment-jsdom": "^27.5.1",
     "leaflet.marker.slideto": "^0.3.0",

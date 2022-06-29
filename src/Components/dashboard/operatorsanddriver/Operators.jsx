@@ -1,5 +1,4 @@
 import React from "react";
-import Photo from "../../../static/dashboard_image/photo.jpeg";
 import Buttons from "./Button.jsx";
 import "./DriverAndOperator.css";
 import {
@@ -130,7 +129,7 @@ const Operators = () => {
           {operators.map((operator, index) => (
             <div key={index} className="operator_component">
               <div className="operator_component_photo">
-                <img src={Photo} alt="karera" />
+                <img src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445446/Images/dashboard_image/photo_svd054.jpg'} alt="karera" />
               </div>
               <div className="operator_component_container">
                 <h3>{operator.name}</h3>
@@ -242,7 +241,7 @@ const Operators = () => {
               <DialogContentText id="alert-dialog-slide-description">
                 <div className="driverdetailpopup">
                   <div className="driver_component_photo driverpop">
-                    <img src={Photo} alt="karera" />
+                    <img src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445446/Images/dashboard_image/photo_svd054.jpg'} alt="karera" />
                     <p>
                       <b>Name:</b>
                       <br />

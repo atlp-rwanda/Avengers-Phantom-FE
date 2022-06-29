@@ -1,7 +1,6 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import {Typography } from '@mui/material';
-import Background from '../../static/images/ManualOverlay.png';
 
 export default function Manuals(){
     return(
@@ -14,7 +13,7 @@ export default function Manuals(){
                 sx={{
                     width: '400px',
                     height:{lg:'400px',xs:'220px',md:'400px'},
-                    backgroundImage: {xs:'none',lg:`url(${Background})`,md:`url(${Background})`},
+                    backgroundImage: {xs:'none',lg:`url('https://res.cloudinary.com/avengersphantom/image/upload/v1656445463/Images/images/ManualOverlay_fkoncd.png')`,md:`url('https://res.cloudinary.com/avengersphantom/image/upload/v1656445463/Images/images/ManualOverlay_fkoncd.png')`},
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition:'center',
                     position:'relative',

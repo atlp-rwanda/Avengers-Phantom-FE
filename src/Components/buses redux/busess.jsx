@@ -33,7 +33,6 @@ function ListBuses( props ) {
     const[Id , setId] = useState(0)
     const [modal, setModal] = useState(false);
     const Toggle = () => setModal(!modal);
-    console.log(Id)
    
     const columns = [
       { field: 'id', headerName: 'ID', width: 150 },
@@ -114,7 +113,6 @@ function ListBuses( props ) {
 }
 
 const mapStateToProps = (fetchbuses) => {
-    console.log(fetchbuses)
     return {
     busesState: fetchbuses.fetchbuses,
     userState:fetchbuses.fetchusers,

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Box, Grid, TextField, Typography, Button } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
-import Photo from "../../../static/images/busbackground.jpg";
 import { FormValidation } from "./Validations.jsx";
 import DashboardLayout from "./../../../Layouts/Dashboard";
 import {getBusById} from "../../../redux/Action/fetchallbuses"
@@ -229,7 +228,7 @@ export default function Update(){
                 <Button
                   component="label"
                   sx={{
-                    backgroundImage: `url(${Photo})`,
+                    backgroundImage: `url('https://res.cloudinary.com/avengersphantom/image/upload/v1656445463/Images/images/busbackground_lo7ra7.jpg')`,
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                     width: { lg: 150, xs: "100%" },
@@ -257,7 +256,7 @@ export default function Update(){
                 <Button
                   component="label"
                   sx={{
-                    backgroundImage: `url(${Photo})`,
+                    backgroundImage: `url('https://res.cloudinary.com/avengersphantom/image/upload/v1656445463/Images/images/busbackground_lo7ra7.jpg')`,
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                     width: { lg: 150, xs: "100%" },
@@ -285,7 +284,7 @@ export default function Update(){
                 <Button
                   component="label"
                   sx={{
-                    backgroundImage: `url(${Photo})`,
+                    backgroundImage: `url('https://res.cloudinary.com/avengersphantom/image/upload/v1656445463/Images/images/busbackground_lo7ra7.jpg')`,
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                     width: { lg: 150, xs: "100%" },
@@ -313,7 +312,7 @@ export default function Update(){
                 <Button
                   component="label"
                   sx={{
-                    backgroundImage: `url(${Photo})`,
+                    backgroundImage: `url('https://res.cloudinary.com/avengersphantom/image/upload/v1656445463/Images/images/busbackground_lo7ra7.jpg')`,
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                     width: { lg: 150, xs: "100%" },

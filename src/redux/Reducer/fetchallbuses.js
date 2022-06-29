@@ -21,7 +21,6 @@ const initialState = {
           message: action.payload.message
         }
       case actions.CREATE_BUS:
-        // state.buses.push(action.payload.data?.buses)
         return {
           ...state,
           message: action.payload.message

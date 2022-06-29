@@ -101,7 +101,6 @@ const Modal = ({propp,show, close, title, children }) => {
                   onClick={async () =>{
                      assignBusses()
                     close()
-                  console.log('assigned')
                   
                  
                   // setModal(!modal)
