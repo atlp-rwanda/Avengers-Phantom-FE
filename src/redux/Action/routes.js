@@ -39,10 +39,11 @@ export const saveRoute = (route) => async (dispatch, getState) => {
     dispatch({ type: actions.ROUTE_SAVE_REQUEST, payload: route });
     const data = await axios.post(`${backendUrl}/routes`, route, {
       headers: {
-        Authorization: "Bearer" + `${token}}`,
+        "Authorization": `Bearer ${token}`,
       },
     });
     dispatch({ type: actions.ROUTE_SAVE_SUCCESS, payload: data });
+    notify('Routes was successfully created')
   } catch (error) {
     localStorage.setItem("error", error.message);
     dispatch({ type: actions.ROUTE_SAVE_FAIL, payload: error.message });
@@ -56,10 +57,11 @@ export const updateRoute = (route, routeID) => async (dispatch, getState) => {
 
     const data = await axios.patch(`${backendUrl}/routes/${routeID}`, route, {
       headers: {
-        Authorization: "Bearer" + `${token}}`,
+        "Authorization": `Bearer ${token}`,
       },
     });
     dispatch({ type: actions.ROUTE_UPDATE_SUCCESS, payload: data });
+    notify('Routes was successfully updated click close to return back')
   } catch (error) {
     localStorage.setItem("error", error.message);
     dispatch({ type: actions.ROUTE_UPDATE_FAIL, payload: error.message });
@@ -73,10 +75,11 @@ export const deleteRoute = (routeID) => async (dispatch, getState) => {
 
     const data = await axios.delete(`${backendUrl}/routes/${routeID}`, {
       headers: {
-        Authorization: "Bearer" + `${token}}`,
+        "Authorization": `Bearer ${token}`,
       },
     });
     dispatch({ type: actions.ROUTE_DELETE_SUCCESS, payload: data });
+    notify('Routes was successfully deleted')
   } catch (error) {
     localStorage.setItem("error", error.message);
     dispatch({ type: actions.ROUTE_DELETE_FAIL, payload: error.message });

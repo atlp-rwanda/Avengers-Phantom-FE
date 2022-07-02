@@ -88,16 +88,11 @@ const AddRouteInit = () => {
         if (stop === "") {
             setStopError(true);
         } else {            
-            const data = dispatch(saveRoute( { routeCode, startLocation, endLocation,name:'route', distance:'10km',duration:'1hr'}))
-            const error = localStorage.getItem("error");
-          
-            if(error ){                        
-              setErrorMessage(error)
-              notify('Error while creating route')
-            } else {
-              notify('Routes was successfully created')
-              setSuccessMessage(true)
-            }                      
+            dispatch(saveRoute( { routeCode, startLocation, endLocation,name:'route', distance:'10km',duration:'1hr'}))
+            const error = localStorage.getItem("error");                   
+            
+              
+                               
       
         }
     };

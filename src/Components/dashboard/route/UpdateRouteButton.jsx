@@ -107,18 +107,8 @@ const UpdateRouteButton = (props) => {
           setStopError(true)
         }
         else {                     
-          
-          const data= dispatch(updateRoute({ routeCode, startLocation, endLocation,name:'route', distance:'10km',duration:'1hr'}, routeUuid)) 
-          handleClose()
-          setupdated(true)
-
-          const error = localStorage.getItem("error");          
-          if(error ){                   
-           
-            notify('Error while updating route')
-          } else {
-            notify('Routes was successfully updated')
-                      }      
+          dispatch(updateRoute({ routeCode, startLocation, endLocation,name:'route', distance:'10km',duration:'1hr'}, routeUuid)) 
+          setupdated(true)                                         
         }
       }
 
@@ -130,7 +120,7 @@ const UpdateRouteButton = (props) => {
                 
                     <form className="update_route" >
                         <div style={{ marginBottom: 20 }} className="routeDetails">
-                            <div className="updated_message">{updated &&<div>Route {route.data.data.routes.uuid} has been updated successfully!!</div>}</div>
+                           
                             <Box sx={{ display: "flex", my: 2 }}>
                                 <Typography sx={{ width: 50 }}>Route Line </Typography>
                                 <TextField
@@ -229,9 +219,7 @@ const UpdateRouteButton = (props) => {
                             >
                                 Reset
                             </Button>
-                        </div>                    
-                        
-                    
+                        </div>                                   
 
                     </form>
 
