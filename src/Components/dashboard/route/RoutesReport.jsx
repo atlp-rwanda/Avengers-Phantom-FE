@@ -101,7 +101,7 @@ const OneRoute = () => {
     dispatch(fetchSingleRoute(routeUuid));
   }
 
-  const saveID = (id)=>{
+  const handleSaveId = (id)=>{
            localStorage.setItem("routeID", id)
       
   }
@@ -251,7 +251,7 @@ const OneRoute = () => {
                   <Grid container item sx={{ margin: { xs: 1, sm: 1 } }} xs={12} md={2} >
                     <Grid item xs={12} sx={{ mt: { xs: 1.5 } }} sm={4} md={12} >
                       <Button component={Link}
-                        onClick={()=>saveID(route.uuid)}
+                        onClick={()=>handleSaveId(route.uuid)}
                         to={`/dashboard/singleRoute?id=${route.uuid}`}                        
                         variant='contained' style={{ backgroundColor: "#012241", width: "100px" }}>
                         View route details

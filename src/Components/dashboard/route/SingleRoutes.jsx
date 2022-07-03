@@ -33,17 +33,23 @@ import ListItem from "@mui/material/ListItem";
 import DashboardLayout from "../../../Layouts/Dashboard";
 
 import UpdateRouteButton from "./UpdateRouteButton.jsx";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast  } from "react-toastify";
+
 
 const un = "Bus stop one, You can add others by hitting + button";
 
-let id = location.href.split("?id=")[1];
-let routeUuid = decodeURIComponent(id);
+
+
+
 
 
 const SingleRoute = (props) => {
   const [open, setOpen] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
+  let id = location.href.split("?id=")[1];
+  let routeUuid = decodeURIComponent(id);
+  
+  const notify = (toastMsg) => toast(toastMsg)
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -62,6 +68,7 @@ const SingleRoute = (props) => {
   };
   const handleDelete = () => {      
     dispatch(deleteRoute( routeUuid))
+    notify("route has been deleted successfully, return to the route list") 
     setIsDeleted(true)
   };
 
