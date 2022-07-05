@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -15,10 +15,11 @@ import MenuItem from "@mui/material/MenuItem";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { buildSchema } from "graphql";
+import Link from "@mui/material/Link";
+import { useNavigate } from "react-router-dom";
 
 const pages = ["CONTACT", "ABOUT", "SERVICES", "HOME"];
 const pages2 = ["CONTACT", "ABOUT", "SERVICES", "HOME", "signin"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 const theme = createTheme({
   palette: {
     primary: {
@@ -33,6 +34,7 @@ const theme = createTheme({
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -113,7 +115,7 @@ const Navbar = () => {
                         textAlign="center"
                         sx={{ textDecoration: "none" }}
                         component={Link}
-                        to={`/${page}`}
+                        href={`#${page.toLowerCase()}`}
                       >
                         {page}
                       </Typography>
@@ -130,7 +132,7 @@ const Navbar = () => {
                 }}
               >
                 {pages.map((page) => (
-                  <Button
+                  <Link
                     key={page}
                     onClick={handleCloseNavMenu}
                     sx={{
@@ -139,11 +141,10 @@ const Navbar = () => {
                       mr: 10,
                       display: "block",
                     }}
-                    component={Link}
-                    to={`/${page}`}
+                    href={`#${page.toLowerCase()}`}
                   >
                     {page}
-                  </Button>
+                  </Link>
                 ))}
               </Box>
 
@@ -159,8 +160,7 @@ const Navbar = () => {
                   }}
                 >
                   <Typography
-                    component={Link}
-                    to={`/signin`}
+                    onClick={() => navigate("/signin")}
                     sx={{
                       mx: "auto",
                       width: "100.37px",
