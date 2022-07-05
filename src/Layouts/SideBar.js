@@ -87,8 +87,7 @@ export const MainListItems = () => {
           </ListItem>
         </NavLink>
       )}
-
-      {Admin(Role) && (
+      {Admin(user) && (
         <NavLink to="/dashboard/rolepermission" className={classes.sideBarLink}>
           <ListItem button>
             <ListItemIcon className={classes.sideBarIcon}>

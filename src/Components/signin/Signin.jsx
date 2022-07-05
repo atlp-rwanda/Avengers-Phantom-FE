@@ -31,9 +31,6 @@ const theme = createTheme({
 });
 const baseUrl = process.env.BACKEND_URL;
 
-const URL = 'https://new-avengers-be-deploy.herokuapp.com'
-
-
 export const Signin = () => {
   const navigate = useNavigate();
   const [values, setValues] = React.useState({

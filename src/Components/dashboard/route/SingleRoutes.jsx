@@ -125,6 +125,9 @@ const SingleRoute = (props) => {
     }
   };
 
+  // const fetchSingleData = () => {
+  //   dispatch(fetchSingleRoute(routeUuid));
+  // };
 
   return (
     <DashboardLayout>
