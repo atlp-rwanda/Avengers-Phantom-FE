@@ -52,7 +52,7 @@ const Simulation = () => {
   const [currentTrack, setCurrentTrack] = React.useState({});
 
   let cursor = 0;
-  let newCursor = Number(localStorage.getItem("currentPosition", cursor));
+  let newCursor = Number(localStorage.getItem("currentPosition"));
 
   useEffect(() => {
     setCurrentTrack(position[cursor]);

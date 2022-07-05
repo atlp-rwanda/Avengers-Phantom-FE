@@ -54,7 +54,7 @@ function Homepage() {
   };
 
   return (
-    <Box sx={{ overflow: "hidden" }}>
+    <Box sx={{ overflow: "hidden" }} id="home">
       <Navbar />
       <Box
         sx={{

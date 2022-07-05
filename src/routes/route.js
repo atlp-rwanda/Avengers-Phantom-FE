@@ -32,7 +32,7 @@ import Footer from "../Components/Homepage/Footer.jsx";
 import Manuals from "../Components/Homepage/Manuals.jsx";
 import MapSection from "../Components/Homepage/ClientMap";
 import Contact from "../Components/Homepage/Contact.jsx";
-import UpdateProfile from "../Components/dashboard/updateProfile"; 
+import UpdateProfile from "../Components/dashboard/updateProfile";
 
 import ChangePassword from "../Components/dashboard/updateProfile/changePassword.jsx";
 import { Signin } from "../Components/signin/Signin.jsx";
@@ -88,7 +88,7 @@ const PhantomRoutes = (prop) => {
           path="/signin"
           element={
             <>
-              <Navbar />
+              {/* <Navbar /> */}
               <Signin />
             </>
           }

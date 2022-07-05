@@ -17,6 +17,10 @@ body {
   /* overflow: hidden; */
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .leaflet-container {
   width: 100vw;
   height: 100vh;
