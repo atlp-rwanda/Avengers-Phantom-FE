@@ -4,24 +4,24 @@ import EditIcon from "@mui/icons-material/Edit";
 import { Link } from "react-router-dom";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import DashboardLayout from "../../../Layouts/Dashboard";
-import Sidebar from "../sidebar/Sidebar.jsx";
+
 import { useEffect } from "react";
-import {useDispatch, useSelector } from "react-redux";
-import {getBusById} from "../../../redux/Action/fetchallbuses"
+import { useDispatch, useSelector } from "react-redux";
+import { getBusById } from "../../../redux/Action/fetchallbuses";
 
 const BusDetail = () => {
-    const busId = localStorage.getItem("busId")
-    const dispatch = useDispatch()
+  const busId = localStorage.getItem("busId");
+  const dispatch = useDispatch();
 
-    const getBus =()=>{
-      dispatch(getBusById(busId))
-    }
-    
-    useEffect(() => {
-      getBus()
-    },[])
-    
-    const bus = useSelector(state => state.fetchbuses?.busById)
+  const getBus = () => {
+    dispatch(getBusById(busId));
+  };
+
+  useEffect(() => {
+    getBus();
+  }, []);
+
+  const bus = useSelector((state) => state.fetchbuses?.busById);
   return (
     <DashboardLayout>
       <div className="dashboard">
@@ -108,7 +108,6 @@ const BusDetail = () => {
                 >
                   {bus?.data.buses.company}
                 </Typography>
-  
               </Box>
               <Box component="div" sx={{ display: "block", p: 2 }}>
                 <Typography

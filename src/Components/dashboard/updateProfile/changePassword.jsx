@@ -1,8 +1,7 @@
 import React from "react";
 import { useRadioGroup } from "@mui/material/RadioGroup";
 import Drivers from "../operatorsanddriver/Drivers.jsx";
-import Sidebar from "../sidebar/Sidebar.jsx";
-import DashNavbar from "../dashnavbar/DashNavBar.jsx";
+
 import "../Dashboard.css";
 import "../updateProfile/style.css";
 import {
@@ -25,15 +24,11 @@ const ChangePassword = () => {
   const [value, setValue] = useState("");
   return (
     <div>
-      <DashNavbar />
-
       <div className="dashboard">
-        <div className="generalmenubar">{<Sidebar />}</div>
         <div className="containt">
           <form action="" method="post">
             <div className="header">
               <h2>Change Password</h2>
-
             </div>
             <h3 className="header">Security</h3>
             <div className="contact">

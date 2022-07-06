@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllroutes } from "../redux/Action/routes";
 
 import { Routes, Route } from "react-router-dom";
-// import Dashboard from "../Components/dashboard/dashboard/Dashboard.jsx";
 import Drivers from "../Components/dashboard/operatorsanddriver/Drivers.jsx";
 import AddDrivers from "../Components/dashboard/operatorsanddriver/AddDrivers.jsx";
 import Operators from "../Components/dashboard/operatorsanddriver/Operators.jsx";

@@ -1,24 +1,7 @@
 import React from "react";
-import Sidebar from "../sidebar/Sidebar.jsx";
-import DashNavbar from "../dashnavbar/DashNavBar.jsx";
+
 import Box from "@mui/material/Box";
-import { Outlet, Link } from "react-router-dom";
-import CssBaseline from "@mui/material/CssBaseline";
-import ScopedCssBaseline from "@mui/material/ScopedCssBaseline";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import Modal from "../../modal/Modal.jsx";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import TextField from "@mui/material/TextField";
-import SvgIcon from "@mui/material/SvgIcon";
-import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import { useState } from "react";
-import Button from "@mui/material/Button";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+
 import "../Dashboard.css";
 import DashboardLayout from "../../../Layouts/Dashboard.js";
 import { styled } from "@mui/material/styles";

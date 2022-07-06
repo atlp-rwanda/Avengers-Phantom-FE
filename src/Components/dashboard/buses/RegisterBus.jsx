@@ -3,28 +3,38 @@ import { Box, Grid, TextField, Typography, Button } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import DashboardLayout from "./../../../Layouts/Dashboard";
-import Sidebar from "../sidebar/Sidebar.jsx";
-import DashNavbar from "../dashnavbar/DashNavBar.jsx";
-import { FormValidation} from "./Validations.jsx";
-import { useDispatch, useSelector} from "react-redux";
-import {addBus} from "../../../redux/Action/fetchallbuses"
+
+import { FormValidation } from "./Validations.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { addBus } from "../../../redux/Action/fetchallbuses";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"
-
-
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Register() {
   const { handleInputValue, handleFormSubmit, formIsValid, errors, values } =
     FormValidation();
-    const formBody = (({ capacity, company, manufacturer, plateNumber, type, yearOfManufacturing }) => ({ capacity, company, manufacturer, plateNumber, type, yearOfManufacturing}))(values)
+  const formBody = (({
+    capacity,
+    company,
+    manufacturer,
+    plateNumber,
+    type,
+    yearOfManufacturing,
+  }) => ({
+    capacity,
+    company,
+    manufacturer,
+    plateNumber,
+    type,
+    yearOfManufacturing,
+  }))(values);
 
-  const dispatch = useDispatch()
-  
+  const dispatch = useDispatch();
+
   const handleCreateBus = () => {
-    dispatch(addBus(formBody))
-  }
-
+    dispatch(addBus(formBody));
+  };
 
   return (
     <DashboardLayout>
@@ -65,7 +75,6 @@ export default function Register() {
                 name="company"
                 label="Company"
                 type="text"
-
                 sx={{ minWidth: { lg: 250, xs: "100%" } }}
                 onBlur={handleInputValue}
                 onChange={handleInputValue}

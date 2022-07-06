@@ -9,8 +9,7 @@ import { Button } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
-import Sidebar from "../sidebar/Sidebar.jsx";
-import DashNavbar from "../dashnavbar/DashNavBar.jsx";
+
 import "../Dashboard.css";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -36,7 +35,6 @@ const AddRoutes = () => {
   const [stopError, setStopError] = useState(false);
 
   const handleAddRoute = () => {
-   
     const List = document.querySelector(".list-route");
     const ListItem = document.createElement("li");
     ListItem.style.border = "1px solid #c4c4c4";
@@ -68,21 +66,17 @@ const AddRoutes = () => {
     if (stop === "") {
       setStopError(true);
     } else {
-
-      dispatch(saveProduct( { routeID, startPoint, endPoint}))
+      dispatch(saveProduct({ routeID, startPoint, endPoint }));
     }
   };
-  
+
   return (
-    
-      <DashboardLayout >
-         <ToastContainer />      
-          <div className="dashboard">            
-            <AddRouteInit />
-          </div>
-      </DashboardLayout>
-      
-    
+    <DashboardLayout>
+      <ToastContainer />
+      <div className="dashboard">
+        <AddRouteInit />
+      </div>
+    </DashboardLayout>
   );
 };
 

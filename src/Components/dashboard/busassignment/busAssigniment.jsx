@@ -74,20 +74,6 @@ function createData(BUS, ROUTES, ASSIGNMENT) {
   return { BUS, ROUTES, ASSIGNMENT };
 }
 
-const rows = [
-  createData("RAC 234 V", "rusizi huye"),
-  createData("RAC 234 X", "kigali huye"),
-  createData("RAC 234 A", "musanze huye"),
-  createData("RAC 234 R", "rusizi karongi"),
-  createData("RAC 234 T", "nyanza huye"),
-  createData("RAC 234 S", "rusizi huye"),
-  createData("RAC 234 M", "kigali huye"),
-  createData("RAC 234 Q", "musanze huye"),
-  createData("RAC 234 W", "rusizi karongi"),
-  createData("RAC 234 E", "nyanza huye"),
-  createData("RAC 234 D", "rusizi huye"),
-];
-
 const busAssigniment = (props) => {
   /**
    * Toastfy message Function

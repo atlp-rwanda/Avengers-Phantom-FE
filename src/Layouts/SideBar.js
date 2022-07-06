@@ -12,13 +12,17 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import MapIcon from "@mui/icons-material/Map";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { styles } from "./styles";
-import { AllRoles, Admin } from "./../Components/Functions/Function";
+import {
+  AllRoles,
+  Admin,
+  AdminandOperator,
+} from "./../Components/Functions/Function";
 
 const useStyles = makeStyles(styles);
 
 export const MainListItems = () => {
   const classes = useStyles();
-  const user = JSON.parse(localStorage.getItem("user"))?.data?.user?.roleName;
+  const Role = JSON.parse(localStorage.getItem("user"))?.data?.user?.roleName;
 
   return (
     <div>
@@ -31,7 +35,7 @@ export const MainListItems = () => {
         </ListItem>
       </NavLink>
 
-      {Admin(user) && (
+      {Admin(Role) && (
         <NavLink to="/dashboard/routes" className={classes.sideBarLink}>
           <ListItem button>
             <ListItemIcon className={classes.sideBarIcon}>
@@ -41,7 +45,7 @@ export const MainListItems = () => {
           </ListItem>
         </NavLink>
       )}
-      {Admin(user) && (
+      {Admin(Role) && (
         <NavLink to="/dashboard/driveroperator" className={classes.sideBarLink}>
           <ListItem button>
             <ListItemIcon className={classes.sideBarIcon}>
@@ -51,7 +55,7 @@ export const MainListItems = () => {
           </ListItem>
         </NavLink>
       )}
-      {Admin(user) && (
+      {Admin(Role) && (
         <NavLink to="/dashboard/buses" className={classes.sideBarLink}>
           <ListItem button>
             <ListItemIcon className={classes.sideBarIcon}>
@@ -61,7 +65,7 @@ export const MainListItems = () => {
           </ListItem>
         </NavLink>
       )}
-      {AllRoles(user) && (
+      {AllRoles(Role) && (
         <NavLink to="/dashboard/updateprofile" className={classes.sideBarLink}>
           <ListItem button>
             <ListItemIcon className={classes.sideBarIcon}>
@@ -71,7 +75,19 @@ export const MainListItems = () => {
           </ListItem>
         </NavLink>
       )}
-      {Admin(user) === user && (
+
+      {AdminandOperator(Role) && (
+        <NavLink to="/dashboard/assignbus" className={classes.sideBarLink}>
+          <ListItem button>
+            <ListItemIcon className={classes.sideBarIcon}>
+              <AddRoadIcon />
+            </ListItemIcon>
+            <ListItemText primary="Profile" />
+          </ListItem>
+        </NavLink>
+      )}
+
+      {Admin(Role) && (
         <NavLink to="/dashboard/rolepermission" className={classes.sideBarLink}>
           <ListItem button>
             <ListItemIcon className={classes.sideBarIcon}>
@@ -81,7 +97,7 @@ export const MainListItems = () => {
           </ListItem>
         </NavLink>
       )}
-      {AllRoles(user) && (
+      {AllRoles(Role) && (
         <NavLink to="/dashboard/simulation" className={classes.sideBarLink}>
           <ListItem button>
             <ListItemIcon className={classes.sideBarIcon}>

@@ -22,8 +22,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
 import Slide from "@mui/material/Slide";
 import { Link } from "react-router-dom";
-import Sidebar from "../sidebar/Sidebar.jsx";
-import DashNavbar from "../dashnavbar/DashNavBar.jsx";
+
 import "../Dashboard.css";
 import CardSkeleton from "./CardSkeleton.jsx";
 // import { fetchAllDrivers } from "../../../redux/Action/DriversAndOperators/driversAndOperators.js";
@@ -77,10 +76,6 @@ const Drivers = () => {
   const driversList = useSelector((state) => state.driversList);
   // const { loading, drivers, error } = driversList;
 
-
-
-
-
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -98,7 +93,6 @@ const Drivers = () => {
   const handleCloseDetail = () => {
     setOpenDetail(false);
   };
-
 
   const dispatch = useDispatch();
 
@@ -160,11 +154,16 @@ const Drivers = () => {
             </FormControl>
           </Box>
           {/* {isLoading && <CardSkeleton skeletoncount={5} />} */}
-          
+
           {drivers.map((driver, index) => (
             <div key={index} className="driver_component">
               <div className="driver_component_photo">
-                <img src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445446/Images/dashboard_image/photo_svd054.jpg'} alt="karera" />
+                <img
+                  src={
+                    "https://res.cloudinary.com/avengersphantom/image/upload/v1656445446/Images/dashboard_image/photo_svd054.jpg"
+                  }
+                  alt="karera"
+                />
               </div>
               <div className="driver_component_content">
                 <h3>{driver.name}</h3>
@@ -179,7 +178,6 @@ const Drivers = () => {
               <div className="driver_component_contentbutton">
                 <h3>{driver.capacity}</h3>
 
-               
                 <Button
                   onClick={handleClickOpenDetail}
                   size="small"
@@ -265,7 +263,12 @@ const Drivers = () => {
               <DialogContentText id="alert-dialog-slide-description">
                 <div className="driverdetailpopup">
                   <div className="driver_component_photo driverpop">
-                    <img src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445446/Images/dashboard_image/photo_svd054.jpg'} alt="karera" />
+                    <img
+                      src={
+                        "https://res.cloudinary.com/avengersphantom/image/upload/v1656445446/Images/dashboard_image/photo_svd054.jpg"
+                      }
+                      alt="karera"
+                    />
                     <p>
                       <b>Name:</b>
                       <br />

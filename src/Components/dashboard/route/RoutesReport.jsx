@@ -16,8 +16,6 @@ import {
   Typography,
 } from "@mui/material";
 import { Button } from "@mui/material";
-import Sidebar from "../sidebar/Sidebar.jsx";
-import DashNavbar from "../dashnavbar/DashNavBar.jsx";
 import "../Dashboard.css";
 import { Link, Routes } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";

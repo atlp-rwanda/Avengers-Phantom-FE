@@ -9,3 +9,7 @@ export const AllRoles = (user) => {
 export const Admin = (user) => {
   return process.env.ADMIN_ROLE === user;
 };
+
+export const AdminandOperator = (user) => {
+  return process.env.ADMIN_ROLE || process.env.OPERATOR_ROLE === user;
+};
