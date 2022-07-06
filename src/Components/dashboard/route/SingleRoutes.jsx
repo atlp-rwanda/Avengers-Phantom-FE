@@ -16,8 +16,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Button } from "@mui/material";
-import Sidebar from "../sidebar/Sidebar.jsx";
-import DashNavbar from "../dashnavbar/DashNavBar.jsx";
+
 import "../Dashboard.css";
 import { Link, Navigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -29,7 +28,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import WarningIcon from "@mui/icons-material/Warning";
-import routesID from "./routesID.jsx";
+
 import stops from "./stops.jsx";
 import AddIcon from "@mui/icons-material/Add";
 import List from "@mui/material/List";

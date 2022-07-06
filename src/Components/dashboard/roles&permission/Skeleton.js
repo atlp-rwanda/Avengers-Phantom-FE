@@ -31,127 +31,182 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const Skeleton = () => {
+const Skeleton = ({ cards }) => {
   return (
-    <React.Fragment>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>ROLE TITLE</StyledTableCell>
-              <StyledTableCell align="right">EDIT</StyledTableCell>
-              <StyledTableCell align="right">DELETE</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <StyledTableRow>
-              <StyledTableCell component="th" scope="row">
-                <LoadingSkeleton
-                  width="100%"
-                  height="20px"
-                  baseColor="#01224152"
-                  highlightColor="rgba(255, 255, 255, 0.161)"
-                />
-              </StyledTableCell>
-              <StyledTableCell align="right">
-                <LoadingSkeleton
-                  width="100%"
-                  height="20px"
-                  baseColor="#01224152"
-                  highlightColor="rgba(255, 255, 255, 0.161)"
-                />
-              </StyledTableCell>
-              <StyledTableCell align="right">
-                <LoadingSkeleton
-                  width="100%"
-                  height="20px"
-                  baseColor="#01224152"
-                  highlightColor="rgba(255, 255, 255, 0.161)"
-                />
-              </StyledTableCell>
-            </StyledTableRow>
-            <StyledTableRow>
-              <StyledTableCell component="th" scope="row">
-                <LoadingSkeleton
-                  width="100%"
-                  height="20px"
-                  baseColor="#01224152"
-                  highlightColor="rgba(255, 255, 255, 0.161)"
-                />
-              </StyledTableCell>
-              <StyledTableCell align="right">
-                <LoadingSkeleton
-                  width="100%"
-                  height="20px"
-                  baseColor="#01224152"
-                  highlightColor="rgba(255, 255, 255, 0.161)"
-                />
-              </StyledTableCell>
-              <StyledTableCell align="right">
-                <LoadingSkeleton
-                  width="100%"
-                  height="20px"
-                  baseColor="#01224152"
-                  highlightColor="rgba(255, 255, 255, 0.161)"
-                />
-              </StyledTableCell>
-            </StyledTableRow>
-            <StyledTableRow>
-              <StyledTableCell component="th" scope="row">
-                <LoadingSkeleton
-                  width="100%"
-                  height="20px"
-                  baseColor="#01224152"
-                  highlightColor="rgba(255, 255, 255, 0.161)"
-                />
-              </StyledTableCell>
-              <StyledTableCell align="right">
-                <LoadingSkeleton
-                  width="100%"
-                  height="20px"
-                  baseColor="#01224152"
-                  highlightColor="rgba(255, 255, 255, 0.161)"
-                />
-              </StyledTableCell>
-              <StyledTableCell align="right">
-                <LoadingSkeleton
-                  width="100%"
-                  height="20px"
-                  baseColor="#01224152"
-                  highlightColor="rgba(255, 255, 255, 0.161)"
-                />
-              </StyledTableCell>
-            </StyledTableRow>
-            <StyledTableRow>
-              <StyledTableCell component="th" scope="row">
-                <LoadingSkeleton
-                  width="100%"
-                  height="20px"
-                  baseColor="#01224152"
-                  highlightColor="rgba(255, 255, 255, 0.161)"
-                />
-              </StyledTableCell>
-              <StyledTableCell align="right">
-                <LoadingSkeleton
-                  width="100%"
-                  height="20px"
-                  baseColor="#01224152"
-                  highlightColor="rgba(255, 255, 255, 0.161)"
-                />
-              </StyledTableCell>
-              <StyledTableCell align="right">
-                <LoadingSkeleton
-                  width="100%"
-                  height="20px"
-                  baseColor="#01224152"
-                  highlightColor="rgba(255, 255, 255, 0.161)"
-                />
-              </StyledTableCell>
-            </StyledTableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </React.Fragment>
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 700 }} aria-label="customized table">
+        <TableHead>
+          <TableRow>
+            <StyledTableCell>ROUTE</StyledTableCell>
+            <StyledTableCell align="left">BUS</StyledTableCell>
+            <StyledTableCell align="right">ASSIGNIMENT</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <StyledTableRow>
+            <StyledTableCell>
+              <LoadingSkeleton
+                width="100%"
+                height="50px"
+                baseColor="#01224152"
+                highlightColor="rgba(255, 255, 255, 0.161)"
+              />
+            </StyledTableCell>
+            <StyledTableCell align="left">
+              <LoadingSkeleton
+                width="100%"
+                height="50px"
+                baseColor="#01224152"
+                highlightColor="rgba(255, 255, 255, 0.161)"
+              />
+            </StyledTableCell>
+            <StyledTableCell align="right">
+              <LoadingSkeleton
+                width="100%"
+                height="50px"
+                baseColor="#01224152"
+                highlightColor="rgba(255, 255, 255, 0.161)"
+              />
+            </StyledTableCell>
+          </StyledTableRow>
+
+          <StyledTableRow>
+            <StyledTableCell>
+              <LoadingSkeleton
+                width="100%"
+                height="50px"
+                baseColor="#01224152"
+                highlightColor="rgba(255, 255, 255, 0.161)"
+              />
+            </StyledTableCell>
+            <StyledTableCell align="left">
+              <LoadingSkeleton
+                width="100%"
+                height="50px"
+                baseColor="#01224152"
+                highlightColor="rgba(255, 255, 255, 0.161)"
+              />
+            </StyledTableCell>
+            <StyledTableCell align="right">
+              <LoadingSkeleton
+                width="100%"
+                height="50px"
+                baseColor="#01224152"
+                highlightColor="rgba(255, 255, 255, 0.161)"
+              />
+            </StyledTableCell>
+          </StyledTableRow>
+
+          <StyledTableRow>
+            <StyledTableCell>
+              <LoadingSkeleton
+                width="100%"
+                height="50px"
+                baseColor="#01224152"
+                highlightColor="rgba(255, 255, 255, 0.161)"
+              />
+            </StyledTableCell>
+            <StyledTableCell align="left">
+              <LoadingSkeleton
+                width="100%"
+                height="50px"
+                baseColor="#01224152"
+                highlightColor="rgba(255, 255, 255, 0.161)"
+              />
+            </StyledTableCell>
+            <StyledTableCell align="right">
+              <LoadingSkeleton
+                width="100%"
+                height="50px"
+                baseColor="#01224152"
+                highlightColor="rgba(255, 255, 255, 0.161)"
+              />
+            </StyledTableCell>
+          </StyledTableRow>
+
+          <StyledTableRow>
+            <StyledTableCell>
+              <LoadingSkeleton
+                width="100%"
+                height="50px"
+                baseColor="#01224152"
+                highlightColor="rgba(255, 255, 255, 0.161)"
+              />
+            </StyledTableCell>
+            <StyledTableCell align="left">
+              <LoadingSkeleton
+                width="100%"
+                height="50px"
+                baseColor="#01224152"
+                highlightColor="rgba(255, 255, 255, 0.161)"
+              />
+            </StyledTableCell>
+            <StyledTableCell align="right">
+              <LoadingSkeleton
+                width="100%"
+                height="50px"
+                baseColor="#01224152"
+                highlightColor="rgba(255, 255, 255, 0.161)"
+              />
+            </StyledTableCell>
+          </StyledTableRow>
+
+          <StyledTableRow>
+            <StyledTableCell>
+              <LoadingSkeleton
+                width="100%"
+                height="50px"
+                baseColor="#01224152"
+                highlightColor="rgba(255, 255, 255, 0.161)"
+              />
+            </StyledTableCell>
+            <StyledTableCell align="left">
+              <LoadingSkeleton
+                width="100%"
+                height="50px"
+                baseColor="#01224152"
+                highlightColor="rgba(255, 255, 255, 0.161)"
+              />
+            </StyledTableCell>
+            <StyledTableCell align="right">
+              <LoadingSkeleton
+                width="100%"
+                height="50px"
+                baseColor="#01224152"
+                highlightColor="rgba(255, 255, 255, 0.161)"
+              />
+            </StyledTableCell>
+          </StyledTableRow>
+
+          <StyledTableRow>
+            <StyledTableCell>
+              <LoadingSkeleton
+                width="100%"
+                height="50px"
+                baseColor="#01224152"
+                highlightColor="rgba(255, 255, 255, 0.161)"
+              />
+            </StyledTableCell>
+            <StyledTableCell align="left">
+              <LoadingSkeleton
+                width="100%"
+                height="50px"
+                baseColor="#01224152"
+                highlightColor="rgba(255, 255, 255, 0.161)"
+              />
+            </StyledTableCell>
+            <StyledTableCell align="right">
+              <LoadingSkeleton
+                width="100%"
+                height="50px"
+                baseColor="#01224152"
+                highlightColor="rgba(255, 255, 255, 0.161)"
+              />
+            </StyledTableCell>
+          </StyledTableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 };
 export default Skeleton;

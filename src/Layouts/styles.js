@@ -61,6 +61,10 @@ export const styles = () => ({
   },
   sideBar: {
     color: "#FFF",
+    active: {
+      background: "#FFF",
+      color: "#f7f5f5",
+    },
   },
   sideBarIcon: {
     color: "#FFF",
