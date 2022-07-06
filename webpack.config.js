@@ -1,9 +1,9 @@
 const path = require("path");
-const dotenv = require("dotenv")
+const dotenv = require("dotenv");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 
-dotenv.config()
+dotenv.config();
 
 module.exports = {
   //This property defines where the application starts
@@ -56,11 +56,14 @@ module.exports = {
       template: "./src/index.html",
     }),
     new webpack.DefinePlugin({
-      "process.env" : {
-        PORT:JSON.stringify(process.env.PORT),
-        BACKEND_URL: JSON.stringify(process.env.BACKEND_URL)
-      }
-    })
+      "process.env": {
+        PORT: JSON.stringify(process.env.PORT),
+        BACKEND_URL: JSON.stringify(process.env.BACKEND_URL),
+        DRIVER_ROLE: JSON.stringify(process.env.DRIVER_ROLE),
+        OPERATOR_ROLE: JSON.stringify(process.env.OPERATOR_ROLE),
+        ADMIN_ROLE: JSON.stringify(process.env.ADMIN_ROLE),
+      },
+    }),
   ],
   devServer: {
     static: path.resolve(__dirname, "./dist"),

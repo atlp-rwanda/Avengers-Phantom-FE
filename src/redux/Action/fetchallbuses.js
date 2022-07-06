@@ -34,7 +34,6 @@ export const fetchAllbuses = () => async (dispatch) => {
     });
     notify(message)
     }catch(err){
-      console.log(err.response.data)
       notify(err.response.data.message)
     }
   };
@@ -54,7 +53,6 @@ export const fetchAllbuses = () => async (dispatch) => {
     });
     notify(message)
     }catch(err){
-      console.log(err.response.data)
       notify(err.response.data.message)
     }
 
@@ -75,7 +73,6 @@ export const fetchAllbuses = () => async (dispatch) => {
     });
     notify(message)
     }catch(err){
-      console.log(err.response.data)
       notify(err.response.data.message)
     }
   };
@@ -96,7 +93,6 @@ export const fetchAllbuses = () => async (dispatch) => {
     });
     notify(message)
     }catch(err){
-      console.log(err.response.data)
       notify(err.response.data.message)
     }
   };

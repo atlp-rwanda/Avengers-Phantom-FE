@@ -12,11 +12,13 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import MapIcon from "@mui/icons-material/Map";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { styles } from "./styles";
+import { AllRoles, Admin } from "./../Components/Functions/Function";
 
 const useStyles = makeStyles(styles);
 
 export const MainListItems = () => {
   const classes = useStyles();
+  const user = JSON.parse(localStorage.getItem("user"))?.data?.user?.roleName;
 
   return (
     <div>
@@ -28,54 +30,67 @@ export const MainListItems = () => {
           <ListItemText primary="Dashboard" />
         </ListItem>
       </NavLink>
-      <NavLink to="/dashboard/routes" className={classes.sideBarLink}>
-        <ListItem button>
-          <ListItemIcon className={classes.sideBarIcon}>
-            <RouteIcon />
-          </ListItemIcon>
-          <ListItemText primary="Routes" />
-        </ListItem>
-      </NavLink>
-      <NavLink to="/dashboard/driveroperator" className={classes.sideBarLink}>
-        <ListItem button>
-          <ListItemIcon className={classes.sideBarIcon}>
-            <PeopleIcon />
-          </ListItemIcon>
-          <ListItemText primary="Drivers&Operators" />
-        </ListItem>
-      </NavLink>
-      <NavLink to="/dashboard/buses" className={classes.sideBarLink}>
-        <ListItem button>
-          <ListItemIcon className={classes.sideBarIcon}>
-            <DirectionsBusIcon />
-          </ListItemIcon>
-          <ListItemText primary="Buses" />
-        </ListItem>
-      </NavLink>
-      <NavLink to="/dashboard/updateprofile" className={classes.sideBarLink}>
-        <ListItem button>
-          <ListItemIcon className={classes.sideBarIcon}>
-            <AccountCircleIcon />
-          </ListItemIcon>
-          <ListItemText primary="Profile" />
-        </ListItem>
-      </NavLink>
-      <NavLink to="/dashboard/rolepermission" className={classes.sideBarLink}>
-        <ListItem button>
-          <ListItemIcon className={classes.sideBarIcon}>
-            <CheckCircleOutlineIcon />
-          </ListItemIcon>
-          <ListItemText primary="Roles" />
-        </ListItem>
-      </NavLink>
-      <NavLink to="/dashboard/simulation" className={classes.sideBarLink}>
-        <ListItem button>
-          <ListItemIcon className={classes.sideBarIcon}>
-            <MapIcon />
-          </ListItemIcon>
-          <ListItemText primary="Simulation" />
-        </ListItem>
-      </NavLink>
+
+      {Admin(user) && (
+        <NavLink to="/dashboard/routes" className={classes.sideBarLink}>
+          <ListItem button>
+            <ListItemIcon className={classes.sideBarIcon}>
+              <RouteIcon />
+            </ListItemIcon>
+            <ListItemText primary="Routes" />
+          </ListItem>
+        </NavLink>
+      )}
+      {Admin(user) && (
+        <NavLink to="/dashboard/driveroperator" className={classes.sideBarLink}>
+          <ListItem button>
+            <ListItemIcon className={classes.sideBarIcon}>
+              <PeopleIcon />
+            </ListItemIcon>
+            <ListItemText primary="Drivers&Operators" />
+          </ListItem>
+        </NavLink>
+      )}
+      {Admin(user) && (
+        <NavLink to="/dashboard/buses" className={classes.sideBarLink}>
+          <ListItem button>
+            <ListItemIcon className={classes.sideBarIcon}>
+              <DirectionsBusIcon />
+            </ListItemIcon>
+            <ListItemText primary="Buses" />
+          </ListItem>
+        </NavLink>
+      )}
+      {AllRoles(user) && (
+        <NavLink to="/dashboard/updateprofile" className={classes.sideBarLink}>
+          <ListItem button>
+            <ListItemIcon className={classes.sideBarIcon}>
+              <AccountCircleIcon />
+            </ListItemIcon>
+            <ListItemText primary="Profile" />
+          </ListItem>
+        </NavLink>
+      )}
+      {Admin(user) === user && (
+        <NavLink to="/dashboard/rolepermission" className={classes.sideBarLink}>
+          <ListItem button>
+            <ListItemIcon className={classes.sideBarIcon}>
+              <CheckCircleOutlineIcon />
+            </ListItemIcon>
+            <ListItemText primary="Roles" />
+          </ListItem>
+        </NavLink>
+      )}
+      {AllRoles(user) && (
+        <NavLink to="/dashboard/simulation" className={classes.sideBarLink}>
+          <ListItem button>
+            <ListItemIcon className={classes.sideBarIcon}>
+              <MapIcon />
+            </ListItemIcon>
+            <ListItemText primary="Simulation" />
+          </ListItem>
+        </NavLink>
+      )}
     </div>
   );
 };

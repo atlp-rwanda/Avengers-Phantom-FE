@@ -11,7 +11,6 @@ import {
 import {useState, useEffect} from "react"
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
-import Photo from "../../../static/images/busbackground.jpg";
 import { Link } from "react-router-dom";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -196,7 +195,7 @@ const Buses = () => {
               >
                 <Box
                   component="img"
-                  src={Photo}
+                  src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445463/Images/images/busbackground_lo7ra7.jpg'}
                   alt="bus image"
                   sx={{
                     width: { lg: 200, xs: 1 },

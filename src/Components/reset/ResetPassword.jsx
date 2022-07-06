@@ -16,8 +16,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 
-
-
+const backendUrl = process.env.BACKEND_URL
 
 const ResetPassword = () => {
   const [message, setMessage] = useState("");
@@ -81,7 +80,7 @@ const ResetPassword = () => {
   
 
   axios({
-    url: `http://localhost:5000/api/v1/users/resetpassword/${token}`,
+    url: `${backendUrl}/users/resetpassword/${token}`,
     data: body,
     method: "PUT",
 
@@ -94,12 +93,9 @@ const ResetPassword = () => {
     }, 2000)
 
   }).catch((err) => {
-    console.log(err)
     setLoading(false)
       setMessage("Failed")
   })
-
-  console.log("Submited")
 
 }
 

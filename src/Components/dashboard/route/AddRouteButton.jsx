@@ -37,11 +37,9 @@ const AddRouteButton = (props) => {
 
     const handleCloseUpdater = () => {
         setOpenUpdater(false);
-        console.log("Content closer");
       };
 
     const handleAddRoute = () => {
-        console.log("route added");
 
         const List = document.querySelector(".list-route");
         const ListItem = document.createElement("li");

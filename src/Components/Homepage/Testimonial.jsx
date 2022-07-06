@@ -62,7 +62,7 @@ export default function Testimonials(){
                 <Box sx={{display:'flex'}}>
                     <Box 
                         component="img"
-                        src={require('../../static/images/Banner.png')}
+                        src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445463/Images/images/Banner_kzyozk.png'}
                         alt="profile image"
                         sx={{margin:1,width:{lg:50,xs:30,md:40},height:{lg:50,xs:30,md:40},borderRadius:'50%'}}
                     />

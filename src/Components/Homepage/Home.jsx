@@ -2,19 +2,14 @@ import React, { Component } from "react";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MobileStepper from "@mui/material/MobileStepper";
-import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 import MapSection from "./ClientMap";
 import Navbar from "../navbar/Navbar.jsx";
-import Skeleton from "@mui/material/Skeleton";
 import Contact from "./Contact.jsx";
 import About from "./About.jsx";
-import Background from "../../static/images/Banner.png";
 import Agency from "./Agencies.jsx";
 import Services from "./Services.jsx";
 import Testimonials from "./Testimonial.jsx";
@@ -59,13 +54,13 @@ function Homepage() {
   };
 
   return (
-    <Box sx={{ overflow: "hidden" }}>
+    <Box sx={{ overflow: "hidden" }} id="home">
       <Navbar />
       <Box
         sx={{
           width: "100%",
           height: { lg: "500px", xs: "400px" },
-          backgroundImage: `url(${Background})`,
+          backgroundImage: `url(https://res.cloudinary.com/avengersphantom/image/upload/v1656445466/Images/images/agency3_wb0fvi.png)`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: { lg: "bottom left", xs: "center" },
           position: "relative",

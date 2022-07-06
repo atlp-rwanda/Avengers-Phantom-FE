@@ -13,12 +13,28 @@ import Divider from "@material-ui/core/Divider";
 import { MainListItems } from "./SideBar";
 import List from "@material-ui/core/List";
 import Avatar from "@mui/material/Avatar";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles(styles);
 
 const DashboardLayout = ({ children }) => {
   const classes = useStyles();
+  const navigate = useNavigate();
   const [isOpened, setIsOpened] = useState(false);
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  const handleLogout = () => {
+    localStorage.setItem("user", null);
+    localStorage.setItem("token", null);
+    localStorage.setItem("useruuid", null);
+    navigate("/signin");
+  };
+
+  React.useEffect(() => {
+    if (user === null) {
+      navigate("/");
+    }
+  }, [user]);
 
   return (
     <div className={classes.root}>
@@ -35,14 +51,28 @@ const DashboardLayout = ({ children }) => {
             Phantom
           </Typography>
           <Typography variant="h6" className={classes.userName}>
-            Jeanndo
+            {user?.data?.user?.name}
           </Typography>
-          <Avatar
-            className={classes.profilePic}
-            alt="profile"
-            src="https://cdn.pixabay.com/photo/2012/04/26/12/51/man-42392__480.png"
-            sx={{ width: 40, height: 40, bgcolor: "#012241" }}
-          />
+          {user?.data?.user?.profilePicture ? (
+            <Avatar
+              className={classes.profilePic}
+              alt="profile"
+              src={user?.data?.user?.profilePicture}
+              sx={{ width: 40, height: 40, bgcolor: "#012241" }}
+            />
+          ) : (
+            <Avatar
+              className={classes.profilePic}
+              alt="profile"
+              sx={{ width: 40, height: 40, bgcolor: "#012241" }}
+            >
+              {user?.data?.user?.name.charAt(0)}
+            </Avatar>
+          )}
+
+          <button className={classes.logout} onClick={handleLogout}>
+            Logout
+          </button>
         </Toolbar>
       </AppBar>
       <div className={classes.container}>

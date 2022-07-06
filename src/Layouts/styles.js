@@ -120,4 +120,14 @@ export const styles = () => ({
     borderRadius: "5px",
     boxShadow: "0px 7px 29px 0px #000",
   },
+  logout: {
+    width: "100px",
+    border: "1px solid #3e3e3e",
+    outline: "none",
+    padding: "5px",
+    borderRadius: "3px",
+    background: "#012241",
+    color: "#FFFFFF",
+    cursor: "pointer",
+  },
 });

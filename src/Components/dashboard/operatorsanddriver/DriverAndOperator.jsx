@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Button from "./Button.jsx";
-import Photo from "../../../static/dashboard_image/photo.jpeg";
 import { Link } from "react-router-dom";
 import "../Dashboard.css";
 import "./DriverAndOperator.css";

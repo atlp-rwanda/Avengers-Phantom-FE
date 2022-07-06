@@ -1,6 +1,5 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import SVG from "../../static/images/b2.svg";
 import { Outlet, Link } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import ScopedCssBaseline from "@mui/material/ScopedCssBaseline";
@@ -16,9 +15,9 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@mui/material/InputLabel";
-// import React, { useState, useEffect} from "react";
-
 import Button from "@mui/material/Button";
+import Input from "@material-ui/core/Input";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme({
   palette: {
@@ -30,23 +29,31 @@ const theme = createTheme({
     },
   },
 });
-const baseUrl = process.env.BACKEND_URL
+const baseUrl = process.env.BACKEND_URL;
 
 export const Signin = () => {
+  const navigate = useNavigate();
   const [values, setValues] = React.useState({
     password: "",
     showPassword: false,
   });
+
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
+  const handlePasswordChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
+
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
 
-  const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
-    });
-  };
   const [prod, setprod] = React.useState({
     email: "",
     password: "",
@@ -63,7 +70,6 @@ export const Signin = () => {
       email: prod.email,
       password: values.password,
     };
-    console.log(JSON.stringify(send));
 
     fetch(`${baseUrl}/users/login`, {
       method: "POST",
@@ -80,15 +86,16 @@ export const Signin = () => {
           });
           return;
         }
-
-        // Examine the text in the response
         response.json().then(function (data) {
           location.replace("../dashboard");
           localStorage.setItem("token", data.token);
+          localStorage.setItem("user", JSON.stringify(data));
           localStorage.setItem("useruuid", data.data.user.uuid);
         });
       })
-      .catch(function (err) {});
+      .catch(function (err) {
+        console.log(err);
+      });
   };
   return (
     <ThemeProvider theme={theme}>
@@ -104,23 +111,22 @@ export const Signin = () => {
           boxSizing: "border-box",
           position: "absolute",
 
-          top: "68px",
+          top: 0,
 
           bottom: 0,
         }}
       >
         <Box
           sx={{
-            pt: 8,
+            pt: 10,
 
             display: "flex",
             justifyContent: "space-around",
 
             height: "100%",
-            // boxSizing:'border-box'
             flexWrap: "wrap",
             color: "primary.main",
-            background: `linear-gradient(rgba(1, 34, 65, 0.5),rgba(1, 34, 65, 0.9)), url(${SVG})`,
+            background: `linear-gradient(rgba(1, 34, 65, 0.5),rgba(1, 34, 65, 0.9)), url(https://res.cloudinary.com/avengersphantom/image/upload/v1656445464/Images/images/b2_u3evhb.svg)`,
             // backgroundColor: 'secondary.main',
             backgroundSize: "cover",
             border: "1px solid black",
@@ -135,27 +141,26 @@ export const Signin = () => {
               mt: 8,
               ml: 8,
               fontSize: "40px",
-              display: { xs: "none ", md: " flex" },
+              display: { xs: "none ", md: " flex", flexDirection: "column" },
             }}
           >
             Phantom Transportation
+            <button
+              style={{
+                marginTop: "150px",
+                width: "150px",
+                padding: "10px",
+                borderRadius: "5px",
+                cursor: "pointer",
+                borderStyle: "none",
+              }}
+              onClick={() => navigate("/")}
+            >
+              Home
+            </button>
           </Box>
-          <Box
-            sx={{
-              height: "fit-content",
-              width: "253px",
-              fontWeight: "400",
-              mt: 8,
-              ml: 8,
-              fontSize: "20px",
-              display: { xs: "flex ", md: "none " },
-            }}
-          >
-            Phantom Transportation
-          </Box>
-          <Box
-            // component='form'
 
+          <Box
             sx={{
               p: 2,
               mb: 10,
@@ -165,39 +170,34 @@ export const Signin = () => {
               backgroundColor: "primary.main",
               flexDirection: "column",
               borderRadius: "10px",
-              // boxSizing:'border-box' ,
             }}
           >
-            <InputLabel htmlFor="outlined-adornment-password">Email</InputLabel>
-            <OutlinedInput
+            <InputLabel htmlFor="outlined-adornment-password" sx={{ mt: 5 }}>
+              Email
+            </InputLabel>
+            <Input
               label="email"
               name="email"
               value={email}
               onChange={(e) => onInputChange(e)}
-              sx={{ Color: "secondary.main", mt: 2 }}
+              sx={{ Color: "secondary.main" }}
             />
-            {/* <TextField  label="password"  sx={{Color:"secondary.main",m:2, borderRadius: '10px', type:"password"}} /> */}
-            <FormControl m="10px" sx={{}} variant="outlined">
-              <InputLabel htmlFor="outlined-adornment-password">
-                Password
+
+            <FormControl variant="filled">
+              <InputLabel htmlFor="standard-adornment-password" sx={{ mt: 5 }}>
+                Enter your Password
               </InputLabel>
-              <OutlinedInput
-                label="password"
-                name="password"
-                value={values.password}
-                sx={{ mt: 2 }}
-                id="outlined-adornment-password"
+              <Input
                 type={values.showPassword ? "text" : "password"}
-                onChange={handleChange("password")}
+                onChange={handlePasswordChange("password")}
+                value={values.password}
                 endAdornment={
-                  <InputAdornment sx={{ m: 1 }} position="end">
+                  <InputAdornment position="end">
                     <IconButton
-                      aria-label="toggle password visibility"
                       onClick={handleClickShowPassword}
-                      // onMouseDown={handleMouseDownPassword}
-                      edge="end"
+                      onMouseDown={handleMouseDownPassword}
                     >
-                      {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                      {values.showPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
                   </InputAdornment>
                 }
@@ -242,7 +242,6 @@ export const Signin = () => {
           </Box>
         </Box>
       </Box>
-      {/* </Box> */}
     </ThemeProvider>
   );
 };

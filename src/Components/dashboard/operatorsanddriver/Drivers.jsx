@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Buttons from "./Button.jsx";
-import Photo from "../../../static/dashboard_image/photo.jpeg";
 import AddIcon from "@mui/icons-material/Add";
 import "./DriverAndOperator.css";
 import {
@@ -78,7 +77,6 @@ const Drivers = () => {
   const driversList = useSelector((state) => state.driversList);
   // const { loading, drivers, error } = driversList;
 
-// console.log(drivers)
 
 
 
@@ -166,7 +164,7 @@ const Drivers = () => {
           {drivers.map((driver, index) => (
             <div key={index} className="driver_component">
               <div className="driver_component_photo">
-                <img src={Photo} alt="karera" />
+                <img src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445446/Images/dashboard_image/photo_svd054.jpg'} alt="karera" />
               </div>
               <div className="driver_component_content">
                 <h3>{driver.name}</h3>
@@ -267,7 +265,7 @@ const Drivers = () => {
               <DialogContentText id="alert-dialog-slide-description">
                 <div className="driverdetailpopup">
                   <div className="driver_component_photo driverpop">
-                    <img src={Photo} alt="karera" />
+                    <img src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445446/Images/dashboard_image/photo_svd054.jpg'} alt="karera" />
                     <p>
                       <b>Name:</b>
                       <br />
