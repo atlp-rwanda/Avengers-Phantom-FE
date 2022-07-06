@@ -4,6 +4,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import DirectionsBusFilledIcon from "@mui/icons-material/DirectionsBusFilled";
+import AssignmentIcon from '@mui/icons-material/Assignment';
 
 export const SidebarItem = [
   {
@@ -45,6 +46,12 @@ export const SidebarItem = [
   {
     path: "/assign",
     icon: <PersonIcon fontSize="small" />,
+    title: "asign buses",
+    cName: "sidetext",
+  },
+  {
+    path: "/assign",
+    icon: <AssignmentIcon fontSize="small" />,
     title: "asign buses",
     cName: "sidetext",
   },

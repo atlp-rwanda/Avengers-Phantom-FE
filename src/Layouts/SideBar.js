@@ -20,7 +20,7 @@ import DriveEtaIcon from "@material-ui/icons/DriveEta";
 import EventSeatIcon from "@material-ui/icons/EventSeat";
 import AirportShuttleIcon from "@material-ui/icons/AirportShuttle";
 import LocalTaxiIcon from "@material-ui/icons/LocalTaxi";
-
+import AssignmentIcon from '@mui/icons-material/Assignment';
 import { styles } from "./styles";
 import {
   AllRoles,
@@ -172,6 +172,15 @@ export const MainListItems = () => {
                 <ListItemText primary="Assign Bus" />
               </ListItem>
             </NavLink>
+        
+           <NavLink to="/dashboard/assigndriverbusse" className={classes.sideBarLink}>
+                  <ListItem button>
+                    <ListItemIcon className={classes.sideBarIcon}>
+                      <AssignmentIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Assign driver to buses " />
+                  </ListItem>
+           </NavLink>
           </Collapse>
         </>
       )}

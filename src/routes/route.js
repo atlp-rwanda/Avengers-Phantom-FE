@@ -31,6 +31,7 @@ import MapSection from "../Components/Homepage/ClientMap";
 import Contact from "../Components/Homepage/Contact.jsx";
 import UpdateProfile from "../Components/dashboard/updateProfile";
 import BusAssigniment from "../Components/dashboard/busassignment/busAssigniment.jsx";
+import BusdiverAssigniment from "../Components/dashboard/driverbussassign/busAssigniment.jsx";
 import ChangePassword from "../Components/dashboard/updateProfile/changePassword.jsx";
 import { Signin } from "../Components/signin/Signin.jsx";
 import ListBuses from "../Components/buses redux/busess.jsx";
@@ -144,6 +145,8 @@ const PhantomRoutes = (prop) => {
         <Route path="/dashboard/updateprofile" element={<UpdateProfile />} />
         <Route path="/dashboard/simulation" element={<Simulation />} />
         <Route path="/dashboard/assignbus" element={<BusAssigniment />} />
+        <Route path="/dashboard/assigndriver" element={<ListBuses />} />
+        <Route path="/dashboard/assigndriverbusse" element={<BusdiverAssigniment/>} />
       </Routes>
     </div>
   );
