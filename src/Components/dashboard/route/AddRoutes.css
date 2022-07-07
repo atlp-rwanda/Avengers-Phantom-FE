@@ -25,6 +25,7 @@
   flex-direction: row;
   align-items: center;
 }
+
 .singleroute {
   display: flex;
   min-height: 30px;

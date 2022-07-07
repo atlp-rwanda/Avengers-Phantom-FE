@@ -63,62 +63,7 @@ const MapSection = () => {
         </Typography>
         <Box sx={{ display: { lg: "flex", xs: "block" } }}>
           <CssBaseline />
-          {/* <Box
-            sx={{
-              width: drawerWidth,
-              textTransform: "uppercase",
-              fontWeigth: 700,
-              display: { lg: "block", xs: "none" },
-              width: drawerWidth,
-              background: "#012241",
-              color: "#ffff",
-              overflow: "hidden",
-              pl: 3,
-              pr: 3,
-              pt: 1,
-              transition: "none !important",
-            }}
-          >
-            <IconButton
-              size="xsall"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              color="inherit"
-              onClick={handleOpenNavMenu}
-              sx={{
-                marginBottom: 2,
-                width: 50,
-                marginLeft: "auto",
-                display: { lg: "block", xs: "block" },
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <TextField
-              placeholder="Browse Location"
-              sx={{
-                marginBottom: 5,
-                background: "white",
-                outline: "none",
-                border: "none",
-                borderRadius: "10px",
-              }}
-              type="search"
-              size="xsall"
-            />
-            <Typography sx={{ fontSize: 12 }}>Locations</Typography>
-            <List>
-              {places.map((text) => (
-                <ListItem button key={text}>
-                  <ListItemText
-                    primary={text}
-                    sx={{ textAlign: "left", padding: 1, margin: "auto" }}
-                  />
-                </ListItem>
-              ))}
-            </List>
-          </Box> */}
+          
           <Box
             component="main"
             sx={{ flexGrow: 1, height: "600px", position: "relative" }}
@@ -134,71 +79,7 @@ const MapSection = () => {
               </Marker>
             </MapContainer>
 
-            {/* <Box
-              sx={{
-                flexGrow: 1,
-                color: "secondary",
-                display: { xs: "flex", md: "none" },
-                position: "absolute",
-                top: 0,
-              }}
-            >
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{
-                  display: { xs: "block", md: "none" },
-                }}
-              >
-                <Box sx={{ p: 3 }}>
-                  <TextField
-                    placeholder="Browse Location"
-                    sx={{
-                      marginBottom: 5,
-                      background: "white",
-                      outline: "none",
-                      border: "none",
-                      borderRadius: "10px",
-                    }}
-                    type="search"
-                    size="xsall"
-                  />
-                  <Typography sx={{ fontSize: 12 }}>Locations</Typography>
-                  <List>
-                    {places.map((text) => (
-                      <ListItem button key={text}>
-                        <ListItemText
-                          primary={text}
-                          sx={{ textAlign: "left", padding: 1, margin: "auto" }}
-                        />
-                      </ListItem>
-                    ))}
-                  </List>
-                </Box>
-              </Menu>
-            </Box> */}
-            <Card
+           <Card
               sx={{
                 display: "block",
                 textAlign: "center",
