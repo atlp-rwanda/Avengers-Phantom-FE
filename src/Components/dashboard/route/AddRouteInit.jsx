@@ -90,10 +90,7 @@ const AddRouteInit = () => {
         } else {            
             dispatch(saveRoute( { routeCode, startLocation, endLocation,name:'route', distance:'10km',duration:'1hr'}))
             const error = localStorage.getItem("error");                   
-            
-              
-                               
-      
+       
         }
     };
 

@@ -1,4 +1,3 @@
-import {configure} from '@testing-library/react'
+import { configure } from "@testing-library/react";
 
-
-configure({testIdAttribute: 'data-my-test-id'})
+export default configure({ testIdAttribute: "data-my-test-id" });
