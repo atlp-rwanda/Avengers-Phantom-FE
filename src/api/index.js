@@ -30,3 +30,8 @@ export const getRole = (uuid) => API.get(`/roles/${uuid}`);
 export const updateRole = (uuid, formData) =>
   API.patch(`/roles/${uuid}`, formData);
 export const deleteRole = (uuid) => API.delete(`/roles/${uuid}`);
+
+export const assignBusToRoute = (routeId, busId) =>
+  API.post(`/assignbus/${routeId}/${busId}`);
+export const unassignBusToRoute = (uuid) => API.delete(`/assignbus/${uuid}`);
+export const getBusAssigniment = () => API.get(`/assignbus`);
