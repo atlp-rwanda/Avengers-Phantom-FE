@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Buttons from "./Button.jsx";
 import "./DriverAndOperator.css";
 import {
@@ -26,51 +26,67 @@ import Slide from "@mui/material/Slide";
 import Sidebar from "../sidebar/Sidebar.jsx";
 import DashNavbar from "../dashnavbar/DashNavBar.jsx";
 import "../Dashboard.css";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteUser, fetchAllUsers, fetchSingleUser } from "../../../redux/Action/DriversAndOperators/driversAndOperators.js";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const operators = [
-  {
-    name: "amustrong",
-    role: "operators",
-    car: "RAC 123D",
-    id: "ID:1234",
-    gender: "male",
-    tell: "Tell:17896",
-  },
-  {
-    name: "un jeado",
-    role: "operators",
-    car: "RAC 023f",
-    id: "ID:1234",
-    gender: "male",
-    tell: "Tell:17896",
-  },
-];
-
 const Operators = () => {
   const [open, setOpen] = React.useState(false);
   const [isLoading, setisLoading] = React.useState(false);
+  const usersList = useSelector((state) => state.usersList);
+  const { users, errorUser } = usersList;
 
-  const handleClickOpen = () => {
+  const UserData = useSelector((state) => state.userDetails);
+  const { user, errorUserDetails } = UserData;
+  const [operatorTodelID, setOperatorTodelID] = useState("");
+
+  
+
+  const handleClickOpen = (e) => {
     setOpen(true);
+    setOperatorTodelID(e.target.dataset.uuid)
   };
 
   const handleClose = () => {
     setOpen(false);
   };
+  
 
   const [openDetail, setOpenDetail] = React.useState(false);
 
-  const handleClickOpenDetail = () => {
+  const handleClickOpenDetail = (e) => {
     setOpenDetail(true);
+    fetchSingleData(e.target.dataset.uuid)
   };
 
   const handleCloseDetail = () => {
     setOpenDetail(false);
   };
+
+  const dispatch = useDispatch();
+
+  
+  const fetchSingleData = (userId)=>{
+    dispatch(fetchSingleUser(userId));
+  }
+
+  const handleDeleteUser = (e) => {
+    console.log('yesss')
+    deleteUserDetails(operatorTodelID)
+    console.log(operatorTodelID)
+   
+  };
+  const deleteUserDetails = (userId)=>{
+    dispatch(deleteUser(userId));
+  }
+
+  useEffect(() => {
+    dispatch(fetchAllUsers());
+    return () => {};
+  }, []);
 
   return (
     <div>
@@ -126,36 +142,26 @@ const Operators = () => {
             </FormControl>
           </Box>
           {isLoading && <CardSkeleton skeletoncount={5} />}
-          {operators.map((operator, index) => (
-            <div key={index} className="operator_component">
+          {users && users.data && users.data.data.users ? users.data.data.users.rows.map((operator, index) =>operator.roleName=="operator" ? (
+            <div key={index} className="driver_component">
               <div className="operator_component_photo">
                 <img src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445446/Images/dashboard_image/photo_svd054.jpg'} alt="karera" />
               </div>
               <div className="operator_component_container">
                 <h3>{operator.name}</h3>
-                <p>{operator.role}</p>
+                <p>{operator.roleName}</p>
                 <h4>{operator.car}</h4>
               </div>
               <div className="operator_component_container_info">
-                <h3>{operator.id}</h3>
-                <p>{operator.role}</p>
+                <h3>{operator.idNumber}</h3>
+                <p>{operator.roleName}</p>
                 <h4>{operator.gender}</h4>
               </div>
-              <div className="operator_component_container_button">
-                <h3>{operator.tell}</h3>
-                {/* <Buttons
-                  handlerFunc={handleClickOpenDetail}
-                  text="View details"
-                  bcolor="#012241"
-                />
-                <br />
-                <Buttons
-                  handlerFunc={handleClickOpen}
-                  text="Delete"
-                  bcolor="#bd2424"
-                /> */}
-
+              <div className="driver_component_contentbutton">
+                <h3>{operator.telNumber}</h3>
+               
                 <Button
+                  data-uuid={operator.uuid}
                   onClick={handleClickOpenDetail}
                   size="small"
                   sx={{
@@ -179,6 +185,7 @@ const Operators = () => {
                   view full details
                 </Button>
                 <Button
+                  data-uuid={operator.uuid}
                   onClick={handleClickOpen}
                   sx={{
                     background: "#bd2424",
@@ -202,7 +209,7 @@ const Operators = () => {
                 </Button>
               </div>
             </div>
-          ))}
+          ): "") : <div>No Operators found</div>}
 
           <Dialog
             open={open}
@@ -219,12 +226,13 @@ const Operators = () => {
               <DialogContentText id="alert-dialog-slide-description">
                 Are you sure you want to delete operator
                 <br />
-                with ID nmbr 12345678?.
+                with ID: {operatorTodelID}?.
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Buttons onClick={handleClose} text="Delete" bcolor="#bd2424" />
-              <Buttons onClick={handleClose} text="Return" bcolor="#012241" />
+            <button onClick={handleDeleteUser} style={{ marginRight: 4,margin: 4, backgroundColor: "#bd2424", color:"white"}}>Delete</button>
+            <button onClick={handleClose} style={{ marginRight: 4,margin: 4, backgroundColor: "#012241", color:"white"}} bcolor="#012241">Return</button>
+            
             </DialogActions>
           </Dialog>
 
@@ -239,79 +247,82 @@ const Operators = () => {
 
             <DialogContent>
               <DialogContentText id="alert-dialog-slide-description">
-                <div className="driverdetailpopup">
+              <div className="driverdetailpopup">
                   <div className="driver_component_photo driverpop">
                     <img src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445446/Images/dashboard_image/photo_svd054.jpg'} alt="karera" />
                     <p>
                       <b>Name:</b>
                       <br />
-                      rudasingwa
+                      {user && user.data ? user.data.data.user.name: "N/A"}
                     </p>
                     <p>
                       <b>ID:</b>
                       <br />
-                      1234567
+                      {user && user.data ? user.data.data.user.idNumber: "N/A"}
                     </p>
                   </div>
                   <div className="driverpop">
                     <p>
-                      <b>Tell:</b>
+                      <b>Tel:</b>
                       <br />
-                      078965
+                      {user && user.data ? user.data.data.user.telNumber: "N/A"}
                     </p>
+                    
                     <p>
                       <b>gender:</b>
                       <br />
-                      male
+                      {user && user.data ? user.data.data.user.gender: "N/A"}
                     </p>
                     <p>
                       <b>District:</b>
                       <br />
-                      Rusizi
+                      {user && user.data ? user.data.data.user.district: "N/A"}
                     </p>
                     <p>
                       <b>Sector:</b>
                       <br />
-                      Kagano
+                      {user && user.data ? user.data.data.user.sector: "N/A"}
                     </p>
                     <p>
                       <b>Cell:</b>
                       <br />
-                      Kabuga
+                      {user && user.data ? user.data.data.user.cell: "N/A"}
                     </p>
                   </div>
                   <div className="driverpop">
                     <p>
                       <b>Plate nbr:</b>
                       <br />
-                      RAC2340Z
+                      {user && user.data ? user.data.data.user.carplate: "N/A"}
                     </p>
                     <p>
                       <b>Vehicle type:</b>
                       <br />
-                      Hundayi
+                      {user && user.data ? user.data.data.user.vehicletype: "N/A"}
                     </p>
                     <p>
-                      <b>Operator role:</b>
+                      <b>Capacity:</b>
                       <br />
-                      Manager
+                      {user && user.data ? user.data.data.user.capacity: "N/A"}
                     </p>
                     <p>
-                      <b>Name:</b>
+                      <b>Email:</b>
                       <br />
-                      rudasingwa
+                      {user && user.data ? user.data.data.user.email: "N/A"}
                     </p>
                   </div>
                 </div>
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Buttons onClick={handleClose} text="Edit" bcolor="#012241" />
-              <Buttons
-                onClick={handleClose}
-                text="Return"
-                bcolor="rgb(102, 99, 99)"
-              />
+
+             
+              <Link to={`updateOperator?id=${user && user.data ? user.data.data.user.uuid:'Undefined'}`}>
+                <Buttons text="Edit" bcolor="#012241" />
+              </Link>
+          
+              <button onClick={handleCloseDetail} style={{ paddingLeft: "30px", paddingRight: "30px", paddingTop: "10px",paddingBottom: "10px",margin: "10px", backgroundColor: "rgb(102, 99, 99)", color:"white"}} bcolor="#012241">Return</button>
+       
             </DialogActions>
           </Dialog>
         </div>

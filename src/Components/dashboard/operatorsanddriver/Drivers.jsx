@@ -26,7 +26,9 @@ import Sidebar from "../sidebar/Sidebar.jsx";
 import DashNavbar from "../dashnavbar/DashNavBar.jsx";
 import "../Dashboard.css";
 import CardSkeleton from "./CardSkeleton.jsx";
-// import { fetchAllDrivers } from "../../../redux/Action/DriversAndOperators/driversAndOperators.js";
+import { deleteUser, fetchAllUsers, fetchSingleUser } from "../../../redux/Action/DriversAndOperators/driversAndOperators.js";
+import { ToastContainer } from "react-toastify";
+import { getAllRoles } from "../../../redux/Action/RoleActions.js";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -74,47 +76,84 @@ const drivers = [
 const Drivers = () => {
   const [open, setOpen] = useState(false);
   const [isLoading, setisLoading] = useState(false);
-  const driversList = useSelector((state) => state.driversList);
-  // const { loading, drivers, error } = driversList;
+  const UsersList = useSelector((state) => state.usersList);
+  const { users, error } = UsersList;
+  const UserData = useSelector((state) => state.userDetails);
+  const { user, errorUser } = UserData;
+  const [driverTodelID, setDriverTodelID] = useState("");
+  
 
-
-
-
-
-  const handleClickOpen = () => {
+   
+  const handleClickOpen = (e) => {
     setOpen(true);
+    setDriverTodelID(e.target.dataset.uuid)
   };
 
   const handleClose = () => {
     setOpen(false);
+    console.log('close')
+  };
+  const handleUpdate = () => {
+    setOpen(false);
+    console.log('updating')
   };
 
   const [openDetail, setOpenDetail] = useState(false);
 
-  const handleClickOpenDetail = () => {
+  const handleClickOpenDetail = (e) => {
     setOpenDetail(true);
+    fetchSingleData(e.target.dataset.uuid)
+    console.log(e.target.dataset.uuid)   
+  };
+
+  const handleDeleteUser = (e) => {
+    console.log('yesss')
+    deleteUserDetails(driverTodelID)
+    console.log(driverTodelID)
+   
   };
 
   const handleCloseDetail = () => {
     setOpenDetail(false);
   };
 
+  const saveIdToLocalStorage =()=>{
+    if(user.roleName)
+    localStorage.setItem('roleID', JSON.stringify(user));
+  
+  }
+
 
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(fetchAllDrivers());
-  //   return () => {};
-  // }, []);
+  useEffect(() => {
+    dispatch(fetchAllUsers());
+    return () => {};
+  }, []);
+
+  
+
+
+  const fetchSingleData = (userId)=>{
+    dispatch(fetchSingleUser(userId));
+  }
+ 
+
+    
+  const deleteUserDetails = (userId)=>{
+    dispatch(deleteUser(userId));
+  }
 
   return (
     <div>
+      <ToastContainer />
       <div className="dashboard">
         <div className="containt" style={{ margin: "0" }}>
           <div className="add-button">
             <h3 className="driver-operator-title">Drivers managment</h3>
             <Link to="adddriver">
               <Buttons
+                onClick={saveIdToLocalStorage}
                 text="Add driver"
                 bcolor="#012241"
                 className="button-style"
@@ -159,29 +198,30 @@ const Drivers = () => {
               </Button>
             </FormControl>
           </Box>
-          {/* {isLoading && <CardSkeleton skeletoncount={5} />} */}
+         
           
-          {drivers.map((driver, index) => (
+          { users && users.data ? users.data.data.users.rows.map((driver, index) => driver.roleName=="Driver" || driver.roleName=="driver"  ? (
             <div key={index} className="driver_component">
               <div className="driver_component_photo">
                 <img src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445446/Images/dashboard_image/photo_svd054.jpg'} alt="karera" />
               </div>
               <div className="driver_component_content">
                 <h3>{driver.name}</h3>
-                <p>{driver.role}</p>
-                <h4>{driver.car}</h4>
+                <p>{driver.idNumber}</p>
+                <h4>{driver.gender}</h4>
               </div>
               <div className="driver_component_contentid">
-                <h3>{driver.id}</h3>
-                <p>{driver.gender}</p>
-                <h4>{driver.tell}</h4>
+                <h3>{driver.roleName}</h3>
+                <p>{driver.telNumber}</p>
+                <h4>{driver.email}</h4>
               </div>
               <div className="driver_component_contentbutton">
-                <h3>{driver.capacity}</h3>
+                <h3>{driver.district}</h3>
 
                
                 <Button
-                  onClick={handleClickOpenDetail}
+                  data-uuid={driver.uuid}
+                  onClick={handleClickOpenDetail}                  
                   size="small"
                   sx={{
                     background: "#012241",
@@ -204,6 +244,7 @@ const Drivers = () => {
                   view full details
                 </Button>
                 <Button
+                  data-uuid={driver.uuid}
                   onClick={handleClickOpen}
                   sx={{
                     background: "#bd2424",
@@ -227,7 +268,7 @@ const Drivers = () => {
                 </Button>
               </div>
             </div>
-          ))}
+          ): '') : <div>No Driver found</div>}
           <Dialog
             open={open}
             TransitionComponent={Transition}
@@ -243,12 +284,13 @@ const Drivers = () => {
               <DialogContentText id="alert-dialog-slide-description">
                 Are you sure you want to delete driver
                 <br />
-                with ID nmbr 12345678?.
+                with ID : {driverTodelID}?.
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Buttons onClick={handleClose} text="Delete" bcolor="#bd2424" />
-              <Buttons onClick={handleClose} text="Return" bcolor="#012241" />
+              <button onClick={handleDeleteUser} style={{ marginRight: 4,margin: 4, backgroundColor: "#bd2424", color:"white"}}>Delete</button>
+              <button onClick={handleClose} style={{ marginRight: 4,margin: 4, backgroundColor: "#012241", color:"white"}} bcolor="#012241">Return</button>
+            
             </DialogActions>
           </Dialog>
 
@@ -259,7 +301,7 @@ const Drivers = () => {
             onClose={handleCloseDetail}
             aria-describedby="alert-dialog-slide-description"
           >
-            <DialogTitle>{"view driver detail"}</DialogTitle>
+            <DialogTitle>{"View driver detail"}</DialogTitle>
 
             <DialogContent>
               <DialogContentText id="alert-dialog-slide-description">
@@ -269,73 +311,74 @@ const Drivers = () => {
                     <p>
                       <b>Name:</b>
                       <br />
-                      rudasingwa
+                      {user && user.data ? user.data.data.user.name: "N/A"}
                     </p>
                     <p>
                       <b>ID:</b>
                       <br />
-                      1234567
+                      {user && user.data ? user.data.data.user.idNumber: "N/A"}
                     </p>
                   </div>
                   <div className="driverpop">
                     <p>
-                      <b>Tell:</b>
+                      <b>Tel:</b>
                       <br />
-                      078965
+                      {user && user.data ? user.data.data.user.telNumber: "N/A"}
                     </p>
+                    
                     <p>
                       <b>gender:</b>
                       <br />
-                      male
+                      {user && user.data ? user.data.data.user.gender: "N/A"}
                     </p>
                     <p>
                       <b>District:</b>
                       <br />
-                      Rusizi
+                      {user && user.data ? user.data.data.user.district: "N/A"}
                     </p>
                     <p>
                       <b>Sector:</b>
                       <br />
-                      Kagano
+                      {user && user.data ? user.data.data.user.sector: "N/A"}
                     </p>
                     <p>
                       <b>Cell:</b>
                       <br />
-                      Kabuga
+                      {user && user.data ? user.data.data.user.cell: "N/A"}
                     </p>
                   </div>
                   <div className="driverpop">
                     <p>
                       <b>Plate nbr:</b>
                       <br />
-                      RAC2340Z
+                      {user && user.data ? user.data.data.user.carplate: "N/A"}
                     </p>
                     <p>
                       <b>Vehicle type:</b>
                       <br />
-                      Hundayi
+                      {user && user.data ? user.data.data.user.vehicletype: "N/A"}
                     </p>
                     <p>
                       <b>Capacity:</b>
                       <br />
-                      100
+                      {user && user.data ? user.data.data.user.capacity: "N/A"}
                     </p>
                     <p>
-                      <b>Name:</b>
+                      <b>Email:</b>
                       <br />
-                      rudasingwa
+                      {user && user.data ? user.data.data.user.email: "N/A"}
                     </p>
                   </div>
                 </div>
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Buttons onClick={handleClose} text="Edit" bcolor="#012241" />
-              <Buttons
-                onClick={handleClose}
-                text="Return"
-                bcolor="rgb(102, 99, 99)"
-              />
+            <Link to={`updateDriver?id=${user && user.data ? user.data.data.user.uuid:'Undefined'}`}>
+                <Buttons text="Edit" bcolor="#012241" />
+              </Link>            
+        
+                <button onClick={handleCloseDetail} style={{ paddingLeft: "30px", paddingRight: "30px", paddingTop: "10px",paddingBottom: "10px",margin: "10px", backgroundColor: "rgb(102, 99, 99)", color:"white"}} bcolor="#012241">Return</button>
+       
             </DialogActions>
           </Dialog>
         </div>
