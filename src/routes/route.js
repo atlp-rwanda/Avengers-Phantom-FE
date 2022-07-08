@@ -33,7 +33,7 @@ import Manuals from "../Components/Homepage/Manuals.jsx";
 import MapSection from "../Components/Homepage/ClientMap";
 import Contact from "../Components/Homepage/Contact.jsx";
 import UpdateProfile from "../Components/dashboard/updateProfile";
-
+import BusAssigniment from "../Components/dashboard/busassignment/busAssigniment.jsx";
 import ChangePassword from "../Components/dashboard/updateProfile/changePassword.jsx";
 import { Signin } from "../Components/signin/Signin.jsx";
 import ListBuses from "../Components/buses redux/busess.jsx";
@@ -129,7 +129,7 @@ const PhantomRoutes = (prop) => {
           path="/dashboard/driveroperator/updateOperator"
           element={<UpdatedOperator />}
         />
-         <Route
+        <Route
           path="/dashboard/driveroperator/updateDriver"
           element={<UpdateDriver />}
         />
@@ -146,7 +146,7 @@ const PhantomRoutes = (prop) => {
         <Route path="/dashboard/bus/update" element={<BusUpdate />} />
         <Route path="/dashboard/updateprofile" element={<UpdateProfile />} />
         <Route path="/dashboard/simulation" element={<Simulation />} />
-       
+        <Route path="/dashboard/assignbus" element={<BusAssigniment />} />
       </Routes>
     </div>
   );
