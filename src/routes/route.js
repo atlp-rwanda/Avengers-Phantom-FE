@@ -33,12 +33,14 @@ import Manuals from "../Components/Homepage/Manuals.jsx";
 import MapSection from "../Components/Homepage/ClientMap";
 import Contact from "../Components/Homepage/Contact.jsx";
 import UpdateProfile from "../Components/dashboard/updateProfile";
-
+import BusAssigniment from "../Components/dashboard/busassignment/busAssigniment.jsx";
 import ChangePassword from "../Components/dashboard/updateProfile/changePassword.jsx";
 import { Signin } from "../Components/signin/Signin.jsx";
 import ListBuses from "../Components/buses redux/busess.jsx";
 import Simulation from "../Components/Simulation/Simulation.js";
 import Dashboard from "../Layouts/Dashboard";
+import UpdatedOperator from "../Components/dashboard/operatorsanddriver/UpdateOperator.jsx";
+import UpdateDriver from "../Components/dashboard/operatorsanddriver/UpdateDriver.jsx";
 
 const PhantomRoutes = (prop) => {
   const location = useLocation();
@@ -123,6 +125,14 @@ const PhantomRoutes = (prop) => {
           path="/dashboard/driveroperator/adddriver"
           element={<AddDrivers />}
         />
+        <Route
+          path="/dashboard/driveroperator/updateOperator"
+          element={<UpdatedOperator />}
+        />
+        <Route
+          path="/dashboard/driveroperator/updateDriver"
+          element={<UpdateDriver />}
+        />
         <Route path="/driveroperator/operator" element={<Operators />} />
         <Route
           path="/dashboard/driveroperator/addoperator"
@@ -136,7 +146,7 @@ const PhantomRoutes = (prop) => {
         <Route path="/dashboard/bus/update" element={<BusUpdate />} />
         <Route path="/dashboard/updateprofile" element={<UpdateProfile />} />
         <Route path="/dashboard/simulation" element={<Simulation />} />
-        {/* <Route path="/admin/dashboard" element={<AdminDashboard />} /> */}
+        <Route path="/dashboard/assignbus" element={<BusAssigniment />} />
       </Routes>
     </div>
   );

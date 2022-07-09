@@ -88,7 +88,7 @@ export const styles = () => ({
   },
   title: {
     color: "#000",
-    marginLeft: "500px",
+    marginLeft: "300px",
   },
   routeInput: {
     border: "none",

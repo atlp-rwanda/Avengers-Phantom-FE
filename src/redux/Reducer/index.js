@@ -17,6 +17,10 @@ import { fetchAllRolesReducer } from "./getAllRolesReducer";
 import { getRoleReducer } from "./GetRoleReducer";
 import { updateRoleReducer } from "./updateRoleReducer";
 import { deleteRoleReducer } from "./deleteRoleReducer";
+import { userSaveReducer, usersDetailsReducer, usersListReducer } from "./driversAndOperators";
+import { assignBusToRoute } from "./assignBusToRoute";
+import { unassignBusToRoute } from "./unAssignButToRoute";
+import { fetchAllBusAssignment } from "./AllBusAssignment";
 
 const rootReducer = combineReducers({
   counter: reducer,
@@ -29,14 +33,20 @@ const rootReducer = combineReducers({
   saveRoute: routeSaveReducer,
   updateRoute: routeUpdateReducer,
   deletedRoute: routeDeleteReducer,
+  usersList: usersListReducer,
+  userDetails:usersDetailsReducer,
+  userSave:userSaveReducer,
   assign: assignbusesReducer,
-  fetchusers: fetchallusersReducer,
   assign: assignbusesReducer,
   createRoleReducer,
-  fetchAllRolesReducer,
+  roleList:fetchAllRolesReducer,
   getRoleReducer,
   updateRoleReducer,
   deleteRoleReducer,
+  
+  assignBusToRoute,
+  unassignBusToRoute,
+  fetchAllBusAssignment,
 });
 
 export default rootReducer;
