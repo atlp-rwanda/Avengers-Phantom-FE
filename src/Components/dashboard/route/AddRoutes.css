@@ -1,27 +1,28 @@
 .addroute {
-  min-height: 30px;
-  min-width: 95%;
   margin: auto;
-  margin-left: 140px;
+  width: 50%;
   padding: 20px;
-  align-self: center;
-  justify-self: center;
+  align-items: center;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
+  background: #ffffff;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
 }
 
 .routeDetails {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
+  background: "yellow";
 }
 
 .buttonAction {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   flex-direction: row;
   align-items: center;
 }
@@ -42,11 +43,25 @@
   justify-content: space-between;
   display: flex;
   flex-direction: row;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  padding: 20px 10px;
 }
 
-.success_message{
+.success_message {
   color: green;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addRoute__btn {
+  color: white;
+  height: 35px;
+  width: 150.37px;
+  border-radius: 5px;
+  background-color: #012241;
+  cursor: pointer;
+  border: none;
 }
