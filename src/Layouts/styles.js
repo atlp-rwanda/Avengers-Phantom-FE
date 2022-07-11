@@ -32,6 +32,7 @@ export const styles = () => ({
   },
   drawer: {
     background: "#012241",
+    padding: "30px 0px 0px 0px",
     position: "static",
     transition: "width .5s",
   },
@@ -71,13 +72,14 @@ export const styles = () => ({
   sideBarLink: {
     textDecoration: "none",
     color: "#FFF",
+    fontSize: "16px",
   },
   clientSideBar: {
     padding: "0px 0px 0px 60px",
   },
-  // clientSideBarNormal: {
-  //   padding: "0px 60px 0px 0px",
-  // },
+  listItem: {
+    color: "#fff",
+  },
   toggleButton: {
     color: "#FFF",
     padding: "10px",

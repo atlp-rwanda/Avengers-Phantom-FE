@@ -3,13 +3,24 @@ import L from "leaflet";
 import { createControlComponent } from "@react-leaflet/core";
 import "leaflet-routing-machine";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
+import { useSelector } from "react-redux";
 
 const createRoutineMachineLayer = ({ setPosition, setSummary }) => {
+  const route = useSelector((state) => state);
+
+  console.log("state", route.testRouteReducer.route.message[0].from);
+
   const instance = L.Routing.control({
     position: "bottomleft",
     waypoints: [
-      L.latLng(-1.978106, 30.044125),
-      L.latLng(-1.939662908, 30.055666),
+      L.latLng(
+        route?.testRouteReducer?.route?.message[0].from?.lat,
+        route?.testRouteReducer?.route?.message[0].from?.lng
+      ),
+      L.latLng(
+        route?.testRouteReducer?.route?.message[0].to?.lat,
+        route?.testRouteReducer?.route?.message[0].to?.lng
+      ),
     ],
     lineOptions: {
       styles: [

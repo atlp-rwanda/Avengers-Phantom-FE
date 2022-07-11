@@ -30,7 +30,7 @@ export default function About() {
       >
         <Box
           component="img"
-          sx={{ width: "100%", height: "400px" }}
+          sx={{ width: "100%", height: "400px", objectFit: "contain" }}
           src={
             "https://res.cloudinary.com/avengersphantom/image/upload/v1656445466/Images/images/About_vqod2c.png"
           }

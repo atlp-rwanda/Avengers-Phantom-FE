@@ -17,13 +17,15 @@ import { fetchAllRolesReducer } from "./getAllRolesReducer";
 import { getRoleReducer } from "./GetRoleReducer";
 import { updateRoleReducer } from "./updateRoleReducer";
 import { deleteRoleReducer } from "./deleteRoleReducer";
-<<<<<<< HEAD
-import { userSaveReducer, usersDetailsReducer, usersListReducer } from "./driversAndOperators";
-=======
+import {
+  userSaveReducer,
+  usersDetailsReducer,
+  usersListReducer,
+} from "./driversAndOperators";
 import { assignBusToRoute } from "./assignBusToRoute";
 import { unassignBusToRoute } from "./unAssignButToRoute";
 import { fetchAllBusAssignment } from "./AllBusAssignment";
->>>>>>> Assingning bus to route
+import { testRouteReducer } from "./simulation";
 
 const rootReducer = combineReducers({
   counter: reducer,
@@ -37,22 +39,19 @@ const rootReducer = combineReducers({
   updateRoute: routeUpdateReducer,
   deletedRoute: routeDeleteReducer,
   usersList: usersListReducer,
-  userDetails:usersDetailsReducer,
-  userSave:userSaveReducer,
+  userDetails: usersDetailsReducer,
+  userSave: userSaveReducer,
   assign: assignbusesReducer,
   assign: assignbusesReducer,
   createRoleReducer,
-  roleList:fetchAllRolesReducer,
+  fetchAllRolesReducer,
   getRoleReducer,
   updateRoleReducer,
   deleteRoleReducer,
-<<<<<<< HEAD
-  
-=======
   assignBusToRoute,
   unassignBusToRoute,
   fetchAllBusAssignment,
->>>>>>> Assingning bus to route
+  testRouteReducer,
 });
 
 export default rootReducer;

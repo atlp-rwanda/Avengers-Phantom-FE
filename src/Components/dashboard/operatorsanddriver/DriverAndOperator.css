@@ -16,14 +16,17 @@
 .driver-operator-title {
   width: 50rem;
   padding-left: 10px;
-
 }
 
 .add-button {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 
 .component {
@@ -69,7 +72,8 @@ img {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 5px;
+  padding: 5px;
+  margin-bottom: 30px;
 }
 
 .driver_component_content {
@@ -83,7 +87,6 @@ img {
 .driver_component_contentbutton {
   min-width: 13rem;
   height: 10rem;
-
 }
 
 .driver_component_contentbutton button {
@@ -136,7 +139,6 @@ img {
   margin-top: 80px;
 }
 
-
 /* 
 // add drivers */
 
@@ -145,8 +147,7 @@ img {
   height: 7rem;
   width: 7rem;
   border-radius: 5px;
-  background-color: rgb(201, 201, 201);
-  /* background-color: rgb(88, 0, 0); */
+  background-color: rgba(201, 201, 201, 0.395);
 }
 
 .addimageicon {
@@ -159,6 +160,10 @@ img {
 .gridcontainer {
   display: flex;
   flex-wrap: wrap;
+  background: #fff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 10px;
+  border-radius: 3px;
 }
 
 #demo-multiple-name-label {
@@ -178,7 +183,6 @@ img {
 .button-style {
   margin-right: 0;
 }
-
 
 @media (max-width: 570px) {
   .operator_component_container {
@@ -218,7 +222,4 @@ img {
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 5px;
-  /* padding: 0 10px 0 10px; */
-
-
 }

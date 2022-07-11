@@ -5,22 +5,11 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import L from "leaflet";
-import {
-  MapContainer,
-  TileLayer,
-  useMap,
-  Marker,
-  Popup,
-  LayersControl,
-} from "react-leaflet";
-import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
-import RoutingControl from "./RoutingControl";
 import DashboardLayout from "./../../Layouts/Dashboard";
-import "./simulation.css";
-import { PhantomBusMarker } from "./CarMarker";
 import SpeedMeter from "./SpeedMeter";
 import LocationMaker from "./LocationMaker";
 import socket from "./../../utils/sokect";
+import UserMap from "./../commons/Map";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -30,29 +19,32 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const maps = {
-  base: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-};
-
 const Simulation = () => {
-  const [position, setPosition] = React.useState([]);
-  const [start, seStart] = React.useState(false);
-  const [engine, setEngine] = React.useState(false);
-  const [summary, setSummary] = React.useState();
-  const [isSpeed, setIsSpeed] = React.useState(false);
-  const [isSlowing, setIsSlowing] = React.useState(false);
-  const [speed, setSpeed] = React.useState(
-    Number(localStorage.getItem("speed", speed)) === 100
-      ? 100
-      : Number(localStorage.getItem("speed", speed))
-  );
-  const [pause, setPause] = React.useState(false);
-  const [resume, setResume] = React.useState(false);
-  const [passengers, setPassengers] = React.useState(0);
-  const [currentTrack, setCurrentTrack] = React.useState({});
+  const [position, setPosition] = useState([]);
+  const [start, seStart] = useState(false);
+  const [engine, setEngine] = useState(false);
+  const [summary, setSummary] = useState();
+  const [isSpeed, setIsSpeed] = useState(false);
+  const [isSlowing, setIsSlowing] = useState(false);
+  const [speed, setSpeed] = useState(1000);
+  const [pause, setPause] = useState(false);
+  const [resume, setResume] = useState(false);
+  const [passengers, setPassengers] = useState(0);
+  const [currentTrack, setCurrentTrack] = useState({});
+  const [currentPosition, setCurrentPosition] = useState(cursor);
+  const [state, setState] = useState();
 
   let cursor = 0;
-  let newCursor = Number(localStorage.getItem("currentPosition"));
+  let newCursor = currentPosition;
+  const mapProps = {
+    setPosition,
+    setSummary,
+    currentTrack,
+    resume,
+    isSlowing,
+    pause,
+    speed,
+  };
 
   useEffect(() => {
     setCurrentTrack(position[cursor]);
@@ -61,12 +53,12 @@ const Simulation = () => {
       interval = setInterval(() => {
         if (cursor !== position.length - 1) {
           cursor += 1;
-          localStorage.setItem("currentPosition", cursor);
+          setCurrentPosition(cursor);
           setCurrentTrack(position[cursor]);
 
           return;
         }
-      }, Number(localStorage.getItem("speed")));
+      }, speed);
 
       return () => {
         clearInterval(interval);
@@ -84,11 +76,11 @@ const Simulation = () => {
       interval = setInterval(() => {
         if (newCursor !== position.length - 1) {
           newCursor += 1;
-          localStorage.setItem("currentPosition", newCursor);
+          setCurrentPosition(newCursor);
           setCurrentTrack(position[newCursor]);
           return;
         }
-      }, Number(localStorage.getItem("speed")));
+      }, speed);
 
       return () => {
         clearInterval(interval);
@@ -106,11 +98,11 @@ const Simulation = () => {
       interval = setInterval(() => {
         if (newCursor !== position.length - 1) {
           newCursor += 1;
-          localStorage.setItem("currentPosition", newCursor);
+          setCurrentPosition(newCursor);
           setCurrentTrack(position[newCursor]);
           return;
         }
-      }, Number(localStorage.getItem("speed")));
+      }, speed);
 
       return () => {
         clearInterval(interval);
@@ -128,11 +120,11 @@ const Simulation = () => {
       interval = setInterval(() => {
         if (newCursor !== position.length - 1) {
           newCursor += 1;
-          localStorage.setItem("currentPosition", newCursor);
+          setCurrentPosition(newCursor);
           setCurrentTrack(position[newCursor]);
           return;
         }
-      }, Number(localStorage.getItem("speed")));
+      }, speed);
 
       return () => {
         clearInterval(interval);
@@ -149,31 +141,7 @@ const Simulation = () => {
         <Grid container spacing={2}>
           <Grid item xs={12} md={12} lg={8}>
             <Item elevation={0}>
-              <MapContainer
-                center={[-1.939662908, 30.055666444]}
-                zoom={10}
-                zoomControl={true}
-                style={{ width: "100%", height: "85vh" }}
-              >
-                <RoutingControl
-                  setPosition={setPosition}
-                  setSummary={setSummary}
-                />
-                {/* <LocationMaker /> */}
-                {/* <RouteBusMotion /> */}
-                <LayersControl position="topright">
-                  <LayersControl.BaseLayer checked name="Map">
-                    <TileLayer url={maps.base} />
-                    <PhantomBusMarker
-                      data={currentTrack ?? { lat: -1.978106, lng: 30.044125 }}
-                      speed={isSpeed}
-                      resume={resume}
-                      isSlowing={isSlowing}
-                      pause={pause}
-                    />
-                  </LayersControl.BaseLayer>
-                </LayersControl>
-              </MapContainer>
+              <UserMap props={mapProps} />
             </Item>
           </Grid>
           <Grid item xs={12} md={12} lg={4}>
@@ -200,6 +168,8 @@ const Simulation = () => {
                 setResume={setResume}
                 setIsSpeed={setIsSpeed}
                 setIsSlowing={setIsSlowing}
+                state={state}
+                setState={setState}
               />
             </div>
           </Grid>
