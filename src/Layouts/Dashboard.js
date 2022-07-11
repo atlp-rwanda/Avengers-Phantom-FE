@@ -66,7 +66,7 @@ const DashboardLayout = ({ children }) => {
               alt="profile"
               sx={{ width: 40, height: 40, bgcolor: "#012241" }}
             >
-              {user?.data?.user?.name.charAt(0)}
+              {user?.data?.user?.name.charAt(0).toUpperCase()}
             </Avatar>
           )}
 

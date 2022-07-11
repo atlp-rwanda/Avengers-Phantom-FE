@@ -25,8 +25,10 @@ const SpeedMeter = ({
   speed,
   setIsSpeed,
   setIsSlowing,
+  state,
+  setState,
 }) => {
-  const [socketMessage, setSocketMessage] = React.useState("");
+  const [socketMessage, setSocketMessage] = useState("");
   const goRef = useRef();
   const startRef = useRef();
   const logoRef = useRef();
@@ -42,12 +44,12 @@ const SpeedMeter = ({
     socket.on("Engine", (data) => {
       setSocketMessage(data);
     });
-    localStorage.setItem("state", "Engine");
+    setState("Engine");
   };
 
   const handleAccelate = () => {
     notify("Speeding up the Bus.");
-    setSpeed(Number(localStorage.getItem("speed", speed)) - 100);
+    setSpeed(speed - 100);
     setIsSpeed(true);
     logoRef.current.style.cssText =
       "animation: 0.1s vibrate linear infinite;color:red;";
@@ -55,20 +57,20 @@ const SpeedMeter = ({
     socket.on("Acceleration", (data) => {
       setSocketMessage(data);
     });
-    localStorage.setItem("state", "speedingup");
-    localStorage.setItem("speed", speed);
+    setState("speedingup");
+    setSpeed(speed);
   };
 
   const handleBreak = () => {
     setIsSlowing(true);
-    setSpeed(Number(localStorage.getItem("speed", speed)) + 100);
+    setSpeed(speed + 100);
     notify("Slowing down the Bus.");
     socket.emit("slowing", "slowing down bus");
     socket.on("slowing", (data) => {
       setSocketMessage(data);
     });
-    localStorage.setItem("state", "slowingDown");
-    localStorage.setItem("speed", speed);
+    setState("slowingDown");
+    setSpeed(speed);
   };
 
   const handleStart = () => {
@@ -79,7 +81,7 @@ const SpeedMeter = ({
     socket.on("move", (data) => {
       setSocketMessage(data);
     });
-    localStorage.setItem("state", "move");
+    setState("move");
   };
 
   const handlePause = () => {
@@ -91,7 +93,7 @@ const SpeedMeter = ({
     socket.on("pause", (data) => {
       setSocketMessage(data);
     });
-    localStorage.setItem("state", "onPause");
+    setState("onPause");
   };
 
   const addPassenger = () => {
@@ -101,7 +103,7 @@ const SpeedMeter = ({
     socket.on("addpassenger", (data) => {
       setSocketMessage(data);
     });
-    localStorage.setItem("state", "addPassenger");
+    setState("addPassenger");
   };
 
   const removePassenger = () => {
@@ -115,7 +117,7 @@ const SpeedMeter = ({
     socket.on("Removedpassenger", (data) => {
       setSocketMessage(data);
     });
-    localStorage.setItem("state", "removePassenger");
+    setState("removePassenger");
   };
 
   const handleResume = () => {

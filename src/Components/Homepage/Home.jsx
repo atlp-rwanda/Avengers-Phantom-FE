@@ -36,7 +36,7 @@ const slides = [
   },
 ];
 
-function Homepage() {
+function Homepage({ props }) {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = slides.length;
@@ -139,7 +139,7 @@ function Homepage() {
       </Box>
       <About />
       <Manuals />
-      <MapSection />
+      <MapSection props={props} />
       <Services />
       <Agency />
       <Testimonials />

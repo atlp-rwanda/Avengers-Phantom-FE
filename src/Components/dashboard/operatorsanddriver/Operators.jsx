@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Buttons from "./Button.jsx";
 import "./DriverAndOperator.css";
+import "../Dashboard.css";
 import {
   Box,
   Typography,
@@ -23,11 +24,13 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
 import { Link } from "react-router-dom";
 import Slide from "@mui/material/Slide";
-import Sidebar from "../sidebar/Sidebar.jsx";
-import DashNavbar from "../dashnavbar/DashNavBar.jsx";
-import "../Dashboard.css";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteUser, fetchAllUsers, fetchSingleUser } from "../../../redux/Action/DriversAndOperators/driversAndOperators.js";
+import {
+  deleteUser,
+  fetchAllUsers,
+  fetchSingleUser,
+} from "../../../redux/Action/DriversAndOperators/driversAndOperators.js";
+import DashboardLayout from "../../../Layouts/Dashboard.js";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -43,23 +46,20 @@ const Operators = () => {
   const { user, errorUserDetails } = UserData;
   const [operatorTodelID, setOperatorTodelID] = useState("");
 
-  
-
   const handleClickOpen = (e) => {
     setOpen(true);
-    setOperatorTodelID(e.target.dataset.uuid)
+    setOperatorTodelID(e.target.dataset.uuid);
   };
 
   const handleClose = () => {
     setOpen(false);
   };
-  
 
   const [openDetail, setOpenDetail] = React.useState(false);
 
   const handleClickOpenDetail = (e) => {
     setOpenDetail(true);
-    fetchSingleData(e.target.dataset.uuid)
+    fetchSingleData(e.target.dataset.uuid);
   };
 
   const handleCloseDetail = () => {
@@ -68,20 +68,18 @@ const Operators = () => {
 
   const dispatch = useDispatch();
 
-  
-  const fetchSingleData = (userId)=>{
+  const fetchSingleData = (userId) => {
     dispatch(fetchSingleUser(userId));
-  }
+  };
 
   const handleDeleteUser = (e) => {
-    console.log('yesss')
-    deleteUserDetails(operatorTodelID)
-    console.log(operatorTodelID)
-   
+    console.log("yesss");
+    deleteUserDetails(operatorTodelID);
+    console.log(operatorTodelID);
   };
-  const deleteUserDetails = (userId)=>{
+  const deleteUserDetails = (userId) => {
     dispatch(deleteUser(userId));
-  }
+  };
 
   useEffect(() => {
     dispatch(fetchAllUsers());
@@ -89,92 +87,42 @@ const Operators = () => {
   }, []);
 
   return (
-    <div>
+    <DashboardLayout>
       <div className="dashboard">
         <div className="containt" style={{ margin: "0" }}>
           <div className="add-button">
-            <h3 className="driver-operator-title">Operators managment</h3>
-            <Link to="addoperator">
+            <Link to="/dashboard/driveroperator/addoperator">
               <Buttons
                 text="Add operator"
                 bcolor="#012241"
                 className="operator_button"
               />
             </Link>
-          </div>
-
-          <hr />
-
-          <Box sx={{ margin: 3 }}>
-            <FormControl
-              sx={{
-                display: "grid",
-                gridTemplateColumns: {
-                  lg: "700px 70px",
-                  xs: "200px 20px",
-                  md: "500px 50px",
-                },
-                marginLeft: "auto",
-                width: { lg: 800, xs: "100%" },
-              }}
-            >
-              <TextField
-                name="search"
-                size="small"
-                placeholder="search"
-                type="search"
-              />
-              <Button
+            <Box sx={{ margin: 3 }}>
+              <FormControl
                 sx={{
-                  background: "#012241",
-                  color: "white",
-                  borderTopLeftRadius: 0,
-                  borderBottomLeftRadius: 0,
-                  "&:hover": {
-                    background: "#012241",
-                    opacity: 0.8,
-                    transition: "0.8s",
+                  display: "grid",
+                  gridTemplateColumns: {
+                    lg: "700px 70px",
+                    xs: "200px 20px",
+                    md: "500px 50px",
                   },
+                  marginLeft: "auto",
+                  width: { lg: 800, xs: "100%" },
                 }}
               >
-                <SearchIcon sx={{ fontSize: { lg: 20, xs: 12, md: 15 } }} />
-              </Button>
-            </FormControl>
-          </Box>
-          {isLoading && <CardSkeleton skeletoncount={5} />}
-          {users && users.data && users.data.data.users ? users.data.data.users.rows.map((operator, index) =>operator.roleName=="operator" ? (
-            <div key={index} className="driver_component">
-              <div className="operator_component_photo">
-                <img src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445446/Images/dashboard_image/photo_svd054.jpg'} alt="karera" />
-              </div>
-              <div className="operator_component_container">
-                <h3>{operator.name}</h3>
-                <p>{operator.roleName}</p>
-                <h4>{operator.car}</h4>
-              </div>
-              <div className="operator_component_container_info">
-                <h3>{operator.idNumber}</h3>
-                <p>{operator.roleName}</p>
-                <h4>{operator.gender}</h4>
-              </div>
-              <div className="driver_component_contentbutton">
-                <h3>{operator.telNumber}</h3>
-               
-                <Button
-                  data-uuid={operator.uuid}
-                  onClick={handleClickOpenDetail}
+                <TextField
+                  name="search"
                   size="small"
+                  placeholder="search"
+                  type="search"
+                />
+                <Button
                   sx={{
                     background: "#012241",
-                    borderTopLeftRadius: 10,
-                    borderBottomLeftRadius: 0,
-                    borderTopRightRadius: 10,
-                    borderBottomRightRadius: 0,
                     color: "white",
-                    fontSize: { lg: 10, xs: 7 },
-                    p: 1,
-                    height: 20,
-                    marginRight: 3,
+                    borderTopLeftRadius: 0,
+                    borderBottomLeftRadius: 0,
                     "&:hover": {
                       background: "#012241",
                       opacity: 0.8,
@@ -182,34 +130,96 @@ const Operators = () => {
                     },
                   }}
                 >
-                  view full details
+                  <SearchIcon sx={{ fontSize: { lg: 20, xs: 12, md: 15 } }} />
                 </Button>
-                <Button
-                  data-uuid={operator.uuid}
-                  onClick={handleClickOpen}
-                  sx={{
-                    background: "#bd2424",
-                    color: "white",
-                    fontSize: { lg: 10, xs: 7 },
-                    p: 1,
-                    borderTopLeftRadius: 10,
-                    borderBottomLeftRadius: 0,
-                    borderTopRightRadius: 10,
-                    borderBottomRightRadius: 0,
-                    height: 20,
-                    marginRight: 2,
-                    "&:hover": {
-                      background: "#bd2424",
-                      opacity: 0.8,
-                      transition: "0.8s",
-                    },
-                  }}
-                >
-                  Delete
-                </Button>
-              </div>
-            </div>
-          ): "") : <div>No Operators found</div>}
+              </FormControl>
+            </Box>
+          </div>
+
+          {isLoading && <CardSkeleton skeletoncount={5} />}
+          {users && users.data && users.data.data.users ? (
+            users.data.data.users.rows.map((operator, index) =>
+              operator.roleName == "operator" ? (
+                <div key={index} className="driver_component">
+                  <div className="operator_component_photo">
+                    <img
+                      src={
+                        "https://res.cloudinary.com/avengersphantom/image/upload/v1656445446/Images/dashboard_image/photo_svd054.jpg"
+                      }
+                      alt="karera"
+                    />
+                  </div>
+                  <div className="operator_component_container">
+                    <h3>
+                      <strong>Name:</strong>
+                      {operator.name}
+                    </h3>
+                    <h3>
+                      <strong>Role:</strong>
+                      {operator.roleName}
+                    </h3>
+                  </div>
+                  <div className="operator_component_container_info">
+                    <h3>
+                      <strong>ID Number:</strong>
+                      {operator.idNumber}
+                    </h3>
+                    <h3>Gender:{operator.gender}</h3>
+                  </div>
+                  <div className="driver_component_contentbutton">
+                    <h3>
+                      <strong>Phone:</strong>
+                      {operator.telNumber}
+                    </h3>
+
+                    <Button
+                      data-uuid={operator.uuid}
+                      onClick={handleClickOpenDetail}
+                      size="small"
+                      sx={{
+                        background: "#012241",
+                        color: "white",
+                        fontSize: { lg: 10, xs: 7 },
+                        p: 1,
+                        height: 20,
+                        marginRight: 3,
+                        "&:hover": {
+                          background: "#012241",
+                          opacity: 0.8,
+                          transition: "0.8s",
+                        },
+                      }}
+                    >
+                      Details
+                    </Button>
+                    <Button
+                      data-uuid={operator.uuid}
+                      onClick={handleClickOpen}
+                      sx={{
+                        background: "#bd2424",
+                        color: "white",
+                        fontSize: { lg: 10, xs: 7 },
+                        p: 1,
+                        height: 20,
+                        marginRight: 2,
+                        "&:hover": {
+                          background: "#bd2424",
+                          opacity: 0.8,
+                          transition: "0.8s",
+                        },
+                      }}
+                    >
+                      Delete
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )
+            )
+          ) : (
+            <div>No Operators found</div>
+          )}
 
           <Dialog
             open={open}
@@ -230,9 +240,29 @@ const Operators = () => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-            <button onClick={handleDeleteUser} style={{ marginRight: 4,margin: 4, backgroundColor: "#bd2424", color:"white"}}>Delete</button>
-            <button onClick={handleClose} style={{ marginRight: 4,margin: 4, backgroundColor: "#012241", color:"white"}} bcolor="#012241">Return</button>
-            
+              <button
+                onClick={handleDeleteUser}
+                style={{
+                  marginRight: 4,
+                  margin: 4,
+                  backgroundColor: "#bd2424",
+                  color: "white",
+                }}
+              >
+                Delete
+              </button>
+              <button
+                onClick={handleClose}
+                style={{
+                  marginRight: 4,
+                  margin: 4,
+                  backgroundColor: "#012241",
+                  color: "white",
+                }}
+                bcolor="#012241"
+              >
+                Return
+              </button>
             </DialogActions>
           </Dialog>
 
@@ -247,87 +277,111 @@ const Operators = () => {
 
             <DialogContent>
               <DialogContentText id="alert-dialog-slide-description">
-              <div className="driverdetailpopup">
+                <div className="driverdetailpopup">
                   <div className="driver_component_photo driverpop">
-                    <img src={'https://res.cloudinary.com/avengersphantom/image/upload/v1656445446/Images/dashboard_image/photo_svd054.jpg'} alt="karera" />
+                    <img
+                      src={
+                        "https://res.cloudinary.com/avengersphantom/image/upload/v1656445446/Images/dashboard_image/photo_svd054.jpg"
+                      }
+                      alt="karera"
+                    />
                     <p>
                       <b>Name:</b>
                       <br />
-                      {user && user.data ? user.data.data.user.name: "N/A"}
+                      {user && user.data ? user.data.data.user.name : "N/A"}
                     </p>
                     <p>
                       <b>ID:</b>
                       <br />
-                      {user && user.data ? user.data.data.user.idNumber: "N/A"}
+                      {user && user.data ? user.data.data.user.idNumber : "N/A"}
                     </p>
                   </div>
                   <div className="driverpop">
                     <p>
                       <b>Tel:</b>
                       <br />
-                      {user && user.data ? user.data.data.user.telNumber: "N/A"}
+                      {user && user.data
+                        ? user.data.data.user.telNumber
+                        : "N/A"}
                     </p>
-                    
+
                     <p>
                       <b>gender:</b>
                       <br />
-                      {user && user.data ? user.data.data.user.gender: "N/A"}
+                      {user && user.data ? user.data.data.user.gender : "N/A"}
                     </p>
                     <p>
                       <b>District:</b>
                       <br />
-                      {user && user.data ? user.data.data.user.district: "N/A"}
+                      {user && user.data ? user.data.data.user.district : "N/A"}
                     </p>
                     <p>
                       <b>Sector:</b>
                       <br />
-                      {user && user.data ? user.data.data.user.sector: "N/A"}
+                      {user && user.data ? user.data.data.user.sector : "N/A"}
                     </p>
                     <p>
                       <b>Cell:</b>
                       <br />
-                      {user && user.data ? user.data.data.user.cell: "N/A"}
+                      {user && user.data ? user.data.data.user.cell : "N/A"}
                     </p>
                   </div>
                   <div className="driverpop">
                     <p>
                       <b>Plate nbr:</b>
                       <br />
-                      {user && user.data ? user.data.data.user.carplate: "N/A"}
+                      {user && user.data ? user.data.data.user.carplate : "N/A"}
                     </p>
                     <p>
                       <b>Vehicle type:</b>
                       <br />
-                      {user && user.data ? user.data.data.user.vehicletype: "N/A"}
+                      {user && user.data
+                        ? user.data.data.user.vehicletype
+                        : "N/A"}
                     </p>
                     <p>
                       <b>Capacity:</b>
                       <br />
-                      {user && user.data ? user.data.data.user.capacity: "N/A"}
+                      {user && user.data ? user.data.data.user.capacity : "N/A"}
                     </p>
                     <p>
                       <b>Email:</b>
                       <br />
-                      {user && user.data ? user.data.data.user.email: "N/A"}
+                      {user && user.data ? user.data.data.user.email : "N/A"}
                     </p>
                   </div>
                 </div>
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-
-             
-              <Link to={`updateOperator?id=${user && user.data ? user.data.data.user.uuid:'Undefined'}`}>
+              <Link
+                to={`updateOperator?id=${
+                  user && user.data ? user.data.data.user.uuid : "Undefined"
+                }`}
+              >
                 <Buttons text="Edit" bcolor="#012241" />
               </Link>
-          
-              <button onClick={handleCloseDetail} style={{ paddingLeft: "30px", paddingRight: "30px", paddingTop: "10px",paddingBottom: "10px",margin: "10px", backgroundColor: "rgb(102, 99, 99)", color:"white"}} bcolor="#012241">Return</button>
-       
+
+              <button
+                onClick={handleCloseDetail}
+                style={{
+                  paddingLeft: "30px",
+                  paddingRight: "30px",
+                  paddingTop: "10px",
+                  paddingBottom: "10px",
+                  margin: "10px",
+                  backgroundColor: "rgb(102, 99, 99)",
+                  color: "white",
+                }}
+                bcolor="#012241"
+              >
+                Return
+              </button>
             </DialogActions>
           </Dialog>
         </div>
       </div>
-    </div>
+    </DashboardLayout>
   );
 };
 
