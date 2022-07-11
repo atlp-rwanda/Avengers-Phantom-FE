@@ -8,8 +8,9 @@ import L from "leaflet";
 import DashboardLayout from "./../../Layouts/Dashboard";
 import SpeedMeter from "./SpeedMeter";
 import LocationMaker from "./LocationMaker";
-import socket from "./../../utils/sokect";
-import UserMap from "./../commons/Map";
+import socket from "../../utils/socket";
+import {UserMap} from '../commons'
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -20,6 +21,15 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const Simulation = () => {
+// dummy bus info 
+const bus = {
+  regNumber: 'RAB123CF',
+  capacity: 4,
+  campony: 'LOYAL', 
+  driver: {
+    name: 'Driver Name'
+  }
+}
   const [position, setPosition] = useState([]);
   const [start, seStart] = useState(false);
   const [engine, setEngine] = useState(false);
@@ -33,18 +43,19 @@ const Simulation = () => {
   const [currentTrack, setCurrentTrack] = useState({});
   const [currentPosition, setCurrentPosition] = useState(cursor);
   const [state, setState] = useState();
+  const [freeSeats, setFreeSeats] = useState() // need to be update by dynamic bus capacity
 
   let cursor = 0;
   let newCursor = currentPosition;
-  const mapProps = {
-    setPosition,
-    setSummary,
+  const mapProps = { 
+    setPosition, 
+    setSummary, 
     currentTrack,
     resume,
     isSlowing,
     pause,
     speed,
-  };
+  }
 
   useEffect(() => {
     setCurrentTrack(position[cursor]);
@@ -141,7 +152,7 @@ const Simulation = () => {
         <Grid container spacing={2}>
           <Grid item xs={12} md={12} lg={8}>
             <Item elevation={0}>
-              <UserMap props={mapProps} />
+         <UserMap props={mapProps}/>
             </Item>
           </Grid>
           <Grid item xs={12} md={12} lg={4}>
@@ -170,6 +181,9 @@ const Simulation = () => {
                 setIsSlowing={setIsSlowing}
                 state={state}
                 setState={setState}
+                freeSeats={freeSeats}
+                setFreeSeats={setFreeSeats} 
+                bus={bus}
               />
             </div>
           </Grid>

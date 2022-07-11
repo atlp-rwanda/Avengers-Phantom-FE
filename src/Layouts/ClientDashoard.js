@@ -8,10 +8,14 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import { styles } from "./styles";
 import Divider from "@material-ui/core/Divider";
-import { ClientSideBar } from "./SideBar";
+import ClientSideBar  from "./ClientSideBar";
 import List from "@material-ui/core/List";
 
 const useStyles = makeStyles(styles);
+// const carStateProps = {
+//   setCarState,
+//   carState
+// }
 
 const DashboardLayout = ({ children }) => {
   const classes = useStyles();
