@@ -62,6 +62,7 @@ module.exports = {
         DRIVER_ROLE: JSON.stringify(process.env.DRIVER_ROLE),
         OPERATOR_ROLE: JSON.stringify(process.env.OPERATOR_ROLE),
         ADMIN_ROLE: JSON.stringify(process.env.ADMIN_ROLE),
+        UPLOAD_PRESET: JSON.stringify(process.env.UPLOAD_PRESET)
       },
     }),
   ],

@@ -24,10 +24,12 @@ import {
 } from "@mui/material";
 import Skeleton from "react-loading-skeleton";
 import SkeletonElement from "./Skeletons/SkeletonElement.jsx";
+import Avatar from "@mui/material/Avatar";
 import DashboardLayout from "./../../../Layouts/Dashboard";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Grid from "@material-ui/core/Grid";
+
 
 const UpdateProfile = ({ setEditMode }) => {
   const dispatch = useDispatch();
@@ -222,14 +224,22 @@ const UpdateProfile = ({ setEditMode }) => {
                 <div class="flex-item-center"></div>
                 <div class="flex-item-right">
                   <div className="image">
-                    {(previewSource && (
+                    {previewSource ? (
                       <img src={previewSource} alt="Chosen Profile" />
-                    )) || (
+                    )  : userData?.profilePicture.length !== 0 ? (
                       <img
-                        src={userData?.profilePicture}
+                        src={userData?.profilePicture[userData?.profilePicture?.length-1]}
                         alt="Ancient Profile Picture"
                       />
-                    )}
+                    ): 
+                    <Avatar
+              className='profilePic'
+              alt="profile"
+              sx={{ width: 40, height: 40, bgcolor: "#012241" }}
+            >
+              {userData?.name.charAt(0).toUpperCase()}
+            </Avatar>
+                    }
                     <p>{userData?.name}</p>
                     <h5>{userData?.email}</h5>
                   </div>
