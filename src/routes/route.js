@@ -37,7 +37,7 @@ import ListBuses from "../Components/buses redux/busess.jsx";
 import Simulation from "../Components/Simulation/Simulation.js";
 import Dashboard from "../Layouts/Dashboard";
 import UpdatedOperator from "../Components/dashboard/operatorsanddriver/UpdateOperator.jsx";
-import UpdateDriver from "../Components/dashboard/operatorsanddriver/UpdateDriver.jsx";
+import UpdateDriver from "../Components/dashboard/operatorsanddriver/updateDriver.jsx";
 
 const PhantomRoutes = (prop) => {
   const location = useLocation();
