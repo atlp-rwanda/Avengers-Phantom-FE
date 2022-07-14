@@ -5,6 +5,7 @@ import {
   updateUserData,
 } from "../../../redux/Action/fetchUserData.js";
 import { useRadioGroup } from "@mui/material/RadioGroup";
+import Avatar from "@mui/material/Avatar";
 import Drivers from "../operatorsanddriver/Drivers.jsx";
 import "../Dashboard.css";
 import "../updateProfile/style.css";
@@ -37,6 +38,8 @@ const UpdateProfile = ({ setEditMode }) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
   const [loading, setLoading] = useState(true);
+  const [imageFile, setImageFile] = useState();
+  const [imageUrl, setImageUrl] = useState('');
   const [fileInputState, setFileInputState] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
   const [previewSource, setPreviewSource] = useState("");
@@ -65,23 +68,34 @@ const UpdateProfile = ({ setEditMode }) => {
       setPreviewSource(reader.result);
     };
   };
-  // upload Image
-  const uploadImage = (base64EncodedImage) => {};
-  // if(!previewSource) return;
-  const encodedImage = uploadImage(previewSource);
+ 
   // handle upload button
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
+    setImageFile(file)
     previewFile(file);
     setFileInputState(previewSource);
-    setFormData({
-      ...formData,
-      profilePicture: encodedImage,
-    });
   };
+
+  const uploadImageToCloud = async() => {
+    if(imageFile){
+      const formData = new FormData()
+      formData.append('file', imageFile)
+      formData.append('upload_preset', process.env.UPLOAD_PRESET)
+      
+      const data =await axios.post('https://api.cloudinary.com/v1_1/avengersphantom/image/upload', formData)
+      return data.data.url
+    }
+  }
+
   const handleUpdate = async (event) => {
     event.preventDefault();
-    dispatch(updateUserData(formData.uuid, formData));
+    const url = await uploadImageToCloud()
+    if(url){
+      dispatch(updateUserData(formData.uuid, {...formData, profilePicture:[...formData?.profilePicture,url]}));
+    }else{
+      dispatch(updateUserData(formData.uuid, formData));
+    }
     setEditMode(false);
   };
 
@@ -103,7 +117,7 @@ const UpdateProfile = ({ setEditMode }) => {
       ) : (
         <div className="dashboard">
           <div className="containt">
-            <form action="" method="post">
+            <form>
               <div className="header block">
                 <h2>Profile and visibility</h2>
                 <em>
@@ -252,14 +266,22 @@ const UpdateProfile = ({ setEditMode }) => {
                 <div class="flex-item-center"></div>
                 <div class="flex-item-right">
                   <div className="image">
-                    {(previewSource && (
+                  {previewSource ? (
                       <img src={previewSource} alt="Chosen Profile" />
-                    )) || (
-                        <img
-                          src={formData?.profilePicture}
-                          alt="Ancient Profile Picture"
-                        />
-                      ) || <Skeleton height={100} width={100} />}
+                    )  : userData?.profilePicture.length !== 0 ? (
+                      <img
+                        src={userData?.profilePicture[userData?.profilePicture?.length-1]}
+                        alt="Ancient Profile Picture"
+                      />
+                    ): 
+                    <Avatar
+              className='profilePic'
+              alt="profile"
+              sx={{ width: 40, height: 40, bgcolor: "#012241" }}
+            >
+              {userData?.name.charAt(0).toUpperCase()}
+            </Avatar>
+                    }
                     {<p>{formData?.name}</p> || <Skeleton />}
                     {<h5>{formData?.email}</h5> || <Skeleton />}
 
@@ -395,7 +417,7 @@ const UpdateProfile = ({ setEditMode }) => {
                     >
                       Cancel
                     </button>
-                    <button className="button-save" type="submit">
+                    <button className="button-save" onClick={handleUpdate}>
                       Save
                     </button>
                   </div>

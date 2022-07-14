@@ -74,7 +74,10 @@
   border-radius: 4px;
   padding: 10px;
   flex: 35%;
+  /* align-items: center; */
+  justify-content: center;
 }
+
 .container-about {
   padding: 5px;
   font-family: "Poppins", sans-serif;
@@ -121,7 +124,15 @@
 .image {
   border-radius: 50%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+/* .profilePic{
+  justify-self: center;
+} */
+
 .image h5 {
   margin-top: -20px;
 }

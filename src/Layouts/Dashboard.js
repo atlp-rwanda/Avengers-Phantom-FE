@@ -53,11 +53,11 @@ const DashboardLayout = ({ children }) => {
           <Typography variant="h6" className={classes.userName}>
             {user?.data?.user?.name}
           </Typography>
-          {user?.data?.user?.profilePicture ? (
+          {user?.data?.user?.profilePicture.length !== 0 ? (
             <Avatar
               className={classes.profilePic}
               alt="profile"
-              src={user?.data?.user?.profilePicture}
+              src={user?.data?.user?.profilePicture[user?.data?.user?.profilePicture?.length-1]}
               sx={{ width: 40, height: 40, bgcolor: "#012241" }}
             />
           ) : (
