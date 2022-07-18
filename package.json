@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "overrides": {
+    "@types/eslint": "8.4.5"
+  },
   "engines": {
     "npm": "7.x"
   },

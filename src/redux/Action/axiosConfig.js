@@ -2,9 +2,9 @@ import axios from 'axios'
 
 
 const token = localStorage.getItem('token'); 
-
+const backendUrl = process.env.BACKEND_URL
 const config = axios.create({
-    baseURL: process.env.REACT_APP_BACKEND_URL
+    baseURL:backendUrl 
 })
 config.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 

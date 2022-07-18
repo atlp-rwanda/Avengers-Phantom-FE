@@ -124,18 +124,14 @@ const SingleRoute = (props) => {
       );
     }
   };
-
   
   const fetchSingleData = ()=>{
     dispatch(fetchSingleRoute(routeUuid));
   }
 
- 
-
-  useEffect(() => {
+ useEffect(() => {
     fetchSingleData();
-    setIsLoading(false);
-    
+    setIsLoading(false);    
   }, []);
 
 
