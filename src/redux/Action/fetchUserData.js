@@ -38,7 +38,7 @@ export const fetchUserData = () => async (dispatch) => {
 export const updateUserData = (useruuid, formData) => async (dispatch) => {
     try{
     const res = await axios({
-      url:`${backendUrl}/users/updateProfile/${useruuid}`,
+      url:`${backendUrl}/users/${useruuid}`,
       method:"PATCH",
       data:formData,
       headers: {
@@ -47,13 +47,13 @@ export const updateUserData = (useruuid, formData) => async (dispatch) => {
         "Authorization": `Bearer ${token}`,
     }
     })
-    const message = res.message;
-    notify(message);
+    const message = res.data.message;
     dispatch({
       type:actions.UPDATE_USER,
       payload: res.data,
     })
-      }
+    notify(message);
+    }
     catch(err){
         const message = err.message;
         notify(message);
