@@ -3,11 +3,15 @@ import axios from 'axios'
 
 const backendUrl = process.env.BACKEND_URL
 
-export const fetchallusers= () => dispatch => {
-    return axios.get(`${backendUrl}/users/`)
-    .then(res =>{
-        dispatch({type:actions.FETCH_ALL_USERS,payload:res.data.users})
-    }
 
-    )
-}
+const token = localStorage.getItem('token')
+export const fetchallusers = () => async (dispatch) => {
+    const res = await axios.get(`${backendUrl}/users`,{
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    });
+  
+    dispatch({type:actions.FETCH_ALL_USERS,payload:res.data.data.users.rows});
+
+  };

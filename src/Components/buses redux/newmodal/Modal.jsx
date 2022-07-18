@@ -1,8 +1,8 @@
 import ReactDOM from "react-dom";
-// import * as React from "react";
+
 import "./modal.scss";
 import { connect, useDispatch, useSelector  } from 'react-redux';
-// import Close from "./times-solid.svg";ReactDOM.createPortal
+
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -11,7 +11,22 @@ import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import { fetchAllbuses } from '../../../redux/Action/fetchallbuses';
 import { assigndrivers} from '../../../redux/Action/assigndrverstobus';
 import {cleanCode} from '../../../redux/Action/clean'
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { async } from "regenerator-runtime";
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#ffffff",
+    },
+    secondary: {
+      main: "#012241",
+    },
+    thrirdly: {
+      main: "#be0e0ecd",
+    },
+  },
+});
 const Modal = ({propp,show, close, title, children }) => {
   const dispatch = useDispatch();
     const [mess,setMess]=useState(null)
@@ -22,6 +37,8 @@ const Modal = ({propp,show, close, title, children }) => {
      dispatch(cleanCode())
      close()
    }
+   const useress=propp.userState.users.filter( user => (user.isAssigned == false && user.roleName=="driver"));
+   console.log(propp.userState.users)
     const columns = [
       { field: 'uuid', headerName: 'ID', width: 150 },
       { field: 'name', headerName: 'Name', width: 150 },
@@ -29,13 +46,14 @@ const Modal = ({propp,show, close, title, children }) => {
       { field: 'district', headerName: 'district', width: 150 },
 
       {
-        field: 'edit',
-        headerName: 'Edit',
+        field: '',
+        headerName: '',
         width: 150,
         renderCell: (params) => (
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
+            backgroundColor="#012241"
             size="small"
             style={{ marginLeft: 16 }}
             onClick={(e)=> {
@@ -51,29 +69,26 @@ const Modal = ({propp,show, close, title, children }) => {
       )},]
   return (
     <>
+    <ThemeProvider theme={theme}>
      {show ? (
         <div className="modalContainer" onClick={() => close()}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
-            {/* <header className="modal_header">
-              <h2 className="modal_header-title"> {title} </h2>
-              
-            </header> */}
+            
             <main className="modal_content">
             
-             <DataGrid getRowId={(row)=>row.uuid} columns={columns} rows={propp.userState.users} pageSize={5} />
+             <DataGrid getRowId={(row)=>row.uuid} columns={columns} rows={useress} pageSize={5} />
             
              
              
              </main>
 
             <footer className="modal_footer">
-              {/* <button className="modal-close" onClick={() => close()}>
-              Cancel
-            </button> */}
+             
               <Box sx={{ display: "flex",justifyContent: 'flex-end', flexWrap: "wrap" }}>
                 <Button
-                  onClick={() => Toggle()}
-                  color="secondary"
+                  onClick={async() => {close()} }
+                  color="thrirdly"
+                  backgroundColor="primary"
                   variant="contained"
                   sx={{
                     height: "30.16px",
@@ -96,14 +111,12 @@ const Modal = ({propp,show, close, title, children }) => {
                     borderRadius: "45.125px",
                     boxSizing: "border-box",
                     ml: "10px",
-                    backgroundColor: "#bd2424",
+                    backgroundColor: "#012241",
                   }}
                   onClick={async () =>{
                      assignBusses()
                     close()
-                  
-                 
-                  // setModal(!modal)
+                
                   }}
                 >
                   <Typography sx={{ mx: "auto", width: "118.37px" }}>
@@ -117,6 +130,7 @@ const Modal = ({propp,show, close, title, children }) => {
           </div>
         </div>
         ) : null}
+        </ThemeProvider>
     </>
   );
 };

@@ -26,6 +26,9 @@ import { assignBusToRoute } from "./assignBusToRoute";
 import { unassignBusToRoute } from "./unAssignButToRoute";
 import { fetchAllBusAssignment } from "./AllBusAssignment";
 import { testRouteReducer } from "./simulation";
+import { fetchallassigned} from "./fetchallassign"; 
+import { unassignbusesReducer } from "./unassigndrivertbuss";
+
 
 const rootReducer = combineReducers({
   counter: reducer,
@@ -52,6 +55,9 @@ const rootReducer = combineReducers({
   unassignBusToRoute,
   fetchAllBusAssignment,
   testRouteReducer,
+  fetchall:fetchallassigned,
+  unassign:unassignbusesReducer,
+
 });
 
 export default rootReducer;
