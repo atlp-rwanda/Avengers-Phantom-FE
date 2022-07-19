@@ -1,3 +1,5 @@
+import { borderRadius, color, height, padding } from "@mui/system";
+
 export const styles = () => ({
   root: {
     textAlign: "center",
@@ -18,8 +20,8 @@ export const styles = () => ({
     margin: "auto",
   },
   userName: {
-    marginRight: "100px",
-    marginLeft: "300px",
+    marginRight: "10px",
+    marginLeft: "100px",
   },
   profilePic: {
     marginRight: "90px",
@@ -132,4 +134,38 @@ export const styles = () => ({
     color: "#FFFFFF",
     cursor: "pointer",
   },
+  count:{
+    background:"#3e3e3e",
+    border: "1px solid #fff",
+    borderRadius:"50%",
+    width:"15px",
+    height:"15px",
+    position:"relative",
+    color:"#fff",
+    padding:"5px",
+    fontSize:"13px",
+    fontWeight:700,
+    top:-6,
+    left:-16
+  },
+  close:{
+    color:"#012241",
+    cursor:"pointer",
+    background:"none",
+    border:"none",
+    position:"relative",
+    width:"100%",
+  },
+  actions:{
+    width:"50px",
+    marginLeft:"auto",
+    marginRight:"10px"
+  },
+
+  Notification:{
+    paddingLeft:"12px",
+    fontSize:"18px",
+    textTransform:"uppercase",
+    display:"flex"
+  }
 });
