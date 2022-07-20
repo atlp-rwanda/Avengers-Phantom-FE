@@ -5,6 +5,8 @@ import { fetchAllbusesReducer } from "./fetchallbuses";
 import { fetchallusersReducer } from "./fetchallusers";
 import { assignbusesReducer } from "./assigndrivers";
 import { fetchUserDataReducer } from "./fetchUserData";
+import { NotificationReducer } from "./NotificationReducer";
+import { getOneNotificationReducer } from "./getOneNotificationReducer";
 import {
   routeDeleteReducer,
   routeSaveReducer,
@@ -57,7 +59,8 @@ const rootReducer = combineReducers({
   testRouteReducer,
   fetchall:fetchallassigned,
   unassign:unassignbusesReducer,
-
+  NotificationReducer,
+  getOneNotificationReducer
 });
 
 export default rootReducer;
