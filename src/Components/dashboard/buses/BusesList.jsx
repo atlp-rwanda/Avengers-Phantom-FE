@@ -83,7 +83,7 @@ const Buses = () => {
 
   return (
     <DashboardLayout>
-      <ToastContainer />
+    <ToastContainer autoClose={500} limit={2} />
       <div className="dashboard">
         <div className="containt">
           <div className="add-button">

@@ -16,7 +16,7 @@ import ListItem from "@mui/material/ListItem";
 import { useDispatch, useSelector } from "react-redux";
 import { updateRoute } from "../../../redux/Action/routes.js";
 import { Dialog } from "@material-ui/core";
-import {ToastContainer, toast} from 'react-toastify';
+import {ToastContainer, toast, Slide} from 'react-toastify';
 
 const un = "Bus stop one, You can add others by hitting + button"
 let id = location.href.split("?id=")[1];
@@ -115,7 +115,7 @@ const UpdateRouteButton = (props) => {
 
     return (
         <div className="contain_update">
-             <ToastContainer />
+         <ToastContainer autoClose={500} limit={2} transition={Slide}/>
             <div>
                 
                     <form className="update_route" >

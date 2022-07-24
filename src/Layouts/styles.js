@@ -27,8 +27,8 @@ export const styles = () => ({
   container: {
     display: "flex",
     flex: 1,
-    background: "red",
     marginTop: "50px",
+    background: "#077",
   },
   drawer: {
     background: "#012241",

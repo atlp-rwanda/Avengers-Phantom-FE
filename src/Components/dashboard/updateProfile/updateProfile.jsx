@@ -26,7 +26,7 @@ import {
 import Skeleton from "react-loading-skeleton";
 import SkeletonElement from "./Skeletons/SkeletonElement.jsx";
 import DashboardLayout from "./../../../Layouts/Dashboard";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const UpdateProfile = ({ setEditMode }) => {
@@ -97,7 +97,7 @@ const UpdateProfile = ({ setEditMode }) => {
 
   return (
     <DashboardLayout>
-      <ToastContainer />
+    <ToastContainer autoClose={500} limit={2} transition={Slide}/>
       {loading ? (
         <UpdateProfileSkeleton />
       ) : (

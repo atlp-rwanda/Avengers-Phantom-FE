@@ -21,7 +21,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { fetchAllroutes } from "../../../redux/Action/routes";
 import Skeleton from "./Skeleton";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast, Slide } from "react-toastify";
 import { async } from "regenerator-runtime";
 import { connect } from "react-redux";
 import {
@@ -200,7 +200,7 @@ const busAssigniment = (props) => {
 
   return (
     <DashboardLayout>
-      <ToastContainer />
+      <ToastContainer autoClose={500} limit={2} transition={Slide}/>
       <div className="busassignment">
         <p> BUS ASSIGNIMENT</p>
         <div className="form">

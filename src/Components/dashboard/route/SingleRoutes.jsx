@@ -37,7 +37,7 @@ import ListItem from "@mui/material/ListItem";
 import DashboardLayout from "../../../Layouts/Dashboard";
 
 import UpdateRouteButton from "./UpdateRouteButton.jsx";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast, Slide } from "react-toastify";
 
 const un = "Bus stop one, You can add others by hitting + button";
 
@@ -131,7 +131,7 @@ const SingleRoute = (props) => {
 
   return (
     <DashboardLayout>
-      <ToastContainer />
+    <ToastContainer autoClose={500} limit={2} transition={Slide}/>
       <div>
         <div>
           <Dialog open={open} onClose={handleClose}>

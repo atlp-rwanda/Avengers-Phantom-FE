@@ -15,7 +15,7 @@ import IconButton from "@mui/material/IconButton";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import DashboardLayout from "./../../../Layouts/Dashboard";
 import { saveUser } from "../../../redux/Action/DriversAndOperators/driversAndOperators.js";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast, Slide } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllRoles } from "../../../redux/Action/RoleActions.js";
 import Backdrop from "@mui/material/Backdrop";
@@ -148,7 +148,7 @@ const AddDrivers = () => {
 
   return (
     <DashboardLayout>
-      <ToastContainer />
+    <ToastContainer autoClose={500} limit={2} transition={Slide}/>
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

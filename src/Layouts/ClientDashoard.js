@@ -24,27 +24,9 @@ const DashboardLayout = ({ children }) => {
   return (
     <div className={classes.root}>
       <div className={classes.container}>
-        <Drawer
-          variant="permanent"
-          classes={{
-            paper: clsx(classes.ClientDrawer, {
-              [classes.closed]: !isOpened,
-              [classes.clientOpened]: isOpened,
-            }),
-          }}
-        >
-          <IconButton
-            color="inherit"
-            onClick={() => setIsOpened(!isOpened)}
-            className={classes.toggleButton}
-          >
-            {isOpened ? <ChevronLeftIcon /> : <MenuIcon />}
-          </IconButton>
-          <Divider style={{ backgroundColor: "#fff" }} />
-          <div>
-            <ClientSideBar />
-          </div>
-        </Drawer>
+        <div>
+          <ClientSideBar />
+        </div>
         <main className={classes.main}>{children}</main>
       </div>
     </div>

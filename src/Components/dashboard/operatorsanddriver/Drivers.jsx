@@ -31,7 +31,7 @@ import {
   fetchAllUsers,
   fetchSingleUser,
 } from "../../../redux/Action/DriversAndOperators/driversAndOperators.js";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { getAllRoles } from "../../../redux/Action/RoleActions.js";
 import DashbaordLayout from "./../../../Layouts/Dashboard";
 
@@ -140,7 +140,7 @@ const Drivers = () => {
 
   return (
     <DashbaordLayout>
-      <ToastContainer />
+      <ToastContainer autoClose={500} limit={2} transition={Slide}/>
       <div className="dashboard">
         <div className="containt" style={{ margin: "0" }}>
           <div className="add-button">

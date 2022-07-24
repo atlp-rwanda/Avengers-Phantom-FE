@@ -11,7 +11,6 @@ const icon = L.icon({
 
 export const PhantomBusMarker = (props) => {
   const { lat, lng } = props.data;
-  console.log("props", props);
   const [prevPos, setPrevPos] = useState([lat, lng]);
 
   useEffect(() => {

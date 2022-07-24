@@ -9,7 +9,7 @@ import { FormValidation } from "./Validations.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { addBus } from "../../../redux/Action/fetchallbuses";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./style.css";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
@@ -41,7 +41,7 @@ export default function Register() {
 
   return (
     <DashboardLayout>
-      <ToastContainer />
+    <ToastContainer autoClose={500} limit={2} transition={Slide}/>
       <div className="dashboard">
         <div className="containt">
           <Typography

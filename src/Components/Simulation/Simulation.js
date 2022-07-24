@@ -5,12 +5,12 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import L from "leaflet";
-import DashboardLayout from "./../../Layouts/Dashboard";
-import SpeedMeter from "./SpeedMeter";
+
+import DashboardLayout from "../../Layouts/Dashboard";
+import DriverControl from "./DriverControl";
 import LocationMaker from "./LocationMaker";
 import socket from "../../utils/socket";
-import {UserMap} from '../commons'
-
+import { UserMap, BusState } from '../commons'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -19,132 +19,37 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: "center",
   color: theme.palette.text.secondary,
 }));
+const busProps = {
+  id: 1,
+  reg: "RAA 222X",
+  capacity: 10,
+  route: {
+    id: 1,
+    origin: {
+      id: 1,
+      name: "Nyamirambo",
+      lat: -1.97775,
+      lng: 30.04476,
+    },
+    destination: {
+      id: 1,
+      name: "Downtown",
+      lat: -1.939662908,
+      lng: 30.055666,
+    },
+  },
+  driver: {
+    id: 1,
+    firstName: "Mike",
+    lastName: "Anguandia",
+  }
+};
 
 const Simulation = () => {
-// dummy bus info 
-const bus = {
-  regNumber: 'RAB123CF',
-  capacity: 4,
-  campony: 'LOYAL', 
-  driver: {
-    name: 'Driver Name'
-  }
-}
-  const [position, setPosition] = useState([]);
-  const [start, seStart] = useState(false);
-  const [engine, setEngine] = useState(false);
-  const [summary, setSummary] = useState();
-  const [isSpeed, setIsSpeed] = useState(false);
-  const [isSlowing, setIsSlowing] = useState(false);
-  const [speed, setSpeed] = useState(1000);
-  const [pause, setPause] = useState(false);
-  const [resume, setResume] = useState(false);
-  const [passengers, setPassengers] = useState(0);
-  const [currentTrack, setCurrentTrack] = useState({});
-  const [currentPosition, setCurrentPosition] = useState(cursor);
-  const [state, setState] = useState();
-  const [freeSeats, setFreeSeats] = useState() // need to be update by dynamic bus capacity
-
-  let cursor = 0;
-  let newCursor = currentPosition;
-  const mapProps = { 
-    setPosition, 
-    setSummary, 
-    currentTrack,
-    resume,
-    isSlowing,
-    pause,
-    speed,
-  }
-
-  useEffect(() => {
-    setCurrentTrack(position[cursor]);
-    let interval;
-    if (start && engine) {
-      interval = setInterval(() => {
-        if (cursor !== position.length - 1) {
-          cursor += 1;
-          setCurrentPosition(cursor);
-          setCurrentTrack(position[cursor]);
-
-          return;
-        }
-      }, speed);
-
-      return () => {
-        clearInterval(interval);
-      };
-    } else if (pause) {
-      setCurrentTrack(currentTrack);
-      clearInterval(interval);
-    }
-  }, [position, start, engine, pause, resume]);
-
-  useEffect(() => {
-    setCurrentTrack(position[newCursor]);
-    let interval;
-    if (resume && engine) {
-      interval = setInterval(() => {
-        if (newCursor !== position.length - 1) {
-          newCursor += 1;
-          setCurrentPosition(newCursor);
-          setCurrentTrack(position[newCursor]);
-          return;
-        }
-      }, speed);
-
-      return () => {
-        clearInterval(interval);
-      };
-    } else if (pause) {
-      setCurrentTrack(currentTrack);
-      clearInterval(interval);
-    }
-  }, [resume]);
-
-  useEffect(() => {
-    setCurrentTrack(position[newCursor]);
-    let interval;
-    if (isSpeed && engine) {
-      interval = setInterval(() => {
-        if (newCursor !== position.length - 1) {
-          newCursor += 1;
-          setCurrentPosition(newCursor);
-          setCurrentTrack(position[newCursor]);
-          return;
-        }
-      }, speed);
-
-      return () => {
-        clearInterval(interval);
-      };
-    } else if (pause) {
-      setCurrentTrack(currentTrack);
-      clearInterval(interval);
-    }
-  }, [isSpeed]);
-
-  useEffect(() => {
-    setCurrentTrack(position[newCursor]);
-    let interval;
-    if (isSlowing && engine) {
-      interval = setInterval(() => {
-        if (newCursor !== position.length - 1) {
-          newCursor += 1;
-          setCurrentPosition(newCursor);
-          setCurrentTrack(position[newCursor]);
-          return;
-        }
-      }, speed);
-
-      return () => {
-        clearInterval(interval);
-      };
-    } else if (pause) {
-      setCurrentTrack(currentTrack);
-      clearInterval(interval);
-    }
-  }, [isSlowing]);
+ const props = BusState();
+ useState(() => {
+   props.setFreeSeats(busProps.capacity);
+ }, [])
 
   return (
     <DashboardLayout>
@@ -152,7 +57,7 @@ const bus = {
         <Grid container spacing={2}>
           <Grid item xs={12} md={12} lg={8}>
             <Item elevation={0}>
-         <UserMap props={mapProps}/>
+            <UserMap props={{...props, isDriver: true}} />
             </Item>
           </Grid>
           <Grid item xs={12} md={12} lg={4}>
@@ -164,27 +69,7 @@ const bus = {
                 height: "87vh",
               }}
             >
-              <SpeedMeter
-                seStart={seStart}
-                setEngine={setEngine}
-                setSpeed={setSpeed}
-                speed={speed}
-                pause={pause}
-                setPause={setPause}
-                start={start}
-                engine={engine}
-                passengers={passengers}
-                setPassengers={setPassengers}
-                summary={summary}
-                setResume={setResume}
-                setIsSpeed={setIsSpeed}
-                setIsSlowing={setIsSlowing}
-                state={state}
-                setState={setState}
-                freeSeats={freeSeats}
-                setFreeSeats={setFreeSeats} 
-                bus={bus}
-              />
+             <DriverControl props={{...props, ...busProps}} />
             </div>
           </Grid>
         </Grid>

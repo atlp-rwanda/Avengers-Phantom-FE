@@ -160,12 +160,12 @@
   height: 170px;
   box-shadow: 0px 7px 10px 0px #000;
   border-radius: 5px;
-  padding-top: 20px;
   color: #fff;
   background-color: #012241;
+  display: block;
 }
 .Car__controllers__info div:not(:last-child) {
-  margin-bottom: 10px;
+  margin-bottom: 1px;
 }
 .Car__controllers__platenumber {
   display: flex;

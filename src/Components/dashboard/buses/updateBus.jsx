@@ -8,7 +8,7 @@ import {getBusById} from "../../../redux/Action/fetchallbuses"
 import { useEffect } from "react";
 import { updateBus } from "../../../redux/Action/fetchallbuses";
 import { useDispatch, useSelector } from "react-redux";
-import { ToastContainer} from "react-toastify";
+import { ToastContainer, toast, Slide } from "react-toastify";
 
 export default function Update(){
   const {
@@ -43,7 +43,7 @@ export default function Update(){
 
   return (
     <DashboardLayout>
-      <ToastContainer />
+    <ToastContainer autoClose={500} limit={2} transition={Slide}/>
       <div className="dashboard">
         <div className="containt">
           <Box

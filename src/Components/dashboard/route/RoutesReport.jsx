@@ -21,7 +21,7 @@ import UpdateRouteButton from "./UpdateRouteButton.jsx";
 import Skeleton from "./Skeletons/SkeletonElement.jsx";
 import { styled } from "@mui/material/styles";
 import DashboardLayout from "../../../Layouts/Dashboard";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, Slide } from "react-toastify";
 import {
   deleteRoute,
   fetchAllroutes,
@@ -118,7 +118,7 @@ const OneRoute = () => {
 
   return (
     <DashboardLayout>
-      <ToastContainer />
+     <ToastContainer autoClose={500} limit={2} transition={Slide}/>
       <div>
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle>Deleting item</DialogTitle>

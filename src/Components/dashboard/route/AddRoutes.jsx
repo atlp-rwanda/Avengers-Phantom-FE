@@ -21,7 +21,7 @@ import { ListItemText, ListItemAvatar } from "@mui/material";
 import FolderIcon from "@mui/icons-material/Folder";
 import AddRouteInit from "./AddRouteInit.jsx";
 import DashboardLayout from "../../../Layouts/Dashboard.js";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, Slide } from "react-toastify";
 const un = "Bus stop one, You can add others by hitting + button";
 
 const AddRoutes = () => {
@@ -76,7 +76,7 @@ const AddRoutes = () => {
   return (
     
       <DashboardLayout >
-         <ToastContainer />      
+      <ToastContainer autoClose={500} limit={2} transition={Slide}/>     
           <div className="dashboard">            
             <AddRouteInit />
           </div>

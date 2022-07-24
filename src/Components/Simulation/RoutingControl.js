@@ -5,23 +5,14 @@ import "leaflet-routing-machine";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import { useSelector } from "react-redux";
 
-const createRoutineMachineLayer = ({ setPosition, setSummary }) => {
-  const route = useSelector((state) => state);
-
-  console.log("state", route.testRouteReducer.route.message[0].from);
+const createRoutineMachineLayer = ({ props }) => {
+  const {setPosition, setSummary, origin, destination} = props;
+  // const route = useSelector((state) => state);
+  // console.log("state", route.testRouteReducer.route.message[0].from);
 
   const instance = L.Routing.control({
     position: "bottomleft",
-    waypoints: [
-      L.latLng(
-        route?.testRouteReducer?.route?.message[0].from?.lat,
-        route?.testRouteReducer?.route?.message[0].from?.lng
-      ),
-      L.latLng(
-        route?.testRouteReducer?.route?.message[0].to?.lat,
-        route?.testRouteReducer?.route?.message[0].to?.lng
-      ),
-    ],
+    waypoints: [origin, destination],
     lineOptions: {
       styles: [
         {
@@ -32,12 +23,6 @@ const createRoutineMachineLayer = ({ setPosition, setSummary }) => {
       ],
     },
     show: false,
-    // addWaypoints: false,
-    // routeWhileDragging: true,
-    // draggableWaypoints: true,
-    // fitSelectedRoutes: true,
-    // showAlternatives: false,
-    // zoom: true,
   });
 
   instance.on("routesfound", function (e) {
@@ -53,10 +38,10 @@ const createRoutineMachineLayer = ({ setPosition, setSummary }) => {
         lng: coordinatesValues[i]?.lng,
       });
     }
-
     setPosition([...coordinates]);
     setSummary(summary);
   });
+
 
   return instance;
 };

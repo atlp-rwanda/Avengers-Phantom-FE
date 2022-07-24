@@ -9,7 +9,7 @@ import TextField from "@mui/material/TextField";
 import Buttons from "../operatorsanddriver/Button.jsx";
 import "./AddRoutes.css";
 import { saveRoute } from "../../../redux/Action/routes";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast, Slide } from "react-toastify";
 
 const AddRouteInit = () => {
   const notify = (toastMsg) => toast(toastMsg);
@@ -98,7 +98,7 @@ const AddRouteInit = () => {
 
       <div>
         <form className="addroute">
-          <ToastContainer />
+        <ToastContainer autoClose={500} limit={2} transition={Slide}/>
           <Link to="/dashboard/routes">
             <Buttons text="Go back" bcolor="#012241" />
           </Link>

@@ -15,7 +15,7 @@ import DashboardLayout from "./../../../Layouts/Dashboard";
 import { getAllRoles } from "../../../redux/Action/RoleActions.js";
 import { useDispatch, useSelector } from "react-redux";
 import { saveUser } from "../../../redux/Action/DriversAndOperators/driversAndOperators.js";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast, Slide } from "react-toastify";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
@@ -131,7 +131,7 @@ const AddOperator = () => {
 
   return (
     <DashboardLayout>
-      <ToastContainer />
+    <ToastContainer autoClose={500} limit={2} transition={Slide}/>
       <div className="dashboard">
         <div className="containt">
           <Typography

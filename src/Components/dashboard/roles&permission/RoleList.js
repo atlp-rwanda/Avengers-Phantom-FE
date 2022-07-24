@@ -12,7 +12,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { connect } from "react-redux";
 import Skeleton from "./Skeleton";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast, Slide } from "react-toastify";
 import {
   getAllRoles,
   getRole as getRoleAction,
@@ -133,7 +133,7 @@ const RoleList = ({
 
   return (
     <React.Fragment>
-      <ToastContainer />
+    <ToastContainer autoClose={500} limit={2} transition={Slide}/>
       {fetchRoles.success ? (
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">

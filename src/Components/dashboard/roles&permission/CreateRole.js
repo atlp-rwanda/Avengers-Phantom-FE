@@ -5,7 +5,7 @@ import {
   updateRole as updateRoleAction,
 } from "./../../../redux/Action/RoleActions";
 import { connect } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast, Slide } from "react-toastify";
 
 const CreateRole = (props) => {
   /**
@@ -77,7 +77,7 @@ const CreateRole = (props) => {
 
   return (
     <React.Fragment>
-      <ToastContainer />
+    <ToastContainer autoClose={500} limit={2} transition={Slide}/>
       <div className="role__form__container">
         <form onSubmit={handleSubmit}>
           <input
