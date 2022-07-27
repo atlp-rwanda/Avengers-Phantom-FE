@@ -355,7 +355,7 @@ const Operators = () => {
             </DialogContent>
             <DialogActions>
               <Link
-                to={`updateOperator?id=${
+                to={`/dashboard/driveroperator/updateOperator?id=${
                   user && user.data ? user.data.data.user.uuid : "Undefined"
                 }`}
               >
