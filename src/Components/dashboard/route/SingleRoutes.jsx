@@ -124,10 +124,17 @@ const SingleRoute = (props) => {
       );
     }
   };
+  
+  const fetchSingleData = ()=>{
+    dispatch(fetchSingleRoute(routeUuid));
+  }
 
-  // const fetchSingleData = () => {
-  //   dispatch(fetchSingleRoute(routeUuid));
-  // };
+ useEffect(() => {
+    fetchSingleData();
+    setIsLoading(false);    
+  }, []);
+
+
 
   return (
     <DashboardLayout>

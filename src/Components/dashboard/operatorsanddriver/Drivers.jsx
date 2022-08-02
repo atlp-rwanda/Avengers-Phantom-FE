@@ -406,7 +406,7 @@ const Drivers = () => {
             </DialogContent>
             <DialogActions>
               <Link
-                to={`updateDriver?id=${
+                to={`/dashboard/driveroperator/updateDriver?id=${
                   user && user.data ? user.data.data.user.uuid : "Undefined"
                 }`}
               >

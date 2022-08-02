@@ -26,6 +26,7 @@ export function usersDetailsReducer(state = { driver: {} }, action) {
   }
 }
 
+
 export function userSaveReducer(state = { USER: {} }, action) {
   switch (action.type) {
     case actions.USER_SAVE_REQUEST:
